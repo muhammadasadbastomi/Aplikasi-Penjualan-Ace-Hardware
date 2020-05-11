@@ -19,7 +19,7 @@ class CreateBarangPengirimansTable extends Migration
             $table->string('id_barang');
             $table->string('nama_pembeli');
             $table->date('tgl_pengiriman');
-            $table->date('alamat_pengiriman ');
+            $table->date('alamat_pengiriman');
             $table->string('jumlah');
             $table->string('status');
             $table->timestamps();

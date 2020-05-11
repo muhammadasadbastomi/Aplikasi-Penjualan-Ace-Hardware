@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\BarangDatang;
+use App\Barang_datang;
 use Illuminate\Http\Request;
 
 class BarangdatangController extends Controller
@@ -14,9 +14,9 @@ class BarangdatangController extends Controller
      */
     public function index()
     {
-        $barang = barang::orderBy('id', 'Desc')->get();
+        $barang = Barang_datang::orderBy('id', 'Desc')->get();
 
-        return view('admin.barang.index', compact('barang'));
+        return view('admin.barang.datang.index', compact('barang'));
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\BarangDiskon;
+use App\Barang_diskon;
 use Illuminate\Http\Request;
 
 class BarangdiskonController extends Controller
@@ -14,7 +14,9 @@ class BarangdiskonController extends Controller
      */
     public function index()
     {
-        //
+        $barang = Barang_diskon::orderBy('id', 'Desc')->get();
+
+        return view('admin.barang.diskon.index', compact('barang'));
     }
 
     /**

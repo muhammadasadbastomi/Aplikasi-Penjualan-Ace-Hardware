@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\BarangPesanan;
+use App\Barang_pesanan;
 use Illuminate\Http\Request;
 
 class BarangpesananController extends Controller
@@ -14,7 +14,9 @@ class BarangpesananController extends Controller
      */
     public function index()
     {
-        //
+        $barang = Barang_pesanan::orderBy('id', 'Desc')->get();
+
+        return view('admin.barang.pesanan.index', compact('barang'));
     }
 
     /**

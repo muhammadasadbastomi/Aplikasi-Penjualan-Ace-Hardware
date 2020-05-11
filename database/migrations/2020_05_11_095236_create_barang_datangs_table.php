@@ -17,8 +17,11 @@ class CreateBarangDatangsTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
             $table->string('id_barang');
-            $table->date('tgl_masuk');
-            $table->int('jumlah');
+            $table->string('nama_pembeli');
+            $table->date('tgl_pengiriman');
+            $table->date('alamat_pengiriman');
+            $table->string('jumlah');
+            $table->string('status');
             $table->timestamps();
         });
     }
