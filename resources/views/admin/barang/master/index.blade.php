@@ -33,7 +33,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="col-md-12">
-                                    <button type="button" class="btn btn-primary mr-1 mb-1 waves-effect waves-light float-right" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModalCenter">
                                         <i class="feather icon-plus-circle"> Tambah Data </i>
                                     </button>
                                 </div>

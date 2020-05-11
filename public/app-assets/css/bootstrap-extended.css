@@ -2342,7 +2342,7 @@ _:-ms-lang(x),
 .pagination .page-item {
   border-radius: 5rem; }
   .pagination .page-item.prev-item .page-link, .pagination .page-item.next-item .page-link, .pagination .page-item.first .page-link, .pagination .page-item.last .page-link {
-    color: #7367f0; }
+    color: #f06767; }
   .pagination .page-item.prev-item.disabled .page-link, .pagination .page-item.next-item.disabled .page-link, .pagination .page-item.first.disabled .page-link, .pagination .page-item.last.disabled .page-link {
     color: #6c757d; }
   .pagination .page-item:not(.prev-item) .page-link, .pagination .page-item:not(.next-item) .page-link, .pagination .page-item:not(.first) .page-link, .pagination .page-item:not(.last) .page-link, .pagination .page-item:not(.active) .page-link {
@@ -2357,7 +2357,7 @@ _:-ms-lang(x),
         content: "\e843";
         font-family: 'feather'; }
       .pagination .page-item.prev-item .page-link:hover {
-        background: #7367f0;
+        background: #f06767;
         color: #fff; }
     .pagination .page-item.prev-item ~ .page-item:nth-child(2) {
       border-top-left-radius: 5rem;
@@ -2381,7 +2381,7 @@ _:-ms-lang(x),
         content: "\e844";
         font-family: 'feather'; }
       .pagination .page-item.next-item .page-link:hover {
-        background: #7367f0;
+        background: #f06767;
         color: #fff; }
   .pagination .page-item.prev .page-link:before, .pagination .page-item.previous .page-link:before {
     content: "\e843";
@@ -2403,14 +2403,14 @@ _:-ms-lang(x),
     .pagination .page-item .page-link:focus {
       box-shadow: none; }
     .pagination .page-item .page-link:hover {
-      color: #7367f0; }
+      color: #f06767; }
   .pagination .page-item.active {
     background-color: #f0f0f0;
     border-radius: 0; }
     .pagination .page-item.active .page-link {
       z-index: 3;
       border-radius: 5rem;
-      background-color: #7367f0;
+      background-color: #f06767;
       color: #fff;
       transform: scale(1.05); }
   .pagination .page-item:first-child:not(.prev-item).active {

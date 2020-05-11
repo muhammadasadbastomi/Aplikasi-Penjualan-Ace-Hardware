@@ -3,7 +3,7 @@
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto"><a class="navbar-brand" href="#">
-                    <div class="brand-logo"></div>
+                    <img src="{{asset('img/logo.png') }}" style="width: 50px;">
                     <h2 class="brand-text mb-0">Ace Hardware</h2>
                 </a></li>
         </ul>
@@ -12,9 +12,9 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="index.html"><i class="feather icon-home"></i><span class="menu-title">Master Data</span><span class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
+            <li class=" nav-item"><a href="index.html"><i class="feather icon-home"></i><span class="menu-title">Master Data</span></a>
                 <ul class="menu-content">
-                    <li class="active"><a href="dashboard-analytics.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Dashboard</span></a></li>
+                    <li class="active"><a href="#"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Dashboard</span></a></li>
                     <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Master</span></a></li>
                     <li><a href="{{ route('datangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Datang</span></a></li>
                     <li><a href="{{ route('pesananIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Pesanan</span></a></li>
