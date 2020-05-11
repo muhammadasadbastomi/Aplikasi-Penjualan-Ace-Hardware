@@ -245,13 +245,10 @@
 
 
 
-
-
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/pdfmake.min.js') }}"></script>
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js') }}"></script>
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
-
 <script src="{{ asset('app-assets/js/scripts/datatables/datatable.js') }}"></script>
 @endsection
