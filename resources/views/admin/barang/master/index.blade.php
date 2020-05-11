@@ -8,6 +8,7 @@
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
+
         <div class="content-header row">
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
@@ -25,8 +26,8 @@
                 </div>
             </div>
         </div>
-        <div class="content-body">
 
+        <div class="content-body">
             <section id="basic-datatable">
                 <div class="row">
                     <div class="col-12">
@@ -40,7 +41,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
-                                    <div class="table-responsive">
+                                    <div class="col-sm-12 table-responsive">
                                         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-6">
@@ -53,13 +54,13 @@
                                                             </select> entries</label></div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-6">
-                                                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                                    <div id="DataTables_Table_0_filter" class="dataTables_filter float-right">
                                                         <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label></div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <table class="table zero-configuration dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                                    <table class="table zero-configuration dataTable" id="example1" role="grid" aria-describedby="DataTables_Table_0_info">
                                                         <thead>
                                                             <tr role="row">
                                                                 <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">No</th>
@@ -235,14 +236,63 @@
         </div>
     </div>
 </div>
+@endsection
 
+@section('script')
 
+<script>
+    $(document).on('click', '.delete', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        swal.fire({
+            title: "Apakah anda yakin?",
+            icon: "warning",
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: "Ya",
+            cancelButtonText: "Tidak",
+            showCancelButton: true,
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    url: "{{ url('/admin/pegawai/delete')}}" + '/' + id,
+                    type: "POST",
+                    data: {
+                        '_method': 'DELETE',
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Data Berhasil Dihapus',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setTimeout(function() {
+                            document.location.reload(true);
+                        }, 1000);
+                    },
+                })
+            } else if (result.dismiss === swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Dibatalkan',
+                    'data batal dihapus',
+                    'error'
+                )
+            }
+        })
+    });
 
-
-
-
-
-
+    $('#example1').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    });
+</script>
 
 
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/pdfmake.min.js') }}"></script>
@@ -250,5 +300,6 @@
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js') }}"></script>
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
+
 <script src="{{ asset('app-assets/js/scripts/datatables/datatable.js') }}"></script>
 @endsection
