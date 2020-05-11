@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin/index');
 });
+
+
+Route::get('/admin/barang/index', 'BarangController@index')->name('barangIndex');
+Route::get('/admin/barang/show', 'BarangController@show')->name('barangShow');
+Route::get('/admin/barang/create', 'BarangController@create')->name('barangCreate');
+Route::get('/admin/barang/delete', 'BarangController@destroy')->name('barangDestroy');
+Route::get('/admin/barang/edit', 'BarangController@destroy')->name('barangEdit');
+Route::get('/admin/barang/edit', 'BarangController@destroy')->name('barangUpdate');
