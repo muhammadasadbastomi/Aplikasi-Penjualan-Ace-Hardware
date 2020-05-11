@@ -12,7 +12,7 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Daftar Barang Master</h2>
+                        <h2 class="content-header-title float-left mb-0">Daftar Barang Pesanan</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a>
@@ -62,11 +62,11 @@
                                                     <table class="table zero-configuration dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
                                                         <thead>
                                                             <tr role="row">
-                                                                <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 59.6px;">No</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 306.4px;">Nama</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 137.6px;">Tanggal</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 55.2px;">Info</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 108.8px;">Jumlah</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">No</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Nama Pesanan</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Tanggal Pesanan</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Info</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Jumlah</th>
                                                                 <th></th>
                                                             </tr>
                                                         </thead>
@@ -128,43 +128,28 @@
             </div>
             <form action="#">
                 <div class="modal-body">
-                    <label>Nama Barang : </label>
+                    <label>Nama Pesanan : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="text" placeholder="Masukkan Nama Pesanan" class="form-control">
                     </div>
 
-                    <label>Supplier : </label>
+                    <label>Tanggal Pesanan : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="date" class="form-control">
                     </div>
 
-                    <label>Satuan : </label>
+                    <label>Info : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="text" placeholder="Masukkan Info" class="form-control">
                     </div>
 
-                    <label>Departement : </label>
+                    <label>Jumlah : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="text" placeholder="Masukkan Jumlah" class="form-control">
                     </div>
-
-                    <label>Harga : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
-                    </div>
-
-                    <label>Stok : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <fieldset class="form-group">
-                        <label for="basicInputFile">Gambar</label>
-                        <input type="file" class="form-control-file" id="basicInputFile">
-                    </fieldset>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>
                 </div>
             </form>
@@ -179,52 +164,36 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Barang</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">Edit Data Barang</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form action="#">
                 <div class="modal-body">
-                    <label>Nama Barang : </label>
+                    <label>Nama Pesanan : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="text" placeholder="Masukkan Nama Pesanan" class="form-control">
                     </div>
 
-                    <label>Supplier : </label>
+                    <label>Tanggal Pesanan : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="date" class="form-control">
                     </div>
 
-                    <label>Satuan : </label>
+                    <label>Info : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="text" placeholder="Masukkan Info" class="form-control">
                     </div>
 
-                    <label>Departement : </label>
+                    <label>Jumlah : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="text" placeholder="Masukkan Jumlah" class="form-control">
                     </div>
-
-                    <label>Harga : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>
                     </div>
-
-                    <label>Stok : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <fieldset class="form-group">
-                        <label for="basicInputFile">Gambar</label>
-                        <input type="file" class="form-control-file" id="basicInputFile">
-                    </fieldset>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>
-                </div>
             </form>
         </div>
     </div>

@@ -45,7 +45,7 @@
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-6">
                                                     <div class="dataTables_length" id="DataTables_Table_0_length">
-                                                        <label>Show <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="custom-select custom-select-sm form-control form-control-sm">
+                                                        <label>Show <select name="DataTables_Table_0_length" aria-controls="example1" class="custom-select custom-select-sm form-control form-control-sm">
                                                                 <option value="10">10</option>
                                                                 <option value="25">25</option>
                                                                 <option value="50">50</option>
@@ -54,7 +54,7 @@
                                                 </div>
                                                 <div class="col-sm-12 col-md-6">
                                                     <div id="DataTables_Table_0_filter" class="dataTables_filter">
-                                                        <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="DataTables_Table_0"></label></div>
+                                                        <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label></div>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -62,14 +62,14 @@
                                                     <table class="table zero-configuration dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
                                                         <thead>
                                                             <tr role="row">
-                                                                <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 59.6px;">No</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 306.4px;">Nama Barang</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 137.6px;">Supplier</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 55.2px;">Satuan</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 108.8px;">Departement</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 90.4px;">Harga</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 90.4px;">Stok</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 90.4px;">Gambar</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">No</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">Nama Barang</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">Supplier</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">Satuan</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">Departement</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">Harga</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">Stok</th>
+                                                                <th class="sorting text-center" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">Gambar</th>
                                                                 <th></th>
                                                             </tr>
                                                         </thead>
@@ -100,11 +100,11 @@
                                                 <div class="col-sm-12 col-md-7">
                                                     <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
                                                         <ul class="pagination">
-                                                            <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                                            <li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                                            <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                                            <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                                                            <li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0" class="page-link">Next</a></li>
+                                                            <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                                            <li class="paginate_button page-item active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                                            <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                                            <li class="paginate_button page-item "><a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+                                                            <li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0" class="page-link">Next</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -123,11 +123,11 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Barang</h5>
+                <h5 class="modal-title" id="exampleModalScrollable">Tambah Data Barang</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -136,32 +136,32 @@
                 <div class="modal-body">
                     <label>Nama Barang : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
                     </div>
 
                     <label>Supplier : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="text" placeholder="Masukkan Supplier" class="form-control">
                     </div>
 
                     <label>Satuan : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="text" placeholder="Masukkan Satuan" class="form-control">
                     </div>
 
                     <label>Departement : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="text" placeholder="Masukkan Departement" class="form-control">
                     </div>
 
                     <label>Harga : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="text" placeholder="Masukkan Harga" class="form-control">
                     </div>
 
                     <label>Stok : </label>
                     <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <input type="text" placeholder="Masukkan Stok" class="form-control">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
@@ -181,11 +181,11 @@
 
 
 <!-- Modal Edit -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Barang</h5>
+                <h5 class="modal-title" id="exampleModalScrollable">Tambah Data Barang</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

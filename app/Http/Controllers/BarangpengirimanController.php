@@ -43,10 +43,10 @@ class BarangpengirimanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BarangPengiriman  $barangPengiriman
+     * @param  \App\Barang_pengiriman  $barang_pengiriman
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangPengiriman $barangPengiriman)
+    public function show(Barang_pengiriman $barang_pengiriman)
     {
         //
     }
@@ -54,10 +54,10 @@ class BarangpengirimanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BarangPengiriman  $barangPengiriman
+     * @param  \App\Barang_pengiriman  $barang_pengiriman
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangPengiriman $barangPengiriman)
+    public function edit(Barang_pengiriman $barang_pengiriman)
     {
         //
     }
@@ -66,10 +66,10 @@ class BarangpengirimanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BarangPengiriman  $barangPengiriman
+     * @param  \App\Barang_pengiriman  $barang_pengiriman
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangPengiriman $barangPengiriman)
+    public function update(Request $request, Barang_pengiriman $barang_pengiriman)
     {
         //
     }
@@ -77,10 +77,10 @@ class BarangpengirimanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BarangPengiriman  $barangPengiriman
+     * @param  \App\Barang_pengiriman  $barang_pengiriman
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangPengiriman $barangPengiriman)
+    public function destroy(Barang_pengiriman $barang_pengiriman)
     {
         //
     }
