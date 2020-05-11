@@ -14,7 +14,14 @@ class CreateBarangpesanansTable extends Migration
     public function up()
     {
         Schema::create('_barangpesanans', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('uuid')->length(36);
+            $table->string('id_barang');
+            $table->date('tgl_pesanan');
+            $table->string('nama_pesanan');
+            $table->string('info_pesanan');
+            $table->string('id_sales');
+            $table->integer('jumlah_pesanan');
             $table->timestamps();
         });
     }

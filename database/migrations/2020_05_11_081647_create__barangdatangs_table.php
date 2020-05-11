@@ -14,7 +14,11 @@ class CreateBarangdatangsTable extends Migration
     public function up()
     {
         Schema::create('_barangdatangs', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('uuid')->length(36);
+            $table->string('id_barang');
+            $table->date('tgl_masuk');
+            $table->int('jumlah');
             $table->timestamps();
         });
     }

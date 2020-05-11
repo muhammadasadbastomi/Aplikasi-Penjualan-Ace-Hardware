@@ -16,12 +16,13 @@ class CreateBarangsTable extends Migration
         Schema::create('barangs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
-            $table->string('kode_barang')->unique();
-            $table->string('harga_satuan');
-            $table->string('harga_jual');
-            $table->string('diskon')->nullable();
+            $table->string('nama_barang');
             $table->string('supplier');
-            $table->string('departemen');
+            $table->string('satuan');
+            $table->string('departement');
+            $table->string('harga_jual');
+            $table->integer('stok_tersedia');
+            $table->string('gambar');
             $table->timestamps();
         });
     }

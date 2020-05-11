@@ -14,7 +14,11 @@ class CreateBarangterjualsTable extends Migration
     public function up()
     {
         Schema::create('_barangterjuals', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('uuid')->length(36);
+            $table->string('id_barang');
+            $table->integer('jumlah_terjual');
+            $table->integer('tgl_terjual');
             $table->timestamps();
         });
     }

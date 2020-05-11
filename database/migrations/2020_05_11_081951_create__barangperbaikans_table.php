@@ -14,7 +14,14 @@ class CreateBarangperbaikansTable extends Migration
     public function up()
     {
         Schema::create('_barangperbaikans', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('uuid')->length(36);
+            $table->string('id_barang');
+            $table->string('nama_barang');
+            $table->date('tgl_diperbaiki');
+            $table->date('tgl_estimasi');
+            $table->string('kerusakan');
+            $table->string('jumlah');
             $table->timestamps();
         });
     }

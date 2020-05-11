@@ -14,7 +14,10 @@ class CreateBarangdiskonsTable extends Migration
     public function up()
     {
         Schema::create('_barangdiskons', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('uuid')->length(36);
+            $table->integer('id_barang');
+            $table->string('diskon');
             $table->timestamps();
         });
     }
