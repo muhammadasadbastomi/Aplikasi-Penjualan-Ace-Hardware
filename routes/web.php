@@ -20,10 +20,10 @@ Route::get('/', function () {
 
 Route::get('/admin/barang/master/index', 'BarangController@index')->name('barangIndex');
 Route::get('/admin/barang/mastter/show', 'BarangController@show')->name('barangShow');
-Route::get('/admin/barang/master//create', 'BarangController@create')->name('barangCreate');
+Route::get('/admin/barang/master/create', 'BarangController@create')->name('barangCreate');
 Route::get('/admin/barang/master/delete', 'BarangController@destroy')->name('barangDestroy');
-Route::get('/admin/barang/master//edit', 'BarangController@destroy')->name('barangEdit');
-Route::get('/admin/barang/master//edit', 'BarangController@destroy')->name('barangUpdate');
+Route::get('/admin/barang/master/edit', 'BarangController@destroy')->name('barangEdit');
+Route::get('/admin/barang/master/edit', 'BarangController@destroy')->name('barangUpdate');
 
 Route::get('/admin/barang/datang/index', 'BarangdatangController@index')->name('datangIndex');
 Route::get('/admin/barang/datang/show', 'BarangdatangController@show')->name('datangShow');
@@ -80,7 +80,6 @@ Route::get('/admin/barang/perbaikan/create', 'BarangperbaikanController@create')
 Route::get('/admin/barang/perbaikan/delete', 'BarangperbaikanController@destroy')->name('perbaikanDestroy');
 Route::get('/admin/barang/perbaikan/edit', 'BarangperbaikanController@destroy')->name('perbaikanEdit');
 Route::get('/admin/barang/perbaikan/edit', 'BarangperbaikanController@destroy')->name('perbaikanUpdate');
-
 
 
 Auth::routes();
