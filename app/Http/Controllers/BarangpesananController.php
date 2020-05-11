@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\BarangGaransi;
+use App\BarangPesanan;
 use Illuminate\Http\Request;
 
-class create_BaranggaransiController extends Controller
+class BarangpesananController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class create_BaranggaransiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BarangGaransi  $barangGaransi
+     * @param  \App\BarangPesanan  $barangPesanan
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangGaransi $barangGaransi)
+    public function show(BarangPesanan $barangPesanan)
     {
         //
     }
@@ -52,10 +52,10 @@ class create_BaranggaransiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BarangGaransi  $barangGaransi
+     * @param  \App\BarangPesanan  $barangPesanan
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangGaransi $barangGaransi)
+    public function edit(BarangPesanan $barangPesanan)
     {
         //
     }
@@ -64,10 +64,10 @@ class create_BaranggaransiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BarangGaransi  $barangGaransi
+     * @param  \App\BarangPesanan  $barangPesanan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangGaransi $barangGaransi)
+    public function update(Request $request, BarangPesanan $barangPesanan)
     {
         //
     }
@@ -75,10 +75,10 @@ class create_BaranggaransiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BarangGaransi  $barangGaransi
+     * @param  \App\BarangPesanan  $barangPesanan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangGaransi $barangGaransi)
+    public function destroy(BarangPesanan $barangPesanan)
     {
         //
     }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\BarangRusak;
+use App\BarangTerjual;
 use Illuminate\Http\Request;
 
-class create_BarangrusakController extends Controller
+class BarangterjualController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class create_BarangrusakController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BarangRusak  $barangRusak
+     * @param  \App\BarangTerjual  $barangTerjual
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangRusak $barangRusak)
+    public function show(BarangTerjual $barangTerjual)
     {
         //
     }
@@ -52,10 +52,10 @@ class create_BarangrusakController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BarangRusak  $barangRusak
+     * @param  \App\BarangTerjual  $barangTerjual
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangRusak $barangRusak)
+    public function edit(BarangTerjual $barangTerjual)
     {
         //
     }
@@ -64,10 +64,10 @@ class create_BarangrusakController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BarangRusak  $barangRusak
+     * @param  \App\BarangTerjual  $barangTerjual
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangRusak $barangRusak)
+    public function update(Request $request, BarangTerjual $barangTerjual)
     {
         //
     }
@@ -75,10 +75,10 @@ class create_BarangrusakController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BarangRusak  $barangRusak
+     * @param  \App\BarangTerjual  $barangTerjual
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangRusak $barangRusak)
+    public function destroy(BarangTerjual $barangTerjual)
     {
         //
     }

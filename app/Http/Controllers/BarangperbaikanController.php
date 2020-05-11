@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\BarangPerbaikan;
 use Illuminate\Http\Request;
 
-class create_BarangperbaikanController extends Controller
+class BarangperbaikanController extends Controller
 {
     /**
      * Display a listing of the resource.

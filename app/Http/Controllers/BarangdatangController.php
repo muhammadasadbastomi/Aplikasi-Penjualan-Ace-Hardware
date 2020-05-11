@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\BarangPengiriman;
+use App\BarangDatang;
 use Illuminate\Http\Request;
 
-class create_BarangpengirimanController extends Controller
+class BarangdatangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,9 @@ class create_BarangpengirimanController extends Controller
      */
     public function index()
     {
-        //
+        $barang = barang::orderBy('id', 'Desc')->get();
+
+        return view('admin.barang.index', compact('barang'));
     }
 
     /**
@@ -41,10 +43,10 @@ class create_BarangpengirimanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BarangPengiriman  $barangPengiriman
+     * @param  \App\BarangDatang  $barangDatang
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangPengiriman $barangPengiriman)
+    public function show(BarangDatang $barangDatang)
     {
         //
     }
@@ -52,10 +54,10 @@ class create_BarangpengirimanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BarangPengiriman  $barangPengiriman
+     * @param  \App\BarangDatang  $barangDatang
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangPengiriman $barangPengiriman)
+    public function edit(BarangDatang $barangDatang)
     {
         //
     }
@@ -64,10 +66,10 @@ class create_BarangpengirimanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BarangPengiriman  $barangPengiriman
+     * @param  \App\BarangDatang  $barangDatang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangPengiriman $barangPengiriman)
+    public function update(Request $request, BarangDatang $barangDatang)
     {
         //
     }
@@ -75,10 +77,10 @@ class create_BarangpengirimanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BarangPengiriman  $barangPengiriman
+     * @param  \App\BarangDatang  $barangDatang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangPengiriman $barangPengiriman)
+    public function destroy(BarangDatang $barangDatang)
     {
         //
     }

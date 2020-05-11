@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\BarangPesanan;
+use App\BarangRusak;
 use Illuminate\Http\Request;
 
-class create_BarangpesananController extends Controller
+class BarangrusakController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class create_BarangpesananController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BarangPesanan  $barangPesanan
+     * @param  \App\BarangRusak  $barangRusak
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangPesanan $barangPesanan)
+    public function show(BarangRusak $barangRusak)
     {
         //
     }
@@ -52,10 +52,10 @@ class create_BarangpesananController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BarangPesanan  $barangPesanan
+     * @param  \App\BarangRusak  $barangRusak
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangPesanan $barangPesanan)
+    public function edit(BarangRusak $barangRusak)
     {
         //
     }
@@ -64,10 +64,10 @@ class create_BarangpesananController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BarangPesanan  $barangPesanan
+     * @param  \App\BarangRusak  $barangRusak
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangPesanan $barangPesanan)
+    public function update(Request $request, BarangRusak $barangRusak)
     {
         //
     }
@@ -75,10 +75,10 @@ class create_BarangpesananController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BarangPesanan  $barangPesanan
+     * @param  \App\BarangRusak  $barangRusak
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangPesanan $barangPesanan)
+    public function destroy(BarangRusak $barangRusak)
     {
         //
     }

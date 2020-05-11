@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\BarangTerjual;
+use App\BarangDiskon;
 use Illuminate\Http\Request;
 
-class create_BarangterjualController extends Controller
+class BarangdiskonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class create_BarangterjualController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BarangTerjual  $barangTerjual
+     * @param  \App\BarangDiskon  $barangDiskon
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangTerjual $barangTerjual)
+    public function show(BarangDiskon $barangDiskon)
     {
         //
     }
@@ -52,10 +52,10 @@ class create_BarangterjualController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BarangTerjual  $barangTerjual
+     * @param  \App\BarangDiskon  $barangDiskon
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangTerjual $barangTerjual)
+    public function edit(BarangDiskon $barangDiskon)
     {
         //
     }
@@ -64,10 +64,10 @@ class create_BarangterjualController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BarangTerjual  $barangTerjual
+     * @param  \App\BarangDiskon  $barangDiskon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangTerjual $barangTerjual)
+    public function update(Request $request, BarangDiskon $barangDiskon)
     {
         //
     }
@@ -75,10 +75,10 @@ class create_BarangterjualController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BarangTerjual  $barangTerjual
+     * @param  \App\BarangDiskon  $barangDiskon
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangTerjual $barangTerjual)
+    public function destroy(BarangDiskon $barangDiskon)
     {
         //
     }

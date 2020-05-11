@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\BarangDatang;
+use App\BarangGaransi;
 use Illuminate\Http\Request;
 
-class create_BarangdatangController extends Controller
+class BaranggaransiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class create_BarangdatangController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BarangDatang  $barangDatang
+     * @param  \App\BarangGaransi  $barangGaransi
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangDatang $barangDatang)
+    public function show(BarangGaransi $barangGaransi)
     {
         //
     }
@@ -52,10 +52,10 @@ class create_BarangdatangController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BarangDatang  $barangDatang
+     * @param  \App\BarangGaransi  $barangGaransi
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangDatang $barangDatang)
+    public function edit(BarangGaransi $barangGaransi)
     {
         //
     }
@@ -64,10 +64,10 @@ class create_BarangdatangController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BarangDatang  $barangDatang
+     * @param  \App\BarangGaransi  $barangGaransi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangDatang $barangDatang)
+    public function update(Request $request, BarangGaransi $barangGaransi)
     {
         //
     }
@@ -75,10 +75,10 @@ class create_BarangdatangController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BarangDatang  $barangDatang
+     * @param  \App\BarangGaransi  $barangGaransi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangDatang $barangDatang)
+    public function destroy(BarangGaransi $barangGaransi)
     {
         //
     }

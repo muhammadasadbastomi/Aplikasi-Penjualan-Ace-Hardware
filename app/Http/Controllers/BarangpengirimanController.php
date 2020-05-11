@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\BarangDiskon;
+use App\BarangPengiriman;
 use Illuminate\Http\Request;
 
-class create_BarangdiskonController extends Controller
+class BarangpengirimanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class create_BarangdiskonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BarangDiskon  $barangDiskon
+     * @param  \App\BarangPengiriman  $barangPengiriman
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangDiskon $barangDiskon)
+    public function show(BarangPengiriman $barangPengiriman)
     {
         //
     }
@@ -52,10 +52,10 @@ class create_BarangdiskonController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BarangDiskon  $barangDiskon
+     * @param  \App\BarangPengiriman  $barangPengiriman
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangDiskon $barangDiskon)
+    public function edit(BarangPengiriman $barangPengiriman)
     {
         //
     }
@@ -64,10 +64,10 @@ class create_BarangdiskonController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BarangDiskon  $barangDiskon
+     * @param  \App\BarangPengiriman  $barangPengiriman
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangDiskon $barangDiskon)
+    public function update(Request $request, BarangPengiriman $barangPengiriman)
     {
         //
     }
@@ -75,10 +75,10 @@ class create_BarangdiskonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BarangDiskon  $barangDiskon
+     * @param  \App\BarangPengiriman  $barangPengiriman
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangDiskon $barangDiskon)
+    public function destroy(BarangPengiriman $barangPengiriman)
     {
         //
     }
