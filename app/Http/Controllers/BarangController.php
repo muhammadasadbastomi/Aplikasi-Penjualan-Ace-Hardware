@@ -37,7 +37,34 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'required' => ':attribute harus diisi.'
+        ];
+        dd($request->all());
+        $request->validate([
+
+            'nama_barang' => 'required',
+            'supplier' => 'required',
+            'satuan' => 'required',
+            'departement' => 'required',
+            'harga_jual' => 'required',
+            'stok_tersedia' => 'required'
+        ], $messages);
+
+        // create new object
+        $barang = new barang;
+        $barang->barang = $request->barang;
+        $request->request->add(['barang_id' => $barang->id]);
+        $barang->nama_barang = $request->nama_barang;
+        $barang->supplier = $request->supplier;
+        $barang->satuan = $request->satuan;
+        $barang->departement = $request->departement;
+        $barang->harga_jual = $request->harga_jual;
+        $barang->stok_tersedia = $request->stok_tersedia;
+        $barang->save();
+
+        return redirect('admin/barang/master/index'); //->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -46,9 +73,12 @@ class BarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('admin.barang.show');
+        // get golongan by id
+        $barang = barang::where('uuid', $id)->first();
+
+        return view('admin.barang.show', compact('barang'));
     }
 
     /**
@@ -82,6 +112,10 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $barang = barang::where('uuid', $id)->first();
+
+        $barang->delete();
+
+        return redirect()->route('barangIndex');
     }
 }
