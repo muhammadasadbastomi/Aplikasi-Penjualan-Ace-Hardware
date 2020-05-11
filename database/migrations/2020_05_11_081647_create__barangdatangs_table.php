@@ -18,7 +18,7 @@ class CreateBarangdatangsTable extends Migration
             $table->string('uuid')->length(36);
             $table->string('id_barang');
             $table->date('tgl_masuk');
-            $table->int('jumlah');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }
