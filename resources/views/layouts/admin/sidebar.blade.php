@@ -21,14 +21,14 @@
                 <ul class="menu-content">
                     <li class="active"><a href="dashboard-analytics.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Analytics">Dashboard</span></a></li>
                     <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Master</span></a></li>
-                    <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Datang</span></a></li>
-                    <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Pesanan</span></a></li>
-                    <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Diskon</span></a></li>
-                    <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Status Pengiriman</span></a></li>
-                    <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Terjual</span></a></li>
-                    <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Garansi</span></a></li>
-                    <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Rusak</span></a></li>
-                    <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Dalam Perbaikan</span></a></li>
+                    <li><a href="{{ route('datangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Datang</span></a></li>
+                    <li><a href="{{ route('pesananIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Pesanan</span></a></li>
+                    <li><a href="{{ route('diskonIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Diskon</span></a></li>
+                    <li><a href="{{ route('pengirimanIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Status Pengiriman</span></a></li>
+                    <li><a href="{{ route('terjualIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Terjual</span></a></li>
+                    <li><a href="{{ route('garansiIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Garansi</span></a></li>
+                    <li><a href="{{ route('rusakIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Rusak</span></a></li>
+                    <li><a href="{{ route('perbaikanIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Dalam Perbaikan</span></a></li>
 
                 </ul>
             </li>
