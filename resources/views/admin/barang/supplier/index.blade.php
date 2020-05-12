@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')Admin Data Barang @endsection
+@section('title')Admin Data Supplier @endsection
 
 @section('content')
 <!-- BEGIN: Content-->
@@ -12,12 +12,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Data Barang Master</h2>
+                        <h2 class="content-header-title float-left mb-0">Data Supplier</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Data Barang Master
+                                <li class="breadcrumb-item active">Data Supplier
                                 </li>
                             </ol>
                         </div>
@@ -45,33 +45,26 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">No</th>
-                                                    <th scope="col">Nama Barang</th>
                                                     <th scope="col">Supplier</th>
-                                                    <th scope="col">Satuan</th>
-                                                    <th scope="col">Departement</th>
-                                                    <th scope="col">Harga</th>
-                                                    <th scope="col">Stok</th>
-                                                    <th scope="col">Gambar</th>
-                                                    <th scope="col"></th>
+                                                    <th scope="col">Alamat</th>
+                                                    <th scope="col">Kontak</th>
+                                                    <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($barang as $b)
+                                                @foreach ($supplier as $s)
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
-                                                    <td>{{$b->nama_barang}}</td>
-                                                    <td>{{$b->supplier}}</td>
-                                                    <td>{{$b->satuan}}</td>
-                                                    <td>{{$b->departemen}}</td>
-                                                    <td>{{$b->harga_jual}}</td>
-                                                    <td>{{$b->stok_tersedia}}</td>
+                                                    <td>{{$s->supplier}}</td>
+                                                    <td>{{$s->supplier}}</td>
+                                                    <td>{{$s->kontak}}</td>
                                                     <td></td>
                                                     <td>
                                                         <a class="btn btn-sm btn-info text-white" data-toggle="modal"
                                                             data-target="#exampleModal"><i
                                                                 class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white"
-                                                            data-id="{{$b->uuid}}" href="#"><i
+                                                            data-id="{{$s->uuid}}" href="#"><i
                                                                 class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -97,62 +90,35 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollable">Tambah Data Barang</h5>
+                <h5 class="modal-title" id="exampleModalScrollable">Tambah Data Supplier</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST">
                     @csrf
-                    <label>Nama Barang : </label>
-                    <div class="form-group">
-                        <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang"
-                            value="{{old('nama_barang')}}"
-                            class="form-control  @error ('nama_barang') is-invalid @enderror">
-                        @error('nama_barang')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                    </div>
-
                     <label>Supplier : </label>
-                    <div class="form-group">
-                        <input type="text" name="supplier" id="supplier" placeholder="Masukkan Supplier"
-                            value="{{old('supplier')}}" class="form-control">
+                    <div class=" form-group">
+                        <input type="text" name="supplier" id="supplier" placeholder="Masukkan Nama Supplier"
+                            value="{{old('supplier')}}" class="form-control  @error ('supplier') is-invalid @enderror">
                         @error('supplier')<div class="invalid-feedback"> {{$message}} </div>@enderror
                     </div>
 
-                    <label>Harga Satuan : </label>
+                    <label>Alamat </label>
                     <div class="form-group">
-                        <input type="text" name="satuan" id="satuan" placeholder="Masukkan Satuan"
-                            value="{{old('satuan')}}" class="form-control">
-                        @error('satuan')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                        <input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat"
+                            value="{{old('alamat')}}" class="form-control">
+                        @error('alamat')<div class="invalid-feedback"> {{$message}} </div>@enderror
                     </div>
 
-                    <label>Departement : </label>
+                    <label>Kontak </label>
                     <div class="form-group">
-                        <input type="text" name="departement" id="departement" placeholder="Masukkan Departement"
-                            value="{{old('departement')}}" class="form-control">
-                        @error('departement')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                        <input type="number" name="kontak" id="kontak" placeholder="Masukkan kontak"
+                            value="{{old('kontak')}}" class="form-control">
+                        @error('kontak')<div class="invalid-feedback"> {{$message}} </div>@enderror
                     </div>
 
-                    <label>Harga Jual : </label>
-                    <div class="form-group">
-                        <input type="text" name="harga_jual" id="harga_jual" placeholder="Masukkan Harga"
-                            value="{{old('harga_jual')}}" class="form-control">
-                        @error('harga_jual')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                    </div>
-
-                    <label>Stok : </label>
-                    <div class="form-group">
-                        <input type="text" name="stok_tersedia" id="stok_tersedia" placeholder="Masukkan Stok"
-                            value="{{old('stok_tersedia')}}" class="form-control">
-                        @error('stok')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <fieldset class="form-group">
-                            <label for="basicInputFile">Gambar</label>
-                            <input type="file" class="form-control-file" id="basicInputFile">
-                        </fieldset>
-                    </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
@@ -191,21 +157,6 @@
                     <div class="form-group">
                         <input type="text" placeholder="text" class="form-control">
                     </div>
-
-                    <label>Departement : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
-                    </div>
-
-                    <label>Harga : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
-                    </div>
-
-                    <label>Stok : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
-                    </div>
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <fieldset class="form-group">
@@ -238,7 +189,7 @@
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: "{{ url('/admin/barang/master/delete')}}" + '/' + id,
+                    url: "{{ url('/admin/barang/supplier/delete')}}" + '/' + id,
                     type: "POST",
                     data: {
                         '_method': 'DELETE',

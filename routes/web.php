@@ -32,6 +32,14 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::get('/admin/barang/master/edit', 'BarangController@destroy')->name('barangEdit');
     Route::get('/admin/barang/master/edit', 'BarangController@destroy')->name('barangUpdate');
 
+    Route::get('/admin/barang/supplier/index', 'SupplierController@index')->name('supplierIndex');
+    Route::get('/admin/barang/supplier/show', 'SupplierController@show')->name('supplierShow');
+    // Route::get('/admin/barang/supplier/create', 'BarangController@create')->name('barangCreate');
+    Route::post('/admin/barang/supplier/index', 'SupplierController@store')->name('supplierStore');
+    Route::get('/admin/barang/supplier/delete', 'SupplierController@destroy')->name('supplierDestroy');
+    Route::get('/admin/barang/supplier/edit', 'SupplierController@destroy')->name('supplierEdit');
+    Route::get('/admin/barang/supplier/edit', 'SupplierController@destroy')->name('supplierUpdate');
+
     Route::get('/admin/barang/datang/index', 'BarangdatangController@index')->name('datangIndex');
     Route::get('/admin/barang/datang/show', 'BarangdatangController@show')->name('datangShow');
     Route::get('/admin/barang/datang/create', 'BarangdatangController@create')->name('datangCreate');
