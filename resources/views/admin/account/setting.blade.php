@@ -11,12 +11,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Account Settings</h2>
+                        <h2 class="content-header-title float-left mb-0">Edit Profile</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('adminIndex')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active"> Account Settings
+                                <li class="breadcrumb-item active"> Edit Profile
                                 </li>
                             </ol>
                         </div>
