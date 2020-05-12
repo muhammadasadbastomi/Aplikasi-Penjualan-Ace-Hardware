@@ -39,9 +39,8 @@ class BarangController extends Controller
     {
         $messages = [
             'unique' => ':attribute sudah terdaftar.',
-            'required' => ':attribute harus diisi.'
+            'required' => ':attribute harus diisi.',
         ];
-        dd($request->all());
         $request->validate([
 
             'nama_barang' => 'required',
@@ -49,12 +48,11 @@ class BarangController extends Controller
             'satuan' => 'required',
             'departement' => 'required',
             'harga_jual' => 'required',
-            'stok_tersedia' => 'required'
+            'stok_tersedia' => 'required',
         ], $messages);
 
         // create new object
         $barang = new barang;
-        $barang->barang = $request->barang;
         $request->request->add(['barang_id' => $barang->id]);
         $barang->nama_barang = $request->nama_barang;
         $barang->supplier = $request->supplier;
@@ -62,9 +60,20 @@ class BarangController extends Controller
         $barang->departement = $request->departement;
         $barang->harga_jual = $request->harga_jual;
         $barang->stok_tersedia = $request->stok_tersedia;
+        if ($request->gambar != null) {
+            $img = $request->file('gambar');
+            $FotoExt = $img->getClientOriginalExtension();
+            $FotoName = $request->nama_barang;
+            $foto = $FotoName . '.' . $FotoExt;
+            $img->move('images/barang', $foto);
+            $barang->gambar = $foto;
+        } else {
+            $barang->gambar = 'default.png';
+        }
+
         $barang->save();
 
-        return redirect('admin/barang/master/index'); //->with('success', 'Data berhasil disimpan');
+        return redirect('admin/barang/master/index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
