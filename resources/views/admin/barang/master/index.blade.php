@@ -34,7 +34,7 @@
                             <div class="card-header">
                                 <div class="col-md-12">
                                     <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                                        data-target="#exampleModalCenter">
+                                        data-target="#mediumModal">
                                         <i class="feather icon-plus-circle"> Tambah Data </i>
                                     </button>
                                 </div>
@@ -166,7 +166,7 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable"
+<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
@@ -176,9 +176,9 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form role="form" action="{{ route('barangStore') }}" method="POST">
-                @csrf
-                <div class="modal-body">
+            <div class="modal-body">
+                <form method="POST">
+                    @csrf
                     <label>Nama Barang : </label>
                     <div class="form-group">
                         <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang"
@@ -203,9 +203,9 @@
 
                     <label>Departement : </label>
                     <div class="form-group">
-                        <input type="text" name="departemen" id="departemen" placeholder="Masukkan Departement"
-                            value="{{old('departemen')}}" class="form-control">
-                        @error('departemen')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                        <input type="text" name="departement" id="departement" placeholder="Masukkan Departement"
+                            value="{{old('departement')}}" class="form-control">
+                        @error('departement')<div class="invalid-feedback"> {{$message}} </div>@enderror
                     </div>
 
                     <label>Harga Jual : </label>
@@ -221,17 +221,17 @@
                             value="{{old('stok_tersedia')}}" class="form-control">
                         @error('stok')<div class="invalid-feedback"> {{$message}} </div>@enderror
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <fieldset class="form-group">
-                        <label for="basicInputFile">Gambar</label>
-                        <input type="file" class="form-control-file" id="basicInputFile">
-                    </fieldset>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Tambah</button>
-                </div>
-            </form>
+                    <div class="col-lg-6 col-md-12">
+                        <fieldset class="form-group">
+                            <label for="basicInputFile">Gambar</label>
+                            <input type="file" class="form-control-file" id="basicInputFile">
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -310,4 +310,34 @@
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/buttons.bootstrap.min.js') }}"></script>
 <script src="{{ asset('app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('app-assets/js/scripts/datatables/datatable.js') }}"></script>
+@endsection
+@section('script')
+<script>
+    $("form").submit(function (e) {
+    e.preventDefault()
+    let form = $('#modal-body form');
+    $.ajax({
+    url: "{{Route('barangStore')}}",
+    type: "post",
+    data: new FormData(this),
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function (response) {
+    form.trigger('reset');
+    $('#mediumModal').modal('hide');
+    Swal.fire({
+    icon: 'success',
+    title: 'Data Berhasil Disimpan',
+    showConfirmButton: false,
+    timer: 1500
+    })
+    setTimeout(function () { document.location.reload(true); }, 1000);
+    },
+    error:function(response){
+    console.log(response);
+    }
+    })
+    } );
+</script>
 @endsection
