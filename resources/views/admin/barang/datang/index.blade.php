@@ -47,18 +47,18 @@
                                                     <th scope="col">Alamat</th>
                                                     <th scope="col">Jumlah</th>
                                                     <th scope="col">Status</th>
-                                                    <th scope="col"></th>
+                                                    <th scope="col" class="text-center"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
+                                                    <td class="text-center"></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
-                                                    <td></td>
-                                                    <td>
+                                                    <td class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal"><i class="feather icon-edit"></i></a>
                                                         <a class="btn btn-sm btn-danger text-white" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
@@ -91,27 +91,27 @@
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <label>Nama Pembeli : </label>
+                        <label>Nama Pembeli</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Nama Pembeli" class="form-control">
                         </div>
 
-                        <label>Tanggal Pengiriman : </label>
+                        <label>Tanggal Pengiriman</label>
                         <div class="form-group">
                             <input type="date" class="form-control">
                         </div>
 
-                        <label>Alamat : </label>
+                        <label>Alamat</label>
                         <div class="form-group">
                             <textarea type="text" placeholder="Masukkan Alamat" class="form-control"></textarea>
                         </div>
 
-                        <label>Jumlah : </label>
+                        <label>Jumlah</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Jumlah" class="form-control">
                         </div>
 
-                        <label>Status : </label>
+                        <label>Status</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Status" class="form-control">
                         </div>
@@ -139,27 +139,27 @@
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <label>Nama Pembeli : </label>
+                        <label>Nama Pembeli</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Nama Pembeli" class="form-control">
                         </div>
 
-                        <label>Tanggal Pengiriman : </label>
+                        <label>Tanggal Pengiriman</label>
                         <div class="form-group">
                             <input type="date" class="form-control">
                         </div>
 
-                        <label>Alamat : </label>
+                        <label>Alamat</label>
                         <div class="form-group">
                             <textarea type="text" placeholder="Masukkan Alamat" class="form-control"></textarea>
                         </div>
 
-                        <label>Jumlah : </label>
+                        <label>Jumlah</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Jumlah" class="form-control">
                         </div>
 
-                        <label>Status : </label>
+                        <label>Status</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Status" class="form-control">
                         </div>

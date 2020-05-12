@@ -49,7 +49,7 @@
                                                     <th scope="col">Harga</th>
                                                     <th scope="col">Stok</th>
                                                     <th scope="col">Gambar</th>
-                                                    <th scope="col"></th>
+                                                    <th scope="col" class="text-center"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -98,37 +98,37 @@
                 <form method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
-                        <label>Nama Barang : </label>
+                        <label>Nama Barang</label>
                         <div class="form-group">
                             <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang" value="{{old('nama_barang')}}" class="form-control  @error ('nama_barang') is-invalid @enderror">
                             @error('nama_barang')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
-                        <label>Supplier : </label>
+                        <label>Supplier</label>
                         <div class="form-group">
                             <input type="text" name="supplier" id="supplier" placeholder="Masukkan Supplier" value="{{old('supplier')}}" class="form-control">
                             @error('supplier')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
-                        <label>Harga Satuan : </label>
+                        <label>Harga Satuan</label>
                         <div class="form-group">
                             <input type="text" name="satuan" id="satuan" placeholder="Masukkan Satuan" value="{{old('satuan')}}" class="form-control">
                             @error('satuan')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
-                        <label>Departement : </label>
+                        <label>Departement</label>
                         <div class="form-group">
                             <input type="text" name="departement" id="departement" placeholder="Masukkan Departement" value="{{old('departement')}}" class="form-control">
                             @error('departement')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
-                        <label>Harga Jual : </label>
+                        <label>Harga Jual</label>
                         <div class="form-group">
                             <input type="text" name="harga_jual" id="harga_jual" placeholder="Masukkan Harga" value="{{old('harga_jual')}}" class="form-control">
                             @error('harga_jual')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
-                        <label>Stok : </label>
+                        <label>Stok</label>
                         <div class="form-group">
                             <input type="text" name="stok_tersedia" id="stok_tersedia" placeholder="Masukkan Stok" value="{{old('stok_tersedia')}}" class="form-control">
                             @error('stok')<div class="invalid-feedback"> {{$message}} </div>@enderror
@@ -163,32 +163,32 @@
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <label>Nama Barang : </label>
+                        <label>Nama Barang</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
                         </div>
 
-                        <label>Supplier : </label>
+                        <label>Supplier</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Supplier" class="form-control">
                         </div>
 
-                        <label>Satuan : </label>
+                        <label>Satuan</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Satuan" class="form-control">
                         </div>
 
-                        <label>Departement : </label>
+                        <label>Departement</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Departement" class="form-control">
                         </div>
 
-                        <label>Harga : </label>
+                        <label>Harga</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Harga" class="form-control">
                         </div>
 
-                        <label>Stok : </label>
+                        <label>Stok</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Stok" class="form-control">
                         </div>

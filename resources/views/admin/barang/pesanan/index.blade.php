@@ -46,17 +46,17 @@
                                                     <th scope="col">Tanggal Pesanan</th>
                                                     <th scope="col">Info</th>
                                                     <th scope="col">Jumlah</th>
-                                                    <th scope="col"></th>
+                                                    <th scope="col" class="text-center"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
+                                                    <td class="text-center"></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
-                                                    <td></td>
-                                                    <td>
+                                                    <td class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal"><i class="feather icon-edit"></i></a>
                                                         <a class="btn btn-sm btn-danger text-white" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>

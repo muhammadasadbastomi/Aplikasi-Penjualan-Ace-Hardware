@@ -13,7 +13,7 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"> <a href="#"><i class="feather icon-home"></i><span class="menu-title">Dashboard</span></a></li>
+            <li class=" nav-item"> <a href="{{route('adminIndex')}}"><i class="feather icon-home"></i><span class="menu-title">Dashboard</span></a></li>
             <li class=" nav-item"><a href="#"><i class="feather icon-server "></i><span class="menu-title">Master Data</span></a>
                 <ul class="menu-content">
                     <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Master</span></a></li>
