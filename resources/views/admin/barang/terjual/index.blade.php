@@ -33,9 +33,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#mediumModal">
-                                    <i class="feather icon-plus-circle"> Tambah Data </i>
-                                </button>
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah Data</span></button> </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -47,17 +45,16 @@
                                                     <th scope="col">Nama Barang</th>
                                                     <th scope="col">Jumlah Terjual</th>
                                                     <th scope="col">Tanggal Terjual</th>
-                                                    <th scope="col"></th>
+                                                    <th scope="col" class="text-center"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
+                                                    <td class="text-center"></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>
+                                                    <td class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal"><i class="feather icon-edit"></i></a>
                                                         <a class="btn btn-sm btn-danger text-white" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
@@ -78,76 +75,77 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle"> Tambah Data Barang</h5>
+                <h4 class="modal-title" id="myModalLabel1" style="padding-left: 10px;">Tambah Barang</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form action="#">
-                <div class="modal-body">
-                    <label>Nama Barang : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
-                    </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <label>Nama Barang</label>
+                        <div class="form-group">
+                            <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
+                        </div>
 
-                    <label>Jumlah Terjual : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
-                    </div>
+                        <label>Jumlah Terjual</label>
+                        <div class="form-group">
+                            <input type="text" placeholder="Masukkan Jumlah Terjual" class="form-control">
+                        </div>
 
-                    <label>Tanggal Terjual : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="text" class="form-control">
+                        <label>Tanggal Terjual</label>
+                        <div class="form-group">
+                            <input type="date" class="form-control">
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Tambah</button>
+            </div>
             </form>
         </div>
     </div>
 </div>
 
-
-
 <!-- Modal Edit -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle"> Edit Data Barang</h5>
+                <h4 class="modal-title" id="exampleModalScrollable" style="padding-left: 10px;">Edit Barang</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form action="#">
-                <div class="modal-body">
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <label>Nama Barang : </label>
+                        <label>Nama Barang</label>
                         <div class="form-group">
-                            <input type="text" placeholder="text" class="form-control">
+                            <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
                         </div>
 
-                        <label>Jumlah Terjual : </label>
+                        <label>Jumlah Terjual</label>
                         <div class="form-group">
-                            <input type="text" placeholder="text" class="form-control">
+                            <input type="text" placeholder="Masukkan Jumlah Terjual" class="form-control">
                         </div>
 
-                        <label>Tanggal Terjual : </label>
+                        <label>Tanggal Terjual</label>
                         <div class="form-group">
-                            <input type="text" placeholder="text" class="form-control">
+                            <input type="date" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>
+                        <button type="submit" class="btn btn-primary">Ubah</button>
                     </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>

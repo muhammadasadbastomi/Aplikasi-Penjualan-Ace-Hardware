@@ -102,7 +102,7 @@
                             <input type="text" id="info" class="form-control" placeholder="Masukkan Info" name="#">
                         </div>
                         <div class="form-group">
-                            <label for="jumlah">Jumlah : </label>
+                            <label for="jumlah">Jumlah </label>
                             <input type="text" id="jumlah" class="form-control" placeholder="Masukkan Jumlah" name="#">
                         </div>
                     </div>
@@ -130,22 +130,22 @@
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <label>Nama Pesanan : </label>
+                        <label>Nama Pesanan </label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Nama Pesanan" class="form-control">
                         </div>
 
-                        <label>Tanggal Pesanan : </label>
+                        <label>Tanggal Pesanan </label>
                         <div class="form-group">
                             <input type="date" class="form-control">
                         </div>
 
-                        <label>Info : </label>
+                        <label>Info</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Info" class="form-control">
                         </div>
 
-                        <label>Jumlah : </label>
+                        <label>Jumlah</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Jumlah" class="form-control">
                         </div>

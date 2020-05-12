@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title') Admin Data Barang Pengiriman @endsection
+@section('title') Admin Data Barang Status Pengiriman @endsection
 
 @section('content')
 <!-- BEGIN: Content-->
@@ -12,12 +12,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Data Barang Pengiriman</h2>
+                        <h2 class="content-header-title float-left mb-0">Data Barang Status Pengiriman</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Data Barang Pengiriman
+                                <li class="breadcrumb-item active">Data Barang Status Pengiriman
                                 </li>
                             </ol>
                         </div>
@@ -33,9 +33,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#mediumModal">
-                                    <i class="feather icon-plus-circle"> Tambah Data </i>
-                                </button>
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah Data</span></button> </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -80,95 +78,97 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Barang</h5>
+                <h4 class="modal-title" id="myModalLabel1" style="padding-left: 10px;">Tambah Barang</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form action="#">
-                <div class="modal-body">
-                    <label>Nama Pembeli : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="Masukkan Nama Pembeli" class="form-control">
-                    </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <label>Nama Pembeli</label>
+                        <div class="form-group">
+                            <input type="text" placeholder="Masukkan Nama Pembeli" class="form-control">
+                        </div>
 
-                    <label>Tanggal Pengiriman : </label>
-                    <div class="form-group">
-                        <input type="date" class="form-control">
-                    </div>
+                        <label>Tanggal Pengiriman</label>
+                        <div class="form-group">
+                            <input type="date" class="form-control">
+                        </div>
 
-                    <label>Alamat : </label>
-                    <div class="form-group">
-                        <textarea type="text" placeholder="Masukkan Alamat" class="form-control"> </textarea>
-                    </div>
+                        <label>Alamat</label>
+                        <div class="form-group">
+                            <textarea type="text" placeholder="Masukkan Alamat" class="form-control"> </textarea>
+                        </div>
 
-                    <label>Jumlah : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="Masukkan Jumlah" class="form-control">
-                    </div>
+                        <label>Jumlah</label>
+                        <div class="form-group">
+                            <input type="text" placeholder="Masukkan Jumlah" class="form-control">
+                        </div>
 
-                    <label>Status : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="Masukkan Status" class="form-control">
+                        <label>Status</label>
+                        <div class="form-group">
+                            <input type="text" placeholder="Masukkan Status" class="form-control">
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Tambah</button>
+            </div>
             </form>
         </div>
     </div>
 </div>
 
-
-
 <!-- Modal Edit -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Barang</h5>
+                <h4 class="modal-title" id="exampleModalScrollable" style="padding-left: 10px;">Edit Barang</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <form action="#">
-                <div class="modal-body">
-                    <label>Nama Pembeli : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="Masukkan Nama Pembeli" class="form-control">
-                    </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <label>Nama Pembeli</label>
+                        <div class="form-group">
+                            <input type="text" placeholder="Masukkan Nama Pembeli" class="form-control">
+                        </div>
 
-                    <label>Tanggal Pengiriman : </label>
-                    <div class="form-group">
-                        <input type="date" class="form-control">
-                    </div>
+                        <label>Tanggal Pengiriman</label>
+                        <div class="form-group">
+                            <input type="date" class="form-control">
+                        </div>
 
-                    <label>Alamat : </label>
-                    <div class="form-group">
-                        <textarea type="text" placeholder="Masukkan Alamat" class="form-control"> </textarea>
-                    </div>
+                        <label>Alamat</label>
+                        <div class="form-group">
+                            <textarea type="text" placeholder="Masukkan Alamat" class="form-control"> </textarea>
+                        </div>
 
-                    <label>Jumlah : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="Masukkan Jumlah" class="form-control">
-                    </div>
+                        <label>Jumlah</label>
+                        <div class="form-group">
+                            <input type="text" placeholder="Masukkan Jumlah" class="form-control">
+                        </div>
 
-                    <label>Status : </label>
-                    <div class="form-group">
-                        <input type="text" placeholder="Masukkan Status" class="form-control">
+                        <label>Status</label>
+                        <div class="form-group">
+                            <input type="text" placeholder="Masukkan Status" class="form-control">
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Login</button>
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Ubah</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

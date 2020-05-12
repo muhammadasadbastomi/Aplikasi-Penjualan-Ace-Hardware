@@ -46,17 +46,17 @@
                                                     <th scope="col">Harga</th>
                                                     <th scope="col">Diskon</th>
                                                     <th scope="col">Stok</th>
-                                                    <th scope="col"></th>
+                                                    <th scope="col" class="text-center"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
+                                                    <td class="text-center"></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
-                                                    <td></td>
-                                                    <td>
+                                                    <td class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal"><i class="feather icon-edit"></i></a>
                                                         <a class="btn btn-sm btn-danger text-white" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
@@ -89,22 +89,22 @@
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <label>Nama Barang : </label>
+                        <label>Nama Barang</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
                         </div>
 
-                        <label>Harga : </label>
+                        <label>Harga</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Harga" class="form-control">
                         </div>
 
-                        <label>Diskon : </label>
+                        <label>Diskon</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Diskon" class="form-control">
                         </div>
 
-                        <label>Stok : </label>
+                        <label>Stok</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Stok" class="form-control">
                         </div>
@@ -119,7 +119,6 @@
     </div>
 </div>
 
-
 <!-- Modal Edit -->
 <div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -133,22 +132,22 @@
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <label>Nama Barang : </label>
+                        <label>Nama Barang</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
                         </div>
 
-                        <label>Harga : </label>
+                        <label>Harga</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Harga" class="form-control">
                         </div>
 
-                        <label>Diskon : </label>
+                        <label>Diskon </label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Diskon" class="form-control">
                         </div>
 
-                        <label>Stok : </label>
+                        <label>Stok</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Stok" class="form-control">
                         </div>
