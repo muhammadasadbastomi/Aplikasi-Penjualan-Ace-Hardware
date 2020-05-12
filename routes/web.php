@@ -11,12 +11,11 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('welcome');
 });
-
 
 Auth::routes();
 
@@ -27,8 +26,8 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
 
     Route::get('/admin/barang/master/index', 'BarangController@index')->name('barangIndex');
     Route::get('/admin/barang/mastter/show', 'BarangController@show')->name('barangShow');
-    Route::get('/admin/barang/master/create', 'BarangController@create')->name('barangCreate');
-    Route::post('/admin/barang/master/store', 'BarangController@store')->name('barangStore');
+    // Route::get('/admin/barang/master/create', 'BarangController@create')->name('barangCreate');
+    Route::post('/admin/barang/master/index', 'BarangController@store')->name('barangStore');
     Route::get('/admin/barang/master/delete', 'BarangController@destroy')->name('barangDestroy');
     Route::get('/admin/barang/master/edit', 'BarangController@destroy')->name('barangEdit');
     Route::get('/admin/barang/master/edit', 'BarangController@destroy')->name('barangUpdate');
