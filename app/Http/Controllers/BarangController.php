@@ -46,7 +46,6 @@ class BarangController extends Controller
         $request->validate([
 
             'nama_barang' => 'required',
-            'supplier' => 'required',
             'satuan' => 'required',
             'departement' => 'required',
             'harga_jual' => 'required',
