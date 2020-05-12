@@ -43,7 +43,16 @@ class BarangController extends Controller
             'unique' => ':attribute sudah terdaftar.',
             'required' => ':attribute harus diisi.',
         ];
-        $request->validate([], $messages);
+        $request->validate([
+
+            'nama_barang' => 'required',
+            'supplier' => 'required',
+            'satuan' => 'required',
+            'departement' => 'required',
+            'harga_jual' => 'required',
+            'stok_tersedia' => 'required',
+
+        ], $messages);
 
         // create new object
         $barang = new barang;
