@@ -60,9 +60,9 @@
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
                                                     <td>{{$b->nama_barang}}</td>
-                                                    <td>{{$b->supplier}}</td>
+                                                    <td>{{$b->supplier->supplier}}</td>
                                                     <td>{{$b->satuan}}</td>
-                                                    <td>{{$b->departemen}}</td>
+                                                    <td>{{$b->departement}}</td>
                                                     <td>{{$b->harga_jual}}</td>
                                                     <td>{{$b->stok_tersedia}}</td>
                                                     <td></td>
@@ -113,11 +113,13 @@
                         @error('nama_barang')<div class="invalid-feedback"> {{$message}} </div>@enderror
                     </div>
 
-                    <label>Supplier : </label>
                     <div class="form-group">
-                        <input type="text" name="supplier" id="supplier" placeholder="Masukkan Supplier"
-                            value="{{old('supplier')}}" class="form-control">
-                        @error('supplier')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                        <label for="supplier_id">Supplier</label>
+                        <select class="custom-select" name="supplier_id" id="supplier_id">
+                            @foreach($supplier as $s)
+                            <option value="{{$s->id}}">{{ $s->supplier}}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <label>Harga Satuan : </label>

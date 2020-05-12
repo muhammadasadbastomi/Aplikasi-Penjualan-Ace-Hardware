@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')Admin Data Supplier @endsection
+@section('title')Data Supplier @endsection
 
 @section('content')
 <!-- BEGIN: Content-->
@@ -56,12 +56,11 @@
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
                                                     <td>{{$s->supplier}}</td>
-                                                    <td>{{$s->supplier}}</td>
+                                                    <td>{{$s->alamat}}</td>
                                                     <td>{{$s->kontak}}</td>
-                                                    <td></td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-info text-white" data-toggle="modal"
-                                                            data-target="#exampleModal"><i
+                                                        <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('supplierEdit', ['id' => $s->uuid])}}"><i
                                                                 class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white"
                                                             data-id="{{$s->uuid}}" href="#"><i

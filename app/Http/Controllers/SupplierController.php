@@ -79,7 +79,9 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        //
+        $supplier = supplier::where('uuid', $id)->first();
+        //dd($supplier);
+        return view('admin.barang.supplier.edit', compact('supplier'));
     }
 
     /**
@@ -91,7 +93,25 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'required' => ':attribute harus diisi.',
+        ];
+        $request->validate([
+
+            'supplier' => 'required',
+            'alamat' => 'required',
+            'kontak' => 'required',
+        ], $messages);
+
+        // create new object
+        $supplier = supplier::where('uuid', $id)->first();
+        $supplier->supplier = $request->supplier;
+        $supplier->alamat = $request->alamat;
+        $supplier->kontak = $request->kontak;
+        $supplier->update();
+
+        return redirect('admin/barang/supplier/index')->with('success', 'Data berhasil Diubah');
     }
 
     /**
@@ -102,6 +122,10 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $supplier = supplier::where('uuid', $id)->first();
+
+        $supplier->delete();
+
+        return redirect()->route('supplierIndex');
     }
 }

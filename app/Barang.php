@@ -10,4 +10,9 @@ class Barang extends Model
 {
     use Notifiable;
     use Uuid;
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
 }

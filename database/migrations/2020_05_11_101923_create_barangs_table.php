@@ -18,7 +18,6 @@ class CreateBarangsTable extends Migration
             $table->string('uuid')->length(36);
             $table->unsignedBigInteger('supplier_id');
             $table->string('nama_barang');
-            $table->string('supplier');
             $table->string('satuan');
             $table->string('departement');
             $table->string('harga_jual');
