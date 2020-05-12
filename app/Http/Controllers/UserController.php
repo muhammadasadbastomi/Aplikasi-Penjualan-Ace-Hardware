@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $user = User::orderBy('id', 'desc')->get();
 
-        return view('admin.account.setting', compact('user'));
+        return view('admin.account.index', compact('user'));
     }
 
     /**
@@ -57,9 +57,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $user = User::orderBy('id', 'desc')->get();
+
+        return view('admin.account.setting', compact('user'));
     }
 
     /**
