@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 class BarangpengirimanController extends Controller
 {
     /**
-     * Display a listing of the resource..
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $barang = Barang_pengiriman::orderBy('id', 'Desc')->get();
+        $barang = Barang_pengiriman::orderBy('id', 'DESC')->get();
 
         return view('admin.barang.pengiriman.index', compact('barang'));
     }
