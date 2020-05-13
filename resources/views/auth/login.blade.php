@@ -60,7 +60,7 @@
                                                 </fieldset>
                                             </div>
                                             @if (Route::has('password.request'))
-                                            <div class="text-right"><a href="{{ route('password.request') }} class=" card-link">Forgot Password?</a></div>
+                                            <div class="text-right"><a href="{{ route('password.request') }}" class="card-link">Forgot Password?</a></div>
                                             @endif
                                         </div>
                                         <a href="{{ route('register') }}" class="btn btn-outline-primary float-left btn-inline">Register</a>
@@ -68,11 +68,7 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="login-footer">
-                                <div class="divider">
-                                    <div class="divider-text">Admin</div>
-                                </div>
-                            </div>
+                            <br><br>
                         </div>
                     </div>
                 </div>
