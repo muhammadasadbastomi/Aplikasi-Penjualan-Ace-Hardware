@@ -33,7 +33,10 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah Data</span></button> </div>
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span></button> </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -64,8 +67,12 @@
                                                     <td>{{$b->stok_tersedia}}</td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal"><i class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$b->uuid}}" href="#"><i class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('barangShow', ['id' => $b->uuid])}}"><i
+                                                                class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$b->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -85,7 +92,8 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah-->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -100,44 +108,55 @@
                         @csrf
                         <label>Nama Barang</label>
                         <div class="form-group">
-                            <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang" value="{{old('nama_barang')}}" class="form-control  @error ('nama_barang') is-invalid @enderror">
+                            <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang"
+                                value="{{old('nama_barang')}}"
+                                class="form-control  @error ('nama_barang') is-invalid @enderror">
                             @error('nama_barang')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
-                        <label>Supplier</label>
                         <div class="form-group">
-                            <input type="text" name="supplier" id="supplier" placeholder="Masukkan Supplier" value="{{old('supplier')}}" class="form-control">
-                            @error('supplier')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                            <label for="supplier">Supplier</label>
+                            <select class="custom-select" name="supplier_id" id="supplier_id">
+                                @foreach($supplier as $s)
+                                <option value="{{$s->id}}">{{ $s->supplier}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <label>Harga Satuan</label>
                         <div class="form-group">
-                            <input type="text" name="satuan" id="satuan" placeholder="Masukkan Satuan" value="{{old('satuan')}}" class="form-control">
+                            <input type="text" name="satuan" id="satuan" placeholder="Masukkan Satuan"
+                                value="{{old('satuan')}}" class="form-control">
                             @error('satuan')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <label>Departement</label>
                         <div class="form-group">
-                            <input type="text" name="departement" id="departement" placeholder="Masukkan Departement" value="{{old('departement')}}" class="form-control">
+                            <input type="text" name="departement" id="departement" placeholder="Masukkan Departement"
+                                value="{{old('departement')}}" class="form-control">
                             @error('departement')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <label>Harga Jual</label>
                         <div class="form-group">
-                            <input type="text" name="harga_jual" id="harga_jual" placeholder="Masukkan Harga" value="{{old('harga_jual')}}" class="form-control">
+                            <input type="text" name="harga_jual" id="harga_jual" placeholder="Masukkan Harga"
+                                value="{{old('harga_jual')}}" class="form-control">
                             @error('harga_jual')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <label>Stok</label>
                         <div class="form-group">
-                            <input type="text" name="stok_tersedia" id="stok_tersedia" placeholder="Masukkan Stok" value="{{old('stok_tersedia')}}" class="form-control">
+                            <input type="text" name="stok_tersedia" id="stok_tersedia" placeholder="Masukkan Stok"
+                                value="{{old('stok_tersedia')}}" class="form-control">
                             @error('stok')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                         <div class="col-lg-6 col-md-12">
                             <fieldset class="form-group">
-                                <label for="basicInputFile">Gambar</label>
-                                <input type="file" class="form-control-file" id="basicInputFile">
+                                <label for="basicInputFile">Gambar Barang</label>
+                                <input type="file" name="gambar" id="gambar" class="form-control-file"
+                                    id="basicInputFile">
                             </fieldset>
+                            @error('gambar')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -151,11 +170,14 @@
 </div>
 
 <!-- Modal Edit -->
-<<<<<<< HEAD <div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
+<<<<<<< HEAD <div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         =======
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+                role="document">
                 >>>>>>> e7125c90b9632d06c3949905ffca2143b9bcc309
                 <div class="modal-content">
                     <div class="modal-header">
@@ -200,7 +222,8 @@
                             <div class="col-lg-6 col-md-12">
                                 <fieldset class="form-group">
                                     <label for="basicInputFile">Gambar</label>
-                                    <input type="file" class="form-control-file" id="basicInputFile">
+                                    <input type="file" name="gambar" id="gambar" class="form-control-file"
+                                        id="basicInputFile">
                                 </fieldset>
                             </div>
                     </div>

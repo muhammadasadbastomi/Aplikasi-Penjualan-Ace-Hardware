@@ -62,17 +62,14 @@ class BarangController extends Controller
         $barang->departement = $request->departement;
         $barang->harga_jual = $request->harga_jual;
         $barang->stok_tersedia = $request->stok_tersedia;
-        if ($request->gambar != null) {
-            $img = $request->file('gambar');
-            $FotoExt = $img->getClientOriginalExtension();
-            $FotoName = $request->nama_barang;
-            $foto = $FotoName . '.' . $FotoExt;
-            $img->move('images/barang', $foto);
-            $barang->gambar = $foto;
+        $barang->gambar = $request->gambar;
+        if ($request->hasfile('gambar')) {
+            $request->file('gambar')->move('images/barang/', $request->file('gambar')->getClientOriginalName());
+            $barang->gambar = $request->file('gambar')->getClientOriginalName();
+            $barang->save();
         } else {
             $barang->gambar = 'default.png';
         }
-
         $barang->save();
 
         return redirect('admin/barang/master/index')->with('success', 'Data berhasil disimpan');
@@ -86,10 +83,11 @@ class BarangController extends Controller
      */
     public function show($id)
     {
-        // get golongan by id
+        // get barang by id
         $barang = barang::where('uuid', $id)->first();
+        $supplier = Supplier::orderBy('id', 'asc')->get();
 
-        return view('admin.barang.show', compact('barang'));
+        return view('admin.barang.master.show', compact('barang', 'supplier'));
     }
 
     /**
@@ -113,6 +111,18 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $barang = barang::where('uuid', $id)->first();
+        $supplier = Supplier::orderBy('id', 'asc')->get();
+
+
+        $barang->gambar = $request->gambar;
+        if ($request->hasfile('gambar')) {
+            $request->file('gambar')->move('images/barang/', $request->file('gambar')->getClientOriginalName());
+            $barang->gambar = $request->file('gambar')->getClientOriginalName();
+            $barang->save();
+        }
+        $barang->update();
     }
 
     /**
