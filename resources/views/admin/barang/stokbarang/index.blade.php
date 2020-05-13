@@ -54,15 +54,11 @@
                                                 @foreach ($stok as $st)
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
-                                                    <td>{{$st->supplier}}</td>
-                                                    <td>{{$st->alamat}}</td>
-                                                    <td>{{$st->kontak}}</td>
+                                                    <td>{{$st->barang->nama_barang}}</td>
+                                                    <td>{{$st->stok_barang}}</td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-info text-white"
-                                                            href="{{route('supplierEdit', ['id' => $st->uuid])}}"><i
-                                                                class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white"
-                                                            data-id="{{$s->uuid}}" href="#"><i
+                                                            data-id="{{$st->uuid}}" href="#"><i
                                                                 class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -96,27 +92,14 @@
             <div class="modal-body">
                 <form method="POST">
                     @csrf
-                    <label>Supplier : </label>
-                    <div class=" form-group">
-                        <input type="text" name="supplier" id="supplier" placeholder="Masukkan Nama Supplier"
-                            value="{{old('supplier')}}" class="form-control  @error ('supplier') is-invalid @enderror">
-                        @error('supplier')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                    </div>
-
-                    <label>Alamat </label>
                     <div class="form-group">
-                        <input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat"
-                            value="{{old('alamat')}}" class="form-control">
-                        @error('alamat')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                        <label for="supplier">Nama Barang</label>
+                        <select class="custom-select" name="barang_id" id="barang_id">
+                            @foreach($barang as $b)
+                            <option value="{{$b->id}}">{{ $b->nama_barang}}</option>
+                            @endforeach
+                        </select>
                     </div>
-
-                    <label>Kontak </label>
-                    <div class="form-group">
-                        <input type="number" name="kontak" id="kontak" placeholder="Masukkan kontak"
-                            value="{{old('kontak')}}" class="form-control">
-                        @error('kontak')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                    </div>
-
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
@@ -144,7 +127,7 @@
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: "{{ url('/admin/barang/supplier/delete')}}" + '/' + id,
+                    url: "{{ url('/admin/barang/stokbarang/delete')}}" + '/' + id,
                     type: "POST",
                     data: {
                         '_method': 'DELETE',

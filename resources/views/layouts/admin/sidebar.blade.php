@@ -25,6 +25,8 @@
                                 class="menu-item" data-i18n="eCommerce">Supplier</span></a></li>
                     <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item"
                                 data-i18n="eCommerce">Barang Master</span></a></li>
+                    <li><a href="{{ route('stokIndex') }}"><i class="feather icon-circle"></i><span class="menu-item"
+                                data-i18n="eCommerce">Stok Barang</span></a></li>
                     <li><a href="{{ route('datangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item"
                                 data-i18n="eCommerce">Barang Datang</span></a></li>
                     <li><a href="{{ route('pesananIndex') }}"><i class="feather icon-circle"></i><span class="menu-item"
