@@ -169,77 +169,12 @@
     </div>
 </div>
 
-<!-- Modal Edit -->
-<<<<<<< HEAD <div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-        =======
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
-                role="document">
-                >>>>>>> e7125c90b9632d06c3949905ffca2143b9bcc309
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalScrollable" style="padding-left: 10px;">Edit Barang</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="POST" enctype="multipart/form-data">
-                            <div class="modal-body">
-                                <label>Nama Barang</label>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
-                                </div>
 
-                                <label>Supplier</label>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Masukkan Supplier" class="form-control">
-                                </div>
+@endsection
 
-                                <label>Satuan</label>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Masukkan Satuan" class="form-control">
-                                </div>
-
-                                <label>Departement</label>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Masukkan Departement" class="form-control">
-                                </div>
-
-                                <label>Harga</label>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Masukkan Harga" class="form-control">
-                                </div>
-
-                                <label>Stok</label>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Masukkan Stok" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <fieldset class="form-group">
-                                    <label for="basicInputFile">Gambar</label>
-                                    <input type="file" name="gambar" class="form-control-file" id="basicInputFile">
-                                </fieldset>
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Ubah</button>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endsection
-
-    @section('script')
-    <script>
-        $(document).on('click', '.delete', function(e) {
+@section('script')
+<script>
+    $(document).on('click', '.delete', function(e) {
             e.preventDefault();
             var id = $(this).data('id');
             swal.fire({
@@ -280,5 +215,5 @@
                 }
             })
         });
-    </script>
-    @endsection
+</script>
+@endsection
