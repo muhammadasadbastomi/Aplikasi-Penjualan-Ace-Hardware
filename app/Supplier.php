@@ -6,13 +6,13 @@ use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Barang extends Model
+class Supplier extends Model
 {
     use Notifiable;
     use Uuid;
 
-    public function supplier()
+    public function barang()
     {
-        return $this->belongsTo(Supplier::class);
+        return $this->hasMany(Barang::class);
     }
 }

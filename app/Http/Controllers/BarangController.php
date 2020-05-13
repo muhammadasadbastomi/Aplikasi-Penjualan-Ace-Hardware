@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Barang;
+use App\Supplier;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -14,9 +15,10 @@ class BarangController extends Controller
      */
     public function index()
     {
+        $supplier = Supplier::orderBy('id', 'asc')->get();
         $barang = Barang::orderBy('id', 'desc')->get();
 
-        return view('admin.barang.master.index', compact('barang'));
+        return view('admin.barang.master.index', compact('barang', 'supplier'));
     }
 
     /**
@@ -44,18 +46,18 @@ class BarangController extends Controller
         $request->validate([
 
             'nama_barang' => 'required',
-            'supplier' => 'required',
             'satuan' => 'required',
             'departement' => 'required',
             'harga_jual' => 'required',
             'stok_tersedia' => 'required',
+
         ], $messages);
 
         // create new object
         $barang = new barang;
         $request->request->add(['barang_id' => $barang->id]);
         $barang->nama_barang = $request->nama_barang;
-        $barang->supplier = $request->supplier;
+        $barang->supplier_id = $request->supplier_id;
         $barang->satuan = $request->satuan;
         $barang->departement = $request->departement;
         $barang->harga_jual = $request->harga_jual;
