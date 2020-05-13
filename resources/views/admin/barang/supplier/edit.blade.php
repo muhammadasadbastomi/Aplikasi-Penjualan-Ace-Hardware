@@ -34,24 +34,24 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <form role="form" method="post">
+                        <form method="post">
                             {{method_field('PUT')}}
                             @csrf
                             <div class="card-body">
-                                <label>Supplier </label>
                                 <div class="form-group">
+                                    <label>Supplier </label>
                                     <input type="text" id="supplier" name="supplier"
                                         class="form-control @error ('supplier') is-invalid @enderror"
                                         placeholder="Masukkan supplier" value="{{$supplier->supplier}}">
                                 </div>
-                                <label>Alamat </label>
                                 <div class="form-group">
+                                    <label>Alamat </label>
                                     <input type="text" id="alamat" name="alamat"
                                         class="form-control @error ('alamat') is-invalid @enderror"
                                         placeholder="Masukkan alamat" value="{{$supplier->alamat}}">
                                 </div>
-                                <label>Kontak </label>
                                 <div class="form-group">
+                                    <label>Kontak </label>
                                     <input type="number" id="kontak" name="kontak"
                                         class="form-control @error ('kontak') is-invalid @enderror"
                                         placeholder="Masukkan kontak" value="{{$supplier->kontak}}">
