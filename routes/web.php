@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::get('/admin/barang/master/show/{id}', 'BarangController@show')->name('barangShow');
     //Route::get('/admin/barang/master/edit', 'BarangController@edit')->name('barangEdit');
     Route::put('/admin/barang/master/show/{id}', 'BarangController@update')->name('barangUpdate');
-    Route::delete('/admin/barang/master/delete/{id}', 'BarangController@delete')->name('barangDelete');
+    Route::delete('/admin/barang/master/delete/{id}', 'BarangController@destroy')->name('barangDelete');
 
     Route::get('/admin/barang/supplier/index', 'SupplierController@index')->name('supplierIndex');
     Route::get('/admin/barang/supplier/show', 'SupplierController@show')->name('supplierShow');
