@@ -100,3 +100,6 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::get('/admin/account/setting', 'UserController@edit')->name('userEdit');
     Route::post('/admin/account/setting', 'UserController@update')->name('userUpdate');
 });
+
+Route::get('/home/index', 'PenjualanController@admin')->name('homeIndex');
+Route::get('/home/show', 'PenjualanController@admin')->name('homeShow');
