@@ -16,6 +16,7 @@ class CreateStoksTable extends Migration
         Schema::create('stoks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
+            $table->unsignedBigInteger('barang_id');
             $table->integer('stok_barang');
             $table->timestamps();
         });
