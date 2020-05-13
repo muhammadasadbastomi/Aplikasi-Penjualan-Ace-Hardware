@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title')Admin Data Barang @endsection
+@section('title') User Admin @endsection
 
 @section('content')
 <!-- BEGIN: Content-->
@@ -12,12 +12,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Data Barang Master</h2>
+                        <h2 class="content-header-title float-left mb-0">Data User Admin</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('adminIndex')}}">Home</a>
+                                <li class="breadcrumb-item"><a href="#">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Data Barang Master
+                                <li class="breadcrumb-item active">Data User Admin
                                 </li>
                             </ol>
                         </div>
@@ -42,33 +42,27 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">No</th>
-                                                    <th scope="col">Nama Barang</th>
-                                                    <th scope="col">Supplier</th>
-                                                    <th scope="col">Satuan</th>
-                                                    <th scope="col">Departement</th>
-                                                    <th scope="col">Harga</th>
-                                                    <th scope="col">Stok</th>
-                                                    <th scope="col">Gambar</th>
+                                                    <th scope="col">Photo</th>
+                                                    <th scope="col">Nama</th>
+                                                    <th scope="col">E-mail</th>
+                                                    <th scope="col">No.Telepon</th>
+                                                    <th scope="col">Status</th>
                                                     <th scope="col" class="text-center"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($barang as $b)
                                                 <tr>
-                                                    <td class="text-center">{{$loop->iteration}}</td>
-                                                    <td>{{$b->nama_barang}}</td>
-                                                    <td>{{$b->supplier->supplier}}</td>
-                                                    <td>{{$b->satuan}}</td>
-                                                    <td>{{$b->departement}}</td>
-                                                    <td>{{$b->harga_jual}}</td>
-                                                    <td>{{$b->stok_tersedia}}</td>
+                                                    <td class="text-center"></td>
                                                     <td></td>
-                                                    <td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal"><i class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$b->uuid}}" href="#"><i class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-danger text-white" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
-                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -84,7 +78,7 @@
 </div>
 <!-- END: Content-->
 
-<!-- Modal Tambah-->
+<!-- Modal Tambah -->
 <div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
@@ -97,47 +91,30 @@
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
-                        @csrf
-                        <label>Nama Barang</label>
+                        <label>Nama Lengkap</label>
                         <div class="form-group">
-                            <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang" value="{{old('nama_barang')}}" class="form-control  @error ('nama_barang') is-invalid @enderror">
-                            @error('nama_barang')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                            <input type="text" placeholder="Masukkan Nama Lengkap" class="form-control">
                         </div>
 
-                        <label>Supplier</label>
+                        <label>E-Mail</label>
                         <div class="form-group">
-                            <input type="text" name="supplier" id="supplier" placeholder="Masukkan Supplier" value="{{old('supplier')}}" class="form-control">
-                            @error('supplier')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                            <input type="email" class="form-control">
                         </div>
 
-                        <label>Harga Satuan</label>
+                        <label>No.Telepon</label>
                         <div class="form-group">
-                            <input type="text" name="satuan" id="satuan" placeholder="Masukkan Satuan" value="{{old('satuan')}}" class="form-control">
-                            @error('satuan')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                            <input type="text" placeholder="Masukkan Nomor Telepon" class="form-control">
                         </div>
 
-                        <label>Departement</label>
+                        <label>Status</label>
+                        <fieldset>
+                            <div class="form-group">
+                                <input type="text" placeholder="Admin" class="form-control" disabled>
+                            </div>
+                        </fieldset>
+                        <label>Photo</label>
                         <div class="form-group">
-                            <input type="text" name="departement" id="departement" placeholder="Masukkan Departement" value="{{old('departement')}}" class="form-control">
-                            @error('departement')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                        </div>
-
-                        <label>Harga Jual</label>
-                        <div class="form-group">
-                            <input type="text" name="harga_jual" id="harga_jual" placeholder="Masukkan Harga" value="{{old('harga_jual')}}" class="form-control">
-                            @error('harga_jual')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                        </div>
-
-                        <label>Stok</label>
-                        <div class="form-group">
-                            <input type="text" name="stok_tersedia" id="stok_tersedia" placeholder="Masukkan Stok" value="{{old('stok_tersedia')}}" class="form-control">
-                            @error('stok')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                        </div>
-                        <div class="col-lg-6 col-md-12">
-                            <fieldset class="form-group">
-                                <label for="basicInputFile">Gambar</label>
-                                <input type="file" class="form-control-file" id="basicInputFile">
-                            </fieldset>
+                            <input type="file" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -163,48 +140,38 @@
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <label>Nama Barang</label>
+                        <label>Nama Lengkap</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
+                            <input type="text" placeholder="Masukkan Nama Lengkap" class="form-control">
                         </div>
 
-                        <label>Supplier</label>
+                        <label>E-Mail</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Supplier" class="form-control">
+                            <input type="email" class="form-control">
                         </div>
 
-                        <label>Satuan</label>
+                        <label>No.Telepon</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Satuan" class="form-control">
+                            <input type="text" placeholder="Masukkan Nomor Telepon" class="form-control">
                         </div>
 
-                        <label>Departement</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Departement" class="form-control">
-                        </div>
-
-                        <label>Harga</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Harga" class="form-control">
-                        </div>
-
-                        <label>Stok</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Stok" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <fieldset class="form-group">
-                            <label for="basicInputFile">Gambar</label>
-                            <input type="file" class="form-control-file" id="basicInputFile">
+                        <label>Status</label>
+                        <fieldset>
+                            <div class="form-group">
+                                <input type="text" placeholder="Admin" class="form-control" disabled>
+                            </div>
                         </fieldset>
+                        <label>Photo</label>
+                        <div class="form-group">
+                            <input type="file" class="form-control">
+                        </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Ubah</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Ubah</button>
-            </div>
-            </form>
         </div>
     </div>
 </div>
@@ -226,7 +193,7 @@
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: "{{ url('/admin/barang/master/delete')}}" + '/' + id,
+                    url: "{{ url('/admin/account/admin/delete')}}" + '/' + id,
                     type: "POST",
                     data: {
                         '_method': 'DELETE',

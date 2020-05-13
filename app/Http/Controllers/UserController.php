@@ -20,6 +20,30 @@ class UserController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function admin()
+    {
+        $user = User::orderBy('id', 'desc')->get();
+
+        return view('admin.account.admin', compact('user'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function karyawan()
+    {
+        $user = User::orderBy('id', 'desc')->get();
+
+        return view('admin.account.karyawan', compact('user'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
