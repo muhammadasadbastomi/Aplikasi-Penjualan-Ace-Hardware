@@ -42,6 +42,7 @@ class BarangController extends Controller
         $messages = [
             'unique' => ':attribute sudah terdaftar.',
             'required' => ':attribute harus diisi.',
+            'mimes' => 'photo berupa :attribute.'
         ];
         $request->validate([
 
@@ -50,6 +51,7 @@ class BarangController extends Controller
             'departement' => 'required',
             'harga_jual' => 'required',
             'stok_tersedia' => 'required',
+            'gambar' => 'file|image|mimes:jpeg,png,gif',
 
         ], $messages);
 
@@ -110,19 +112,26 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'required' => ':attribute harus diisi.',
+        ];
+        $request->validate([], $messages);
 
         $barang = barang::where('uuid', $id)->first();
-        $supplier = Supplier::orderBy('id', 'asc')->get();
-
-
-        $barang->gambar = $request->gambar;
+        $barang->nama_barang = $request->nama_barang;
+        $barang->supplier_id = $request->supplier_id;
+        $barang->satuan = $request->satuan;
+        $barang->departement = $request->departement;
+        $barang->harga_jual = $request->harga_jual;
+        $barang->stok_tersedia = $request->stok_tersedia;
         if ($request->hasfile('gambar')) {
             $request->file('gambar')->move('images/barang/', $request->file('gambar')->getClientOriginalName());
-            $barang->gambar = $request->file('gambar')->getClientOriginalName();
-            $barang->save();
+            $data = $barang->gambar = $request->file('gambar')->getClientOriginalName();
         }
         $barang->update();
+
+        return redirect()->route('barangIndex')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

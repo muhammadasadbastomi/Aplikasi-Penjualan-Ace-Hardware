@@ -45,7 +45,7 @@
 
                                 </div>
                                 <hr>
-                                <form method="post">
+                                <form method="post" enctype="multipart/form-data">
                                     {{method_field('PUT')}}
                                     @csrf
                                     <div class="card-body">
@@ -56,10 +56,14 @@
                                                 placeholder="Masukkan nama barang" value="{{$barang->nama_barang}}">
                                         </div>
                                         <div class="form-group">
-                                            <label>Supplier </label>
-                                            <input type="text" id="alamat" name="alamat"
-                                                class="form-control @error ('alamat') is-invalid @enderror"
-                                                placeholder="Masukkan alamat" value="">
+                                            <label for="supplier">Supplier</label>
+                                            <select class="custom-select" name="supplier_id" id="supplier_id">
+                                                @foreach($supplier as $s)
+                                                <option value="{{$s->id}}"
+                                                    {{ $barang->supplier_id == $s->id ? 'selected' : ''}} selected>
+                                                    {{$s->supplier}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Harga satuan </label>
@@ -69,7 +73,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Departement </label>
-                                            <input type="number" id="departement" name="departement"
+                                            <input type="text" id="departement" name="departement"
                                                 class="form-control @error ('departement') is-invalid @enderror"
                                                 placeholder="Masukkan departement" value="{{ $barang->departement }}">
                                         </div>
@@ -81,17 +85,17 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Stok </label>
-                                            <input type="number" id="stok" name="stok"
-                                                class="form-control @error ('stok') is-invalid @enderror"
-                                                placeholder="Masukkan stok" value="">
+                                            <input type="number" id="stok" name="stok_tersedia"
+                                                class="form-control @error ('stok_tersedia') is-invalid @enderror"
+                                                placeholder="Masukkan stok" value="{{ $barang->stok_tersedia }}">
                                         </div>
                                         <div class="col-lg-6 col-md-12">
                                             <fieldset class="form-group">
-                                                <label for="basicInputFile">Gambar</label>
+                                                <label for="basicInputFile">Gambar Barang</label>
                                                 <input type="file" name="gambar" id="gambar" class="form-control-file"
                                                     id="basicInputFile">
-
                                             </fieldset>
+                                            @error('gambar')<div class="invalid-feedback"> {{$message}} </div>@enderror
                                         </div>
                                     </div>
                                     <div class="card-footer">

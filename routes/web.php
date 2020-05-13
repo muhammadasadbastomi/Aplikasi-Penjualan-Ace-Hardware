@@ -27,9 +27,9 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::get('/admin/barang/master/index', 'BarangController@index')->name('barangIndex');
     Route::post('/admin/barang/master/index', 'BarangController@store')->name('barangStore');
     Route::get('/admin/barang/master/show/{id}', 'BarangController@show')->name('barangShow');
-    Route::get('/admin/barang/master/edit', 'BarangController@edit')->name('barangEdit');
-    Route::post('/admin/barang/master/edit', 'BarangController@update')->name('barangUpdate');
-    Route::delete('/admin/barang/master/delete', 'BarangController@delete')->name('barangDelete');
+    //Route::get('/admin/barang/master/edit', 'BarangController@edit')->name('barangEdit');
+    Route::put('/admin/barang/master/show/{id}', 'BarangController@update')->name('barangUpdate');
+    Route::get('/admin/barang/master/delete/{id}', 'BarangController@delete')->name('barangDelete');
 
     Route::get('/admin/barang/supplier/index', 'SupplierController@index')->name('supplierIndex');
     Route::get('/admin/barang/supplier/show', 'SupplierController@show')->name('supplierShow');

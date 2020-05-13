@@ -222,8 +222,7 @@
                             <div class="col-lg-6 col-md-12">
                                 <fieldset class="form-group">
                                     <label for="basicInputFile">Gambar</label>
-                                    <input type="file" name="gambar" id="gambar" class="form-control-file"
-                                        id="basicInputFile">
+                                    <input type="file" name="gambar" class="form-control-file" id="basicInputFile">
                                 </fieldset>
                             </div>
                     </div>
