@@ -101,5 +101,5 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::post('/admin/account/setting', 'UserController@update')->name('userUpdate');
 });
 
-Route::get('/home/index', 'PenjualanController@admin')->name('homeIndex');
-Route::get('/home/show', 'PenjualanController@admin')->name('homeShow');
+Route::get('/home/index', 'PenjualanController@index')->name('homeIndex');
+Route::get('/home/show', 'PenjualanController@show')->name('homeShow');
