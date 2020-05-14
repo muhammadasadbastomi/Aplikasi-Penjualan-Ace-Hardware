@@ -110,4 +110,6 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
 });
 
 Route::get('/home/index', 'PenjualanController@index')->name('homeIndex');
+Route::get('/home/shop', 'PenjualanController@shop')->name('homeShop');
+Route::get('/home/profile', 'PenjualanController@profile')->name('homeProfile');
 Route::get('/home/show', 'PenjualanController@show')->name('homeShow');

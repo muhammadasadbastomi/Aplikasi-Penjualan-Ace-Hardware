@@ -14,6 +14,14 @@
                                 <a class="navbar-brand" href="{{route('homeIndex')}}">
                                     <img src="{{asset('img/logo.png') }}" style="width: 63px;  margin-top:10px; margin-left: 4px; ">
                                 </a></li>
+
+                            <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeIndex')}}"><i class="ficon fas fa fa-shopping-bag"></i>Home</a>
+                            </li>
+                            <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeShop')}}"><i class="ficon fas fa fa-shopping-cart"></i>Shop</a>
+                            </li>
+                            <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeProfile')}}"><i class="ficon fas fa fa-user"></i>Profile</a>
+                            </li>
+
                             <li class="nav-item nav-search" style="margin-top:14px; margin-left: 10px;">
                                 <div class="search-bar">
                                     <form method="post" action="#">
@@ -26,6 +34,8 @@
                                     </form>
                                 </div>
                             </li>
+
+
                         </ul>
                     </div>
                     <ul class="nav navbar-nav float-right">

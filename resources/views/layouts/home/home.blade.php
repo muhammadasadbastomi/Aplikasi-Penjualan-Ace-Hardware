@@ -25,8 +25,6 @@
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/bootstrap-extended.css">
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/colors.css">
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/components.css">
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/dark-layout.css">
-    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/semi-dark-layout.css">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="../../../app-assets/css/core/menu/menu-types/horizontal-menu.css">
@@ -61,9 +59,83 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light navbar-shadow">
-        <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2019<a class="text-bold-800 grey darken-2" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent,</a>All rights Reserved</span><span class="float-md-right d-none d-md-block">Hand-crafted & Made with<i class="feather icon-heart pink"></i></span>
-            <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
-        </p>
+        <div class="d-flex flex-row">
+            <div class="col-md-3 col-sm-12">
+                <h5 class="footer-heading" style="padding-left:35px; margin-bottom:14px; font-size:12px;"><b><i class="fas fa fa-map-marker"></i> Location</b>
+                </h5>
+                <div class="footer-section">
+                    <ul class="footer-navs" style="list-style-position: outside; list-style-type:none;   line-height: 2;">
+                        <li>
+                            <p style="color:black;">Q Mall Banjarbaru <br>Lt. UG Jl. A. Yani KM 36, 8 </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <section class="col-md-3 col-sm-12">
+                <h5 class="footer-heading" style="padding-left:35px; margin-bottom:14px; font-size:13px;"><b><i class="fas fa fa-volume-control-phone"></i> Customer Service</b>
+                </h5>
+                <div class="footer-section">
+                    <ul class="footer-navs" style="list-style-position: outside; list-style-type:none;">
+                        <li>
+                            <a style="color: black;" href="https://www.acehardware.co.id/service-center" target="">Service Center</a>
+                        </li>
+                        <li>
+                            <a style="color: black;" href="https://www.acehardware.co.id/faq" target="">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="col-md-3 col-sm-12">
+                <h5 class="footer-heading" style="padding-left:35px; margin-bottom:14px; font-size:13px;"><b><i class="fas fa fa-phone"></i> Call Center</b>
+                </h5>
+                <div class="footer-section">
+                    <ul class="footer-navs" style="list-style-position: outside; list-style-type:none;">
+                        <li>
+                            <p style="color:black;">Phone : 0511-4770 970 </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="col-md-3 col-sm-12">
+                <h5 class="footer-heading" style="padding-left:35px; margin-bottom:14px; font-size:13px;"><b><i class="feather icon-radio"></i> Social Media</b>
+                </h5>
+                <div class="footer-section">
+                    <ul class="footer-navs" style="list-style-position: outside; list-style-type:none;">
+                        <div class="social-medias">
+                            <a style="color: black;" class="social-media --fb" href="https://www.facebook.com/aceindonesia" target="blank">
+                                <div class="badge badge-success mr-1 mb-1">
+                                    <i class="ficon feather icon-facebook"></i>
+                                </div>
+                            </a>
+                            <a style="color: black;" class="social-media --tw" href="https://twitter.com/aceindonesia" target="blank">
+                                <div class="badge badge-info mr-1 mb-1">
+                                    <i class="ficon feather icon-twitter"></i>
+                                </div>
+                            </a>
+                            <a style="color: black;" class="social-media --ig" href="https://www.instagram.com/aceindonesia" target="blank">
+                                <div class="badge badge-danger mr-1 mb-1">
+                                    <i class="ficon feather icon-instagram"></i>
+                                </div>
+                            </a>
+                            <a style="color: black;" class="social-media --yt" href="https://www.youtube.com/channel/UCPfmCvkq7qpNqqwJ_2OoCzQ" target="blank">
+                                <div class="badge badge-warning mr-1 mb-1">
+                                    <i class="ficon feather icon-youtube"></i>
+                                </div>
+                            </a>
+                        </div>
+
+                        <a style="color: black;" class="text-orange" href="https://www.acehardware.co.id/social-wall">
+                            [Check Our Story]
+                        </a>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </footer>
+    </div>
+    </div>
+
     </footer>
     <!-- END: Footer-->
 

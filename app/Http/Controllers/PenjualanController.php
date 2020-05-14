@@ -20,6 +20,18 @@ class PenjualanController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function shop()
+    {
+        $barang = Barang::orderBy('id', 'desc')->get();
+
+        return view('home.shop', compact('barang'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
