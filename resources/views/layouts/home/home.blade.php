@@ -114,12 +114,12 @@
                                 </div>
                             </a>
                             <a style="color: black;" class="social-media --ig" href="https://www.instagram.com/aceindonesia" target="blank">
-                                <div class="badge badge-danger mr-1 mb-1">
+                                <div class="badge badge-warning mr-1 mb-1">
                                     <i class="ficon feather icon-instagram"></i>
                                 </div>
                             </a>
                             <a style="color: black;" class="social-media --yt" href="https://www.youtube.com/channel/UCPfmCvkq7qpNqqwJ_2OoCzQ" target="blank">
-                                <div class="badge badge-warning mr-1 mb-1">
+                                <div class="badge badge-danger mr-1 mb-1">
                                     <i class="ficon feather icon-youtube"></i>
                                 </div>
                             </a>

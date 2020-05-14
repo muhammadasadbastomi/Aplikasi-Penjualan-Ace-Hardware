@@ -31,6 +31,7 @@ class PenjualanController extends Controller
         return view('home.shop', compact('barang'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,9 +59,11 @@ class PenjualanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $barang = Barang::orderBy('id', 'desc')->get();
+
+        return view('home.detail', compact('barang'));
     }
 
     /**
