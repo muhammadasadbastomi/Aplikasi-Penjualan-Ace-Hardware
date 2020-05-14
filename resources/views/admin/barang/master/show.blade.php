@@ -56,6 +56,12 @@
                                                 placeholder="Masukkan nama barang" value="{{$barang->nama_barang}}">
                                         </div>
                                         <div class="form-group">
+                                            <label>Kode Barang </label>
+                                            <input type="text" id="kode_barang" name="kode_barang"
+                                                class="form-control @error ('kode_barang') is-invalid @enderror"
+                                                placeholder="Masukkan kode barang" value="{{$barang->kode_barang}}">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="supplier">Supplier</label>
                                             <select class="custom-select" name="supplier_id" id="supplier_id">
                                                 @foreach($supplier as $s)

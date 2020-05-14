@@ -28,4 +28,9 @@ class Barang extends Model
     {
         return $this->belongsTo(Stok::class);
     }
+
+    public function barang_datang()
+    {
+        return $this->belongsTo(Barang_datang::class);
+    }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Barang_datang;
+use App\Barang;
+use App\Stok;
 use Illuminate\Http\Request;
 
 class BarangdatangController extends Controller
@@ -14,9 +16,10 @@ class BarangdatangController extends Controller
      */
     public function index()
     {
-        $barang = Barang_datang::orderBy('id', 'Desc')->get();
+        $barang = Barang::orderBy('id', 'Desc')->get();
+        $barangdatang = Barang_datang::orderBy('id', 'Desc')->get();
 
-        return view('admin.barang.datang.index', compact('barang'));
+        return view('admin.barang.datang.index', compact('barangdatang', 'barang'));
     }
 
     /**
@@ -37,7 +40,26 @@ class BarangdatangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'required' => ':attribute harus diisi.',
+        ];
+        $request->validate([
+
+
+            'tgl_masuk' => 'required',
+            'jumlah' => 'required',
+        ], $messages);
+
+        // create new object
+        $barangdatang = new Barang_datang;
+        $request->request->add(['barangdatang_id' => $barangdatang->id]);
+        $barangdatang->id_barang = $request->barang_id;
+        $barangdatang->tgl_masuk = $request->tgl_masuk;
+        $barangdatang->jumlah = $request->jumlah;
+        $barangdatang->save();
+
+        return redirect('admin/barang/datang/index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -46,7 +68,7 @@ class BarangdatangController extends Controller
      * @param  \App\BarangDatang  $barangDatang
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangDatang $barangDatang)
+    public function show(Barang_Datang $barangDatang)
     {
         //
     }
@@ -57,7 +79,7 @@ class BarangdatangController extends Controller
      * @param  \App\BarangDatang  $barangDatang
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangDatang $barangDatang)
+    public function edit(Request $request)
     {
         //
     }
@@ -69,7 +91,7 @@ class BarangdatangController extends Controller
      * @param  \App\BarangDatang  $barangDatang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangDatang $barangDatang)
+    public function update(Request $request, Barang_Datang $barangDatang)
     {
         //
     }
@@ -80,8 +102,13 @@ class BarangdatangController extends Controller
      * @param  \App\BarangDatang  $barangDatang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangDatang $barangDatang)
+    public function destroy($id)
     {
-        //
+
+        $barang_datang = barang_datang::where('uuid', $id)->first();
+
+        $barang_datang->delete();
+
+        return redirect()->route('datangIndex');
     }
 }

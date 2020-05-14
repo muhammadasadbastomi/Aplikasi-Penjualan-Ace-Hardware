@@ -59,6 +59,7 @@ class BarangController extends Controller
         $barang = new barang;
         $request->request->add(['barang_id' => $barang->id]);
         $barang->nama_barang = $request->nama_barang;
+        $barang->kode_barang = $request->kode_barang;
         $barang->supplier_id = $request->supplier_id;
         $barang->satuan = $request->satuan;
         $barang->departement = $request->departement;
@@ -120,6 +121,7 @@ class BarangController extends Controller
 
         $barang = barang::where('uuid', $id)->first();
         $barang->nama_barang = $request->nama_barang;
+        $barang->kode_barang = $request->kode_barang;
         $barang->supplier_id = $request->supplier_id;
         $barang->satuan = $request->satuan;
         $barang->departement = $request->departement;

@@ -33,7 +33,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span></button> </div>
                             </div>
                             <div class="card-content">
@@ -44,12 +46,13 @@
                                                 <tr>
                                                     <th scope="col">No</th>
                                                     <th scope="col">Nama Barang</th>
+                                                    <th scope="col">Kode Barang</th>
                                                     <th scope="col">Supplier</th>
                                                     <th scope="col">Satuan</th>
                                                     <th scope="col">Departement</th>
                                                     <th scope="col">Harga</th>
                                                     <th scope="col">Stok</th>
-                                                    <th scope="col">Gambar</th>
+                                                    <th scope="col">Aksi</th>
                                                     <th scope="col" class="text-center"></th>
                                                 </tr>
                                             </thead>
@@ -58,6 +61,7 @@
                                                 <tr>
                                                     <td class="text-center">{{$loop->iteration}}</td>
                                                     <td>{{$b->nama_barang}}</td>
+                                                    <td>{{$b->kode_barang}}</td>
                                                     <td>{{$b->supplier->supplier}}</td>
                                                     <td>{{$b->satuan}}</td>
                                                     <td>{{$b->departement}}</td>
@@ -65,8 +69,12 @@
                                                     <td>{{$b->stok_tersedia}}</td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-info text-white" href="{{route('barangShow', ['id' => $b->uuid])}}"><i class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$b->uuid}}" href="#"><i class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('barangShow', ['id' => $b->uuid])}}"><i
+                                                                class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$b->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -86,7 +94,8 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah-->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -101,8 +110,18 @@
                         @csrf
                         <label>Nama Barang</label>
                         <div class="form-group">
-                            <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang" value="{{old('nama_barang')}}" class="form-control  @error ('nama_barang') is-invalid @enderror">
+                            <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang"
+                                value="{{old('nama_barang')}}"
+                                class="form-control  @error ('nama_barang') is-invalid @enderror">
                             @error('nama_barang')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                        </div>
+
+                        <label>Kode Barang</label>
+                        <div class="form-group">
+                            <input type="text" name="kode_barang" id="kode_barang" placeholder="Masukkan kode Barang"
+                                value="{{old('kode_barang')}}"
+                                class="form-control  @error ('kode_barang') is-invalid @enderror">
+                            @error('kode_barang')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <div class="form-group">
@@ -116,31 +135,36 @@
 
                         <label>Harga Satuan</label>
                         <div class="form-group">
-                            <input type="text" name="satuan" id="satuan" placeholder="Masukkan Satuan" value="{{old('satuan')}}" class="form-control">
+                            <input type="text" name="satuan" id="satuan" placeholder="Masukkan Satuan"
+                                value="{{old('satuan')}}" class="form-control">
                             @error('satuan')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <label>Departement</label>
                         <div class="form-group">
-                            <input type="text" name="departement" id="departement" placeholder="Masukkan Departement" value="{{old('departement')}}" class="form-control">
+                            <input type="text" name="departement" id="departement" placeholder="Masukkan Departement"
+                                value="{{old('departement')}}" class="form-control">
                             @error('departement')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <label>Harga Jual</label>
                         <div class="form-group">
-                            <input type="text" name="harga_jual" id="harga_jual" placeholder="Masukkan Harga" value="{{old('harga_jual')}}" class="form-control">
+                            <input type="text" name="harga_jual" id="harga_jual" placeholder="Masukkan Harga"
+                                value="{{old('harga_jual')}}" class="form-control">
                             @error('harga_jual')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <label>Stok</label>
                         <div class="form-group">
-                            <input type="text" name="stok_tersedia" id="stok_tersedia" placeholder="Masukkan Stok" value="{{old('stok_tersedia')}}" class="form-control">
+                            <input type="text" name="stok_tersedia" id="stok_tersedia" placeholder="Masukkan Stok"
+                                value="{{old('stok_tersedia')}}" class="form-control">
                             @error('stok')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                         <div class="col-lg-6 col-md-12">
                             <fieldset class="form-group">
                                 <label for="basicInputFile">Gambar Barang</label>
-                                <input type="file" name="gambar" id="gambar" class="form-control-file" id="basicInputFile">
+                                <input type="file" name="gambar" id="gambar" class="form-control-file"
+                                    id="basicInputFile">
                             </fieldset>
                             @error('gambar')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
@@ -155,64 +179,7 @@
     </div>
 </div>
 
-<!-- Modal Edit -->
-<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalScrollable" style="padding-left: 10px;">Edit Barang</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data">
-                    <div class="modal-body">
-                        <label>Nama Barang</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
-                        </div>
 
-                        <label>Supplier</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Supplier" class="form-control">
-                        </div>
-
-                        <label>Satuan</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Satuan" class="form-control">
-                        </div>
-
-                        <label>Departement</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Departement" class="form-control">
-                        </div>
-
-                        <label>Harga</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Harga" class="form-control">
-                        </div>
-
-                        <label>Stok</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Stok" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <fieldset class="form-group">
-                            <label for="basicInputFile">Gambar</label>
-                            <input type="file" class="form-control-file" id="basicInputFile">
-                        </fieldset>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Ubah</button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
 @endsection
 
 @section('script')
