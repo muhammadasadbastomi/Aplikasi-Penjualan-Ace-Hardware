@@ -117,7 +117,14 @@ class BarangController extends Controller
             'unique' => ':attribute sudah terdaftar.',
             'required' => ':attribute harus diisi.',
         ];
-        $request->validate([], $messages);
+        $request->validate([
+            'nama_barang' => 'required',
+            'satuan' => 'required',
+            'departement' => 'required',
+            'harga_jual' => 'required',
+            'stok_tersedia' => 'required',
+            'gambar' => 'file|image|mimes:jpeg,png,gif',
+        ], $messages);
 
         $barang = barang::where('uuid', $id)->first();
         $barang->nama_barang = $request->nama_barang;

@@ -50,9 +50,9 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::get('/admin/barang/datang/index', 'BarangdatangController@index')->name('datangIndex');
     Route::post('/admin/barang/datang/index', 'BarangdatangController@store')->name('datangstore');
     Route::get('/admin/barang/datang/show', 'BarangdatangController@show')->name('datangShow');
-    Route::get('/admin/barang/datang/edit', 'BarangdatangController@edit')->name('datangEdit');
-    Route::post('/admin/barang/datang/edit', 'BarangdatangController@update')->name('datangUpdate');
-    Route::delete('/admin/barang/datang/delete', 'BarangdatangController@destroy')->name('datangDelete');
+    Route::get('/admin/barang/datang/edit/{id}', 'BarangdatangController@edit')->name('datangEdit');
+    Route::put('/admin/barang/datang/edit/{id}', 'BarangdatangController@update')->name('datangUpdate');
+    Route::delete('/admin/barang/datang/delete/{id}', 'BarangdatangController@destroy')->name('datangDelete');
 
     Route::get('/admin/barang/pesanan/index', 'BarangpesananController@index')->name('pesananIndex');
     Route::post('/admin/barang/pesanan/index', 'BarangpesananController@store')->name('pesananstore');

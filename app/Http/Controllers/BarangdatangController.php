@@ -79,9 +79,12 @@ class BarangdatangController extends Controller
      * @param  \App\BarangDatang  $barangDatang
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit($id)
     {
-        //
+        $barangdatang = Barang_datang::where('uuid', $id)->first();
+        $barang = Barang::orderBy('id', 'asc')->get();
+
+        return view('admin.barang.datang.edit', compact('barangdatang', 'barang'));
     }
 
     /**
@@ -91,9 +94,27 @@ class BarangdatangController extends Controller
      * @param  \App\BarangDatang  $barangDatang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barang_Datang $barangDatang)
+    public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'required' => ':attribute harus diisi.',
+        ];
+        $request->validate([
+
+
+            'tgl_masuk' => 'required',
+            'jumlah' => 'required',
+        ], $messages);
+
+        $barangdatang = Barang_datang::where('uuid', $id)->first();
+        $barangdatang->id_barang = $request->id_barang;
+        $barangdatang->tgl_masuk = $request->tgl_masuk;
+        $barangdatang->jumlah = $request->jumlah;
+        //dd($barangdatang);
+        $barangdatang->update();
+
+        return redirect()->route('datangIndex')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

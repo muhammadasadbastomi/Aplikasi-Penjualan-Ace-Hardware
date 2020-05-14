@@ -59,8 +59,8 @@
                                                     <td>{{ $bd->tgl_masuk }}</td>
                                                     <td>{{ $bd->jumlah }}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" data-toggle="modal"
-                                                            data-target="#exampleModal"><i
+                                                        <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('datangEdit', ['id' => $bd->uuid])}}"><i
                                                                 class="feather icon-edit"></i></a>
                                                         <a class="btn btn-sm btn-danger text-white" href="#"><i
                                                                 class="feather icon-trash"
