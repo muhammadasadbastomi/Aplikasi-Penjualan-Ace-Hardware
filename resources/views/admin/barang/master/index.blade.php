@@ -33,7 +33,8 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah Data</span></button> </div>
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span></button> </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -64,7 +65,7 @@
                                                     <td>{{$b->stok_tersedia}}</td>
                                                     <td></td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal"><i class="feather icon-edit"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white" href="{{route('barangShow', ['id' => $b->uuid])}}"><i class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$b->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -104,10 +105,13 @@
                             @error('nama_barang')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
-                        <label>Supplier</label>
                         <div class="form-group">
-                            <input type="text" name="supplier" id="supplier" placeholder="Masukkan Supplier" value="{{old('supplier')}}" class="form-control">
-                            @error('supplier')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                            <label for="supplier">Supplier</label>
+                            <select class="custom-select" name="supplier_id" id="supplier_id">
+                                @foreach($supplier as $s)
+                                <option value="{{$s->id}}">{{ $s->supplier}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <label>Harga Satuan</label>
@@ -135,9 +139,10 @@
                         </div>
                         <div class="col-lg-6 col-md-12">
                             <fieldset class="form-group">
-                                <label for="basicInputFile">Gambar</label>
-                                <input type="file" class="form-control-file" id="basicInputFile">
+                                <label for="basicInputFile">Gambar Barang</label>
+                                <input type="file" name="gambar" id="gambar" class="form-control-file" id="basicInputFile">
                             </fieldset>
+                            @error('gambar')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                     </div>
                     <div class="modal-footer">

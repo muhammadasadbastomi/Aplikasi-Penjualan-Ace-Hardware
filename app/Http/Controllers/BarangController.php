@@ -42,6 +42,7 @@ class BarangController extends Controller
         $messages = [
             'unique' => ':attribute sudah terdaftar.',
             'required' => ':attribute harus diisi.',
+            'mimes' => 'photo berupa :attribute.'
         ];
         $request->validate([
 
@@ -50,6 +51,7 @@ class BarangController extends Controller
             'departement' => 'required',
             'harga_jual' => 'required',
             'stok_tersedia' => 'required',
+            'gambar' => 'file|image|mimes:jpeg,png,gif',
 
         ], $messages);
 
@@ -62,17 +64,14 @@ class BarangController extends Controller
         $barang->departement = $request->departement;
         $barang->harga_jual = $request->harga_jual;
         $barang->stok_tersedia = $request->stok_tersedia;
-        if ($request->gambar != null) {
-            $img = $request->file('gambar');
-            $FotoExt = $img->getClientOriginalExtension();
-            $FotoName = $request->nama_barang;
-            $foto = $FotoName . '.' . $FotoExt;
-            $img->move('images/barang', $foto);
-            $barang->gambar = $foto;
+        $barang->gambar = $request->gambar;
+        if ($request->hasfile('gambar')) {
+            $request->file('gambar')->move('images/barang/', $request->file('gambar')->getClientOriginalName());
+            $barang->gambar = $request->file('gambar')->getClientOriginalName();
+            $barang->save();
         } else {
             $barang->gambar = 'default.png';
         }
-
         $barang->save();
 
         return redirect('admin/barang/master/index')->with('success', 'Data berhasil disimpan');
@@ -86,10 +85,11 @@ class BarangController extends Controller
      */
     public function show($id)
     {
-        // get golongan by id
+        // get barang by id
         $barang = barang::where('uuid', $id)->first();
+        $supplier = Supplier::orderBy('id', 'asc')->get();
 
-        return view('admin.barang.show', compact('barang'));
+        return view('admin.barang.master.show', compact('barang', 'supplier'));
     }
 
     /**
@@ -112,7 +112,26 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'required' => ':attribute harus diisi.',
+        ];
+        $request->validate([], $messages);
+
+        $barang = barang::where('uuid', $id)->first();
+        $barang->nama_barang = $request->nama_barang;
+        $barang->supplier_id = $request->supplier_id;
+        $barang->satuan = $request->satuan;
+        $barang->departement = $request->departement;
+        $barang->harga_jual = $request->harga_jual;
+        $barang->stok_tersedia = $request->stok_tersedia;
+        if ($request->hasfile('gambar')) {
+            $request->file('gambar')->move('images/barang/', $request->file('gambar')->getClientOriginalName());
+            $data = $barang->gambar = $request->file('gambar')->getClientOriginalName();
+        }
+        $barang->update();
+
+        return redirect()->route('barangIndex')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

@@ -26,10 +26,10 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
 
     Route::get('/admin/barang/master/index', 'BarangController@index')->name('barangIndex');
     Route::post('/admin/barang/master/index', 'BarangController@store')->name('barangStore');
-    Route::get('/admin/barang/mastter/show', 'BarangController@show')->name('barangShow');
-    Route::get('/admin/barang/master/edit', 'BarangController@edit')->name('barangEdit');
-    Route::post('/admin/barang/master/edit', 'BarangController@update')->name('barangUpdate');
-    Route::delete('/admin/barang/master/delete', 'BarangController@delete')->name('barangDelete');
+    Route::get('/admin/barang/master/show/{id}', 'BarangController@show')->name('barangShow');
+    //Route::get('/admin/barang/master/edit', 'BarangController@edit')->name('barangEdit');
+    Route::put('/admin/barang/master/show/{id}', 'BarangController@update')->name('barangUpdate');
+    Route::delete('/admin/barang/master/delete/{id}', 'BarangController@destroy')->name('barangDelete');
 
     Route::get('/admin/barang/supplier/index', 'SupplierController@index')->name('supplierIndex');
     Route::get('/admin/barang/supplier/show', 'SupplierController@show')->name('supplierShow');
@@ -37,7 +37,15 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::post('/admin/barang/supplier/index', 'SupplierController@store')->name('supplierStore');
     Route::delete('/admin/barang/supplier/delete/{id}', 'SupplierController@destroy')->name('supplierDestroy');
     Route::get('/admin/barang/supplier/edit/{id}', 'SupplierController@edit')->name('supplierEdit');
-    Route::put('/admin/barang/supplier/update/{id}', 'SupplierController@update')->name('supplierUpdate');
+    Route::put('/admin/barang/supplier/edit/{id}', 'SupplierController@update')->name('supplierUpdate');
+
+    Route::get('/admin/barang/stokbarang/index', 'StokController@index')->name('stokIndex');
+    //Route::get('/admin/barang/stokbarang/show', 'StokController@show')->name('stokShow');
+    // Route::get('/admin/barang/stokbarang/create', 'BarangController@create')->name('barangCreate');
+    Route::post('/admin/barang/stokbarang/index', 'StokController@store')->name('stokStore');
+    Route::delete('/admin/barang/stokbarang/delete/{id}', 'StokController@destroy')->name('stokDestroy');
+    //Route::get('/admin/barang/stokbarang/edit/{id}', 'StokController@edit')->name('stokEdit');
+    //Route::put('/admin/barang/stokbarang/edit/{id}', 'StokController@update')->name('stokUpdate');
 
     Route::get('/admin/barang/datang/index', 'BarangdatangController@index')->name('datangIndex');
     Route::post('/admin/barang/datang/index', 'BarangdatangController@store')->name('datangstore');

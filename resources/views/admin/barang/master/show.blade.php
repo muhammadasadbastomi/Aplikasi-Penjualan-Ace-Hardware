@@ -13,26 +13,13 @@
                         <h2 class="content-header-title float-left mb-0">Product Details</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a>
+                                <li class="breadcrumb-item"><a href="#">Home</a>
                                 </li>
                                 <li class="breadcrumb-item"><a href="#">Barang</a>
                                 </li>
-                                <li class="breadcrumb-item active"><a href="#">Show</a>
+                                <li class="breadcrumb-item active">Show</a>
                                 </li>
                             </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
-                <div class="form-group breadcrum-right">
-                    <div class="dropdown">
-                        <button
-                            class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle waves-effect waves-light"
-                            type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                class="feather icon-settings"></i></button>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a
-                                class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a>
                         </div>
                     </div>
                 </div>
@@ -46,48 +33,78 @@
                         <div class="row mb-5 mt-2">
                             <div class="col-12 col-md-5 d-flex align-items-center justify-content-center mb-2 mb-md-0">
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <img src="../../../app-assets/images/elements/macbook-pro.png" class="img-fluid"
-                                        alt="product image">
+                                    <img src="{{$barang->gambar()}}" class="img-fluid" alt="product image">
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
-                                <h5>Canon - EOS 5D Mark IV DSLR Camera with 24-70mm f/4L IS USM Lens
+                                <h5>{{ $barang->nama_barang }}
                                 </h5>
-                                <p class="text-muted">by Apple</p>
                                 <div class="ecommerce-details-price d-flex flex-wrap">
 
-                                    <p class="text-primary font-medium-3 mr-1 mb-0">$43.99</p>
-                                    <span class="pl-1 font-medium-3 border-left">
-                                        <i class="feather icon-star text-warning"></i>
-                                        <i class="feather icon-star text-warning"></i>
-                                        <i class="feather icon-star text-warning"></i>
-                                        <i class="feather icon-star text-warning"></i>
-                                        <i class="feather icon-star text-secondary"></i>
-                                    </span>
-                                    <span class="ml-50 text-dark font-medium-1">424 ratings</span>
-                                </div>
-                                <hr>
-                                <p>Shoot professional photos and videos with this Canon EOS 5D Mk V 24-70mm lens kit. A
-                                    huge 30.4-megapixel
-                                    full-frame sensor delivers outstanding image clarity, and 4K video is possible from
-                                    this DSLR for powerful
-                                    films. Ultra-precise autofocus and huge ISO ranges give you the images you want from
-                                    this Canon EOS 5D Mk V
-                                    24-70mm lens kit.</p>
-                                <p class="font-weight-bold mb-25"> <i
-                                        class="feather icon-truck mr-50 font-medium-2"></i>Free Shipping
-                                </p>
-                                <p class="font-weight-bold"> <i
-                                        class="feather icon-dollar-sign mr-50 font-medium-2"></i>EMI options available
-                                </p>
-                                <hr>
-                                <p>Available - <span class="text-success">In stock</span></p>
+                                    <p class="text-primary font-medium-3 mr-1 mb-0">Rp. {{ $barang->harga_jual }}</p>
 
-                                <div class="d-flex flex-column flex-sm-row">
-                                    <button
-                                        class="btn btn-primary mr-0 mr-sm-1 mb-1 mb-sm-0 waves-effect waves-light"><i
-                                            class="feather icon-shopping-cart mr-25"></i>Edit</button>
                                 </div>
+                                <hr>
+                                <form method="post" enctype="multipart/form-data">
+                                    {{method_field('PUT')}}
+                                    @csrf
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label>Nama Barang </label>
+                                            <input type="text" id="nama_barang" name="nama_barang"
+                                                class="form-control @error ('nama_barang') is-invalid @enderror"
+                                                placeholder="Masukkan nama barang" value="{{$barang->nama_barang}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="supplier">Supplier</label>
+                                            <select class="custom-select" name="supplier_id" id="supplier_id">
+                                                @foreach($supplier as $s)
+                                                <option value="{{$s->id}}"
+                                                    {{ $barang->supplier_id == $s->id ? 'selected' : ''}} selected>
+                                                    {{$s->supplier}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Harga satuan </label>
+                                            <input type="number" id="satuan" name="satuan"
+                                                class="form-control @error ('satuan') is-invalid @enderror"
+                                                placeholder="Masukkan Harga" value="{{ $barang->satuan }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Departement </label>
+                                            <input type="text" id="departement" name="departement"
+                                                class="form-control @error ('departement') is-invalid @enderror"
+                                                placeholder="Masukkan departement" value="{{ $barang->departement }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Harga Jual </label>
+                                            <input type="number" id="harga_jual" name="harga_jual"
+                                                class="form-control @error ('harga_jual') is-invalid @enderror"
+                                                placeholder="Masukkan harga jual" value="{{ $barang->harga_jual }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Stok </label>
+                                            <input type="number" id="stok" name="stok_tersedia"
+                                                class="form-control @error ('stok_tersedia') is-invalid @enderror"
+                                                placeholder="Masukkan stok" value="{{ $barang->stok_tersedia }}">
+                                        </div>
+                                        <div class="col-lg-6 col-md-12">
+                                            <fieldset class="form-group">
+                                                <label for="basicInputFile">Gambar Barang</label>
+                                                <input type="file" name="gambar" id="gambar" class="form-control-file"
+                                                    id="basicInputFile">
+                                            </fieldset>
+                                            @error('gambar')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <a href="{{route('barangIndex')}}" class="btn btn-danger text-white"><i
+                                                class="mdi mdi-back"></i>Batal</a>
+                                    </div>
+                                </form>
+
                                 <hr>
                             </div>
                         </div>

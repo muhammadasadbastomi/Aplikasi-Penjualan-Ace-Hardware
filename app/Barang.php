@@ -11,8 +11,21 @@ class Barang extends Model
     use Notifiable;
     use Uuid;
 
+    public function gambar()
+    {
+        if (!$this->gambar) {
+            return asset('images/default.png');
+        }
+        return asset('images/barang/' . $this->gambar);
+    }
+
     public function supplier()
     {
         return $this->belongsTo(Supplier::class);
+    }
+
+    public function stok()
+    {
+        return $this->belongsTo(Stok::class);
     }
 }

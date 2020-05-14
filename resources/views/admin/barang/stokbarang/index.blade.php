@@ -12,12 +12,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Data Supplier</h2>
+                        <h2 class="content-header-title float-left mb-0">Data Stok</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Data Supplier
+                                <li class="breadcrumb-item active">Data Stok Barang
                                 </li>
                             </ol>
                         </div>
@@ -35,7 +35,7 @@
                                 <h4 class="card-title"></h4>
                                 <button type="button" class="btn btn-primary float-right" data-toggle="modal"
                                     data-target="#mediumModal">
-                                    <i class="feather icon-plus-circle"> Tambah Data </i>
+                                    <i class="feather icon-plus-circle">Tambah Data </i>
                                 </button>
                             </div>
                             <div class="card-content">
@@ -45,25 +45,20 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">No</th>
-                                                    <th scope="col">Supplier</th>
-                                                    <th scope="col">Alamat</th>
-                                                    <th scope="col">Kontak</th>
+                                                    <th scope="col">Nama barang</th>
+                                                    <th scope="col">Stok</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($supplier as $s)
+                                                @foreach ($stok as $st)
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
-                                                    <td>{{$s->supplier}}</td>
-                                                    <td>{{$s->alamat}}</td>
-                                                    <td>{{$s->kontak}}</td>
+                                                    <td>{{$st->barang->nama_barang}}</td>
+                                                    <td>{{$st->stok_barang}}</td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-info text-white"
-                                                            href="{{route('supplierEdit', ['id' => $s->uuid])}}"><i
-                                                                class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white"
-                                                            data-id="{{$s->uuid}}" href="#"><i
+                                                            data-id="{{$st->uuid}}" href="#"><i
                                                                 class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -97,27 +92,14 @@
             <div class="modal-body">
                 <form method="POST">
                     @csrf
-                    <label>Supplier : </label>
-                    <div class=" form-group">
-                        <input type="text" name="supplier" id="supplier" placeholder="Masukkan Nama Supplier"
-                            value="{{old('supplier')}}" class="form-control  @error ('supplier') is-invalid @enderror">
-                        @error('supplier')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                    </div>
-
-                    <label>Alamat </label>
                     <div class="form-group">
-                        <input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat"
-                            value="{{old('alamat')}}" class="form-control">
-                        @error('alamat')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                        <label for="supplier">Nama Barang</label>
+                        <select class="custom-select" name="barang_id" id="barang_id">
+                            @foreach($barang as $b)
+                            <option value="{{$b->id}}">{{ $b->nama_barang}}</option>
+                            @endforeach
+                        </select>
                     </div>
-
-                    <label>Kontak </label>
-                    <div class="form-group">
-                        <input type="number" name="kontak" id="kontak" placeholder="Masukkan kontak"
-                            value="{{old('kontak')}}" class="form-control">
-                        @error('kontak')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                    </div>
-
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
@@ -145,7 +127,7 @@
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: "{{ url('/admin/barang/supplier/delete')}}" + '/' + id,
+                    url: "{{ url('/admin/barang/stokbarang/delete')}}" + '/' + id,
                     type: "POST",
                     data: {
                         '_method': 'DELETE',
