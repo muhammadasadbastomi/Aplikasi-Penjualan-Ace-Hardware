@@ -126,9 +126,9 @@ class BarangdatangController extends Controller
     public function destroy($id)
     {
 
-        $barang_datang = barang_datang::where('uuid', $id)->first();
+        $barangdatang = barang_datang::where('uuid', $id)->first();
 
-        $barang_datang->delete();
+        $barangdatang->delete();
 
         return redirect()->route('datangIndex');
     }

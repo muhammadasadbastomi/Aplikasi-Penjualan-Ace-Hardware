@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Barang;
 use App\Barang_rusak;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,10 @@ class BarangrusakController extends Controller
      */
     public function index()
     {
-        $barang = Barang_rusak::orderBy('id', 'Desc')->get();
+        $barangrusak = Barang_rusak::orderBy('id', 'Desc')->get();
+        $barang = Barang::orderBy('id', 'Desc')->get();
 
-        return view('admin.barang.rusak.index', compact('barang'));
+        return view('admin.barang.rusak.index', compact('barangrusak', 'barang'));
     }
 
     /**

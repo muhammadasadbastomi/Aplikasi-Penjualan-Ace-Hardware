@@ -33,7 +33,10 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah Data</span></button> </div>
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span></button> </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -46,21 +49,26 @@
                                                     <th scope="col">Kerusakan</th>
                                                     <th scope="col">Tanggal Cek</th>
                                                     <th scope="col">Jumlah</th>
-                                                    <th scope="col" class="text-center"></th>
+                                                    <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach ($barangrusak as $br)
                                                 <tr>
                                                     <td class="text-center"></td>
                                                     <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td>{{ $br->kerusakan }}</td>
+                                                    <td>{{ $br->tgl_cek }}</td>
+                                                    <td>{{ $br->jumlah_barang }}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal"><i class="feather icon-edit"></i></a>
-                                                        <a class="btn btn-sm btn-danger text-white" href="#"><i class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white"><i
+                                                                class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white" href="#"><i
+                                                                data-id="{{$br->uuid}}"
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -77,7 +85,8 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -87,8 +96,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data">
-                    <div class="modal-body">
+                <form method="POST">
+                    <div class=" modal-body">
                         <label>Nama Barang</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
@@ -119,48 +128,7 @@
     </div>
 </div>
 
-<!-- Modal Edit -->
-<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalScrollable" style="padding-left: 10px;">Edit Barang</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data">
-                    <div class="modal-body">
-                        <label>Nama Barang</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
-                        </div>
 
-                        <label>Kerusakan</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Kerusakan Barang" class="form-control">
-                        </div>
-
-                        <label>Tanggal Cek</label>
-                        <div class="form-group">
-                            <input type="date" class="form-control">
-                        </div>
-
-                        <label>Jumlah Barang</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Jumlah Barang" class="form-control">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Ubah</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 
 @section('script')

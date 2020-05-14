@@ -62,7 +62,7 @@
                                                         <a class="btn btn-sm btn-info text-white"
                                                             href="{{route('datangEdit', ['id' => $bd->uuid])}}"><i
                                                                 class="feather icon-edit"></i></a>
-                                                        <a class="btn btn-sm btn-danger text-white" href="#"><i
+                                                        <a class="delete btn btn-sm btn-danger text-white" href="#"><i
                                                                 class="feather icon-trash"
                                                                 data-id="{{$bd->uuid}}"></i></a>
                                                     </td>
