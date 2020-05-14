@@ -8,1027 +8,259 @@
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
-        <div class="content-header row">
-            <div class="content-header-left col-md-9 col-12 mb-2">
-                <div class="row breadcrumbs-top">
-                    <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Shop</h2>
-                        <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="#">eCommerce</a>
-                                </li>
-                                <li class="breadcrumb-item active">Shop
-                                </li>
-                            </ol>
+        <div class="content-body">
+            <!-- CrossFade Carousel Start -->
+            <section id="carousel-crossfade">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="card">
+                            <div class="card-content">
+                                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                                    <div class="carousel-inner" style=" width:100%; max-height: 450px  !important;">
+                                        <div class="carousel-item active">
+                                            <img src="{{asset('images/index/2.jpg')}}" class="img-fluid d-block w-100" alt="cf-img-1" style=" width:100%; max-height: 450px !important;">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <h5>Judul</h5>
+                                                <p>Keterangan</p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{asset('images/index/3.jpg')}}" class="img-fluid d-block w-100" alt="cf-img-2" style=" width:100%; max-height:  450px  !important;">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{asset('images/index/2.jpg')}}" class="img-fluid d-block w-100" alt="cf-img-3" style=" width:100%; max-height:  450px  !important;">
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 col-sm-12">
+                        <div style="height: 550px;">
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="carousel-item">
+                                        <img src="../../../app-assets/images/slider/01.jpg" class="card-img img-fluid mb-1" alt="First slide">
+                                    </div>
+                                    <div class="carousel-item active">
+                                        <img src="../../../app-assets/images/slider/02.jpg" class="card-img img-fluid mb-1" alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="../../../app-assets/images/slider/03.jpg" class="card-img img-fluid mb-1" alt="Third slide">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
+                                    <span class="fa fa-angle-left icon-prev" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carousel-example-generic" role="button" data-slide="next">
+                                    <span class="fa fa-angle-right icon-next" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <h5>Vuexy Admin</h5>
+                                    <p class="card-text">By Pixinvent Creative Studio</p>
+                                    <hr>
+                                    <div class="d-flex justify-content-between mt-2">
+                                        <div class="float-left">
+                                            <p class="font-medium-2 mb-0">$ 4785.78</p>
+                                            <p class="">Income</p>
+                                        </div>
+                                        <div class="float-right">
+                                            <p class="font-medium-2 mb-0">12 June 2019</p>
+                                            <p class="">Delivery Date</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
-                <div class="form-group breadcrum-right">
-                    <div class="dropdown">
-                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content-detached content-right">
-            <div class="content-body">
-                <!-- Ecommerce Content Section Starts -->
-                <section id="ecommerce-header">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="ecommerce-header-items">
-                                <div class="result-toggler">
-                                    <button class="navbar-toggler shop-sidebar-toggler" type="button" data-toggle="collapse">
-                                        <span class="navbar-toggler-icon d-block d-lg-none"><i class="feather icon-menu"></i></span>
-                                    </button>
-                                    <div class="search-results">
-                                        16285 results found
-                                    </div>
-                                </div>
-                                <div class="view-options">
-                                    <select class="price-options form-control" id="ecommerce-price-options">
-                                        <option selected>Featured</option>
-                                        <option value="1">Lowest</option>
-                                        <option value="2">Highest</option>
-                                    </select>
-                                    <div class="view-btn-option">
-                                        <button class="btn btn-white view-btn grid-view-btn active">
-                                            <i class="feather icon-grid"></i>
-                                        </button>
-                                        <button class="btn btn-white list-view-btn view-btn">
-                                            <i class="feather icon-list"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Ecommerce Content Section Starts -->
-                <!-- background Overlay when sidebar is shown  starts-->
-                <div class="shop-content-overlay"></div>
-                <!-- background Overlay when sidebar is shown  ends-->
+            </section>
+            <!-- CrossFade Carousel End -->
 
-                <!-- Ecommerce Search Bar Starts -->
-                <section id="ecommerce-searchbar">
-                    <div class="row mt-1">
-                        <div class="col-sm-12">
-                            <fieldset class="form-group position-relative">
-                                <input type="text" class="form-control search-product" id="iconLeft5" placeholder="Search here">
-                                <div class="form-control-position">
-                                    <i class="feather icon-search"></i>
-                                </div>
-                            </fieldset>
-                        </div>
-                    </div>
-                </section>
-                <!-- Ecommerce Search Bar Ends -->
 
-                <!-- Ecommerce Products Starts -->
-                <section id="ecommerce-products" class="grid-view">
-                    <div class="card ecommerce-card">
-                        <div class="card-content">
-                            <div class="item-img text-center">
-                                <a href="app-ecommerce-details.html">
-                                    <img class="img-fluid" src="../../../app-assets/images/pages/eCommerce/1.png" alt="img-placeholder"></a>
-                            </div>
-                            <div class="card-body">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h6 class="item-price">
-                                            $39.99
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="item-name">
-                                    <a href="app-ecommerce-details.html">Amazon - Fire TV Stick with Alexa Voice Remote - Black</a>
-                                    <p class="item-company">By <span class="company-name">Google</span></p>
-                                </div>
-                                <div>
-                                    <p class="item-description">
-                                        Enjoy smart access to videos, games and apps with this Amazon Fire TV stick. Its Alexa voice remote lets you
-                                        deliver hands-free commands when you want to watch television or engage with other applications. With a
-                                        quad-core processor, 1GB internal memory and 8GB of storage, this portable Amazon Fire TV stick works fast
-                                        for buffer-free streaming.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item-options text-center">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $39.99
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="wishlist">
-                                    <i class="fa fa-heart-o"></i> <span>Wishlist</span>
-                                </div>
-                                <div class="cart">
-                                    <i class="feather icon-shopping-cart"></i> <span class="add-to-cart">Add to cart</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">View In Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card ecommerce-card">
-                        <div class="card-content">
-                            <div class="item-img text-center">
-                                <a href="app-ecommerce-details.html">
-                                    <img class="img-fluid" src="../../../app-assets/images/pages/eCommerce/2.png" alt="img-placeholder">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h6 class="item-price">
-                                            $35.00
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="item-name">
-                                    <a href="app-ecommerce-details.html">Google - Chromecast - Black</a>
-                                    <p class="item-company">By <span class="company-name">Amazon</span></p>
-                                </div>
-                                <div>
-                                    <p class="item-description">
-                                        Google Chromecast: Enjoy a world of entertainment with Google Chromecast. Just connect to your HDTV's HDMI
-                                        interface and your home Wi-Fi network to get started. You can stream your favorite apps from your compatible
-                                        phone, tablet or laptop, plus use your phone as a remote to search, play and pause content.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item-options text-center">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $35.00
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="wishlist">
-                                    <i class="fa fa-heart-o mr-25"></i> Wishlist
-                                </div>
-                                <div class="cart">
-                                    <i class="feather icon-shopping-cart mr-25"></i> <span class="add-to-cart">Add to cart</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">View In Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card ecommerce-card">
-                        <div class="card-content">
-                            <div class="item-img text-center">
-                                <a href="app-ecommerce-details.html"><img class="img-fluid" src="../../../app-assets/images/pages/eCommerce/3.png" alt="img-placeholder"></a>
-                            </div>
-                            <div class="card-body">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="item-cost">
-                                            <h6 class="item-price">
-                                                $499.99
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item-name">
-                                    <a href="app-ecommerce-details.html">Dell - Inspiron 15.6" Touch-Screen Laptop - Black</a>
-                                    <p class="item-company">By <span class="company-name">Dell</span></p>
-                                </div>
-                                <div>
-                                    <p class="item-description">
-                                        Dell Inspiron Laptop: Get speed and performance from this 15.6-inch Dell Inspiron laptop. Supported by an
-                                        Intel Core i5-5200U processor and 6GB of DDR3L RAM, this slim touch screen laptop lets you run multiple
-                                        applications without lag. The 1TB hard drive in this Dell Inspiron laptop lets you store multiple music,
-                                        video and document files.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item-options text-center">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $499.99
-                                        </h6>
-                                        <p class="shipping">
-                                            <i class="feather icon-shopping-cart"></i> Free Shipping
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="wishlist">
-                                    <i class="fa fa-heart-o mr-25"></i> Wishlist
-                                </div>
-                                <div class="cart">
-                                    <i class="feather icon-shopping-cart mr-25"></i> <span class="add-to-cart">Add to cart</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">View In Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card ecommerce-card">
-                        <div class="card-content">
-                            <div class="item-img text-center">
-                                <a href="app-ecommerce-details.html"> <img class="img-fluid" src="../../../app-assets/images/pages/eCommerce/4.png" alt="img-placeholder"></a>
-                            </div>
-                            <div class="card-body">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $49.99
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="item-name">
-                                    <a href="app-ecommerce-details.html">Amazon - Echo Dot</a>
-                                    <p class="item-company">By <span class="company-name">Amazon</span></p>
-                                </div>
-                                <div>
-                                    <p class="item-description">
-                                        Echo Dot is the latest addition to Amazon's voice-controlled devices.
-                                        Deliver your favorite playlist anywhere in your home with the Amazon Echo Dot voice-controlled device.
-                                        Control most electric devices through voice activation, or schedule a ride with Uber and order a pizza. The
-                                        Amazon Echo Dot voice-controlled device turns any home into a smart home with the Alexa app on a smartphone
-                                        or tablet.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item-options text-center">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $49.99
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="wishlist">
-                                    <i class="fa fa-heart-o mr-25"></i> Wishlist
-                                </div>
-                                <div class="cart">
-                                    <i class="feather icon-shopping-cart mr-25"></i> <span class="add-to-cart">Add to cart</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">View In Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card ecommerce-card">
-                        <div class="card-content">
-                            <div class="item-img text-center">
-                                <a href="app-ecommerce-details.html">
-                                    <img class="img-fluid" src="../../../app-assets/images/pages/eCommerce/5.png" alt="img-placeholder">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $999.99
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="item-name">
-                                    <a href="app-ecommerce-details.html">
-                                        Apple - MacBook Air® (Latest Model) - 13.3" Display - Silver
-                                    </a>
-                                    <p class="item-company">By <span class="company-name">Apple</span></p>
-                                </div>
-                                <div>
-                                    <p class="item-description">
-                                        MacBook Air is a thin, lightweight laptop from Apple.
-                                        MacBook Air features up to 8GB of memory, a fifth-generation Intel Core processor, Thunderbolt 2, great
-                                        built-in apps, and all-day battery life.1 Its thin, light, and durable enough to take everywhere you go-and
-                                        powerful enough to do everything once you get there, better.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item-options text-center">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $999.99
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="wishlist">
-                                    <i class="fa fa-heart-o mr-25"></i> Wishlist
-                                </div>
-                                <div class="cart">
-                                    <i class="feather icon-shopping-cart mr-25"></i> <span class="add-to-cart">Add to cart</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">View In Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card ecommerce-card">
-                        <div class="card-content">
-                            <div class="item-img text-center">
-                                <a href="app-ecommerce-details.html">
-                                    <img class="img-fluid" src="../../../app-assets/images/pages/eCommerce/6.png" alt="img-placeholder">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $429.99
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="item-name">
-                                    <a href="app-ecommerce-details.html">
-                                        Sharp - 50" Class (49.5" Diag.) - LED - 1080p - Black
-                                    </a>
-                                    <p class="item-company">By <span class="company-name">Sharp</span></p>
-                                </div>
-                                <div>
-                                    <p class="item-description">
-                                        Only at Best Buy Sharp LC-50LB481U LED Roku TV: Get a TV that enjoys full Internet connectivity with this
-                                        Sharp 49.5-inch smart TV. Full HD resolutions give you plenty of detail whether you're streaming content
-                                        from the Internet using the integrated Roku player or watching via cable.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item-options text-center">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $429.99
-                                        </h6>
-                                        <p class="shipping">
-                                            <i class="feather icon-shopping-cart"></i> Free Shipping
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="wishlist">
-                                    <i class="fa fa-heart-o mr-25"></i> Wishlist
-                                </div>
-                                <div class="cart">
-                                    <i class="feather icon-shopping-cart mr-25"></i> <span class="add-to-cart">Add to cart</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">View In Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card ecommerce-card">
-                        <div class="card-content">
-                            <div class="item-img text-center">
-                                <a href="app-ecommerce-details.html">
-                                    <img class="img-fluid" src="../../../app-assets/images/pages/eCommerce/7.png" alt="img-placeholder">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $129
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="item-name">
-                                    <a href="app-ecommerce-details.html">
-                                        Google - Google Home - White/Slate fabric
-                                    </a>
-                                    <p class="item-company">By <span class="company-name">Google</span></p>
-                                </div>
-                                <div>
-                                    <p class="item-description">
-                                        Simplify your everyday life with the Google Home, a voice-activated speaker powered by the Google Assistant.
-                                        Use voice commands to enjoy music, get answers from Google and manage everyday tasks. Google Home is
-                                        compatible with Android and iOS operating systems, and can control compatible smart devices such as
-                                        Chromecast or Nest.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item-options text-center">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $129
-                                        </h6>
-                                        <p class="shipping">
-                                            <i class="feather icon-shopping-cart"></i> Free Shipping
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="wishlist">
-                                    <i class="fa fa-heart-o mr-25"></i> Wishlist
-                                </div>
-                                <div class="cart">
-                                    <i class="feather icon-shopping-cart mr-25"></i> <span class="add-to-cart">Add to cart</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">View In Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card ecommerce-card">
-                        <div class="card-content">
-                            <div class="item-img text-center">
-                                <a href="app-ecommerce-details.html">
-                                    <img class="img-fluid" src="../../../app-assets/images/pages/eCommerce/10.png" alt="img-placeholder">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $29.99
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="item-name">
-                                    <a href="app-ecommerce-details.html">
-                                        Apple - EarPods™ with Remote and Mic - White
-                                    </a>
-                                    <p class="item-company">By <span class="company-name">Apple</span></p>
-                                </div>
-                                <div>
-                                    <p class="item-description">
-                                        Apple EarPods are white in-ear headphones included with music players and smartphones designed and marketed
-                                        by Apple Inc. They are designed to fit the ear while retaining a new design pushed by Apple alongside the
-                                        iPod and iPod Touch products, with which they were sold together.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item-options text-center">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $29.99
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="wishlist">
-                                    <i class="fa fa-heart-o mr-25"></i> Wishlist
-                                </div>
-                                <div class="cart">
-                                    <i class="feather icon-shopping-cart mr-25"></i> <span class="add-to-cart">Add to cart</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">View In Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card ecommerce-card">
-                        <div class="card-content">
-                            <div class="item-img text-center">
-                                <a href="app-ecommerce-details.html">
-                                    <img class="img-fluid" src="../../../app-assets/images/pages/eCommerce/9.png" alt="img-placeholder">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $14.99
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="item-name">
-                                    <a href="app-ecommerce-details.html">
-                                        Philips - hue A19 Smart LED Light Bulb - White Only
-                                    </a>
-                                    <p class="item-company">By <span class="company-name">Philips</span></p>
-                                </div>
-                                <div>
-                                    <p class="item-description">
-                                        Philips hue A19 Smart LED Light Bulb: Get lighting that's as smart as you are. You can easily dim this light
-                                        bulb and set timers and alarms using your smartphone or tablet. Plus, LED technology offers lasting
-                                        illumination while using minimal energy.Get lighting that's as smart as you are.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item-options text-center">
-                                <div class="item-wrapper">
-                                    <div class="item-rating">
-                                        <div class="badge badge-primary badge-md">
-                                            <span>4</span> <i class="feather icon-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="item-cost">
-                                        <h6 class="item-price">
-                                            $14.99
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="wishlist">
-                                    <i class="fa fa-heart-o mr-25"></i> Wishlist
-                                </div>
-                                <div class="cart">
-                                    <i class="feather icon-shopping-cart mr-25"></i> <span class="add-to-cart">Add to cart</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">View In Cart</a>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Ecommerce Products Ends -->
-
-                <!-- Ecommerce Pagination Starts -->
-                <section id="ecommerce-pagination">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-center mt-2">
-                                    <li class="page-item prev-item"><a class="page-link" href="#"></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item" aria-current="page"><a class="page-link" href="#">4</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                    <li class="page-item next-item"><a class="page-link" href="#"></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </section>
-                <!-- Ecommerce Pagination Ends -->
-
-            </div>
-        </div>
-        <div class="sidebar-detached sidebar-left">
-            <div class="sidebar">
-                <!-- Ecommerce Sidebar Starts -->
-                <div class="sidebar-shop" id="ecommerce-sidebar-toggler">
-
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h6 class="filter-heading d-none d-lg-block">Filters</h6>
-                        </div>
-                    </div>
-                    <span class="sidebar-close-icon d-block d-md-none">
-                        <i class="feather icon-x"></i>
-                    </span>
+            <!---- Start ----->
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="multi-range-price">
-                                <div class="multi-range-title pb-75">
-                                    <h6 class="filter-title mb-0">Multi Range</h6>
-                                </div>
-                                <ul class="list-unstyled price-range" id="price-range">
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="price-range" checked value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">All</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="price-range" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50"> &lt;=$10</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="price-range" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">$10 - $100</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="price-range" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">$100 - $500</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="price-range" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">&gt;= $500</span>
-                                        </span>
-                                    </li>
-
-                                </ul>
+                        <div class="card-content">
+                            <img class="card-img img-fluid" src="../../../app-assets/images/slider/04.jpg" alt="Card image">
+                            <div class="card-img-overlay overflow-hidden overlay-danger overlay-lighten-2">
+                                <h4 class="card-title text-white">Card Image Overlay</h4>
+                                <p class="card-text text-white">Sugar plum tiramisu sweet. Cake jelly marshmallow cotton candy chupa chups.
+                                </p>
+                                <p class="card-text"><small class="text-white">Last updated 3 mins ago</small></p>
                             </div>
-                            <!-- /Price Filter -->
-                            <hr>
-                            <!-- /Price Slider -->
-                            <div class="price-slider">
-                                <div class="price-slider-title mt-1">
-                                    <h6 class="filter-title mb-0">Slider</h6>
-                                </div>
-                                <div class="price-slider">
-                                    <div class="price_slider_amount mb-2">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="slider-sm my-1 range-slider" id="price-slider"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /Price Range -->
-                            <hr>
-                            <!-- Categories Starts -->
-                            <div id="product-categories">
-                                <div class="product-category-title">
-                                    <h6 class="filter-title mb-1">Categories</h6>
-                                </div>
-                                <ul class="list-unstyled categories-list">
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false" checked>
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Appliances</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50"> Audio</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Cameras & Camcorders</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Car Electronics & GPS</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Cell Phones</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Computers & Tablets</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50"> Health, Fitness & Beauty</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Office & School Supplies</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">TV & Home Theater</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Video Games
-                                            </span>
-                                        </span>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <!-- Categories Ends -->
-                            <hr>
-                            <!-- Brands -->
-                            <div class="brands">
-                                <div class="brand-title mt-1 pb-1">
-                                    <h6 class="filter-title mb-0">Brands</h6>
-                                </div>
-                                <div class="brand-list" id="brands">
-                                    <ul class="list-unstyled">
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">Insignia™</span>
-                                            </span>
-                                            <span>746</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">
-                                                    Samsung
-                                                </span>
-                                            </span>
-                                            <span>633</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">
-                                                    Metra
-                                                </span>
-                                            </span>
-                                            <span>591</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">HP</span>
-                                            </span>
-                                            <span>530</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">Apple</span>
-                                            </span>
-                                            <span>442</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">GE</span>
-                                            </span>
-                                            <span>394</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">Sony</span>
-                                            </span>
-                                            <span>350</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">Incipio</span>
-                                            </span>
-                                            <span>320</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">KitchenAid</span>
-                                            </span>
-                                            <span>318</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">Whirlpool</span>
-                                            </span>
-                                            <span>298</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- /Brand -->
-                            <hr>
-                            <!-- Rating section starts -->
-                            <div id="ratings">
-                                <div class="ratings-title mt-1 pb-75">
-                                    <h6 class="filter-title mb-0">Ratings</h6>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <ul class="unstyled-list list-inline ratings-list mb-0">
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i></li>
-                                        <li>& up</li>
-                                    </ul>
-                                    <div class="stars-received">(160)</div>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <ul class="unstyled-list list-inline ratings-list mb-0">
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i></li>
-                                        <li>& up</li>
-                                    </ul>
-                                    <div class="stars-received">(176)</div>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <ul class="unstyled-list list-inline ratings-list mb-0">
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i></li>
-                                        <li>& up</li>
-                                    </ul>
-                                    <div class="stars-received">(291)</div>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <ul class="unstyled-list list-inline ratings-list mb-0 ">
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i></li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i></li>
-                                        <li>& up</li>
-                                    </ul>
-                                    <div class="stars-received">(190)</div>
-                                </div>
-                            </div>
-                            <!-- Rating section Ends -->
-                            <hr>
-                            <!-- Clear Filters Starts -->
-                            <div id="clear-filters">
-                                <button class="btn btn-block btn-primary">CLEAR ALL FILTERS</button>
-                            </div>
-                            <!-- Clear Filters Ends -->
-
                         </div>
                     </div>
                 </div>
-                <!-- Ecommerce Sidebar Ends -->
-
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="card text-white border-0 box-shadow-0">
+                        <div class="card-content">
+                            <img class="card-img img-fluid" src="{{asset('images/index/5.jpg')}}" alt="Card image">
+                            <div class="card-img-overlay overflow-hidden overlay-success">
+                                <h4 class="card-title text-white">Card Image Overlay</h4>
+                                <p class="card-text text-white">Sugar plum tiramisu sweet. Cake jelly marshmallow cotton candy chupa chups.
+                                </p>
+                                <p class="card-text text-white"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <img class="card-img img-fluid" src="../../../app-assets/images/slider/04.jpg" alt="Card image">
+                            <div class="card-img-overlay overflow-hidden overlay-warning">
+                                <h4 class="card-title text-white">Card Image Overlay</h4>
+                                <p class="card-text text-white">Sugar plum tiramisu sweet. Cake jelly marshmallow cotton candy chupa chups.
+                                </p>
+                                <p class="card-text"><small class="text-white">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="card text-white border-0 box-shadow-0">
+                        <div class="card-content">
+                            <img class="card-img img-fluid" src="../../../app-assets/images/slider/04.jpg" alt="Card image">
+                            <div class="card-img-overlay overflow-hidden overlay-info">
+                                <h4 class="card-title text-white">Card Image Overlay</h4>
+                                <p class="card-text text-white">Sugar plum tiramisu sweet. Cake jelly marshmallow cotton candy chupa chups.
+                                </p>
+                                <p class="card-text text-white"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!----end--->
+
+            <div class="card-body">
+                <div class="mt-4 mb-2 text-left">
+                    <h2>Produk Terbaru</h2>
+                </div>
+                <div class="swiper-responsive-breakpoints swiper-container px-4 py-2 swiper-container-initialized swiper-container-horizontal">
+                    <div class="swiper-wrapper" style="transform: translate3d(-1232px, 0px, 0px); transition-duration: 0ms;">
+                        <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
+                            <div class="item-heading">
+                                <p class="text-truncate mb-0">
+                                    Bowers Wilkins - CM10 S2 Triple 6-1/2" 3-Way Floorstanding Speaker (Each) - Gloss Black
+                                </p>
+                                <p>
+                                    <small>by</small>
+                                    <small>Bowers &amp; Wilkins</small>
+                                </p>
+                            </div>
+                            <div class="img-container w-50 mx-auto my-2 py-75">
+                                <img src="../../../app-assets/images/elements/apple-watch.png" class="img-fluid" alt="image">
+                            </div>
+                            <div class="item-meta">
+                                <p class="text-primary mt-1">$35.98</p>
+                                <button class="btn btn-danger waves-effect waves-light">Buy Now</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
+                            <div class="item-heading">
+                                <p class="text-truncate mb-0">
+                                    Alienware - 17.3" Laptop - Intel Core i7 - 16GB Memory - NVIDIA GeForce GTX 1070 - 1TB Hard Drive +
+                                    128GB Solid State Drive - Silver
+                                </p>
+                                <p>
+                                    <small>by</small>
+                                    <small>Alienware</small>
+                                </p>
+                            </div>
+                            <div class="img-container w-50 mx-auto my-2 py-75">
+                                <img src="../../../app-assets/images/elements/beats-headphones.png" class="img-fluid" alt="image">
+                            </div>
+                            <div class="item-meta">
+                                <p class="text-primary mt-1">$35.98</p>
+                                <button class="btn btn-danger waves-effect waves-light">Buy Now</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
+                            <div class="item-heading">
+                                <p class="text-truncate mb-0">
+                                    Canon - EOS 5D Mark IV DSLR Camera with 24-70mm f/4L IS USM Lens
+                                </p>
+                                <p>
+                                    <small>by</small>
+                                    <small>Canon</small>
+                                </p>
+                            </div>
+                            <div class="img-container w-50 mx-auto my-3 py-50">
+                                <img src="../../../app-assets/images/elements/macbook-pro.png" class="img-fluid" alt="image">
+                            </div>
+                            <div class="item-meta">
+                                <p class="text-primary mt-1">$35.98</p>
+                                <button class="btn btn-danger waves-effect waves-light">Buy Now</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide rounded swiper-shadow swiper-slide-prev" style="width: 253px; margin-right: 55px;">
+                            <div class="item-heading">
+                                <p class="text-truncate mb-0">
+                                    Apple - 27" iMac with Retina 5K display - Intel Core i7 - 32GB Memory - 2TB Fusion Drive - Silver
+                                </p>
+                                <p>
+                                    <small>by</small>
+                                    <small>Apple</small>
+                                </p>
+                            </div>
+                            <div class="img-container w-50 mx-auto my-2 py-75">
+                                <img src="../../../app-assets/images/elements/homepod.png" class="img-fluid" alt="image">
+                            </div>
+                            <div class="item-meta">
+                                <p class="text-primary mt-1">$35.98</p>
+                                <button class="btn btn-danger waves-effect waves-light">Buy Now</button>
+                            </div>
+                        </div>
+                        <div class="swiper-slide rounded swiper-shadow swiper-slide-active" style="width: 253px; margin-right: 55px;">
+                            <div class="item-heading">
+                                <p class="text-truncate mb-0">
+                                    Bowers Wilkins - CM10 S2 Triple 6-1/2" 3-Way Floorstanding Speaker (Each) - Gloss Black
+                                </p>
+                                <p>
+                                    <small>by</small>
+                                    <small>Bowers &amp; Wilkins</small>
+                                </p>
+                            </div>
+                            <div class="img-container w-50 mx-auto my-2 py-75">
+                                <img src="../../../app-assets/images/elements/magic-mouse.png" class="img-fluid" alt="image">
+                            </div>
+                            <div class="item-meta">
+                                <p class="text-primary mt-1">$35.98</p>
+                                <button class="btn btn-danger waves-effect waves-light">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next swiper-button-disabled" tabindex="0" role="button" aria-label="Next slide" aria-disabled="true"></div>
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="false"></div>
+
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
 </div>
@@ -1036,5 +268,5 @@
 @endsection
 
 @section('script')
-//
+
 @endsection
