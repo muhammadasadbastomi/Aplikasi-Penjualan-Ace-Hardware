@@ -44,24 +44,25 @@
                                         <table class="table zero-configuration">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">No</th>
-                                                    <th scope="col">Nama Barang</th>
-                                                    <th scope="col">Kerusakan</th>
-                                                    <th scope="col">Tanggal Cek</th>
-                                                    <th scope="col">Jumlah</th>
+                                                    <th scope="col" class="text-center">No</th>
+                                                    <th scope="col" class="text-center">Nama Barang</th>
+                                                    <th scope="col" class="text-center">Kerusakan</th>
+                                                    <th scope="col" class="text-center">Tanggal Cek</th>
+                                                    <th scope="col" class="text-center">Jumlah</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($barangrusak as $br)
                                                 <tr>
-                                                    <td class="text-center"></td>
-                                                    <td></td>
-                                                    <td>{{ $br->kerusakan }}</td>
-                                                    <td>{{ $br->tgl_cek }}</td>
-                                                    <td>{{ $br->jumlah_barang }}</td>
+                                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                                    <td class="text-center">{{ $br->nama_barang }}</td>
+                                                    <td class="text-center">{{ $br->kerusakan }}</td>
+                                                    <td class="text-center">{{ $br->tgl_cek }}</td>
+                                                    <td class="text-center">{{ $br->jumlah_barang }}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white"><i
+                                                        <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('rusakEdit', ['id' => $br->uuid])}}"><i
                                                                 class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" href="#"><i
                                                                 data-id="{{$br->uuid}}"
@@ -97,25 +98,33 @@
             </div>
             <div class="modal-body">
                 <form method="POST">
+                    @csrf
                     <div class=" modal-body">
-                        <label>Nama Barang</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
+                            <label for="barang">Pilih Barang</label>
+                            <select class="custom-select" name="barang_id" id="barang_id">
+                                @foreach($barang as $b)
+                                <option value="{{$b->id}}">{{ $b->nama_barang}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <label>Kerusakan</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Kerusakan Barang" class="form-control">
+                            <input type="text" name="kerusakan" id="kerusakan" placeholder="Masukkan Kerusakan Barang"
+                                value="{{old('kerusakan')}}" class="form-control">
                         </div>
 
                         <label>Tanggal Cek</label>
                         <div class="form-group">
-                            <input type="date" class="form-control">
+                            <input type="date" name="tgl_cek" id="tgl_cek" value="{{old('tgl_cek')}}"
+                                class="form-control">
                         </div>
 
-                        <label>Jumlah Barang</label>
+                        <label>Jumlah</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Jumlah Barang" class="form-control">
+                            <input type="text" name="jumlah_barang" id="jumlah_barang" placeholder="Masukkan Jumlah"
+                                value="{{old('jumlah_barang')}}" class="form-control">
                         </div>
                     </div>
             </div>

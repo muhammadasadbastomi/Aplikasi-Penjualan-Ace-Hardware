@@ -54,6 +54,13 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::put('/admin/barang/datang/edit/{id}', 'BarangdatangController@update')->name('datangUpdate');
     Route::delete('/admin/barang/datang/delete/{id}', 'BarangdatangController@destroy')->name('datangDestroy');
 
+    Route::get('/admin/barang/rusak/index', 'BarangrusakController@index')->name('rusakIndex');
+    Route::post('/admin/barang/rusak/index', 'BarangrusakController@store')->name('rusakstore');
+    //Route::get('/admin/barang/rusak/show', 'BarangrusakController@show')->name('rusakShow');
+    Route::get('/admin/barang/rusak/edit/{id}', 'BarangrusakController@edit')->name('rusakEdit');
+    Route::put('/admin/barang/rusak/edit/{id}', 'BarangrusakController@update')->name('rusakUpdate');
+    Route::delete('/admin/barang/rusak/delete/{id}', 'BarangrusakController@destroy')->name('rusakDelete');
+
     Route::get('/admin/barang/pesanan/index', 'BarangpesananController@index')->name('pesananIndex');
     Route::post('/admin/barang/pesanan/index', 'BarangpesananController@store')->name('pesananstore');
     Route::get('/admin/barang/pesanan/show', 'BarangpesananController@show')->name('pesananShow');
@@ -88,13 +95,6 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::get('/admin/barang/garansi/edit', 'BaranggaransiController@edit')->name('garansiEdit');
     Route::post('/admin/barang/garansi/edit', 'BaranggaransiController@update')->name('garansiUpdate');
     Route::delete('/admin/barang/garansi/delete', 'BaranggaransiController@delete')->name('garansiDelete');
-
-    Route::get('/admin/barang/rusak/index', 'BarangrusakController@index')->name('rusakIndex');
-    Route::post('/admin/barang/rusak/index', 'BarangrusakController@store')->name('rusakstore');
-    Route::get('/admin/barang/rusak/show', 'BarangrusakController@show')->name('rusakShow');
-    Route::get('/admin/barang/rusak/edit', 'BarangrusakController@edit')->name('rusakEdit');
-    Route::post('/admin/barang/rusak/edit', 'BarangrusakController@update')->name('rusakUpdate');
-    Route::delete('/admin/barang/rusak/delete', 'BarangrusakController@delete')->name('rusakDelete');
 
     Route::get('/admin/barang/perbaikan/index', 'BarangperbaikanController@index')->name('perbaikanIndex');
     Route::post('/admin/barang/perbaikan/index', 'BarangperbaikanController@store')->name('perbaikanstore');

@@ -44,30 +44,29 @@
                                         <table class="table zero-configuration">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">No</th>
-                                                    <th scope="col">Nama Barang</th>
-                                                    <th scope="col">Kode Barang</th>
-                                                    <th scope="col">Supplier</th>
-                                                    <th scope="col">Satuan</th>
-                                                    <th scope="col">Departement</th>
-                                                    <th scope="col">Harga</th>
-                                                    <th scope="col">Stok</th>
-                                                    <th scope="col">Aksi</th>
-                                                    <th scope="col" class="text-center"></th>
+                                                    <th scope="col" class="text-center">No</th>
+                                                    <th scope="col" class="text-center">Nama Barang</th>
+                                                    <th scope="col" class="text-center">Kode Barang</th>
+                                                    <th scope="col" class="text-center">Supplier</th>
+                                                    <th scope="col" class="text-center">Satuan</th>
+                                                    <th scope="col" class="text-center">Departement</th>
+                                                    <th scope="col" class="text-center">Harga</th>
+                                                    <th scope="col" class="text-center">Stok</th>
+                                                    <th scope="col" class="text-center">Aksi</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($barang as $b)
                                                 <tr>
                                                     <td class="text-center">{{$loop->iteration}}</td>
-                                                    <td>{{$b->nama_barang}}</td>
-                                                    <td>{{$b->kode_barang}}</td>
-                                                    <td>{{$b->supplier->supplier}}</td>
-                                                    <td>{{$b->satuan}}</td>
-                                                    <td>{{$b->departement}}</td>
-                                                    <td>{{$b->harga_jual}}</td>
-                                                    <td>{{$b->stok_tersedia}}</td>
-                                                    <td></td>
+                                                    <td class="text-center">{{$b->nama_barang}}</td>
+                                                    <td class="text-center">{{$b->kode_barang}}</td>
+                                                    <td class="text-center">{{$b->supplier->supplier}}</td>
+                                                    <td class="text-center">{{$b->satuan}}</td>
+                                                    <td class="text-center">{{$b->departement}}</td>
+                                                    <td class="text-center">{{$b->harga_jual}}</td>
+                                                    <td class="text-center">{{$b->stok_tersedia}}</td>
                                                     <td>
                                                         <a class="btn btn-sm btn-info text-white"
                                                             href="{{route('barangShow', ['id' => $b->uuid])}}"><i

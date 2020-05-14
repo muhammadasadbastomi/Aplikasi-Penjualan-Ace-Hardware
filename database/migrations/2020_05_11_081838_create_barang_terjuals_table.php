@@ -16,7 +16,7 @@ class CreateBarangTerjualsTable extends Migration
         Schema::create('barang_terjuals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
-            $table->string('id_barang');
+            $table->unsignedBigInteger('barang_id');
             $table->integer('jumlah_terjual');
             $table->integer('tgl_terjual');
             $table->timestamps();

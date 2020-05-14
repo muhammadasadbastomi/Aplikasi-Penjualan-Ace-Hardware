@@ -39,7 +39,28 @@ class BarangrusakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'required' => ':attribute harus diisi.',
+        ];
+        $request->validate([
+
+
+            'tgl_cek' => 'required',
+            'kerusakan' => 'required',
+            'jumlah_barang' => 'required',
+        ], $messages);
+
+        // create new object
+        $barangrusak = new Barang_rusak;
+        $request->request->add(['barangrusak_id' => $barangrusak->id]);
+        $barangrusak->barang_id = $request->barang_id;
+        $barangrusak->kerusakan = $request->kerusakan;
+        $barangrusak->tgl_cek = $request->tgl_cek;
+        $barangrusak->jumlah_barang = $request->jumlah_barang;
+        $barangrusak->save();
+
+        return redirect('admin/barang/rusak/index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -48,7 +69,7 @@ class BarangrusakController extends Controller
      * @param  \App\BarangRusak  $barangRusak
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangRusak $barangRusak)
+    public function show()
     {
         //
     }
@@ -59,9 +80,12 @@ class BarangrusakController extends Controller
      * @param  \App\BarangRusak  $barangRusak
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangRusak $barangRusak)
+    public function edit($id)
     {
-        //
+        $barangrusak = Barang_rusak::orderBy('id', 'Desc')->first();
+        $barang = Barang::orderBy('id', 'Desc')->get();
+
+        return view('admin.barang.rusak.edit', compact('barangrusak', 'barang'));
     }
 
     /**
@@ -71,9 +95,29 @@ class BarangrusakController extends Controller
      * @param  \App\BarangRusak  $barangRusak
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangRusak $barangRusak)
+    public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'required' => ':attribute harus diisi.',
+        ];
+        $request->validate([
+
+
+            'kerusakan' => 'required',
+            'tgl_cek' => 'required',
+            'jumlah_barang' => 'required',
+        ], $messages);
+
+        // create new object
+        $barangrusak = Barang_rusak::where('uuid', $id)->first();;
+        $barangrusak->barang_id = $request->barang_id;
+        $barangrusak->kerusakan = $request->kerusakan;
+        $barangrusak->tgl_cek = $request->tgl_cek;
+        $barangrusak->jumlah_barang = $request->jumlah_barang;
+        $barangrusak->update();
+
+        return redirect('admin/barang/rusak/index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**
@@ -82,7 +126,7 @@ class BarangrusakController extends Controller
      * @param  \App\BarangRusak  $barangRusak
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangRusak $barangRusak)
+    public function destroy($id)
     {
         //
     }

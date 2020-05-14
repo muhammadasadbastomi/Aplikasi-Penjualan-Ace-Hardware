@@ -16,7 +16,7 @@ class CreateBarangDiskonsTable extends Migration
         Schema::create('barang_diskons', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
-            $table->integer('id_barang');
+            $table->unsignedBigInteger('barang_id');
             $table->string('diskon');
             $table->timestamps();
         });

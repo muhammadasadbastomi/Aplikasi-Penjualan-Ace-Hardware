@@ -16,7 +16,7 @@ class CreateBarangRusaksTable extends Migration
         Schema::create('barang_rusaks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
-            $table->string('id_barang');
+            $table->unsignedBigInteger('barang_id');
             $table->string('kerusakan');
             $table->date('tgl_cek');
             $table->integer('jumlah_barang');

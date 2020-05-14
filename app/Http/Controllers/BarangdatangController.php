@@ -54,7 +54,7 @@ class BarangdatangController extends Controller
         // create new object
         $barangdatang = new Barang_datang;
         $request->request->add(['barangdatang_id' => $barangdatang->id]);
-        $barangdatang->id_barang = $request->barang_id;
+        $barangdatang->barang_id = $request->barang_id;
         $barangdatang->tgl_masuk = $request->tgl_masuk;
         $barangdatang->jumlah = $request->jumlah;
         $barangdatang->save();
@@ -108,7 +108,7 @@ class BarangdatangController extends Controller
         ], $messages);
 
         $barangdatang = Barang_datang::where('uuid', $id)->first();
-        $barangdatang->id_barang = $request->id_barang;
+        $barangdatang->barang_id = $request->barang_id;
         $barangdatang->tgl_masuk = $request->tgl_masuk;
         $barangdatang->jumlah = $request->jumlah;
         //dd($barangdatang);
