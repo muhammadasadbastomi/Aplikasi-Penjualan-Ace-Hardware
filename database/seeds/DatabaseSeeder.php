@@ -11,10 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Supplier::class, 10)->create()->each(function ($supplier) {
+        factory(App\Supplier::class, 3)->create()->each(function ($supplier) {
 
             // Seed the relation with 10 members
-            $barangs = factory(App\Barang::class, 50)->make();
+            $barangs = factory(App\Barang::class, 10)->make();
             $supplier->barang()->saveMany($barangs);
         });
 

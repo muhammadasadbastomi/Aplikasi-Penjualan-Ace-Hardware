@@ -112,5 +112,5 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
 Route::get('/admin/account/index', 'UserController@index')->name('userIndex');
 Route::get('/home/index', 'PenjualanController@index')->name('homeIndex');
 Route::get('/home/shop', 'PenjualanController@shop')->name('homeShop');
-Route::get('/home/profile', 'PenjualanController@profile')->name('homeProfile');
-Route::get('/home/detail', 'PenjualanController@show')->name('homeShow');
+Route::get('/home/profile/', 'PenjualanController@profile')->name('homeProfile');
+Route::get('/home/detail/{id}', 'PenjualanController@show')->name('homeShow');

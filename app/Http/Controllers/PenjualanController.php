@@ -74,10 +74,9 @@ class PenjualanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $barang = Barang::orderBy('id', 'desc')->get();
-
+        $barang = Barang::findOrfail($id);
         return view('home.detail', compact('barang'));
     }
 

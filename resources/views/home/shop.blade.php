@@ -42,7 +42,7 @@
                         <div class="card-content">
                             <div class="item-img text-center">
                                 <a href="app-ecommerce-details.html">
-                                    <img class="img-fluid" src="../../../app-assets/images/pages/eCommerce/1.png" alt="img-placeholder"></a>
+                                    <img class="img-fluid" src="{{$d->gambar()}}" alt="img-placeholder"></a>
                             </div>
                             <div class="card-body">
                                 <div class="item-wrapper">
@@ -59,11 +59,11 @@
                                         @endif
                                     </div>
                                     <div class="item-rating">
-                                        <a type="button" class="btn btn-primary btn-sm" href="{{route('homeShow')}}">Detail</a>
+                                        <a type="button" class="btn btn-primary btn-sm" href="{{route('homeShow', ['id' => $d->uuid])}}">Detail</a>
                                     </div>
                                 </div>
                                 <div class="item-name">
-                                    <a href="{{route('homeShow')}}">{{$d->nama_barang}}</a>
+                                    <a href="{{route('homeShow', ['id' => $d->uuid])}}">{{$d->nama_barang}}</a>
                                     <p class="item-company">By <span class="company-name">Google</span></p>
                                 </div>
                                 <div>
