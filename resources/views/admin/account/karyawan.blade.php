@@ -95,7 +95,7 @@
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel1" style="padding-left: 10px;">Tambah Barang</h4>
+                <h4 class="modal-title" id="myModalLabel1" style="padding-left: 10px;">Tambah Karyawan</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -105,28 +105,36 @@
                     <div class="modal-body">
                         <label>Nama Lengkap</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Nama Lengkap" class="form-control">
+                            <input type="text" name="name" id="name" placeholder="Masukkan Nama Lengkap"
+                                value="{{old('name')}}" class="form-control">
+                            @error('name')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <label>E-Mail</label>
                         <div class="form-group">
-                            <input type="email" class="form-control">
+                            <input type="email" name="email" id="email" value="{{old('email')}}" class="form-control"
+                                placeholder="Masukkan Email">
+                            @error('email')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
-                        <label>No.Telepon</label>
+                        <!--<label>No.Telepon</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Nomor Telepon" class="form-control">
-                        </div>
+                        </div> -->
 
-                        <label>Status</label>
+                        <!--<label>Status</label>
                         <fieldset>
                             <div class="form-group">
                                 <input type="text" placeholder="Karyawan" class="form-control" disabled>
                             </div>
-                        </fieldset>
-                        <label>Photo</label>
-                        <div class="form-group">
-                            <input type="file" class="form-control">
+                            </fieldset> -->
+                        <div class="col-lg-6 col-md-12">
+                            <fieldset class="form-group">
+                                <label for="basicInputFile">Foto</label>
+                                <input type="file" name="photos" id="photos" class="form-control-file"
+                                    id="basicInputFile">
+                            </fieldset>
+                            @error('photos')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                     </div>
                     <div class="modal-footer">
