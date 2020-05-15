@@ -22,9 +22,12 @@ class CreateBarangsTable extends Migration
             $table->string('satuan');
             $table->string('departement');
             $table->string('harga_jual');
+            $table->tinyInteger('kategori');
             $table->integer('stok_tersedia');
-            $table->string('gambar');
+            $table->integer('diskon')->nullable();
+            $table->string('gambar')->default('default.png');
             $table->timestamps();
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('restrict');
         });
     }
 

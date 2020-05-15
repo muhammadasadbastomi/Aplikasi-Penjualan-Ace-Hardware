@@ -11,7 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        factory(App\Supplier::class, 10)->create()->each(function ($supplier) {
+
+            // Seed the relation with 10 members
+            $barangs = factory(App\Barang::class, 50)->make();
+            $supplier->barang()->saveMany($barangs);
+        });
+
         DB::table('users')->insert([
             'uuid' => Str::random(36),
             'name' => 'Admin',
