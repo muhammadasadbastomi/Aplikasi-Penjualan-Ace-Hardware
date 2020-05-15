@@ -28,10 +28,8 @@
                     <li><a href="{{ route('rusakIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Rusak</span></a></li>
                     <li><a href="{{ route('perbaikanIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Dalam Perbaikan</span></a></li>
                 </ul>
-
             <li class="nav-item"><a href="{{route('userEdit')}}"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Account Settings">Edit Profile</span></a>
             </li>
-
             <li class="nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">User</span></a>
                 <ul class="menu-content">
                     <li><a href="{{route('userAdmin')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Admin</span></a>
