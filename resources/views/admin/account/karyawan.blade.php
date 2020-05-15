@@ -33,7 +33,10 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah Data</span></button> </div>
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span></button> </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -41,28 +44,36 @@
                                         <table class="table zero-configuration">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">No</th>
-                                                    <th scope="col">Photo</th>
-                                                    <th scope="col">Nama</th>
-                                                    <th scope="col">E-mail</th>
-                                                    <th scope="col">No.Telepon</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col" class="text-center"></th>
+                                                    <th scope="col" class="text-center">No</th>
+                                                    <th scope="col" class="text-center">Nama</th>
+                                                    <th scope="col" class="text-center">email</th>
+                                                    <th scope="col" class="text-center">Role</th>
+                                                    <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach($user as $u)
                                                 <tr>
-                                                    <td class="text-center"></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                                    <td class="text-center">{{ $u->name }}</td>
+                                                    <td class="text-center">{{ $u->email }}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal"><i class="feather icon-edit"></i></a>
-                                                        <a class="btn btn-sm btn-danger text-white" href="#"><i class="feather icon-trash"></i></a>
+                                                        @if($u->role == 1)
+                                                        Admin
+                                                        @elseif($u->role == 2)
+                                                        Karyawan
+                                                        @else
+                                                        -
+                                                        @endif
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a class="btn btn-sm btn-info text-white"><i
+                                                                class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -79,7 +90,8 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -127,54 +139,6 @@
     </div>
 </div>
 
-<!-- Modal Edit -->
-<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalScrollable" style="padding-left: 10px;">Edit Barang</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data">
-                    <div class="modal-body">
-                        <label>Nama Lengkap</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Nama Lengkap" class="form-control">
-                        </div>
-
-                        <label>E-Mail</label>
-                        <div class="form-group">
-                            <input type="email" class="form-control">
-                        </div>
-
-                        <label>No.Telepon</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Nomor Telepon" class="form-control">
-                        </div>
-
-                        <label>Status</label>
-                        <fieldset>
-                            <div class="form-group">
-                                <input type="text" placeholder="Karyawan" class="form-control" disabled>
-                            </div>
-                        </fieldset>
-                        <label>Photo</label>
-                        <div class="form-group">
-                            <input type="file" class="form-control">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Ubah</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 
 @section('script')

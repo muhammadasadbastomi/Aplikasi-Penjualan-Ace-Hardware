@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function admin()
     {
-        $user = User::orderBy('id', 'desc')->get();
+        $user = User::where('role', [1])->orderBy('id', 'desc')->get();
 
         return view('admin.account.admin', compact('user'));
     }
@@ -38,7 +38,7 @@ class UserController extends Controller
      */
     public function karyawan()
     {
-        $user = User::orderBy('id', 'desc')->get();
+        $user = User::where('role', [2])->orderBy('id', 'desc')->get();
 
         return view('admin.account.karyawan', compact('user'));
     }

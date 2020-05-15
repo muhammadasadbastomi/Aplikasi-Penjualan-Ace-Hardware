@@ -24,18 +24,18 @@ class Barang extends Model
         return $this->belongsTo(Supplier::class);
     }
 
-    public function stok()
-    {
-        return $this->belongsTo(Stok::class);
-    }
-
     public function barang_datang()
     {
-        return $this->belongsTo(Barang_datang::class);
+        return $this->HasMany(Barang_datang::class);
     }
 
     public function barang_rusak()
     {
-        return $this->belongsTo(Barang_rusak::class);
+        return $this->hasMany(Barang_rusak::class);
+    }
+
+    public function barang_terjual()
+    {
+        return $this->hasMany(Barang_terjual::class);
     }
 }
