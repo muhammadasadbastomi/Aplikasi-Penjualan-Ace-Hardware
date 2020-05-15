@@ -12,16 +12,14 @@
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
                                 <a class="navbar-brand" href="{{route('homeIndex')}}">
-                                    <img src="{{asset('img/logo.png') }}" style="width: 63px;  margin-top:10px; margin-left: 4px; ">
+                                    <img src="{{asset('img/logo.png') }}" style="width: 63px;  margin-top:11px; margin-left: 4px; ">
                                 </a></li>
-
                             <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeIndex')}}"><i class="ficon fas fa fa-shopping-bag"></i>Home</a>
                             </li>
                             <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeShop')}}"><i class="ficon fas fa fa-shopping-cart"></i>Shop</a>
                             </li>
-                            <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeProfile')}}"><i class="ficon fas fa fa-user"></i>Profile</a>
-                            </li>
-
+                            <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeProfile')}}"><i class="ficon fas fa fa-user"></i>Profile</a>
+                            </li> -->
                             <li class="nav-item nav-search" style="margin-top:14px; margin-left: 10px;">
                                 <div class="search-bar">
                                     <form method="post" action="#">
@@ -34,14 +32,12 @@
                                     </form>
                                 </div>
                             </li>
-
-
                         </ul>
                     </div>
                     <ul class="nav navbar-nav float-right">
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i class="ficon feather icon-maximize"></i></a></li>
+                        <!-- <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i class="ficon feather icon-maximize"></i></a></li> -->
                         <!-- chart Belanja -->
-                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-shopping-cart"></i><span class="badge badge-pill badge-primary badge-up">2</span></a>
+                        <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-shopping-cart"></i><span class="badge badge-pill badge-primary badge-up">2</span></a>
                             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                                 <li class="dropdown-menu-header">
                                     <div class="dropdown-header m-0 p-2">
@@ -91,9 +87,9 @@
                                     </a></li>
                                 <li class="dropdown-menu-footer"><a class="dropdown-item p-1 text-center" href="javascript:void(0)">Read all notifications</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- End chart Belanja -->
-                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon fas fa fa-list-alt"></i></a>
+                        <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon fas fa fa-list-alt"></i></a>
                             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                                 <li class="dropdown-menu-header">
                                     <div class="dropdown-header m-0 p-2">
@@ -110,9 +106,9 @@
                                             <button type="submit" class="btn btn-primary">Cek Pesanan</button>
                                 </form>
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- Notif-->
-                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span class="badge badge-pill badge-primary badge-up">5</span></a>
+                        <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span class="badge badge-pill badge-primary badge-up">5</span></a>
                             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                                 <li class="dropdown-menu-header">
                                     <div class="dropdown-header m-0 p-2">
@@ -162,15 +158,21 @@
                                     </a></li>
                                 <li class="dropdown-menu-footer"><a class="dropdown-item p-1 text-center" href="javascript:void(0)">Read all notifications</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- End Notif-->
-                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                        <!-- <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                 <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">John Doe</span><span class="user-status">Available</span></div><span><img class="round" src="../../../app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="page-user-profile.html"><i class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href="app-email.html"><i class="feather icon-check-square"></i> Task</a>
                                 <div class="dropdown-divider"></div><a class="dropdown-item" href="auth-login.html"><i class="feather icon-power"></i> Logout</a>
                             </div>
-                        </li>
+                        </li> -->
+                    </ul>
+                    </li>
+
+
+
+
                     </ul>
                 </div>
             </div>
