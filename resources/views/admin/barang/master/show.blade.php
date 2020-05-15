@@ -72,6 +72,38 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
+                                            <label for="kategori">kategori</label>
+                                            <select class="custom-select" name="kategori" id="kategori">
+                                                <option value="{{ $barang->kategori}}" selected>
+                                                    @if($barang->kategori == 1)
+                                                    Alat Rumah
+                                                    @elseif($barang->kategori == 2)
+                                                    Alat Kebersihan
+                                                    @elseif($barang->kategori == 3)
+                                                    Alat Dapur
+                                                    @elseif($barang->kategori == 4)
+                                                    Otomotif
+                                                    @elseif($barang->kategori == 5)
+                                                    Peralatan Elektronik
+                                                    @elseif($barang->kategori == 6)
+                                                    Olahraga & Outdoor
+                                                    @elseif($barang->kategori == 7)
+                                                    Lain-lain
+                                                    @else
+                                                    -
+                                                    @endif
+                                                <option value="1">Alat Rumah</option>
+                                                <option value="2">Alat Kebersihan</option>
+                                                <option value="3">Dapur</option>
+                                                <option value="4">Otomotif</option>
+                                                <option value="5">Peralatan Elektronik</option>
+                                                <option value="6">Olahraga & Outdoor</option>
+                                                <option value="7">Lain-lain</option>
+                                                </option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label>Harga satuan </label>
                                             <input type="number" id="satuan" name="satuan"
                                                 class="form-control @error ('satuan') is-invalid @enderror"
@@ -88,6 +120,12 @@
                                             <input type="number" id="harga_jual" name="harga_jual"
                                                 class="form-control @error ('harga_jual') is-invalid @enderror"
                                                 placeholder="Masukkan harga jual" value="{{ $barang->harga_jual }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Diskon </label>
+                                            <input type="number" id="diskon" name="diskon"
+                                                class="form-control @error ('diskon') is-invalid @enderror"
+                                                placeholder="Masukkan Diskon" value="{{ $barang->diskon }}">
                                         </div>
                                         <div class="form-group">
                                             <label>Stok </label>
