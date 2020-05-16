@@ -179,7 +179,7 @@
                             <br>
                             @endif
                             <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
-                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-shopping-cart"> Detail</i> </a>
+                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
                     </div>
                     @endforeach
@@ -226,7 +226,7 @@
                             <br>
                             @endif
                             <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
-                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-shopping-cart"> Detail</i> </a>
+                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
                     </div>
                     @endforeach
@@ -273,7 +273,7 @@
                             <br>
                             @endif
                             <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
-                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-shopping-cart"> Detail</i> </a>
+                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
                     </div>
                     @endforeach
@@ -320,7 +320,7 @@
                             <br>
                             @endif
                             <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
-                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-shopping-cart"> Detail</i> </a>
+                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
                     </div>
                     @endforeach

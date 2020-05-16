@@ -49,7 +49,7 @@
                                     <div>
                                         <h6 class="item-price">
                                             @if($d->diskon != null)
-                                            <h6><del>Rp. {{$d->harga_jual}},-</del> / <strong>{{$d->diskon}}%</strong></h6>
+                                            <h6><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->diskon}}%</strong></h6>
                                             <h6>Rp. {{$d->harga_diskon}},-</h6>
                                         </h6>
                                         @else
@@ -59,7 +59,7 @@
                                         @endif
                                     </div>
                                     <div class="item-rating">
-                                        <a type="button" class="btn btn-primary btn-sm" href="{{route('homeShow', ['id' => $d->uuid])}}">Detail</a>
+                                        <a type="button" class="btn btn-primary btn-sm" href="{{route('homeShow', ['id' => $d->uuid])}}"> <i class="fas fa fa-search"> Detail</i></a>
                                     </div>
                                 </div>
                                 <div class="item-name">
