@@ -70,7 +70,7 @@ class UserController extends Controller
         $user->role = '2';
         $user->name = $request->nama;
         $user->email = $request->email;
-        $user->password = Hash::make('admin123');
+        $user->password = Hash::make($request->password);
         $user->save();
     }
 

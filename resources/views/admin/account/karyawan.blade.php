@@ -117,6 +117,13 @@
                             @error('email')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
+                        <label>E-Mail</label>
+                        <div class="form-group">
+                            <input type="password" name="password" id="password" value="{{old('password')}}"
+                                class="form-control" placeholder="Masukkan password">
+                            @error('password')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                        </div>
+
                         <!--<label>No.Telepon</label>
                         <div class="form-group">
                             <input type="text" placeholder="Masukkan Nomor Telepon" class="form-control">
@@ -128,6 +135,7 @@
                                 <input type="text" placeholder="Karyawan" class="form-control" disabled>
                             </div>
                             </fieldset> -->
+
                         <div class="col-lg-6 col-md-12">
                             <fieldset class="form-group">
                                 <label for="basicInputFile">Foto</label>

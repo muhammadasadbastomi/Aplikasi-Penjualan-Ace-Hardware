@@ -48,6 +48,8 @@
                                                     <th scope="col" class="text-center">Nama Barang</th>
                                                     <th scope="col" class="text-center">Kerusakan</th>
                                                     <th scope="col" class="text-center">Tanggal Cek</th>
+                                                    <th scope="col" class="text-center">Status</th>
+                                                    <th scope="col" class="text-center">Tanggal Selesai</th>
                                                     <th scope="col" class="text-center">Jumlah</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
@@ -59,7 +61,41 @@
                                                     <td class="text-center">{{ $br->barang->nama_barang }}</td>
                                                     <td class="text-center">{{ $br->kerusakan }}</td>
                                                     <td class="text-center">{{ $br->tgl_cek }}</td>
+                                                    @if($br->status == 1)
+                                                    <td class="text-center"><a
+                                                            class="btn btn-warning btn-sm text-white">Belum
+                                                            diperbaiki</a>
+                                                    </td>
+                                                    @elseif($br->status == 2)
+                                                    <td class="text-center"><a
+                                                            class="btn btn-info btn-sm text-white">Dalam
+                                                            Perbaikan</a>
+                                                    </td>
+                                                    @elseif($br->status == 3)
+                                                    <td class="text-center"><a
+                                                            class="btn btn-success btn-sm text-white">Selesai
+                                                            Perbaikan</a>
+                                                    </td>
+                                                    @elseif($br->status == 4)
+                                                    <td class="text-center"><a
+                                                            class="btn btn-danger btn-sm text-white">Tidak
+                                                            bisa diperbaiki</a>
+                                                    </td>
+                                                    @else
+                                                    <td class="text-center"><a
+                                                            class="btn btn-success btn-sm text-white">-</a>
+                                                    </td>
+                                                    @endif
+                                                    <!-- <td class="text-center">{{ $br->tgl_selesai }}</td> -->
+                                                    <td class="text-center">
+                                                        @if($br->tgl_selesai)
+                                                        {{ $br->tgl_selesai }}
+                                                        @else
+                                                        -
+                                                        @endif
+                                                    </td>
                                                     <td class="text-center">{{ $br->jumlah_barang }}</td>
+
                                                     <td class="text-center">
                                                         <a class="btn btn-sm btn-info text-white"
                                                             href="{{route('rusakEdit', ['id' => $br->uuid])}}"><i

@@ -19,6 +19,8 @@ class CreateBarangRusaksTable extends Migration
             $table->unsignedBigInteger('barang_id');
             $table->string('kerusakan');
             $table->date('tgl_cek');
+            $table->tinyInteger('status');
+            $table->date('tgl_selesai')->nullable();
             $table->integer('jumlah_barang');
             $table->timestamps();
         });

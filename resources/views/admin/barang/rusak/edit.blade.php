@@ -62,6 +62,25 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="status">status</label>
+                                        <select class="custom-select" name="status" id="status">
+                                            <option selected value="">Pilih status</option>
+                                            <option value="1">Belum diperbaiki</option>
+                                            <option value="2">Dalam perbaikan</option>
+                                            <option value="3">Selesai diperbaiki</option>
+                                            <option value="4">Tidak bisa diperbaiki</option>
+
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="tgl_selesai">Tanggal Selesai</label>
+                                        <input type="date" id="tgl_selesai" name="tgl_selesai" class="form-control"
+                                            value="{{$barangrusak->tgl_selesai}}">
+                                    </div>
+
+
+                                    <div class="form-group">
                                         <label>Jumlah </label>
                                         <input type="number" id="jumlah_barang" name="jumlah_barang"
                                             class="form-control @error ('jumlah') is-invalid @enderror"

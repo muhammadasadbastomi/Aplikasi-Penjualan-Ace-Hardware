@@ -57,6 +57,7 @@ class BarangrusakController extends Controller
         $barangrusak->barang_id = $request->barang_id;
         $barangrusak->kerusakan = $request->kerusakan;
         $barangrusak->tgl_cek = $request->tgl_cek;
+        $barangrusak->status = 1;
         $barangrusak->jumlah_barang = $request->jumlah_barang;
         $barangrusak->save();
 
@@ -114,6 +115,8 @@ class BarangrusakController extends Controller
         $barangrusak->barang_id = $request->barang_id;
         $barangrusak->kerusakan = $request->kerusakan;
         $barangrusak->tgl_cek = $request->tgl_cek;
+        $barangrusak->tgl_selesai = $request->tgl_selesai;
+        $barangrusak->status = $request->status;
         $barangrusak->jumlah_barang = $request->jumlah_barang;
         $barangrusak->update();
 
