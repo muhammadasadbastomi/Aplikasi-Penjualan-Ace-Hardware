@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Barang;
+use App\Thumbnail;
 use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
@@ -15,7 +16,7 @@ class PenjualanController extends Controller
     public function index()
     {
         $barang = Barang::orderBy('id', 'desc')->limit(6)->get();
-
+        $thumb = Thumbnail::orderBy('id', 'DESC')->get();
         $data = Barang::orderBy('id', 'desc')->Wherenotnull('diskon')->limit(6)->get();
         $diskon = $data->map(function ($item) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
@@ -24,7 +25,7 @@ class PenjualanController extends Controller
             return $item;
         });
 
-        return view('home.index', compact('barang', 'diskon'));
+        return view('home.index', compact('barang', 'diskon', 'thumb'));
     }
 
     /**
