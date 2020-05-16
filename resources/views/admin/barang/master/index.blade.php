@@ -2,7 +2,48 @@
 
 @section('title')Admin Data Barang @endsection
 
+@section('head')
+<style>
+    #imgView {
+        width: 100%;
+        height: 100%;
+    }
+
+    #gambar_nodin {
+        width: 100%;
+        height: 100%;
+    }
+
+    .loadAnimate {
+        animation: setAnimate ease 2.5s infinite;
+    }
+
+    @keyframes setAnimate {
+        0% {
+            color: #000;
+        }
+
+        50% {
+            color: transparent;
+        }
+
+        99% {
+            color: transparent;
+        }
+
+        100% {
+            color: #000;
+        }
+    }
+
+    .custom-file-label {
+        cursor: pointer;
+    }
+</style>
+@endsection
+
 @section('content')
+
 <!-- BEGIN: Content-->
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -39,10 +80,11 @@
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration">
+                                        <table class="table zero-configuration nowrap">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="text-center">No</th>
+                                                    <th scope="col" class="text-center">Gambar</th>
                                                     <th scope="col" class="text-center">Nama Barang</th>
                                                     <th scope="col" class="text-center">Kode Barang</th>
                                                     <th scope="col" class="text-center">Supplier</th>
@@ -53,13 +95,13 @@
                                                     <th scope="col" class="text-center">Diskon</th>
                                                     <th scope="col" class="text-center">Stok</th>
                                                     <th scope="col" class="text-center" width="100px;">Aksi</th>
-
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($barang as $b)
                                                 <tr>
                                                     <td class="text-center">{{$loop->iteration}}</td>
+                                                    <td><img src="/images/barang/{{$b->gambar}}" alt="Gambar" class="avatar mr-1 avatar-xl" width="50px;" height="50px;"></td>
                                                     <td class="text-center">{{$b->nama_barang}}</td>
                                                     <td class="text-center">{{$b->kode_barang}}</td>
                                                     <td class="text-center">{{$b->supplier->supplier}}</td>
@@ -88,7 +130,7 @@
                                                     <td class="text-center">{{$b->diskon}} %</td>
                                                     <td class="text-center">{{$b->stok_tersedia}}</td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-info text-white" href="{{route('barangShow', ['id' => $b->uuid])}}"><i class="feather icon-eye"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white" href="{{route('barangShow', ['id' => $b->uuid])}}"><i class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$b->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -180,13 +222,19 @@
                             <input type="text" name="stok_tersedia" id="stok_tersedia" placeholder="Masukkan Stok" value="{{old('stok_tersedia')}}" class="form-control">
                             @error('stok')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
-                        <div class="col-lg-6 col-md-12">
-                            <fieldset class="form-group">
-                                <label for="basicInputFile">Gambar Barang</label>
-                                <input type="file" name="gambar" id="gambar" class="form-control-file" id="basicInputFile">
-                            </fieldset>
-                            @error('gambar')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                        <div class="form-group">
+                            <label for="gambar">Gambar </label>
+                            <div class="custom-file">
+                                <input type="file" id="gambar" class="custom-file-input  @error ('gambar') is-invalid @enderror" name="gambar" value="{{old('gambar')}}">
+                                <label class="custom-file-label" for="gambar">Choose file</label>
+                                @error('gambar')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                            </div>
                         </div>
+                        <br>
+                        <div class="imgWrap">
+                            <img src="/img/nopictcreate.png" id="imgView" class="card-img-top img-fluid" style="width: 30%; height:30%; display: block; margin: auto;">
+                        </div>
+                        <br>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -245,4 +293,41 @@
         })
     });
 </script>
+
+<script>
+    $("#gambar").change(function(event) {
+        fadeInAdd();
+        getURL(this);
+    });
+
+    $("#gambar").on('click', function(event) {
+        fadeInAdd();
+    });
+
+    function getURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            var filename = $("#gambar").val();
+            filename = filename.substring(filename.lastIndexOf('\\') + 1);
+            reader.onload = function(e) {
+                debugger;
+                $('#imgView').attr('src', e.target.result);
+                $('#imgView').hide();
+                $('#imgView').fadeIn(500);
+                $('.custom-file-label').text(filename);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+        $(".alert").removeClass("loadAnimate").hide();
+    }
+
+    function fadeInAdd() {
+        fadeInAlert();
+    }
+
+    function fadeInAlert(text) {
+        $(".alert").text(text).addClass("loadAnimate");
+    }
+</script>
+
 @endsection

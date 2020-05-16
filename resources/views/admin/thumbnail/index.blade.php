@@ -78,7 +78,7 @@
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration" id="myTable">
+                                        <table class="table zero-configuration nowrap" id="myTable">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">No</th>
@@ -152,7 +152,7 @@
                         </div>
                         <br>
                         <div class="imgWrap">
-                            <img src="no-image.png" id="imgView" class="card-img-top img-fluid">
+                            <img src="/img/nopictcreate.png" id="imgView" class="card-img-top img-fluid" style="width: 30%; height:30%; display: block; margin: auto;">
                         </div>
                     </div>
             </div>

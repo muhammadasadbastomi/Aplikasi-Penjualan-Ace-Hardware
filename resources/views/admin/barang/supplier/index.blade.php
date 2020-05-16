@@ -15,7 +15,7 @@
                         <h2 class="content-header-title float-left mb-0">Data Supplier</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a>
+                                <li class="breadcrumb-item"><a href="{{route('adminIndex')}}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active">Data Supplier
                                 </li>
@@ -33,15 +33,13 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                                    data-target="#mediumModal">
-                                    <i class="feather icon-plus-circle"> Tambah Data </i>
-                                </button>
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span></button> </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration">
+                                        <table class="table zero-configuration nowrap">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">No</th>
@@ -54,17 +52,13 @@
                                             <tbody>
                                                 @foreach ($supplier as $s)
                                                 <tr>
-                                                    <td>{{$loop->iteration}}</td>
+                                                    <td class="text-center">{{$loop->iteration}}</td>
                                                     <td>{{$s->supplier}}</td>
                                                     <td>{{$s->alamat}}</td>
                                                     <td>{{$s->kontak}}</td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-info text-white"
-                                                            href="{{route('supplierEdit', ['id' => $s->uuid])}}"><i
-                                                                class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white"
-                                                            data-id="{{$s->uuid}}" href="#"><i
-                                                                class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white" href="{{route('supplierEdit', ['id' => $s->uuid])}}"><i class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$s->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -84,8 +78,7 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable"
-    aria-hidden="true">
+<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -99,22 +92,19 @@
                     @csrf
                     <label>Supplier : </label>
                     <div class=" form-group">
-                        <input type="text" name="supplier" id="supplier" placeholder="Masukkan Nama Supplier"
-                            value="{{old('supplier')}}" class="form-control  @error ('supplier') is-invalid @enderror">
+                        <input type="text" name="supplier" id="supplier" placeholder="Masukkan Nama Supplier" value="{{old('supplier')}}" class="form-control  @error ('supplier') is-invalid @enderror">
                         @error('supplier')<div class="invalid-feedback"> {{$message}} </div>@enderror
                     </div>
 
                     <label>Alamat </label>
                     <div class="form-group">
-                        <input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat"
-                            value="{{old('alamat')}}" class="form-control">
+                        <input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat" value="{{old('alamat')}}" class="form-control">
                         @error('alamat')<div class="invalid-feedback"> {{$message}} </div>@enderror
                     </div>
 
                     <label>Kontak </label>
                     <div class="form-group">
-                        <input type="number" name="kontak" id="kontak" placeholder="Masukkan kontak"
-                            value="{{old('kontak')}}" class="form-control">
+                        <input type="number" name="kontak" id="kontak" placeholder="Masukkan kontak" value="{{old('kontak')}}" class="form-control">
                         @error('kontak')<div class="invalid-feedback"> {{$message}} </div>@enderror
                     </div>
 

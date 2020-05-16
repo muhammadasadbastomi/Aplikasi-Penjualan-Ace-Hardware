@@ -18,8 +18,8 @@
 </div>
 
 <div style="padding-top:30px; margin-left:96px; display:inline-block;">
-    <img src="" id="pict" style=" width:450px; height:300px; ">
+    <img src="/img/nopict.png" id="pict" style=" width:450px; height:300px; ">
 </div>
 <div class="imgWrap" style="padding-top:30px; margin-left:96px; display:inline-block;">
-    <img src="" id="gambar_nodin" alt="Preview Gambar" style=" width:450px; height:300px; ">
+    <img src="/img/nopict.png" id="gambar_nodin" alt="Preview Gambar" style=" width:450px; height:300px; ">
 </div>
