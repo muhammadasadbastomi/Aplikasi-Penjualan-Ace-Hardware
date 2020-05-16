@@ -33,7 +33,10 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah Data</span></button> </div>
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span></button> </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -41,23 +44,29 @@
                                         <table class="table zero-configuration">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">No</th>
-                                                    <th scope="col">Nama Barang</th>
-                                                    <th scope="col">Jumlah Terjual</th>
-                                                    <th scope="col">Tanggal Terjual</th>
-                                                    <th scope="col" class="text-center"></th>
+                                                    <th scope="col" class="text-center">No</th>
+                                                    <th scope="col" class="text-center">Nama Barang</th>
+                                                    <th scope="col" class="text-center">Jumlah Terjual</th>
+                                                    <th scope="col" class="text-center">Tanggal Terjual</th>
+                                                    <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class="text-center"></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    @foreach ($barangterjual as $bt)
+                                                    <td class="text-center">{{  $loop->iteration }}</td>
+                                                    <td class="text-center">{{ $bt->barang->nama_barang }}</td>
+                                                    <td class="text-center">{{ $bt->jumlah_terjual }}</td>
+                                                    <td class="text-center">{{ $bt->tgl_terjual }}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal"><i class="feather icon-edit"></i></a>
-                                                        <a class="btn btn-sm btn-danger text-white" href="#"><i class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('terjualEdit', ['id' => $bt->uuid])}}"><i
+                                                                class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$bt->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
+                                                    @endforeach
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -75,7 +84,8 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -85,21 +95,28 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST">
+                    @csrf
                     <div class="modal-body">
-                        <label>Nama Barang</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
+                            <label for="barang">Pilih Barang</label>
+                            <select class="custom-select" name="barang_id" id="barang_id">
+                                @foreach($barang as $b)
+                                <option value="{{$b->id}}">{{ $b->nama_barang}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <label>Jumlah Terjual</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Jumlah Terjual" class="form-control">
+                            <input type="text" name="jumlah_terjual" id="jumlah_terjual" placeholder="Masukkan Jumlah"
+                                value="{{old('jumlah_terjual')}}" class="form-control">
                         </div>
 
                         <label>Tanggal Terjual</label>
                         <div class="form-group">
-                            <input type="date" class="form-control">
+                            <input type="date" name="tgl_terjual" id="tgl_terjual" value="{{old('tgl_terjual')}}"
+                                class="form-control">
                         </div>
                     </div>
             </div>
@@ -113,17 +130,19 @@
 </div>
 
 <!-- Modal Edit -->
-<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalScrollable" style="padding-left: 10px;">Edit Barang</h4>
+                <h4 class="modal-title" id="edit-modal-label" style="padding-left: 10px;">Edit Barang Terjual</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-body">
                         <label>Nama Barang</label>
                         <div class="form-group">

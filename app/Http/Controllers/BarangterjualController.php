@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Barang_terjual;
-use App\BarangTerjual;
+
+use App\Barang_Terjual;
+use App\Barang;
 use Illuminate\Http\Request;
 
 class BarangterjualController extends Controller
@@ -15,9 +16,10 @@ class BarangterjualController extends Controller
      */
     public function index()
     {
-        $barang = Barang_terjual::orderBy('id', 'Desc')->get();
+        $barangterjual = Barang_terjual::orderBy('id', 'Desc')->get();
+        $barang = Barang::orderBy('id', 'Desc')->get();
 
-        return view('admin.barang.terjual.index', compact('barang'));
+        return view('admin.barang.terjual.index', compact('barangterjual', 'barang'));
     }
 
     /**
@@ -38,7 +40,27 @@ class BarangterjualController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'required' => ':attribute harus diisi.',
+        ];
+        $request->validate([
+            'tgl_terjual' => 'required',
+            'jumlah_terjual' => 'required',
+            'tgl_terjual' => 'required',
+        ], $messages);
+
+        // create new object
+        $barangterjual = new Barang_terjual;
+        $request->request->add(['barangterjual_id' => $barangterjual->id]);
+        $barangterjual->barang_id = $request->barang_id;
+        $barangterjual->jumlah_terjual = $request->jumlah_terjual;
+        $barangterjual->tgl_terjual = $request->tgl_terjual;
+        $barangterjual->save();
+
+        // create garansi
+
+        return redirect('admin/barang/terjual/index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -47,7 +69,7 @@ class BarangterjualController extends Controller
      * @param  \App\BarangTerjual  $barangTerjual
      * @return \Illuminate\Http\Response
      */
-    public function show(BarangTerjual $barangTerjual)
+    public function show(Barang_Terjual $barangTerjual)
     {
         //
     }
@@ -58,9 +80,12 @@ class BarangterjualController extends Controller
      * @param  \App\BarangTerjual  $barangTerjual
      * @return \Illuminate\Http\Response
      */
-    public function edit(BarangTerjual $barangTerjual)
+    public function edit($id)
     {
-        //
+        $barangterjual = Barang_terjual::orderBy('id', 'Desc')->first();
+        $barang = Barang::orderBy('id', 'Desc')->get();
+
+        return view('admin.barang.terjual.edit', compact('barangterjual', 'barang'));
     }
 
     /**
@@ -70,9 +95,26 @@ class BarangterjualController extends Controller
      * @param  \App\BarangTerjual  $barangTerjual
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BarangTerjual $barangTerjual)
+    public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'required' => ':attribute harus diisi.',
+        ];
+        $request->validate([
+            'tgl_terjual' => 'required',
+            'jumlah_terjual' => 'required',
+
+        ], $messages);
+
+        // update
+        $barangterjual = Barang_terjual::where('uuid', $id)->first();
+        $barangterjual->barang_id = $request->barang_id;
+        $barangterjual->jumlah_terjual = $request->jumlah_terjual;
+        $barangterjual->tgl_terjual = $request->tgl_terjual;
+        $barangterjual->update();
+
+        return redirect('admin/barang/terjual/index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**
@@ -81,8 +123,12 @@ class BarangterjualController extends Controller
      * @param  \App\BarangTerjual  $barangTerjual
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BarangTerjual $barangTerjual)
+    public function destroy($id)
     {
-        //
+        $barangterjual = Barang_terjual::where('uuid', $id)->first();
+
+        $barangterjual->delete();
+
+        return redirect()->route('terjualIndex');
     }
 }

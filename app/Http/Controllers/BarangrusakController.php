@@ -103,15 +103,13 @@ class BarangrusakController extends Controller
             'required' => ':attribute harus diisi.',
         ];
         $request->validate([
-
-
             'kerusakan' => 'required',
             'tgl_cek' => 'required',
             'jumlah_barang' => 'required',
         ], $messages);
 
         // create new object
-        $barangrusak = Barang_rusak::where('uuid', $id)->first();;
+        $barangrusak = Barang_rusak::where('uuid', $id)->first();
         $barangrusak->barang_id = $request->barang_id;
         $barangrusak->kerusakan = $request->kerusakan;
         $barangrusak->tgl_cek = $request->tgl_cek;
@@ -132,10 +130,10 @@ class BarangrusakController extends Controller
     public function destroy($id)
     {
 
-        $barangdatang = Barang_rusak::where('uuid', $id)->first();
+        $barangrusak = Barang_rusak::where('uuid', $id)->first();
 
-        $barangdatang->delete();
+        $barangrusak->delete();
 
-        return redirect()->route('datangIndex');
+        return redirect()->route('rusakIndex');
     }
 }
