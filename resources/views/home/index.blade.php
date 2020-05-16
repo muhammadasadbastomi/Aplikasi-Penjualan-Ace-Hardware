@@ -42,7 +42,7 @@
                     <div class="col-xl-3 col-md-3 col-sm-12">
                         <div style="height: 550px;">
 
-                            <div class="badge badge-danger float-right">% Diskon</div>
+                            <div class="badge badge-danger float-right">Diskon %</div>
                             <div class="float-left">
                                 <h5>Ace Hardware</h5>
                             </div>
@@ -145,29 +145,41 @@
             </div> -->
         <!----end--->
         <hr>
+        <!---- Produk Terbaru ----->
         <div class="card-body">
             <div class="mt-4 mb-2 text-left">
-                <h2>Produk Terbaru</h2>
+                <h2>Produk Terbaru <div class="badge badge-danger">Latest</div>
+                </h2>
             </div>
             <div class="swiper-responsive-breakpoints swiper-container px-4 py-2 swiper-container-initialized swiper-container-horizontal">
                 <div class="swiper-wrapper" style="transform: translate3d(-1232px, 0px, 0px); transition-duration: 0ms;">
                     @foreach ($barang as $d)
                     <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
                         <div class="item-heading">
-                            <p class="text-truncate mb-0">
+                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
                                 {{$d->nama_barang}}
-                            </p>
+                            </a>
                             <p>
-                                <small>by</small>
-                                <small>Bowers &amp; Wilkins</small>
+                                <small>Kategori</small>
+                                <small>{{$d->kategori}}</small>
                             </p>
                         </div>
-                        <div class="img-container w-50 mx-auto my-2 py-75">
-                            <img src="../../../app-assets/images/elements/apple-watch.png" class="img-fluid" alt="image">
+                        <div class=" img-container w-80 mx-auto my-2 py-75">
+                            <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
                         </div>
                         <div class="item-meta">
-                            <p class="text-primary mt-1">$35.98</p>
-                            <p class="text-secondary mt-1">Stok</p>
+                            <h6 class="item-price">
+                                @if($d->diskon != null)
+                                <p style="color: black;margin-bottom:0px;"><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->diskon}}%</strong></p>
+                                <p style="color: black; margin-bottom:-5px;"> <b>Rp. {{$d->harga_diskon}},-</b> </p>
+                            </h6>
+                            @else
+                            <h6>Rp. {{$d->harga_jual}},-</h6>
+                            <!-- <h6 class="text-white">-</h6> -->
+                            <br>
+                            @endif
+                            <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
+                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-shopping-cart"> Detail</i> </a>
                         </div>
                     </div>
                     @endforeach
@@ -179,31 +191,42 @@
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
         </div>
-
+        <!---- End Terbaru ----->
+        <!---- Produk Diskon ----->
         <div class="card-body">
             <div class="mt-4 mb-2 text-left">
-                <h2>Produk Diskon</h2>
+                <h2>Produk Diskon <div class="badge badge-danger">Diskon %</div>
+                </h2>
             </div>
             <div class="swiper-responsive-breakpoints swiper-container px-4 py-2 swiper-container-initialized swiper-container-horizontal">
                 <div class="swiper-wrapper" style="transform: translate3d(-1232px, 0px, 0px); transition-duration: 0ms;">
                     @foreach ($diskon as $d)
                     <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
                         <div class="item-heading">
-                            <p class="text-truncate mb-0">
+                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
                                 {{$d->nama_barang}}
-                            </p>
+                            </a>
                             <p>
-                                <small>by</small>
-                                <small>Bowers &amp; Wilkins</small>
+                                <small>Kategori</small>
+                                <small>{{$d->kategori}}</small>
                             </p>
                         </div>
-                        <div class="img-container w-50 mx-auto my-2 py-75">
-                            <img src="../../../app-assets/images/elements/apple-watch.png" class="img-fluid" alt="image">
+                        <div class=" img-container w-80 mx-auto my-2 py-75">
+                            <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
                         </div>
                         <div class="item-meta">
-                            <p class="text-primary mt-1">Rp.{{$d->harga_jual}},- / {{$d->diskon}}%</p>
-                            <p>Rp.{{$d->harga_diskon}},-</p>
-                            <p class="text-secondary mt-1">Stok</p>
+                            <h6 class="item-price">
+                                @if($d->diskon != null)
+                                <p style="color: black;margin-bottom:0px;"><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->diskon}}%</strong></p>
+                                <p style="color: black; margin-bottom:-5px;"> <b>Rp. {{$d->harga_diskon}},-</b> </p>
+                            </h6>
+                            @else
+                            <h6>Rp. {{$d->harga_jual}},-</h6>
+                            <!-- <h6 class="text-white">-</h6> -->
+                            <br>
+                            @endif
+                            <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
+                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-shopping-cart"> Detail</i> </a>
                         </div>
                     </div>
                     @endforeach
@@ -215,9 +238,102 @@
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>
         </div>
+        <!---- End Diskon ----->
+        <!---- Prodak Terlaris ----->
+        <div class="card-body">
+            <div class="mt-4 mb-2 text-left">
+                <h2>Produk Terlaris <div class="badge badge-danger">Popular</div>
+                </h2>
+            </div>
+            <div class="swiper-responsive-breakpoints swiper-container px-4 py-2 swiper-container-initialized swiper-container-horizontal">
+                <div class="swiper-wrapper" style="transform: translate3d(-1232px, 0px, 0px); transition-duration: 0ms;">
+                    @foreach ($terlaris as $d)
+                    <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
+                        <div class="item-heading">
+                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
+                                {{$d->nama_barang}}
+                            </a>
+                            <p>
+                                <small>Kategori</small>
+                                <small>{{$d->kategori}}</small>
+                            </p>
+                        </div>
+                        <div class=" img-container w-80 mx-auto my-2 py-75">
+                            <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
+                        </div>
+                        <div class="item-meta">
+                            <h6 class="item-price">
+                                @if($d->diskon != null)
+                                <p style="color: black;margin-bottom:0px;"><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->diskon}}%</strong></p>
+                                <p style="color: black; margin-bottom:-5px;"> <b>Rp. {{$d->harga_diskon}},-</b> </p>
+                            </h6>
+                            @else
+                            <h6>Rp. {{$d->harga_jual}},-</h6>
+                            <!-- <h6 class="text-white">-</h6> -->
+                            <br>
+                            @endif
+                            <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
+                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-shopping-cart"> Detail</i> </a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next swiper-button-disabled" tabindex="0" role="button" aria-label="Next slide" aria-disabled="true"></div>
+                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="false"></div>
 
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+        </div>
+        <!---- End Terlaris ----->
+        <!---- Produk Termurah ----->
+        <div class="card-body">
+            <div class="mt-4 mb-2 text-left">
+                <h2>Produk Termurah <div class="badge badge-danger">Lowest Price</div>
+                </h2>
+            </div>
+            <div class="swiper-responsive-breakpoints swiper-container px-4 py-2 swiper-container-initialized swiper-container-horizontal">
+                <div class="swiper-wrapper" style="transform: translate3d(-1232px, 0px, 0px); transition-duration: 0ms;">
+                    @foreach ($termurah as $d)
+                    <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
+                        <div class="item-heading">
+                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
+                                {{$d->nama_barang}}
+                            </a>
+                            <p>
+                                <small>Kategori</small>
+                                <small>{{$d->kategori}}</small>
+                            </p>
+                        </div>
+                        <div class=" img-container w-80 mx-auto my-2 py-75">
+                            <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
+                        </div>
+                        <div class="item-meta">
+                            <h6 class="item-price">
+                                @if($d->diskon != null)
+                                <p style="color: black;margin-bottom:0px;"><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->diskon}}%</strong></p>
+                                <p style="color: black; margin-bottom:-5px;"> <b>Rp. {{$d->harga_diskon}},-</b> </p>
+                            </h6>
+                            @else
+                            <h6>Rp. {{$d->harga_jual}},-</h6>
+                            <!-- <h6 class="text-white">-</h6> -->
+                            <br>
+                            @endif
+                            <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
+                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-shopping-cart"> Detail</i> </a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next swiper-button-disabled" tabindex="0" role="button" aria-label="Next slide" aria-disabled="true"></div>
+                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="false"></div>
 
-
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+        </div>
+        <!---- End Murah ----->
+        <br>
     </div>
 </div>
 </div>

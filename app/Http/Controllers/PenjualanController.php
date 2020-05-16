@@ -15,7 +15,7 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-        $barang = Barang::orderBy('id', 'desc')->limit(6)->get();
+
         $thumb = Thumbnail::orderBy('id', 'DESC')->get();
         $data = Barang::orderBy('id', 'desc')->Wherenotnull('diskon')->limit(6)->get();
         $diskon = $data->map(function ($item) {
@@ -25,7 +25,32 @@ class PenjualanController extends Controller
             return $item;
         });
 
-        return view('home.index', compact('barang', 'diskon', 'thumb'));
+        $barang = Barang::orderBy('id', 'desc')->paginate(9);
+        $barang = $barang->map(function ($item) {
+            $diskon = ($item->diskon / 100) * $item->harga_jual;
+            $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+            $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+            return $item;
+        });
+
+
+        $termurah = Barang::orderBy('harga_jual', 'asc')->paginate(9);
+        $termurah = $termurah->map(function ($item) {
+            $diskon = ($item->diskon / 100) * $item->harga_jual;
+            $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+            $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+            return $item;
+        });
+
+        $terlaris = Barang::orderBy('id', 'asc')->paginate(9);
+        $terlaris = $terlaris->map(function ($item) {
+            $diskon = ($item->diskon / 100) * $item->harga_jual;
+            $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+            $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+            return $item;
+        });
+
+        return view('home.index', compact('barang', 'diskon', 'thumb', 'termurah', 'terlaris'));
     }
 
     /**
@@ -44,7 +69,15 @@ class PenjualanController extends Controller
             return $item;
         });
 
-        return view('home.shop', compact('barang', 'data'));
+        $terlaris = Barang::orderBy('id', 'asc')->paginate(5);
+        $terlaris = $terlaris->map(function ($item) {
+            $diskon = ($item->diskon / 100) * $item->harga_jual;
+            $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+            $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+            return $item;
+        });
+
+        return view('home.shop', compact('barang', 'data', 'terlaris'));
     }
 
 

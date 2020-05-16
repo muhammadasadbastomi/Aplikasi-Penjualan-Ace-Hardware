@@ -276,14 +276,19 @@
                             <!-- Rating section starts -->
                             <div id="ratings">
                                 <div class="ratings-title mt-1 pb-75">
-                                    <h6 class="filter-title mb-0">Produk Terlaris</h6>
+                                    <h6 class="filter-title mb-0">Produk Terlaris <div class="badge badge-danger float-right">Popular</div>
+                                    </h6>
                                 </div>
+                                @foreach ($terlaris as $d)
                                 <div class="d-flex justify-content-between">
                                     <ul class="unstyled-list list-inline ratings-list mb-0">
-                                        <li>Produk A</li>
+                                        <li>
+                                            <a>{{$d->nama_barang}}</a>
+                                        </li>
                                     </ul>
-                                    <div class="stars-received">(160)</div>
+                                    <div class="stars-received float-right col-sm-6"> Rp. {{$d->harga_jual}},-</div>
                                 </div>
+                                @endforeach
                             </div>
                             <!-- Rating section Ends -->
                         </div>
