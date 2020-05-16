@@ -60,20 +60,6 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::put('/admin/barang/rusak/edit/{id}', 'BarangrusakController@update')->name('rusakUpdate');
     Route::delete('/admin/barang/rusak/delete/{id}', 'BarangrusakController@destroy')->name('rusakDelete');
 
-    Route::get('/admin/barang/pesanan/index', 'BarangpesananController@index')->name('pesananIndex');
-    Route::post('/admin/barang/pesanan/index', 'BarangpesananController@store')->name('pesananstore');
-    Route::get('/admin/barang/pesanan/show', 'BarangpesananController@show')->name('pesananShow');
-    Route::get('/admin/barang/pesanan/edit', 'BarangpesananController@edit')->name('pesananEdit');
-    Route::post('/admin/barang/pesanan/edit', 'BarangpesananController@update')->name('pesananUpdate');
-    Route::delete('/admin/barang/pesanan/delete', 'BarangpesananController@delete')->name('pesananDelete');
-
-    Route::get('/admin/barang/diskon/index', 'BarangdiskonController@index')->name('diskonIndex');
-    Route::post('/admin/barang/diskon/index', 'BarangdiskonController@store')->name('diskonstore');
-    Route::get('/admin/barang/diskon/show', 'BarangdiskonController@show')->name('diskonShow');
-    Route::get('/admin/barang/diskon/edit', 'BarangdiskonController@edit')->name('diskonEdit');
-    Route::post('/admin/barang/diskon/edit', 'BarangdiskonController@update')->name('diskonUpdate');
-    Route::delete('/admin/barang/diskon/delete', 'BarangdiskonController@delete')->name('diskonDelete');
-
     Route::get('/admin/barang/pengiriman/index', 'BarangpengirimanController@index')->name('pengirimanIndex');
     Route::post('/admin/barang/pengiriman/index', 'BarangpengirimanController@store')->name('pengirimanstore');
     Route::get('/admin/barang/pengiriman/show', 'BarangpengirimanController@show')->name('pengirimanShow');

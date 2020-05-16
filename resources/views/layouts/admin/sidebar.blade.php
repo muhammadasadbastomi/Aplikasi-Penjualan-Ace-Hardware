@@ -25,7 +25,6 @@
             <li class="nav-item"><a href="#"><i class="feather icon-folder"></i><span class="menu-title">Pengelolaan</span></a>
                 <ul class="menu-content">
                     <li><a href="{{ route('datangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Datang</span></a></li>
-                    <li><a href="{{ route('pesananIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Pesanan</span></a></li>
                     <li><a href="{{ route('pengirimanIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Status Pengiriman</span></a></li>
                     <li><a href="{{ route('terjualIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Terjual</span></a></li>
                     <li><a href="{{ route('garansiIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Garansi</span></a></li>
