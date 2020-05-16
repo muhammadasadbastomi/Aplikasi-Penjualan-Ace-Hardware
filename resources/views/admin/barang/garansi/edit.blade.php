@@ -15,7 +15,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">Barang Rusak</a>
+                                <li class="breadcrumb-item"><a href="#">Barang Garansi</a>
                                 </li>
                                 <li class="breadcrumb-item active">Edit</a>
                                 </li>
@@ -42,55 +42,43 @@
                                         <select class="custom-select" name="barang_id" id="barang_id">
                                             @foreach($barang as $b)
                                             <option value="{{$b->id}}"
-                                                {{ $barangrusak->barang_id == $b->id ? 'selected' : ''}} selected>
+                                                {{ $baranggaransi->barang_id == $b->id ? 'selected' : ''}} selected>
                                                 {{$b->nama_barang}}</option>
                                             @endforeach
                                         </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Kerusakan </label>
-                                        <input type="text" id="kerusakan" name="kerusakan"
-                                            class="form-control @error ('kerusakan') is-invalid @enderror"
-                                            placeholder="Masukkan kerusakan" value="{{ $barangrusak->kerusakan }}">
+                                        <label>Nama Pembeli </label>
+                                        <input type="text" id="nama_pembeli" name="nama_pembeli"
+                                            class="form-control @error ('nama_pembeli') is-invalid @enderror"
+                                            placeholder="Masukkan nama pembeli"
+                                            value="{{ $baranggaransi->nama_pembeli }}">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="tgl_cek">Tanggal Cek</label>
-                                        <input type="date" id="tgl_cek" name="tgl_cek" class="form-control"
-                                            value="{{$barangrusak->tgl_cek}}" required>
+                                        <label for="tgl_pembelian">Tanggal Pembelian</label>
+                                        <input type="date" id="tgl_pembelian" name="tgl_pembelian" class="form-control"
+                                            value="{{$baranggaransi->tgl_pembelian}}" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="status">status</label>
-                                        <select class="custom-select" name="status" id="status">
-                                            <option selected value="">Pilih status</option>
-                                            <option value="1">Belum diperbaiki</option>
-                                            <option value="2">Dalam perbaikan</option>
-                                            <option value="3">Selesai diperbaiki</option>
-                                            <option value="4">Tidak bisa diperbaiki</option>
-
-                                        </select>
+                                        <label for="tgl_akhir_garansi">Tanggal Akhir Garansi</label>
+                                        <input type="date" id="tgl_akhir_garansi" name="tgl_akhir_garansi"
+                                            class="form-control" value="{{$baranggaransi->tgl_akhir_garansi}}" required>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="tgl_selesai">Tanggal Selesai</label>
-                                        <input type="date" id="tgl_selesai" name="tgl_selesai" class="form-control"
-                                            value="{{$barangrusak->tgl_selesai}}">
-                                    </div>
-
 
                                     <div class="form-group">
                                         <label>Jumlah </label>
-                                        <input type="number" id="jumlah_barang" name="jumlah_barang"
-                                            class="form-control @error ('jumlah_barang') is-invalid @enderror"
-                                            placeholder="Masukkan Jumlah" value="{{ $barangrusak->jumlah_barang }}">
+                                        <input type="number" id="jumlah" name="jumlah"
+                                            class="form-control @error ('jumlah') is-invalid @enderror"
+                                            placeholder="Masukkan Jumlah" value="{{ $baranggaransi->jumlah }}">
                                     </div>
 
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Update</button>
-                                    <a href="{{route('rusakIndex')}}" class="btn btn-danger text-white"><i
+                                    <a href="{{route('garansiIndex')}}" class="btn btn-danger text-white"><i
                                             class="mdi mdi-back"></i>Batal</a>
                                 </div>
                             </form>

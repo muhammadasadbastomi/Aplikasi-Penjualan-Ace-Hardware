@@ -33,7 +33,10 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah Data</span></button> </div>
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span></button> </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -41,26 +44,37 @@
                                         <table class="table zero-configuration">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">No</th>
-                                                    <th scope="col">Nama Barang</th>
-                                                    <th scope="col">Tanggal Pembelian</th>
-                                                    <th scope="col">Tanggal Akhir Garansi</th>
-                                                    <th scope="col">Jumlah</th>
-                                                    <th scope="col" class="text-center"></th>
+                                                    <th scope="col" class="text-center">No</th>
+                                                    <th scope="col" class="text-center">Nama Barang</th>
+                                                    <th scope="col" class="text-center">Kode Barang</th>
+                                                    <th scope="col" class="text-center">Nama Pembeli</th>
+                                                    <th scope="col" class="text-center">Tanggal Pembelian</th>
+                                                    <th scope="col" class="text-center">Tanggal Akhir Garansi</th>
+                                                    <th scope="col" class="text-center">Jumlah</th>
+                                                    <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach ($baranggaransi as $bg)
+
                                                 <tr>
-                                                    <td class="text-center"></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                                    <td class="text-center">{{ $bg->barang->nama_barang }}</td>
+                                                    <td class="text-center">{{ $bg->barang->kode_barang }}</td>
+                                                    <td class="text-center">{{ $bg->nama_pembeli }}</td>
+                                                    <td class="text-center">{{ $bg->tgl_pembelian }}</td>
+                                                    <td class="text-center">{{ $bg->tgl_akhir_garansi }}</td>
+                                                    <td class="text-center">{{ $bg->jumlah }}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal"><i class="feather icon-edit"></i></a>
-                                                        <a class="btn btn-sm btn-danger text-white" href="#"><i class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('garansiEdit', ['id' => $bg->uuid])}}"><i
+                                                                class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$bg->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -77,7 +91,8 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -87,26 +102,40 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST">
+                    @csrf
                     <div class="modal-body">
-                        <label>Nama Barang</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
+                            <label for="barang">Pilih Barang</label>
+                            <select class="custom-select" name="barang_id" id="barang_id">
+                                @foreach($barang as $b)
+                                <option value="{{$b->id}}">{{ $b->nama_barang}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
-                        <label>Tanggal Pembelian</label>
+                        <label>Nama Pembeli</label>
                         <div class="form-group">
-                            <input type="date" class="form-control">
+                            <input type="text" name="nama_pembeli" id="nama_pembeli" value="{{old('nama_pembeli')}}"
+                                placeholder="Masukkan Nama Pembeli" class="form-control">
+                        </div>
+
+                        <label>Tanggal pembelian</label>
+                        <div class="form-group">
+                            <input type="date" name="tgl_pembelian" id="tgl_pembelian" value="{{old('tgl_pembelian')}}"
+                                class="form-control">
                         </div>
 
                         <label>Tanggal Akhir Garansi</label>
                         <div class="form-group">
-                            <input type="date" class="form-control">
+                            <input type="date" name="tgl_akhir_garansi" id="tgl_akhir_garansi"
+                                value="{{old('tgl_akhir_garansi')}}" class="form-control">
                         </div>
 
                         <label>Jumlah</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Jumlah" class="form-control">
+                            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah"
+                                value="{{old('jumlah')}}" class="form-control">
                         </div>
                     </div>
             </div>
@@ -120,7 +149,8 @@
 </div>
 
 <!-- Modal Edit -->
-<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
