@@ -98,6 +98,17 @@ class ThumbController extends Controller
      */
     public function update(Request $request)
     {
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'required' => ':attribute harus diisi.',
+
+        ];
+        $request->validate([
+
+            'judul' => 'required',
+            'keterangan' => 'required',
+
+        ], $messages);
 
         $data = Thumbnail::findOrFail($request->id);
         $data->judul = $request->judul;
