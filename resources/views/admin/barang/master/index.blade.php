@@ -46,9 +46,11 @@
                                                     <th scope="col" class="text-center">Nama Barang</th>
                                                     <th scope="col" class="text-center">Kode Barang</th>
                                                     <th scope="col" class="text-center">Supplier</th>
+                                                    <th scope="col" class="text-center">Kategori</th>
                                                     <th scope="col" class="text-center">Satuan</th>
                                                     <th scope="col" class="text-center">Departement</th>
                                                     <th scope="col" class="text-center">Harga</th>
+                                                    <th scope="col" class="text-center">Diskon</th>
                                                     <th scope="col" class="text-center">Stok</th>
                                                     <th scope="col" class="text-center" width="100px;">Aksi</th>
 
@@ -61,12 +63,32 @@
                                                     <td class="text-center">{{$b->nama_barang}}</td>
                                                     <td class="text-center">{{$b->kode_barang}}</td>
                                                     <td class="text-center">{{$b->supplier->supplier}}</td>
+                                                    <td class="text-center">
+                                                        @if($b->kategori == 1)
+                                                        Alat Rumah
+                                                        @elseif($b->kategori == 2)
+                                                        Alat Kebersihan
+                                                        @elseif($b->kategori == 3)
+                                                        Alat Dapur
+                                                        @elseif($b->kategori == 4)
+                                                        Otomotif
+                                                        @elseif($b->kategori == 5)
+                                                        Peralatan Elektronik
+                                                        @elseif($b->kategori == 6)
+                                                        Olahraga & Outdoor
+                                                        @elseif($b->kategori == 7)
+                                                        Lain-lain
+                                                        @else
+                                                        -
+                                                        @endif
+                                                    </td>
                                                     <td class="text-center">{{$b->satuan}}</td>
                                                     <td class="text-center">{{$b->departement}}</td>
                                                     <td class="text-center">{{$b->harga_jual}}</td>
+                                                    <td class="text-center">{{$b->diskon}} %</td>
                                                     <td class="text-center">{{$b->stok_tersedia}}</td>
-                                                    <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" href="{{route('barangShow', ['id' => $b->uuid])}}"><i class="feather icon-edit"></i></a>
+                                                    <td>
+                                                        <a class="btn btn-sm btn-info text-white" href="{{route('barangShow', ['id' => $b->uuid])}}"><i class="feather icon-eye"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$b->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -118,6 +140,20 @@
                                 @foreach($supplier as $s)
                                 <option value="{{$s->id}}">{{ $s->supplier}}</option>
                                 @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kategori">Kategori</label>
+                            <select class="custom-select" name="kategori" id="kategori">
+                                <option selected value="">Pilih kategori</option>
+                                <option value="1">Alat Rumah</option>
+                                <option value="2">Alat Kebersihan</option>
+                                <option value="3">Dapur</option>
+                                <option value="4">Otomotif</option>
+                                <option value="5">Peralatan Elektronik</option>
+                                <option value="6">Olahraga & Outdoor</option>
+                                <option value="7">Lain-lain</option>
                             </select>
                         </div>
 

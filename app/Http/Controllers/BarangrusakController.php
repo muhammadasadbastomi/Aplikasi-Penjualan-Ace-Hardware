@@ -128,6 +128,11 @@ class BarangrusakController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $barangdatang = Barang_rusak::where('uuid', $id)->first();
+
+        $barangdatang->delete();
+
+        return redirect()->route('datangIndex');
     }
 }

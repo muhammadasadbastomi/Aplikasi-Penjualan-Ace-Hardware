@@ -55,16 +55,16 @@
                                                 @foreach($barangdatang as $bd)
                                                 <tr>
                                                     <td class="text-center">{{$loop->iteration}}</td>
-                                                    <td>{{ $bd->nama_barang }}</td>
+                                                    <td>{{ $bd->barang->nama_barang }}</td>
                                                     <td>{{ $bd->tgl_masuk }}</td>
                                                     <td>{{ $bd->jumlah }}</td>
                                                     <td class="text-center">
                                                         <a class="btn btn-sm btn-info text-white"
                                                             href="{{route('datangEdit', ['id' => $bd->uuid])}}"><i
                                                                 class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" href="#"><i
-                                                                class="feather icon-trash"
-                                                                data-id="{{$bd->uuid}}"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$bd->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach

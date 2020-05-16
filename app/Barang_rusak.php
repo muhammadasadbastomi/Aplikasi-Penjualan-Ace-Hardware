@@ -13,6 +13,6 @@ class Barang_rusak extends Model
 
     public function barang()
     {
-        return $this->hasMany(Barang::class);
+        return $this->belongsTo(Barang::class);
     }
 }

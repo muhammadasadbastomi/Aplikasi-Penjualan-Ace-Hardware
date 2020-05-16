@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -26,7 +27,7 @@ class UserController extends Controller
      */
     public function admin()
     {
-        $user = User::orderBy('id', 'desc')->get();
+        $user = User::where('role', [1])->orderBy('id', 'desc')->get();
 
         return view('admin.account.admin', compact('user'));
     }
@@ -38,7 +39,7 @@ class UserController extends Controller
      */
     public function karyawan()
     {
-        $user = User::orderBy('id', 'desc')->get();
+        $user = User::where('role', [2])->orderBy('id', 'desc')->get();
 
         return view('admin.account.karyawan', compact('user'));
     }
@@ -48,9 +49,29 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'email' => ':attribute harus benar.',
+            'required' => ':attribute harus diisi.',
+            'confirmed' => ':attribute salah.',
+            'min' => ':attribute minimal 5 karakter.'
+        ];
+        //dd($request->all());
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'email|unique:users',
+            'password' => 'required|confirmed|min:5',
+            'tempat_lahir' => 'required',
+        ], $messages);
+
+        $user = new User;
+        $user->role = '2';
+        $user->name = $request->nama;
+        $user->email = $request->email;
+        $user->password = Hash::make('admin123');
+        $user->save();
     }
 
     /**

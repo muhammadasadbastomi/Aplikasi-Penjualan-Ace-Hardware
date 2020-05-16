@@ -61,6 +61,7 @@ class BarangController extends Controller
         $barang->nama_barang = $request->nama_barang;
         $barang->kode_barang = $request->kode_barang;
         $barang->supplier_id = $request->supplier_id;
+        $barang->kategori = $request->kategori;
         $barang->satuan = $request->satuan;
         $barang->departement = $request->departement;
         $barang->harga_jual = $request->harga_jual;
@@ -130,9 +131,11 @@ class BarangController extends Controller
         $barang->nama_barang = $request->nama_barang;
         $barang->kode_barang = $request->kode_barang;
         $barang->supplier_id = $request->supplier_id;
+        $barang->kategori = $request->kategori;
         $barang->satuan = $request->satuan;
         $barang->departement = $request->departement;
         $barang->harga_jual = $request->harga_jual;
+        $barang->diskon = $request->diskon;
         $barang->stok_tersedia = $request->stok_tersedia;
         if ($request->hasfile('gambar')) {
             $request->file('gambar')->move('images/barang/', $request->file('gambar')->getClientOriginalName());
