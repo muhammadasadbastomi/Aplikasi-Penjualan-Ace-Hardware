@@ -24,6 +24,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::get('/admin/index', 'HomeController@index')->name('adminIndex');
 
+    Route::patch('/admin/thumbnail/index', 'ThumbController@update')->name('thumbUpdate');
+    Route::get('/admin/thumbnail/index', 'ThumbController@index')->name('thumbIndex');
+    Route::post('/admin/thumbnail/index', 'ThumbController@store')->name('thumbStore');
+    Route::get('/admin/thumbnail/show/{id}', 'ThumbController@show')->name('thumbShow');
+    Route::get('/admin/thumbnail/edit', 'ThumbController@edit')->name('thumbEdit');
+    Route::delete('/admin/thumbnail/delete/{id}', 'ThumbController@delete')->name('thumbDelete');
+
     Route::get('/admin/barang/master/index', 'BarangController@index')->name('barangIndex');
     Route::post('/admin/barang/master/index', 'BarangController@store')->name('barangStore');
     Route::get('/admin/barang/master/show/{id}', 'BarangController@show')->name('barangShow');
