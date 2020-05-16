@@ -104,6 +104,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
 
     Route::get('/admin/account/admin', 'UserController@admin')->name('userAdmin');
     Route::get('/admin/account/karyawan', 'UserController@karyawan')->name('userKaryawan');
+    Route::post('/admin/account/karyawan', 'UserController@store')->name('userKaryawanStore');
     Route::get('/admin/account/setting', 'UserController@edit')->name('userEdit');
     Route::post('/admin/account/setting', 'UserController@update')->name('userUpdate');
 });
