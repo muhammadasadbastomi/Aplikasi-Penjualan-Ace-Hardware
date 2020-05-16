@@ -17,5 +17,6 @@ $factory->define(Barang::class, function (Faker $faker) {
         'harga_jual' => $faker->numberBetween($min = 120000, $max = 4000000),
         'stok_tersedia' => $faker->numberBetween($min = 0, $max = 1000),
         'kategori' => $faker->numberBetween($min = 1, $max = 7),
+        'keterangan' => $faker->word(20),
     ];
 });

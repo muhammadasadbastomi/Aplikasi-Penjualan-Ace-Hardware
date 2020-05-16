@@ -25,7 +25,7 @@
                     <div class="row mt-1">
                         <div class="col-sm-12">
                             <fieldset class="form-group position-relative">
-                                <input type="text" class="form-control search-product" id="iconLeft5" placeholder="Search here">
+                                <input type="text" class="form-control search-product" id="search" placeholder="Search here">
                                 <div class="form-control-position">
                                     <i class="feather icon-search"></i>
                                 </div>
@@ -37,26 +37,33 @@
 
                 <!-- Ecommerce Products Starts -->
                 <section id="ecommerce-products" class="grid-view">
+                    @foreach($barang as $d)
                     <div class="card ecommerce-card">
                         <div class="card-content">
                             <div class="item-img text-center">
                                 <a href="app-ecommerce-details.html">
-                                    <img class="img-fluid" src="../../../app-assets/images/pages/eCommerce/1.png" alt="img-placeholder"></a>
+                                    <img class="img-fluid" src="{{$d->gambar()}}" alt="img-placeholder"></a>
                             </div>
                             <div class="card-body">
                                 <div class="item-wrapper">
                                     <div>
                                         <h6 class="item-price">
-                                            $39.99
+                                            @if($d->diskon != null)
+                                            <h6><del>Rp. {{$d->harga_jual}},-</del> / <strong>{{$d->diskon}}%</strong></h6>
+                                            <h6>Rp. {{$d->harga_diskon}},-</h6>
                                         </h6>
+                                        @else
+                                        <h6>Rp. {{$d->harga_jual}},-</h6>
+                                        <!-- <h6 class="text-white">-</h6> -->
+                                        <br>
+                                        @endif
                                     </div>
                                     <div class="item-rating">
-                                        <a type="button" class="btn btn-primary btn-sm" href="{{route('homeShow')}}">Detail</a>
+                                        <a type="button" class="btn btn-primary btn-sm" href="{{route('homeShow', ['id' => $d->uuid])}}">Detail</a>
                                     </div>
                                 </div>
                                 <div class="item-name">
-                                    <a href="{{route('homeShow')}}">Amazon - Fire TV Stick with Alexa Voice
-                                        Remote - Black</a>
+                                    <a href="{{route('homeShow', ['id' => $d->uuid])}}">{{$d->nama_barang}}</a>
                                     <p class="item-company">By <span class="company-name">Google</span></p>
                                 </div>
                                 <div>
@@ -89,7 +96,9 @@
                             </div> -->
                         </div>
                     </div>
+                    @endforeach
                 </section>
+
                 <!-- Ecommerce Products Ends -->
 
                 <!-- Ecommerce Pagination Starts -->
@@ -98,16 +107,9 @@
                         <div class="col-sm-12">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center mt-2">
-                                    <li class="page-item prev-item"><a class="page-link" href="#"></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item" aria-current="page"><a class="page-link" href="#">4</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">7</a></li>
-                                    <li class="page-item next-item"><a class="page-link" href="#"></a></li>
+                                    <li class="page-item prev-item"><a class="page-link" href="{{$data->previousPageUrl()}}"></a></li>
+                                    {{$data->links()}}
+                                    <li class="page-item next-item"><a class="page-link" href="{{$data->nextPageUrl()}}"></a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -145,7 +147,7 @@
                                                 <span class="vs-radio--border"></span>
                                                 <span class="vs-radio--circle"></span>
                                             </span>
-                                            <span class="ml-50"> &lt;=$10</span>
+                                            <span class="ml-50">Kurang dari Rp. 10.000</span>
                                         </span>
                                     </li>
                                     <li>
@@ -155,7 +157,7 @@
                                                 <span class="vs-radio--border"></span>
                                                 <span class="vs-radio--circle"></span>
                                             </span>
-                                            <span class="ml-50">$10 - $100</span>
+                                            <span class="ml-50">Rp. 10.000 - Rp. 100.000</span>
                                         </span>
                                     </li>
                                     <li>
@@ -165,7 +167,7 @@
                                                 <span class="vs-radio--border"></span>
                                                 <span class="vs-radio--circle"></span>
                                             </span>
-                                            <span class="ml-50">$100 - $500</span>
+                                            <span class="ml-50">Rp. 100.000 - Rp. 500.000</span>
                                         </span>
                                     </li>
                                     <li>
@@ -175,28 +177,12 @@
                                                 <span class="vs-radio--border"></span>
                                                 <span class="vs-radio--circle"></span>
                                             </span>
-                                            <span class="ml-50">&gt;= $500</span>
+                                            <span class="ml-50">Lebih Dari Rp. 500.000</span>
                                         </span>
                                     </li>
-
                                 </ul>
                             </div>
                             <!-- /Price Filter -->
-                            <hr>
-                            <!-- /Price Slider -->
-                            <div class="price-slider">
-                                <div class="price-slider-title mt-1">
-                                    <h6 class="filter-title mb-0">Slider</h6>
-                                </div>
-                                <div class="price-slider">
-                                    <div class="price_slider_amount mb-2">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="slider-sm my-1 range-slider" id="price-slider"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /Price Range -->
                             <hr>
                             <!-- Categories Starts -->
                             <div id="product-categories">
@@ -211,7 +197,7 @@
                                                 <span class="vs-radio--border"></span>
                                                 <span class="vs-radio--circle"></span>
                                             </span>
-                                            <span class="ml-50">Appliances</span>
+                                            <span class="ml-50">Alat Rumah</span>
                                         </span>
                                     </li>
                                     <li>
@@ -221,7 +207,7 @@
                                                 <span class="vs-radio--border"></span>
                                                 <span class="vs-radio--circle"></span>
                                             </span>
-                                            <span class="ml-50"> Audio</span>
+                                            <span class="ml-50"> Alat Kebersihan</span>
                                         </span>
                                     </li>
                                     <li>
@@ -231,7 +217,7 @@
                                                 <span class="vs-radio--border"></span>
                                                 <span class="vs-radio--circle"></span>
                                             </span>
-                                            <span class="ml-50">Cameras & Camcorders</span>
+                                            <span class="ml-50">Dapur</span>
                                         </span>
                                     </li>
                                     <li>
@@ -241,7 +227,7 @@
                                                 <span class="vs-radio--border"></span>
                                                 <span class="vs-radio--circle"></span>
                                             </span>
-                                            <span class="ml-50">Car Electronics & GPS</span>
+                                            <span class="ml-50">Otomotif</span>
                                         </span>
                                     </li>
                                     <li>
@@ -251,7 +237,7 @@
                                                 <span class="vs-radio--border"></span>
                                                 <span class="vs-radio--circle"></span>
                                             </span>
-                                            <span class="ml-50">Cell Phones</span>
+                                            <span class="ml-50">Peralatan Eletronik</span>
                                         </span>
                                     </li>
                                     <li>
@@ -261,7 +247,7 @@
                                                 <span class="vs-radio--border"></span>
                                                 <span class="vs-radio--circle"></span>
                                             </span>
-                                            <span class="ml-50">Computers & Tablets</span>
+                                            <span class="ml-50">Olahraga & Outdoor</span>
                                         </span>
                                     </li>
                                     <li>
@@ -271,259 +257,35 @@
                                                 <span class="vs-radio--border"></span>
                                                 <span class="vs-radio--circle"></span>
                                             </span>
-                                            <span class="ml-50"> Health, Fitness & Beauty</span>
+                                            <span class="ml-50"> Lain-Lain</span>
                                         </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Office & School Supplies</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">TV & Home Theater</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Video Games
-                                            </span>
-                                        </span>
-                                    </li>
-
                                 </ul>
                             </div>
                             <!-- Categories Ends -->
                             <hr>
-                            <!-- Brands -->
-                            <div class="brands">
-                                <div class="brand-title mt-1 pb-1">
-                                    <h6 class="filter-title mb-0">Brands</h6>
-                                </div>
-                                <div class="brand-list" id="brands">
-                                    <ul class="list-unstyled">
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">Insignia™</span>
-                                            </span>
-                                            <span>746</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">
-                                                    Samsung
-                                                </span>
-                                            </span>
-                                            <span>633</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">
-                                                    Metra
-                                                </span>
-                                            </span>
-                                            <span>591</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">HP</span>
-                                            </span>
-                                            <span>530</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">Apple</span>
-                                            </span>
-                                            <span>442</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">GE</span>
-                                            </span>
-                                            <span>394</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">Sony</span>
-                                            </span>
-                                            <span>350</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">Incipio</span>
-                                            </span>
-                                            <span>320</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">KitchenAid</span>
-                                            </span>
-                                            <span>318</span>
-                                        </li>
-                                        <li class="d-flex justify-content-between align-items-center py-25">
-                                            <span class="vs-checkbox-con vs-checkbox-primary">
-                                                <input type="checkbox" value="false">
-                                                <span class="vs-checkbox">
-                                                    <span class="vs-checkbox--check">
-                                                        <i class="vs-icon feather icon-check"></i>
-                                                    </span>
-                                                </span>
-                                                <span class="">Whirlpool</span>
-                                            </span>
-                                            <span>298</span>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <!-- Clear Filters Starts -->
+                            <div id="clear-filters">
+                                <button class="btn btn-block btn-primary">Cari Filter</button>
+                                <button class="btn btn-block btn-primary">Cancel Filter</button>
                             </div>
-                            <!-- /Brand -->
-                            <hr>
+                            <!-- Clear Filters Ends -->
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
                             <!-- Rating section starts -->
                             <div id="ratings">
                                 <div class="ratings-title mt-1 pb-75">
-                                    <h6 class="filter-title mb-0">Ratings</h6>
+                                    <h6 class="filter-title mb-0">Produk Terlaris</h6>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <ul class="unstyled-list list-inline ratings-list mb-0">
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i>
-                                        </li>
-                                        <li>& up</li>
+                                        <li>Produk A</li>
                                     </ul>
                                     <div class="stars-received">(160)</div>
                                 </div>
-                                <div class="d-flex justify-content-between">
-                                    <ul class="unstyled-list list-inline ratings-list mb-0">
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i>
-                                        </li>
-                                        <li>& up</li>
-                                    </ul>
-                                    <div class="stars-received">(176)</div>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <ul class="unstyled-list list-inline ratings-list mb-0">
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i>
-                                        </li>
-                                        <li>& up</li>
-                                    </ul>
-                                    <div class="stars-received">(291)</div>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <ul class="unstyled-list list-inline ratings-list mb-0 ">
-                                        <li class="ratings-list-item"><i class="feather icon-star text-warning"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i>
-                                        </li>
-                                        <li class="ratings-list-item"><i class="feather icon-star text-light"></i>
-                                        </li>
-                                        <li>& up</li>
-                                    </ul>
-                                    <div class="stars-received">(190)</div>
-                                </div>
                             </div>
                             <!-- Rating section Ends -->
-                            <hr>
-                            <!-- Clear Filters Starts -->
-                            <div id="clear-filters">
-                                <button class="btn btn-block btn-primary">CLEAR ALL FILTERS</button>
-                            </div>
-                            <!-- Clear Filters Ends -->
-
                         </div>
                     </div>
                 </div>

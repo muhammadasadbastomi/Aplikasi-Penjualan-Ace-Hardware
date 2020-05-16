@@ -37,15 +37,15 @@
                         <div class="row mb-5 mt-2">
                             <div class="col-12 col-md-5 d-flex align-items-center justify-content-center mb-2 mb-md-0">
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <img src="../../../app-assets/images/elements/macbook-pro.png" class="img-fluid" alt="product image">
+                                    <img src="{{$barang->gambar}}" class="img-fluid" alt="product image">
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
-                                <h5>Canon - EOS 5D Mark IV DSLR Camera with 24-70mm f/4L IS USM Lens
+                                <h5>{{$barang->nama_barang}}
                                 </h5>
-                                <p class="text-muted">by Apple</p>
+                                <p class="text-muted">Kategori : {{$barang->kategori}}</p>
                                 <div class="ecommerce-details-price d-flex flex-wrap">
-                                    <p class="text-primary font-medium-3 mr-1 mb-0">$43.99</p>
+                                    <p class="text-primary font-medium-3 mr-1 mb-0">{{$barang->harga_jual}}</p>
 
                                 </div>
                                 <hr>

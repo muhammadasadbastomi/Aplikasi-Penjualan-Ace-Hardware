@@ -14,9 +14,17 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-        $barang = Barang::orderBy('id', 'desc')->get();
+        $barang = Barang::orderBy('id', 'desc')->limit(6)->get();
 
-        return view('home.index', compact('barang'));
+        $data = Barang::orderBy('id', 'desc')->Wherenotnull('diskon')->limit(6)->get();
+        $diskon = $data->map(function ($item) {
+            $diskon = ($item->diskon / 100) * $item->harga_jual;
+            $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+            $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+            return $item;
+        });
+
+        return view('home.index', compact('barang', 'diskon'));
     }
 
     /**
@@ -26,9 +34,16 @@ class PenjualanController extends Controller
      */
     public function shop()
     {
-        $barang = Barang::orderBy('id', 'desc')->get();
 
-        return view('home.shop', compact('barang'));
+        $data = Barang::orderBy('id', 'desc')->paginate(9);
+        $barang = $data->map(function ($item) {
+            $diskon = ($item->diskon / 100) * $item->harga_jual;
+            $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+            $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+            return $item;
+        });
+
+        return view('home.shop', compact('barang', 'data'));
     }
 
 
@@ -59,10 +74,9 @@ class PenjualanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $barang = Barang::orderBy('id', 'desc')->get();
-
+        $barang = Barang::findOrfail($id);
         return view('home.detail', compact('barang'));
     }
 

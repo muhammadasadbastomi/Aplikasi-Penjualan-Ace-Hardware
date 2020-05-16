@@ -97,7 +97,7 @@
 
 
             <!---- Start ----->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card">
                         <div class="card-content">
@@ -150,7 +150,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!----end--->
 
             <div class="card-body">
@@ -159,10 +159,11 @@
                 </div>
                 <div class="swiper-responsive-breakpoints swiper-container px-4 py-2 swiper-container-initialized swiper-container-horizontal">
                     <div class="swiper-wrapper" style="transform: translate3d(-1232px, 0px, 0px); transition-duration: 0ms;">
+                        @foreach ($barang as $d)
                         <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
                             <div class="item-heading">
                                 <p class="text-truncate mb-0">
-                                    Bowers Wilkins - CM10 S2 Triple 6-1/2" 3-Way Floorstanding Speaker (Each) - Gloss Black
+                                    {{$d->nama_barang}}
                                 </p>
                                 <p>
                                     <small>by</small>
@@ -177,6 +178,43 @@
                                 <p class="text-secondary mt-1">Stok</p>
                             </div>
                         </div>
+                        @endforeach
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next swiper-button-disabled" tabindex="0" role="button" aria-label="Next slide" aria-disabled="true"></div>
+                    <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="false"></div>
+
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="mt-4 mb-2 text-left">
+                    <h2>Produk Diskon</h2>
+                </div>
+                <div class="swiper-responsive-breakpoints swiper-container px-4 py-2 swiper-container-initialized swiper-container-horizontal">
+                    <div class="swiper-wrapper" style="transform: translate3d(-1232px, 0px, 0px); transition-duration: 0ms;">
+                        @foreach ($diskon as $d)
+                        <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
+                            <div class="item-heading">
+                                <p class="text-truncate mb-0">
+                                    {{$d->nama_barang}}
+                                </p>
+                                <p>
+                                    <small>by</small>
+                                    <small>Bowers &amp; Wilkins</small>
+                                </p>
+                            </div>
+                            <div class="img-container w-50 mx-auto my-2 py-75">
+                                <img src="../../../app-assets/images/elements/apple-watch.png" class="img-fluid" alt="image">
+                            </div>
+                            <div class="item-meta">
+                                <p class="text-primary mt-1">Rp.{{$d->harga_jual}},- / {{$d->diskon}}%</p>
+                                <p>Rp.{{$d->harga_diskon}},-</p>
+                                <p class="text-secondary mt-1">Stok</p>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                     <!-- Add Arrows -->
                     <div class="swiper-button-next swiper-button-disabled" tabindex="0" role="button" aria-label="Next slide" aria-disabled="true"></div>
