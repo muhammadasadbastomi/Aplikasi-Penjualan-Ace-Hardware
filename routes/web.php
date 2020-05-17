@@ -69,17 +69,17 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
 
     Route::get('/admin/barang/terjual/index', 'BarangterjualController@index')->name('terjualIndex');
     Route::post('/admin/barang/terjual/index', 'BarangterjualController@store')->name('terjualstore');
-    Route::get('/admin/barang/terjual/show', 'BarangterjualController@show')->name('terjualShow');
-    Route::get('/admin/barang/terjual/edit', 'BarangterjualController@edit')->name('terjualEdit');
-    Route::post('/admin/barang/terjual/edit', 'BarangterjualController@update')->name('terjualUpdate');
-    Route::delete('/admin/barang/terjual/delete', 'BarangterjualController@delete')->name('terjualDelete');
+    //Route::get('/admin/barang/terjual/show', 'BarangterjualController@show')->name('terjualShow');
+    Route::get('/admin/barang/terjual/edit/{id}', 'BarangterjualController@edit')->name('terjualEdit');
+    Route::put('/admin/barang/terjual/edit/{id}', 'BarangterjualController@update')->name('terjualUpdate');
+    Route::delete('/admin/barang/terjual/delete/{id}', 'BarangterjualController@destroy')->name('terjualDelete');
 
     Route::get('/admin/barang/garansi/index', 'BaranggaransiController@index')->name('garansiIndex');
-    Route::get('/admin/barang/garansi/store', 'BaranggaransiController@store')->name('garansistore');
-    Route::post('/admin/barang/garansi/index', 'BaranggaransiController@show')->name('garansiShow');
-    Route::get('/admin/barang/garansi/edit', 'BaranggaransiController@edit')->name('garansiEdit');
-    Route::post('/admin/barang/garansi/edit', 'BaranggaransiController@update')->name('garansiUpdate');
-    Route::delete('/admin/barang/garansi/delete', 'BaranggaransiController@delete')->name('garansiDelete');
+    Route::post('/admin/barang/garansi/index', 'BaranggaransiController@store')->name('garansiStore');
+    //Route::post('/admin/barang/garansi/index', 'BaranggaransiController@show')->name('garansiShow');
+    Route::get('/admin/barang/garansi/edit/{id}', 'BaranggaransiController@edit')->name('garansiEdit');
+    Route::put('/admin/barang/garansi/edit/{id}', 'BaranggaransiController@update')->name('garansiUpdate');
+    Route::delete('/admin/barang/garansi/delete/{id}', 'BaranggaransiController@destroy')->name('garansiDelete');
 
     Route::get('/admin/barang/perbaikan/index', 'BarangperbaikanController@index')->name('perbaikanIndex');
     Route::post('/admin/barang/perbaikan/index', 'BarangperbaikanController@store')->name('perbaikanstore');

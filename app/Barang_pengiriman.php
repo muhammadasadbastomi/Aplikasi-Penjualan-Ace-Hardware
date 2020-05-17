@@ -2,9 +2,18 @@
 
 namespace App;
 
+use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Barang_pengiriman extends Model
 {
-    protected $table = 'Barang_pengirimans';
+    use Notifiable;
+    use Uuid;
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class);
+    }
+}
 }
