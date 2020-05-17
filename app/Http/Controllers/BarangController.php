@@ -18,7 +18,7 @@ class BarangController extends Controller
         $supplier = Supplier::orderBy('id', 'asc')->get();
         $barang = Barang::orderBy('id', 'desc')->get();
 
-        return view('admin.barang.master.index', compact('barang', 'supplier'));
+        return view('admin.barang.master.index', compact('barang', 'supplier', 'data'));
     }
 
     /**
@@ -51,6 +51,7 @@ class BarangController extends Controller
             'departement' => 'required',
             'harga_jual' => 'required',
             'stok_tersedia' => 'required',
+            'keterangan' => 'required',
             'gambar' => 'file|image|mimes:jpeg,png,gif',
 
         ], $messages);
@@ -66,6 +67,7 @@ class BarangController extends Controller
         $barang->departement = $request->departement;
         $barang->harga_jual = $request->harga_jual;
         $barang->stok_tersedia = $request->stok_tersedia;
+        $barang->keterangan = $request->keterangan;
         $barang->gambar = $request->gambar;
         if ($request->hasfile('gambar')) {
             $request->file('gambar')->move('images/barang/', $request->file('gambar')->getClientOriginalName());
@@ -124,6 +126,7 @@ class BarangController extends Controller
             'departement' => 'required',
             'harga_jual' => 'required',
             'stok_tersedia' => 'required',
+            'keterangan' => 'required',
             'gambar' => 'file|image|mimes:jpeg,png,gif',
         ], $messages);
 
@@ -136,6 +139,7 @@ class BarangController extends Controller
         $barang->departement = $request->departement;
         $barang->harga_jual = $request->harga_jual;
         $barang->diskon = $request->diskon;
+        $barang->keterangan = $request->keterangan;
         $barang->stok_tersedia = $request->stok_tersedia;
         if ($request->hasfile('gambar')) {
             $request->file('gambar')->move('images/barang/', $request->file('gambar')->getClientOriginalName());

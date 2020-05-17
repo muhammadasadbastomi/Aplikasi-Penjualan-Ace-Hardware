@@ -90,7 +90,7 @@
             <div class="modal-body">
                 <form method="POST">
                     @csrf
-                    <label>Supplier : </label>
+                    <label>Supplier </label>
                     <div class=" form-group">
                         <input type="text" name="supplier" id="supplier" placeholder="Masukkan Nama Supplier" value="{{old('supplier')}}" class="form-control  @error ('supplier') is-invalid @enderror">
                         @error('supplier')<div class="invalid-feedback"> {{$message}} </div>@enderror

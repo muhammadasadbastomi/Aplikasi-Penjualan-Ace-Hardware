@@ -85,7 +85,7 @@
                                                     <th scope="col">Gambar</th>
                                                     <th scope="col">Judul</th>
                                                     <th scope="col">Keterangan</th>
-                                                    <th scope="col" class="text-center"></th>
+                                                    <th scope="col">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -123,7 +123,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel1" style="padding-left: 10px;">Tambah Barang</h4>
+                <h4 class="modal-title" id="myModalLabel1" style="padding-left: 10px;">Tambah Thumbnail</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -171,7 +171,7 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="edit-modal-label" style="padding-left: 10px;">Edit Barang</h4>
+                <h4 class="modal-title" id="edit-modal-label" style="padding-left: 10px;">Edit Thumbnail</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -211,7 +211,6 @@
         modal.find('.modal-body #pict').attr('src', '/images/thumbnail/' + pict);
     })
 </script>
-
 
 <script>
     $(document).on('click', '.delete', function(e) {
@@ -292,9 +291,6 @@
         $(".alert").text(text).addClass("loadAnimate");
     }
 </script>
-
-
-
 
 <script>
     function bacaGambar(input) {

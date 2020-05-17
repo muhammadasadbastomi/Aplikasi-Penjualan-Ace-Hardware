@@ -75,7 +75,24 @@
                             <h5>{{ $barang->nama_barang }}
                             </h5>
                             <div class="ecommerce-details-price d-flex flex-wrap">
-                                <p class="text-secondary font-medium-3 mr-1 mb-0">Kategori : {{ $barang->kategori }}</p>
+                                <p class="text-secondary font-small-3 mr-1 mb-0">Kategori :
+                                    @if($barang->kategori == 1)
+                                    Alat Rumah
+                                    @elseif($barang->kategori == 2)
+                                    Alat Kebersihan
+                                    @elseif($barang->kategori == 3)
+                                    Alat Dapur
+                                    @elseif($barang->kategori == 4)
+                                    Otomotif
+                                    @elseif($barang->kategori == 5)
+                                    Peralatan Elektronik
+                                    @elseif($barang->kategori == 6)
+                                    Olahraga & Outdoor
+                                    @elseif($barang->kategori == 7)
+                                    Lain-lain
+                                    @else
+                                    -
+                                    @endif</p>
                             </div>
                             <hr>
 
@@ -150,7 +167,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Stok </label>
-                                            <input type="number" id="stok" name="stok_tersedia" class="form-control @error ('stok_tersedia') is-invalid @enderror" placeholder="Masukkan stok" value="{{ $barang->stok_tersedia }}">
+                                            <input type="number" id="stok_tersedia" name="stok_tersedia" class="form-control @error ('stok_tersedia') is-invalid @enderror" placeholder="Masukkan stok" value="{{ $barang->stok_tersedia }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Deskrisi </label>
+                                            <textarea type="text" id="keterangan" name="keterangan" class="form-control @error ('keterangan') is-invalid @enderror" placeholder="Masukkan Deskripsi">{{ $barang->keterangan }}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="gambar">Gambar </label>

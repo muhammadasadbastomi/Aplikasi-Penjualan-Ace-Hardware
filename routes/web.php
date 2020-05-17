@@ -13,16 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
-    Route::get('/admin/index', 'HomeController@index')->name('adminIndex');
+    Route::get('/admin', 'HomeController@index')->name('adminIndex');
 
     Route::patch('/admin/thumbnail/index', 'ThumbController@update')->name('thumbUpdate');
     Route::get('/admin/thumbnail/index', 'ThumbController@index')->name('thumbIndex');
@@ -96,7 +90,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
 });
 
 Route::get('/admin/account/index', 'UserController@index')->name('userIndex');
-Route::get('/home/index', 'PenjualanController@index')->name('homeIndex');
+Route::get('/', 'PenjualanController@index')->name('homeIndex');
 Route::get('/home/shop', 'PenjualanController@shop')->name('homeShop');
 Route::get('/home/profile/', 'PenjualanController@profile')->name('homeProfile');
 Route::get('/home/detail/{id}', 'PenjualanController@show')->name('homeShow');

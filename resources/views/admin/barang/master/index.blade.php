@@ -85,26 +85,20 @@
                                                 <tr>
                                                     <th scope="col" class="text-center">No</th>
                                                     <th scope="col" class="text-center">Gambar</th>
-                                                    <th scope="col" class="text-center">Nama Barang</th>
                                                     <th scope="col" class="text-center">Kode Barang</th>
-                                                    <th scope="col" class="text-center">Supplier</th>
+                                                    <th scope="col" class="text-center">Nama Barang</th>
                                                     <th scope="col" class="text-center">Kategori</th>
-                                                    <th scope="col" class="text-center">Satuan</th>
-                                                    <th scope="col" class="text-center">Departement</th>
                                                     <th scope="col" class="text-center">Harga</th>
-                                                    <th scope="col" class="text-center">Diskon</th>
-                                                    <th scope="col" class="text-center">Stok</th>
-                                                    <th scope="col" class="text-center" width="100px;">Aksi</th>
+                                                    <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($barang as $b)
                                                 <tr>
-                                                    <td class="text-center">{{$loop->iteration}}</td>
+                                                    <td class="text-center ">{{$loop->iteration}}</td>
                                                     <td><img src="/images/barang/{{$b->gambar}}" alt="Gambar" class="avatar mr-1 avatar-xl" width="50px;" height="50px;"></td>
-                                                    <td class="text-center">{{$b->nama_barang}}</td>
                                                     <td class="text-center">{{$b->kode_barang}}</td>
-                                                    <td class="text-center">{{$b->supplier->supplier}}</td>
+                                                    <td class="text-center">{{$b->nama_barang}}</td>
                                                     <td class="text-center">
                                                         @if($b->kategori == 1)
                                                         Alat Rumah
@@ -124,13 +118,10 @@
                                                         -
                                                         @endif
                                                     </td>
-                                                    <td class="text-center">{{$b->satuan}}</td>
-                                                    <td class="text-center">{{$b->departement}}</td>
-                                                    <td class="text-center">{{$b->harga_jual}}</td>
-                                                    <td class="text-center">{{$b->diskon}} %</td>
-                                                    <td class="text-center">{{$b->stok_tersedia}}</td>
+                                                    <td class="text-center">Rp. {{number_format($b->harga_jual, 0, ',', '.')}},-</td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-info text-white" href="{{route('barangShow', ['id' => $b->uuid])}}"><i class="feather icon-edit"></i></a>
+                                                        @include('admin.barang.master.button')
+                                                        <a class="btn btn-sm btn-warning text-white" href="{{route('barangShow', ['id' => $b->uuid])}}"><i class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$b->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
@@ -161,91 +152,28 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data">
-                    <div class="modal-body">
-                        @csrf
-                        <label>Nama Barang</label>
-                        <div class="form-group">
-                            <input type="text" name="nama_barang" id="nama_barang" placeholder="Masukkan Nama Barang" value="{{old('nama_barang')}}" class="form-control  @error ('nama_barang') is-invalid @enderror">
-                            @error('nama_barang')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                        </div>
-
-                        <label>Kode Barang</label>
-                        <div class="form-group">
-                            <input type="text" name="kode_barang" id="kode_barang" placeholder="Masukkan kode Barang" value="{{old('kode_barang')}}" class="form-control  @error ('kode_barang') is-invalid @enderror">
-                            @error('kode_barang')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="supplier">Supplier</label>
-                            <select class="custom-select" name="supplier_id" id="supplier_id">
-                                @foreach($supplier as $s)
-                                <option value="{{$s->id}}">{{ $s->supplier}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="kategori">Kategori</label>
-                            <select class="custom-select" name="kategori" id="kategori">
-                                <option selected value="">Pilih kategori</option>
-                                <option value="1">Alat Rumah</option>
-                                <option value="2">Alat Kebersihan</option>
-                                <option value="3">Dapur</option>
-                                <option value="4">Otomotif</option>
-                                <option value="5">Peralatan Elektronik</option>
-                                <option value="6">Olahraga & Outdoor</option>
-                                <option value="7">Lain-lain</option>
-                            </select>
-                        </div>
-
-                        <label>Harga Satuan</label>
-                        <div class="form-group">
-                            <input type="text" name="satuan" id="satuan" placeholder="Masukkan Satuan" value="{{old('satuan')}}" class="form-control">
-                            @error('satuan')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                        </div>
-
-                        <label>Departement</label>
-                        <div class="form-group">
-                            <input type="text" name="departement" id="departement" placeholder="Masukkan Departement" value="{{old('departement')}}" class="form-control">
-                            @error('departement')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                        </div>
-
-                        <label>Harga Jual</label>
-                        <div class="form-group">
-                            <input type="text" name="harga_jual" id="harga_jual" placeholder="Masukkan Harga" value="{{old('harga_jual')}}" class="form-control">
-                            @error('harga_jual')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                        </div>
-
-                        <label>Stok</label>
-                        <div class="form-group">
-                            <input type="text" name="stok_tersedia" id="stok_tersedia" placeholder="Masukkan Stok" value="{{old('stok_tersedia')}}" class="form-control">
-                            @error('stok')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="gambar">Gambar </label>
-                            <div class="custom-file">
-                                <input type="file" id="gambar" class="custom-file-input  @error ('gambar') is-invalid @enderror" name="gambar" value="{{old('gambar')}}">
-                                <label class="custom-file-label" for="gambar">Choose file</label>
-                                @error('gambar')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                            </div>
-                        </div>
-                        <br>
-                        <div class="imgWrap">
-                            <img src="/img/nopictcreate.png" id="imgView" class="card-img-top img-fluid" style="width: 30%; height:30%; display: block; margin: auto;">
-                        </div>
-                        <br>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Tambah</button>
-                    </div>
-                </form>
+                @include('admin.barang.master.create')
             </div>
         </div>
     </div>
 </div>
 
+<!-- Modal show -->
+<div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="showModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="showModalLabel" style="padding-left: 10px;">Barang Detail</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @include('admin.barang.master.detail')
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 
@@ -330,4 +258,33 @@
     }
 </script>
 
+<script>
+    $('#showModal').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var satuan = button.data('satuan')
+        var departement = button.data('departement')
+        var diskon = button.data('diskon')
+        var stok = button.data('stok')
+        var nama = button.data('nama')
+        var kategori = button.data('kategori')
+        var harga = button.data('harga')
+        var gambar = button.data('gambar')
+        var kode = button.data('kode')
+        var keterangan = button.data('keterangan')
+        var modal = $(this)
+
+        modal.find('.modal-body #id').val(id)
+        modal.find('.modal-body #satuan').val(satuan)
+        modal.find('.modal-body #departement').val(departement)
+        modal.find('.modal-body #diskon').val(diskon)
+        modal.find('.modal-body #stok').val(stok)
+        modal.find('.modal-body #nama').val(nama)
+        modal.find('.modal-body #kategori').val(kategori)
+        modal.find('.modal-body #harga').val(harga)
+        modal.find('.modal-body #kode').val(kode)
+        modal.find('.modal-body #keterangan').val(keterangan)
+        modal.find('.modal-body #gambar').attr('src', '/images/barang/' + gambar);
+    })
+</script>
 @endsection
