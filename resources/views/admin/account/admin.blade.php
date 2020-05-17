@@ -2,6 +2,42 @@
 
 @section('title') User Admin @endsection
 
+@section('head')
+<style>
+    #imgView {
+        width: 50%;
+        height: 50%;
+    }
+
+
+    .loadAnimate {
+        animation: setAnimate ease 2.5s infinite;
+    }
+
+    @keyframes setAnimate {
+        0% {
+            color: #000;
+        }
+
+        50% {
+            color: transparent;
+        }
+
+        99% {
+            color: transparent;
+        }
+
+        100% {
+            color: #000;
+        }
+    }
+
+    .custom-file-label {
+        cursor: pointer;
+    }
+</style>
+@endsection
+
 @section('content')
 <!-- BEGIN: Content-->
 <div class="app-content content">
@@ -15,7 +51,7 @@
                         <h2 class="content-header-title float-left mb-0">Data User Admin</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a>
+                                <li class="breadcrumb-item"><a href="{{route('adminIndex')}}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active">Data User Admin
                                 </li>
@@ -33,9 +69,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
-                                        aria-controls="DataTables_Table_0" data-toggle="modal"
-                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span></button> </div>
                             </div>
                             <div class="card-content">
@@ -67,10 +101,8 @@
                                                         @endif
                                                     </td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white"><i
-                                                                class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" href="#"><i
-                                                                class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white" href="{{route('adminEdit', ['id' => $u->uuid])}}"><i class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -90,8 +122,7 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-    aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -110,7 +141,7 @@
 
                         <label>E-Mail</label>
                         <div class="form-group">
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" placeholder="Masukkan E-mail">
                         </div>
 
                         <label>No.Telepon</label>
@@ -124,10 +155,23 @@
                                 <input type="text" placeholder="Admin" class="form-control" disabled>
                             </div>
                         </fieldset>
-                        <label>Photo</label>
+
                         <div class="form-group">
-                            <input type="file" class="form-control">
+                            <label for="photos">Photo </label>
+                            <div class="custom-file">
+                                <input type="file" id="photos" class="custom-file-input  @error ('photos') is-invalid @enderror" name="photos" value="{{old('photos')}}">
+                                <label class="custom-file-label" for="photos">Choose file</label>
+                                @error('photos')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                            </div>
                         </div>
+                        <br>
+                        <div class="imgWrap">
+                            <img src="/img/nopictcreate.png" id="imgView" class="card-img-top img-fluid" style="width: 50%; height:50%; display: block; margin: auto;">
+                        </div>
+
+
+
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -140,8 +184,7 @@
 </div>
 
 <!-- Modal Edit -->
-<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable"
-    aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -233,5 +276,41 @@
             }
         })
     });
+</script>
+
+<script>
+    $("#photos").change(function(event) {
+        fadeInAdd();
+        getURL(this);
+    });
+
+    $("#photos").on('click', function(event) {
+        fadeInAdd();
+    });
+
+    function getURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            var filename = $("#photos").val();
+            filename = filename.substring(filename.lastIndexOf('\\') + 1);
+            reader.onload = function(e) {
+                debugger;
+                $('#imgView').attr('src', e.target.result);
+                $('#imgView').hide();
+                $('#imgView').fadeIn(500);
+                $('.custom-file-label').text(filename);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+        $(".alert").removeClass("loadAnimate").hide();
+    }
+
+    function fadeInAdd() {
+        fadeInAlert();
+    }
+
+    function fadeInAlert(text) {
+        $(".alert").text(text).addClass("loadAnimate");
+    }
 </script>
 @endsection

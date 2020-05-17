@@ -33,15 +33,13 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
-                                        aria-controls="DataTables_Table_0" data-toggle="modal"
-                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span></button> </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration">
+                                        <table class="table zero-configuration nowrap">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">No</th>
@@ -59,12 +57,8 @@
                                                     <td>{{ $bd->tgl_masuk }}</td>
                                                     <td>{{ $bd->jumlah }}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white"
-                                                            href="{{route('datangEdit', ['id' => $bd->uuid])}}"><i
-                                                                class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white"
-                                                            data-id="{{$bd->uuid}}" href="#"><i
-                                                                class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white" href="{{route('datangEdit', ['id' => $bd->uuid])}}"><i class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$bd->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -84,8 +78,7 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-    aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -109,14 +102,12 @@
 
                         <label>Tanggal Masuk</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_masuk" id="tgl_masuk" value="{{old('tgl_masuk')}}"
-                                class="form-control">
+                            <input type="date" name="tgl_masuk" id="tgl_masuk" value="{{old('tgl_masuk')}}" class="form-control">
                         </div>
 
                         <label>Jumlah</label>
                         <div class="form-group">
-                            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah"
-                                value="{{old('jumlah')}}" class="form-control">
+                            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah" value="{{old('jumlah')}}" class="form-control">
                         </div>
 
                     </div>

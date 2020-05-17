@@ -50,13 +50,13 @@
 
         <label>Harga Jual</label>
         <div class="form-group">
-            <input type="text" name="harga_jual" id="harga_jual" placeholder="Masukkan Harga" value="{{old('harga_jual')}}" class="form-control">
+            <input type="number" name="harga_jual" id="harga_jual" placeholder="Masukkan Harga" value="{{old('harga_jual')}}" class="form-control">
             @error('harga_jual')<div class="invalid-feedback"> {{$message}} </div>@enderror
         </div>
 
         <label>Stok</label>
         <div class="form-group">
-            <input type="text" name="stok_tersedia" id="stok_tersedia" placeholder="Masukkan Stok" value="{{old('stok_tersedia')}}" class="form-control">
+            <input type="number" name="stok_tersedia" id="stok_tersedia" placeholder="Masukkan Stok" value="{{old('stok_tersedia')}}" class="form-control ">
             @error('stok_tersedia')<div class="invalid-feedback"> {{$message}} </div>@enderror
         </div>
 

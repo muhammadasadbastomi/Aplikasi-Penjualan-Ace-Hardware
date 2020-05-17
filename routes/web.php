@@ -83,13 +83,15 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::delete('/admin/barang/perbaikan/delete', 'BarangperbaikanController@delete')->name('perbaikanDelete');
 
     Route::get('/admin/account/admin', 'UserController@admin')->name('userAdmin');
+    Route::get('/admin/account/edit/{id}', 'UserController@adminedit')->name('adminEdit');
     Route::get('/admin/account/karyawan', 'UserController@karyawan')->name('userKaryawan');
     Route::post('/admin/account/karyawan', 'UserController@store')->name('userKaryawanStore');
     Route::get('/admin/account/setting', 'UserController@edit')->name('userEdit');
     Route::post('/admin/account/setting', 'UserController@update')->name('userUpdate');
+
+    Route::get('/admin/account/index', 'UserController@index')->name('userIndex');
 });
 
-Route::get('/admin/account/index', 'UserController@index')->name('userIndex');
 Route::get('/', 'PenjualanController@index')->name('homeIndex');
 Route::get('/home/shop', 'PenjualanController@shop')->name('homeShop');
 Route::get('/home/profile/', 'PenjualanController@profile')->name('homeProfile');

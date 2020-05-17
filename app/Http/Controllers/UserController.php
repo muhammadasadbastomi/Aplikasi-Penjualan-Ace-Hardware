@@ -110,6 +110,19 @@ class UserController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function adminedit()
+    {
+        $user = User::orderBy('id', 'desc')->get();
+
+        return view('admin.account.edit', compact('user'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

@@ -33,15 +33,13 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
-                                        aria-controls="DataTables_Table_0" data-toggle="modal"
-                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span></button> </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration">
+                                        <table class="table zero-configuration nowrap">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="text-center">No</th>
@@ -62,28 +60,23 @@
                                                     <td class="text-center">{{ $br->kerusakan }}</td>
                                                     <td class="text-center">{{ $br->tgl_cek }}</td>
                                                     @if($br->status == 1)
-                                                    <td class="text-center"><a
-                                                            class="btn btn-warning btn-sm text-white">Belum
+                                                    <td class="text-center"><a class="btn btn-warning btn-sm text-white">Belum
                                                             diperbaiki</a>
                                                     </td>
                                                     @elseif($br->status == 2)
-                                                    <td class="text-center"><a
-                                                            class="btn btn-info btn-sm text-white">Dalam
+                                                    <td class="text-center"><a class="btn btn-info btn-sm text-white">Dalam
                                                             Perbaikan</a>
                                                     </td>
                                                     @elseif($br->status == 3)
-                                                    <td class="text-center"><a
-                                                            class="btn btn-success btn-sm text-white">Selesai
+                                                    <td class="text-center"><a class="btn btn-success btn-sm text-white">Selesai
                                                             Perbaikan</a>
                                                     </td>
                                                     @elseif($br->status == 4)
-                                                    <td class="text-center"><a
-                                                            class="btn btn-danger btn-sm text-white">Tidak
+                                                    <td class="text-center"><a class="btn btn-danger btn-sm text-white">Tidak
                                                             bisa diperbaiki</a>
                                                     </td>
                                                     @else
-                                                    <td class="text-center"><a
-                                                            class="btn btn-success btn-sm text-white">-</a>
+                                                    <td class="text-center"><a class="btn btn-success btn-sm text-white">-</a>
                                                     </td>
                                                     @endif
                                                     <!-- <td class="text-center">{{ $br->tgl_selesai }}</td> -->
@@ -97,12 +90,8 @@
                                                     <td class="text-center">{{ $br->jumlah_barang }}</td>
 
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white"
-                                                            href="{{route('rusakEdit', ['id' => $br->uuid])}}"><i
-                                                                class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white"
-                                                            data-id="{{$br->uuid}}" href="#"><i
-                                                                class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white" href="{{route('rusakEdit', ['id' => $br->uuid])}}"><i class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$br->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -122,8 +111,7 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-    aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -147,20 +135,17 @@
 
                         <label>Kerusakan</label>
                         <div class="form-group">
-                            <input type="text" name="kerusakan" id="kerusakan" placeholder="Masukkan Kerusakan Barang"
-                                value="{{old('kerusakan')}}" class="form-control">
+                            <input type="text" name="kerusakan" id="kerusakan" placeholder="Masukkan Kerusakan Barang" value="{{old('kerusakan')}}" class="form-control">
                         </div>
 
                         <label>Tanggal Cek</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_cek" id="tgl_cek" value="{{old('tgl_cek')}}"
-                                class="form-control">
+                            <input type="date" name="tgl_cek" id="tgl_cek" value="{{old('tgl_cek')}}" class="form-control">
                         </div>
 
                         <label>Jumlah</label>
                         <div class="form-group">
-                            <input type="text" name="jumlah_barang" id="jumlah_barang" placeholder="Masukkan Jumlah"
-                                value="{{old('jumlah_barang')}}" class="form-control">
+                            <input type="text" name="jumlah_barang" id="jumlah_barang" placeholder="Masukkan Jumlah" value="{{old('jumlah_barang')}}" class="form-control">
                         </div>
                     </div>
             </div>
