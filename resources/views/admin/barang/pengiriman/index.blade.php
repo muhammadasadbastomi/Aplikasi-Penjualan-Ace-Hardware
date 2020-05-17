@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title') Admin Data Barang Status Pengiriman @endsection
+@section('title') Admin Data Status Pengiriman @endsection
 
 @section('content')
 <!-- BEGIN: Content-->
@@ -12,12 +12,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Data Barang Status Pengiriman</h2>
+                        <h2 class="content-header-title float-left mb-0">Data Status Pengiriman</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Data Barang Status Pengiriman
+                                <li class="breadcrumb-item active">Data Status Pengiriman
                                 </li>
                             </ol>
                         </div>
@@ -33,7 +33,10 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah Data</span></button> </div>
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span></button> </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -41,28 +44,54 @@
                                         <table class="table zero-configuration">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">No</th>
-                                                    <th scope="col">Nama Pembeli</th>
-                                                    <th scope="col">Tanggal Pengiriman</th>
-                                                    <th scope="col">alamat</th>
-                                                    <th scope="col">Jumlah</th>
-                                                    <th scope="col">Status</th>
+                                                    <th scope="col" class="text-center">No</th>
+                                                    <th scope="col" class="text-center">Nama Pembeli</th>
+                                                    <th scope="col" class="text-center">Kode Pengiriman</th>
+                                                    <th scope="col" class="text-center">Tanggal Pengiriman</th>
+                                                    <th scope="col" class="text-center">alamat</th>
+                                                    <th scope="col" class="text-center">Jumlah</th>
+                                                    <th scope="col" class="text-center">Status</th>
                                                     <th scope="col" class="text-center"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach ($barangpengiriman as $bp)
                                                 <tr>
-                                                    <td class="text-center"></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                                    <td class="text-center">{{ $bp->barang->nama_barang }}</td>
+                                                    <td class="text-center">{{ $bp->kode_pengiriman }}</td>
+                                                    <td class="text-center">{{ $bp->nama_pembeli }}</td>
+                                                    <td class="text-center">{{ $bp->tgl_pengiriman }}</td>
+                                                    <td class="text-center">{{ $bp->jumlah }}</td>
+                                                    @if($bp->status == 1)
+                                                    <td class="text-center"><a
+                                                            class="btn btn-warning btn-sm text-white">Belum
+                                                            dikirim</a>
+                                                    </td>
+                                                    @elseif($bp->status == 2)
+                                                    <td class="text-center"><a
+                                                            class="btn btn-info btn-sm text-white">Dalam
+                                                            Pengiriman</a>
+                                                    </td>
+                                                    @elseif($bp->status == 3)
+                                                    <td class="text-center"><a
+                                                            class="btn btn-success btn-sm text-white">Dikirin</a>
+                                                    </td>
+                                                    @else
+                                                    <td class="text-center"><a
+                                                            class="btn btn-success btn-sm text-white">-</a>
+                                                    </td>
+                                                    @endif
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" data-toggle="modal" data-target="#exampleModal"><i class="feather icon-edit"></i></a>
-                                                        <a class="btn btn-sm btn-danger text-white" href="#"><i class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('pengirimanEdit', ['id' => $bp->uuid])}}"><i
+                                                                class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$bp->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -79,7 +108,8 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -90,30 +120,57 @@
             </div>
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-body">
+                        <div class="form-group">
+                            <label for="barang">Pilih Barang</label>
+                            <select class="custom-select" name="barang_id" id="barang_id">
+                                @foreach($barang as $b)
+                                <option value="{{$b->id}}">{{ $b->nama_barang}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <label>Kode pengiriman</label>
+                        <div class="form-group">
+                            <input type="text" name="kode_pengiriman" id="kode_pengiriman"
+                                value="{{old('kode_pengiriman')}}" placeholder="Masukkan Kode Pengiriman"
+                                class="form-control">
+                        </div>
+
                         <label>Nama Pembeli</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Nama Pembeli" class="form-control">
+                            <input type="text" name="nama_pembeli" id="nama_pembeli" value="{{old('nama_pembeli')}}"
+                                placeholder="Masukkan Nama Pembeli" class="form-control">
+                        </div>
+
+                        <label>Alamat Pengiriman</label>
+                        <div class="form-group">
+                            <textarea type="text" name="alamat_pengiriman" id="alamat_pengiriman"
+                                placeholder="Masukkan Alamat"
+                                class="form-control">{{ old('alamat_pengiriman') }} </textarea>
                         </div>
 
                         <label>Tanggal Pengiriman</label>
                         <div class="form-group">
-                            <input type="date" class="form-control">
-                        </div>
-
-                        <label>Alamat</label>
-                        <div class="form-group">
-                            <textarea type="text" placeholder="Masukkan Alamat" class="form-control"> </textarea>
+                            <input type="date" name="tgl_pengiriman" id="tgl_pengiriman"
+                                value="{{old('tgl_pengiriman')}}" class="form-control">
                         </div>
 
                         <label>Jumlah</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Jumlah" class="form-control">
+                            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah"
+                                value="{{old('jumlah')}}" class="form-control">
                         </div>
 
-                        <label>Status</label>
                         <div class="form-group">
-                            <input type="text" placeholder="Masukkan Status" class="form-control">
+                            <label for="status">status</label>
+                            <select class="custom-select" name="status" id="status">
+                                <option selected value="">Pilih status</option>
+                                <option value="1">Belum dikirim</option>
+                                <option value="2">Dalam pengiriman</option>
+                                <option value="3">Dikirim</option>
+                            </select>
                         </div>
                     </div>
             </div>
@@ -127,7 +184,8 @@
 </div>
 
 <!-- Modal Edit -->
-<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">

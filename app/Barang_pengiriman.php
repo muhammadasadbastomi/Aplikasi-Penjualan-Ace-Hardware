@@ -10,10 +10,10 @@ class Barang_pengiriman extends Model
 {
     use Notifiable;
     use Uuid;
+    public $table = 'barang_pengirimans';
 
     public function barang()
     {
         return $this->belongsTo(Barang::class);
     }
-}
 }

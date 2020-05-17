@@ -56,10 +56,10 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
 
     Route::get('/admin/barang/pengiriman/index', 'BarangpengirimanController@index')->name('pengirimanIndex');
     Route::post('/admin/barang/pengiriman/index', 'BarangpengirimanController@store')->name('pengirimanstore');
-    Route::get('/admin/barang/pengiriman/show', 'BarangpengirimanController@show')->name('pengirimanShow');
-    Route::get('/admin/barang/pengiriman/edit', 'BarangpengirimanController@edit')->name('pengirimanEdit');
-    Route::post('/admin/barang/pengiriman/edit', 'BarangpengirimanController@update')->name('pengirimanUpdate');
-    Route::delete('/admin/barang/pengiriman/delete', 'BarangpengirimanController@delete')->name('pengirimanDelete');
+    //Route::get('/admin/barang/pengiriman/show', 'BarangpengirimanController@show')->name('pengirimanShow');
+    Route::get('/admin/barang/pengiriman/edit/{id}', 'BarangpengirimanController@edit')->name('pengirimanEdit');
+    Route::put('/admin/barang/pengiriman/edit/{id}', 'BarangpengirimanController@update')->name('pengirimanUpdate');
+    Route::delete('/admin/barang/pengiriman/delete/{id}', 'BarangpengirimanController@destroy')->name('pengirimanDelete');
 
     Route::get('/admin/barang/terjual/index', 'BarangterjualController@index')->name('terjualIndex');
     Route::post('/admin/barang/terjual/index', 'BarangterjualController@store')->name('terjualstore');
