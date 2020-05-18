@@ -79,7 +79,7 @@
                                     <p class="card-text">Kategori : Random</p>
                                     <hr>
                                 </div>
-                                <a href="{{route('homeShop')}}" type="button" style="width: 100%;" class="btn btn-relief-danger mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-shopping-cart"> Lihat Barang Lainnya</i> </a>
+                                <a href="{{route('homeShop')}}" type="button" style="width: 100%;" class="btn btn-relief-danger mr-1 mb-1 waves-effect waves-light"> <i class="feather icon-package"> Lihat Barang Lainnya</i> </a>
                             </div>
                         </div>
                     </div>
@@ -160,8 +160,23 @@
                                 {{$d->nama_barang}}
                             </a>
                             <p>
-                                <small>Kategori</small>
-                                <small>{{$d->kategori}}</small>
+                                <small> @if($d->kategori == 1)
+                                    Peralatan Rumah
+                                    @elseif($d->kategori == 2)
+                                    Alat Kebersihan
+                                    @elseif($d->kategori == 3)
+                                    Alat Dapur
+                                    @elseif($d->kategori == 4)
+                                    Otomotif
+                                    @elseif($d->kategori == 5)
+                                    Peralatan Elektronik
+                                    @elseif($d->kategori == 6)
+                                    Olahraga & Outdoor
+                                    @elseif($d->kategori == 7)
+                                    Kategori Lainnya
+                                    @else
+                                    -
+                                    @endif</small>
                             </p>
                         </div>
                         <div class=" img-container w-80 mx-auto my-2 py-75">
@@ -207,8 +222,23 @@
                                 {{$d->nama_barang}}
                             </a>
                             <p>
-                                <small>Kategori</small>
-                                <small>{{$d->kategori}}</small>
+                                <small> @if($d->kategori == 1)
+                                    Peralatan Rumah
+                                    @elseif($d->kategori == 2)
+                                    Alat Kebersihan
+                                    @elseif($d->kategori == 3)
+                                    Alat Dapur
+                                    @elseif($d->kategori == 4)
+                                    Otomotif
+                                    @elseif($d->kategori == 5)
+                                    Peralatan Elektronik
+                                    @elseif($d->kategori == 6)
+                                    Olahraga & Outdoor
+                                    @elseif($d->kategori == 7)
+                                    Kategori Lainnya
+                                    @else
+                                    -
+                                    @endif</small>
                             </p>
                         </div>
                         <div class=" img-container w-80 mx-auto my-2 py-75">
@@ -254,8 +284,23 @@
                                 {{$d->nama_barang}}
                             </a>
                             <p>
-                                <small>Kategori</small>
-                                <small>{{$d->kategori}}</small>
+                                <small> @if($d->kategori == 1)
+                                    Peralatan Rumah
+                                    @elseif($d->kategori == 2)
+                                    Alat Kebersihan
+                                    @elseif($d->kategori == 3)
+                                    Alat Dapur
+                                    @elseif($d->kategori == 4)
+                                    Otomotif
+                                    @elseif($d->kategori == 5)
+                                    Peralatan Elektronik
+                                    @elseif($d->kategori == 6)
+                                    Olahraga & Outdoor
+                                    @elseif($d->kategori == 7)
+                                    Kategori Lainnya
+                                    @else
+                                    -
+                                    @endif</small>
                             </p>
                         </div>
                         <div class=" img-container w-80 mx-auto my-2 py-75">
@@ -301,8 +346,23 @@
                                 {{$d->nama_barang}}
                             </a>
                             <p>
-                                <small>Kategori</small>
-                                <small>{{$d->kategori}}</small>
+                                <small> @if($d->kategori == 1)
+                                    Peralatan Rumah
+                                    @elseif($d->kategori == 2)
+                                    Alat Kebersihan
+                                    @elseif($d->kategori == 3)
+                                    Alat Dapur
+                                    @elseif($d->kategori == 4)
+                                    Otomotif
+                                    @elseif($d->kategori == 5)
+                                    Peralatan Elektronik
+                                    @elseif($d->kategori == 6)
+                                    Olahraga & Outdoor
+                                    @elseif($d->kategori == 7)
+                                    Kategori Lainnya
+                                    @else
+                                    -
+                                    @endif</small>
                             </p>
                         </div>
                         <div class=" img-container w-80 mx-auto my-2 py-75">

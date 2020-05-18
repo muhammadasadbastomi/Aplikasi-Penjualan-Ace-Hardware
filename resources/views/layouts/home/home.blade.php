@@ -61,7 +61,7 @@
     <footer class="footer footer-static footer-light navbar-shadow">
         <div class="d-flex flex-row">
             <div class="col-md-3 col-sm-12">
-                <h5 class="footer-heading" style="padding-left:35px; margin-bottom:14px; font-size:12px;"><b><i class="fas fa fa-map-marker"></i> Location</b>
+                <h5 class="footer-heading" style="padding-left:35px; margin-bottom:14px; font-size:12px;"><b><i class="feather icon-map-pin"></i> Location</b>
                 </h5>
                 <div class="footer-section">
                     <ul class="footer-navs" style="list-style-position: outside; list-style-type:none;   line-height: 2;">
@@ -72,7 +72,7 @@
                 </div>
             </div>
             <section class="col-md-3 col-sm-12">
-                <h5 class="footer-heading" style="padding-left:35px; margin-bottom:14px; font-size:13px;"><b><i class="fas fa fa-volume-control-phone"></i> Customer Service</b>
+                <h5 class="footer-heading" style="padding-left:35px; margin-bottom:14px; font-size:13px;"><b><i class="feather icon-phone-call"></i> Customer Service</b>
                 </h5>
                 <div class="footer-section">
                     <ul class="footer-navs" style="list-style-position: outside; list-style-type:none;">
@@ -87,7 +87,7 @@
             </section>
 
             <section class="col-md-3 col-sm-12">
-                <h5 class="footer-heading" style="padding-left:35px; margin-bottom:14px; font-size:13px;"><b><i class="fas fa fa-phone"></i> Call Center</b>
+                <h5 class="footer-heading" style="padding-left:35px; margin-bottom:14px; font-size:13px;"><b><i class="feather icon-phone-incoming"></i> Call Center</b>
                 </h5>
                 <div class="footer-section">
                     <ul class="footer-navs" style="list-style-position: outside; list-style-type:none;">
@@ -98,7 +98,7 @@
                 </div>
             </section>
             <section class="col-md-3 col-sm-12">
-                <h5 class="footer-heading" style="padding-left:35px; margin-bottom:14px; font-size:13px;"><b><i class="feather icon-radio"></i> Social Media</b>
+                <h5 class="footer-heading" style="padding-left:35px; margin-bottom:14px; font-size:13px;"><b><i class="feather icon-wifi"></i> Social Media</b>
                 </h5>
                 <div class="footer-section">
                     <ul class="footer-navs" style="list-style-position: outside; list-style-type:none;">

@@ -14,9 +14,9 @@
                                 <a class="navbar-brand" href="{{route('homeIndex')}}">
                                     <img src="{{asset('img/logo.png') }}" style="width: 63px;  margin-top:11px; margin-left: 4px; ">
                                 </a></li>
-                            <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeIndex')}}"><i class="ficon fas fa fa-shopping-bag"></i>Home</a>
+                            <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeIndex')}}"><i class="ficon feather icon-home"></i>Home</a>
                             </li>
-                            <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeShop')}}"><i class="ficon fas fa fa-shopping-cart"></i>Shop</a>
+                            <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeShop')}}"><i class="ficon feather icon-package"></i>All Products</a>
                             </li>
                             <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeProfile')}}"><i class="ficon fas fa fa-user"></i>Profile</a>
                             </li> -->

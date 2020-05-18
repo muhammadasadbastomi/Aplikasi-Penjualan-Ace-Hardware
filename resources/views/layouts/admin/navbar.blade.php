@@ -36,7 +36,7 @@
                             Karyawan
                             @endif</span></div><span><img class="round" src="{{ Auth::user()->photos() }}" alt="avatar" height="40" width="40"></span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{route('userEdit')}}"><i class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather icon-power"></i> Logout</a>
+                    <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{route('userEdit')}}"><i class="feather icon-settings"></i> Edit Profile</a><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather icon-power"></i> Logout</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>

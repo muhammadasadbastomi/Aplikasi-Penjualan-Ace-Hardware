@@ -37,7 +37,7 @@
                         <div class="row mb-5 mt-2">
                             <div class="col-12 col-md-4 d-flex align-items-center justify-content-center mb-2 mb-md-0" style="margin-left: 27px;">
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <img src="/images/barang/{{$barang->gambar}}" class="img-fluid" alt="product image" style="width: 100px; height:100px;">
+                                    <img src="/images/barang/{{$barang->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
                                 </div>
                             </div>
                             <div style="margin-left: 40px;" class="col-12 col-md-7 float-left">
@@ -46,7 +46,23 @@
                                 </div>
                                 <h3>{{$barang->nama_barang}}
                                 </h3>
-                                <p class="text-muted">Kategori : {{$barang->kategori}}</p>
+                                <p class="text-muted">Kategori : @if($barang->kategori == 1)
+                                    Peralatan Rumah
+                                    @elseif($barang->kategori == 2)
+                                    Alat Kebersihan
+                                    @elseif($barang->kategori == 3)
+                                    Alat Dapur
+                                    @elseif($barang->kategori == 4)
+                                    Otomotif
+                                    @elseif($barang->kategori == 5)
+                                    Peralatan Elektronik
+                                    @elseif($barang->kategori == 6)
+                                    Olahraga & Outdoor
+                                    @elseif($barang->kategori == 7)
+                                    Kategori Lainnya
+                                    @else
+                                    -
+                                    @endif</p>
                                 <div class="ecommerce-details-price d-flex flex-wrap">
                                     <h6 class="item-price">
                                         @if($barang->diskon != null)
@@ -91,8 +107,23 @@
                                             {{$d->nama_barang}}
                                         </p>
                                         <p>
-                                            <small>Kategori</small>
-                                            <small> {{$d->kategori}}</small>
+                                            <small> @if($barang->kategori == 1)
+                                                Peralatan Rumah
+                                                @elseif($barang->kategori == 2)
+                                                Alat Kebersihan
+                                                @elseif($barang->kategori == 3)
+                                                Alat Dapur
+                                                @elseif($barang->kategori == 4)
+                                                Otomotif
+                                                @elseif($barang->kategori == 5)
+                                                Peralatan Elektronik
+                                                @elseif($barang->kategori == 6)
+                                                Olahraga & Outdoor
+                                                @elseif($barang->kategori == 7)
+                                                Kategori Lainnya
+                                                @else
+                                                -
+                                                @endif</small>
                                         </p>
                                     </div>
                                     <div class="img-container w-50 mx-auto my-2 py-75">

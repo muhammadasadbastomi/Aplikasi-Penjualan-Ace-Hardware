@@ -17,7 +17,7 @@
                     </li>
                     <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="fas fa fa-wrench"></i><span data-i18n="Otomotif">Otomotif</span></a>
                     </li>
-                    <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="feather icon-cpu"></i><span data-i18n="Peralatan Elektronik">Peralatan Elektronik</span></a>
+                    <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="feather icon-zap"></i><span data-i18n="Peralatan Elektronik">Peralatan Elektronik</span></a>
                     </li>
                     <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="feather icon-activity"></i><span data-i18n="Olahraga &amp; Outdoor">Olahraga &amp; Outdoor</span></a>
                     </li>

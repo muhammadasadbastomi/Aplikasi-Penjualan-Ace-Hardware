@@ -64,17 +64,10 @@
                                 </div>
                                 <div class="item-name">
                                     <a href="{{route('homeShow', ['id' => $d->uuid])}}">{{$d->nama_barang}}</a>
-                                    <p class="item-company">By <span class="company-name">Google</span></p>
                                 </div>
                                 <div>
                                     <p class="item-description">
-                                        Enjoy smart access to videos, games and apps with this Amazon Fire TV stick.
-                                        Its Alexa voice remote lets you
-                                        deliver hands-free commands when you want to watch television or engage with
-                                        other applications. With a
-                                        quad-core processor, 1GB internal memory and 8GB of storage, this portable
-                                        Amazon Fire TV stick works fast
-                                        for buffer-free streaming.
+                                        {{$d->keterangan}}
                                     </p>
                                 </div>
                             </div>
@@ -116,9 +109,9 @@
                     </div>
                 </section>
                 <!-- Ecommerce Pagination Ends -->
-
             </div>
         </div>
+
         <div class="sidebar-detached sidebar-left">
             <div class="sidebar">
                 <!-- Ecommerce Sidebar Starts -->

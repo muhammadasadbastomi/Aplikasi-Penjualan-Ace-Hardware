@@ -22,7 +22,7 @@
                     <li><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Master</span></a></li>
                 </ul>
             </li>
-            <li class="nav-item"><a href="#"><i class="feather icon-folder"></i><span class="menu-title">Pengelolaan</span></a>
+            <li class="nav-item"><a href="#"><i class="feather icon-package"></i><span class="menu-title">Pengelolaan</span></a>
                 <ul class="menu-content">
                     <li><a href="{{ route('datangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Datang</span></a></li>
                     <li><a href="{{ route('terjualIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Terjual</span></a></li>
@@ -33,7 +33,7 @@
             </li>
             <li class="nav-item"><a href="{{route('userEdit')}}"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Account Settings">Edit Profile</span></a>
             </li>
-            <li class="nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">User</span></a>
+            <li class="nav-item"><a href="#"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User">User</span></a>
                 <ul class="menu-content">
                     <li><a href="{{route('userAdmin')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Admin</span></a>
                     </li>
