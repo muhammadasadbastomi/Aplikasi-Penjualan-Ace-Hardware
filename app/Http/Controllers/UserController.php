@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Hash;
+use Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -59,19 +59,16 @@ class UserController extends Controller
             'min' => ':attribute minimal 5 karakter.'
         ];
         //dd($request->all());
-        $request->validate([
-            'nama' => 'required',
-            'email' => 'email|unique:users',
-            'password' => 'required|confirmed|min:5',
-            'tempat_lahir' => 'required',
-        ], $messages);
+        $request->validate([], $messages);
 
         $user = new User;
         $user->role = '2';
-        $user->name = $request->nama;
+        $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make('userace1');
         $user->save();
+
+        return redirect('admin/account/karyawan')->with('success', 'Data berhasil disimpan');
     }
 
     /**
