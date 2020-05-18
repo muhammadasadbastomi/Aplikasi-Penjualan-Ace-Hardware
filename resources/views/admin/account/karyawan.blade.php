@@ -106,7 +106,7 @@
                     <div class="modal-body">
                         <label>Nama Lengkap</label>
                         <div class="form-group">
-                            <input type="text" name="name" id="name" placeholder="Masukkan name Lengkap"
+                            <input type="text" name="name" id="name" placeholder="Masukkan Nama Lengkap"
                                 value="{{old('name')}}" class="form-control">
                             @error('name')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
