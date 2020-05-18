@@ -54,3 +54,21 @@ function totalpengiriman()
 {
     return Barang_pengiriman::count();
 }
+
+function totaldiskon()
+{
+    $data1 = Barang::where('diskon', null)->count();
+    $data2 = Barang::orderBy('id', 'DESC')->count();
+    $data = $data2 - $data1;
+    return $data;
+}
+
+function totalperbaikan()
+{
+    return Barang_rusak::where('status', '2')->count();
+}
+
+function totalselesai()
+{
+    return Barang_rusak::where('status', '3')->count();
+}
