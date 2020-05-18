@@ -131,7 +131,7 @@
                                         </div>
                                         <!----Batas -->
                                         <div class="tab-pane fade " id="account-vertical-password" role="tabpanel" aria-labelledby="account-pill-password" aria-expanded="false">
-                                            <form novalidate>
+                                            <form method="post">
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
@@ -144,8 +144,9 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
-                                                                <label for="account-new-password">New Password</label>
-                                                                <input type="password" name="password" id="account-new-password" class="form-control" placeholder="New Password" required data-validation-required-message="The password field is required" minlength="6">
+                                                                <label for="password">New Password</label>
+                                                                <input type="password" name="password" id="password" class="form-control form-control @error ('password') is-invalid @enderror" placeholder="Masukkan Password">
+                                                                @error('password')<div class="invalid-feedback"> {{$message}}</div>@enderror
                                                             </div>
                                                         </div>
                                                     </div>
