@@ -60,20 +60,16 @@
                                                     <td class="text-center">{{ $br->kerusakan }}</td>
                                                     <td class="text-center">{{ $br->tgl_cek }}</td>
                                                     @if($br->status == 1)
-                                                    <td class="text-center"><a class="btn btn-warning btn-sm text-white">Belum
-                                                            diperbaiki</a>
+                                                    <td class="text-center"><button type="button" class="btn btn-flat-warning mr-1 mb-1 waves-effect waves-light">Belum diperbaiki</button>
                                                     </td>
                                                     @elseif($br->status == 2)
-                                                    <td class="text-center"><a class="btn btn-info btn-sm text-white">Dalam
-                                                            Perbaikan</a>
+                                                    <td class="text-center"><button type="button" class="btn btn-flat-info mr-1 mb-1 waves-effect waves-light">Dalam Perbaikan</button>
                                                     </td>
                                                     @elseif($br->status == 3)
-                                                    <td class="text-center"><a class="btn btn-success btn-sm text-white">Selesai
-                                                            Perbaikan</a>
+                                                    <td class="text-center"><button type="button" class="btn btn-flat-success mr-1 mb-1 waves-effect waves-light">Selesai Perbaikan</button>
                                                     </td>
                                                     @elseif($br->status == 4)
-                                                    <td class="text-center"><a class="btn btn-danger btn-sm text-white">Tidak
-                                                            bisa diperbaiki</a>
+                                                    <td class="text-center"><button type="button" class="btn btn-flat-danger mr-1 mb-1 waves-effect waves-light">Tidak Bisa Diperbaiki</button>
                                                     </td>
                                                     @else
                                                     <td class="text-center"><a class="btn btn-success btn-sm text-white">-</a>
