@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Barang;
 use App\Supplier;
 use Illuminate\Http\Request;
+use ImageResize;
 
 class BarangController extends Controller
 {
@@ -69,10 +70,19 @@ class BarangController extends Controller
         $barang->stok_tersedia = $request->stok_tersedia;
         $barang->keterangan = $request->keterangan;
         $barang->gambar = $request->gambar;
-        if ($request->hasfile('gambar')) {
-            $request->file('gambar')->move('images/barang/', $request->file('gambar')->getClientOriginalName());
-            $barang->gambar = $request->file('gambar')->getClientOriginalName();
-            $barang->save();
+        if ($files = $request->file('gambar')) {
+
+            // for save original image
+            $ImageUpload = ImageResize::make($files);
+            $originalPath = 'images/barang/';
+            $ImageUpload->save($originalPath . time() . $files->getClientOriginalName());
+
+            // for save resize image
+            $thumbnailPath = 'images/resize/';
+            $ImageUpload->resize(200, 200);
+            $ImageUpload = $ImageUpload->save($thumbnailPath . time() . $files->getClientOriginalName());
+
+            $barang->gambar = time() . $files->getClientOriginalName();
         } else {
             $barang->gambar = 'default.png';
         }

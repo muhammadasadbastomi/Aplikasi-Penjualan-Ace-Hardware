@@ -42,7 +42,7 @@
                         <div class="card-content">
                             <div class="item-img text-center">
                                 <a href="app-ecommerce-details.html">
-                                    <img class="img-fluid" src="{{$d->gambar()}}" alt="img-placeholder"></a>
+                                    <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
                             </div>
                             <div class="card-body">
                                 <div class="item-wrapper">

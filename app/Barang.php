@@ -10,7 +10,6 @@ class Barang extends Model
 {
     use Notifiable;
     use Uuid;
-
     public function gambar()
     {
         if (!$this->gambar) {

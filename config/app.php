@@ -135,7 +135,7 @@ return [
      */
 
     'providers' => [
-
+        'Intervention\Image\ImageServiceProvider',
         /*
          * Laravel Framework Service Providers...
          */
@@ -190,7 +190,7 @@ return [
      */
 
     'aliases' => [
-
+        'ImageResize' => 'Intervention\Image\Facades\Image',
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
