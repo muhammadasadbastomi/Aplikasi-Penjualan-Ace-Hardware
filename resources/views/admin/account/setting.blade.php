@@ -2,6 +2,41 @@
 
 @section('title') Admin Account Setting @endsection
 
+@section('head')
+<style>
+    #imgView {
+        width: 200px;
+        height: 200px;
+    }
+
+    .loadAnimate {
+        animation: setAnimate ease 2.5s infinite;
+    }
+
+    @keyframes setAnimate {
+        0% {
+            color: #000;
+        }
+
+        50% {
+            color: transparent;
+        }
+
+        99% {
+            color: transparent;
+        }
+
+        100% {
+            color: #000;
+        }
+    }
+
+    .custom-file-label {
+        cursor: pointer;
+    }
+</style>
+@endsection
+
 @section('content')
 <div class="app-content content">
     <div class="content-overlay"></div>
@@ -34,61 +69,67 @@
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane active" id="account-vertical-general" aria-labelledby="account-pill-general" aria-expanded="true">
-                                            <div class="media">
-                                                <a href="javascript: void(0);">
-                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-12.jpg" class="rounded mr-75" alt="profile image" height="64" width="64">
-                                                </a>
-                                                <div class="media-body mt-75">
-                                                    <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
-                                                        <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer" for="account-upload">Upload new photo</label>
-                                                        <input type="file" id="account-upload" hidden>
-                                                        <button class="btn btn-sm btn-outline-warning ml-50">Reset</button>
+                                        <div role="tabpanel" class="tab-pane active col-md-12" id="account-vertical-general" aria-labelledby="account-pill-general" aria-expanded="true">
+                                            <form method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="col-md-4 float-left">
+                                                    <a href="javascript: void(0);">
+                                                        <img src="{{$user->photos()}}" class="rounded mr-75" alt="Belum Ada Photo" style="margin-left: 0px; margin-top:10px;" height="200" width="fa-rotate-2700">
+                                                    </a>
+                                                    <div class="imgWrap" style="margin-top:18px;">
+                                                        <img src="/img/nopict.png" id="imgView" class=" rounded mr-75 img-fluid" style="margin-left: 0px; margin-top:10px;">
                                                     </div>
-                                                    <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or PNG</small></p>
                                                 </div>
-                                            </div>
-                                            <hr>
-                                            <form novalidate>
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <div class="controls">
-                                                                <label for="account-username">Username</label>
-                                                                <input type="text" class="form-control" id="account-username" placeholder="Username" value="hermione007" required data-validation-required-message="This username field is required">
+                                                <div class="col-md-8 float-right">
+                                                    <div class="media-body mt-75">
+                                                        <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                            <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer" for="photos">Ganti photo</label>
+                                                            <input type="file" id="photos" name="photos" hidden value="{{$user->photos}}">
+                                                        </div>
+                                                        <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or PNG</small></p>
+                                                    </div>
+                                                    <hr>
+                                                </div>
+                                                <div class="col-md-8 float-right" style="margin-bottom:30px;">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="controls">
+                                                                    <label for="nama">Nama Lengkap</label>
+                                                                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" value="{{$user->name}}" required data-validation-required-message="This name field is required">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <div class="controls">
-                                                                <label for="account-name">Nama Lengkap</label>
-                                                                <input type="text" class="form-control" id="account-name" placeholder="Name" value="Hermione Granger" required data-validation-required-message="This name field is required">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="controls">
+                                                                    <label for="email">E-mail</label>
+                                                                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan E-mail" value="{{$user->email}}" required data-validation-required-message="This email field is required">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <div class="controls">
-                                                                <label for="account-e-mail">E-mail</label>
-                                                                <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required data-validation-required-message="This email field is required">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="telepon">Alamat</label>
+                                                                <textarea type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">{{$user->alamat}}</textarea>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <label for="telepon">No. Telepon</label>
-                                                            <input type="text" class="form-control" id="telepon" placeholder="Masukkan Nomor Telepon">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="nohp">No. Telepon</label>
+                                                                <input type="text" class="form-control" id="nohp" name="nohp" placeholder="Masukkan Nomor Telepon" value="{{$user->nohp}}">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
-                                                            changes</button>
-                                                        <button type="reset" class="btn btn-outline-warning">Cancel</button>
+                                                        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
+                                                                changes</button>
+                                                            <button type="reset" class="btn btn-outline-warning">Cancel</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
+                                        <!----Batas -->
                                         <div class="tab-pane fade " id="account-vertical-password" role="tabpanel" aria-labelledby="account-pill-password" aria-expanded="false">
                                             <form novalidate>
                                                 <div class="row">
@@ -159,5 +200,39 @@
 @endsection
 
 @section('script')
+<script>
+    $("#photos").change(function(event) {
+        fadeInAdd();
+        getURL(this);
+    });
 
+    $("#photos").on('click', function(event) {
+        fadeInAdd();
+    });
+
+    function getURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            var filename = $("#photos").val();
+            filename = filename.substring(filename.lastIndexOf('\\') + 1);
+            reader.onload = function(e) {
+                debugger;
+                $('#imgView').attr('src', e.target.result);
+                $('#imgView').hide();
+                $('#imgView').fadeIn(500);
+                $('.custom-file-label').text(filename);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+        $(".alert").removeClass("loadAnimate").hide();
+    }
+
+    function fadeInAdd() {
+        fadeInAlert();
+    }
+
+    function fadeInAlert(text) {
+        $(".alert").text(text).addClass("loadAnimate");
+    }
+</script>
 @endsection

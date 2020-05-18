@@ -102,9 +102,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        $user = User::orderBy('id', 'desc')->get();
+        $user = User::where('uuid', $id)->first();
 
         return view('admin.account.setting', compact('user'));
     }
@@ -115,9 +115,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function adminedit()
+    public function adminedit($id)
     {
-        $user = User::orderBy('id', 'desc')->get();
+        $user = User::where('uuid', $id)->first();
 
         return view('admin.account.edit', compact('user'));
     }
@@ -131,7 +131,47 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $messages = [
+        //     'unique' => ':attribute sudah terdaftar.',
+        //     'required' => ':attribute harus diisi.',
+
+        // ];
+        // $request->validate([
+
+        //     'judul' => 'required',
+        //     'keterangan' => 'required',
+
+        // ], $messages);
+
+        $data = user::where('uuid', $id)->first();
+        $data->name = $request->nama;
+        $data->alamat = $request->alamat;
+        $data->nohp = $request->nohp;
+        $data->email = $request->email;
+        if ($request->photos != '') {
+            $path = public_path() . '/images/user/';
+
+            //code for remove old photos
+            if ($data->photos != ''  && $data->photos != null) {
+                $file_old = $path . $data->photos;
+                unlink($file_old);
+            }
+            if (!$request->photos) {
+                $photos = $data->photos;
+            } else {
+                //upload new photos
+                $photos = $request->photos;
+                $filename = $photos->getClientOriginalName();
+                $photos->move($path, $filename);
+            }
+
+            //for update in table
+            $data->update(['photos' => $filename]);
+        }
+
+        $data->update();
+        // dd($data);
+        return back()->with('success', 'Data Berhasil Diubah');
     }
 
     /**
