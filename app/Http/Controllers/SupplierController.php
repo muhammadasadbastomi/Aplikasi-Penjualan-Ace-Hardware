@@ -54,7 +54,6 @@ class SupplierController extends Controller
         $supplier->supplier = $request->supplier;
         $supplier->alamat = $request->alamat;
         $supplier->kontak = $request->kontak;
-
         $supplier->save();
 
         return redirect('admin/barang/supplier/index')->with('success', 'Data berhasil disimpan');

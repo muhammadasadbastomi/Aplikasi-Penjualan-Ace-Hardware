@@ -102,6 +102,7 @@
             </div>
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-body">
                         <label>Nama Lengkap</label>
                         <div class="form-group">
@@ -115,13 +116,6 @@
                             <input type="email" name="email" id="email" value="{{old('email')}}" class="form-control"
                                 placeholder="Masukkan Email">
                             @error('email')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                        </div>
-
-                        <label>E-Mail</label>
-                        <div class="form-group">
-                            <input type="password" name="password" id="password" value="{{old('password')}}"
-                                class="form-control" placeholder="Masukkan password">
-                            @error('password')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <!--<label>No.Telepon</label>
