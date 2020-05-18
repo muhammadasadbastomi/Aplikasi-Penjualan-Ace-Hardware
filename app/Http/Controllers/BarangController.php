@@ -151,10 +151,21 @@ class BarangController extends Controller
         $barang->diskon = $request->diskon;
         $barang->keterangan = $request->keterangan;
         $barang->stok_tersedia = $request->stok_tersedia;
-        if ($request->hasfile('gambar')) {
-            $request->file('gambar')->move('images/barang/', $request->file('gambar')->getClientOriginalName());
-            $data = $barang->gambar = $request->file('gambar')->getClientOriginalName();
+        if ($files = $request->file('gambar')) {
+
+            // for save original image
+            $ImageUpload = ImageResize::make($files);
+            $originalPath = 'images/barang/';
+            $ImageUpload->save($originalPath . time() . $files->getClientOriginalName());
+
+            // for save resize image
+            $thumbnailPath = 'images/resize/';
+            $ImageUpload->resize(200, 200);
+            $ImageUpload = $ImageUpload->save($thumbnailPath . time() . $files->getClientOriginalName());
+
+            $barang->gambar = time() . $files->getClientOriginalName();
         }
+
         $barang->update();
 
         return redirect()->route('barangIndex')->with('success', 'Data Berhasil Diubah');
