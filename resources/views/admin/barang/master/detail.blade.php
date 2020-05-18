@@ -43,7 +43,7 @@
                         <table>
                             <tr>
                                 <td class="font-weight-bold">Keterangan&emsp14;&emsp14;&emsp14;</td>
-                                <td><textarea style="margin-left:16px; margin-top:22px; background-color:Transparent; outline:none; border:none; cursor:pointer; overflow:hidden; width:270px;" id="keterangan"></textarea></td>
+                                <td><textarea style="margin-left:17px; margin-top:22px; background-color:Transparent; outline:none; border:none; cursor:pointer; overflow:hidden; width:270px;" id="keterangan"></textarea></td>
                             </tr>
                         </table>
                     </div>

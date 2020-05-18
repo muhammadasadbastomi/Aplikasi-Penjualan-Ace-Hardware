@@ -55,7 +55,7 @@
                         <h2 class="content-header-title float-left mb-0">Data Barang Pesanan</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a>
+                                <li class="breadcrumb-item"><a href="{{route('adminIndex')}}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active">Data Barang Pesanan
                                 </li>

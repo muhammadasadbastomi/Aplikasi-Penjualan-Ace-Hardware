@@ -75,13 +75,6 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::put('/admin/barang/garansi/edit/{id}', 'BaranggaransiController@update')->name('garansiUpdate');
     Route::delete('/admin/barang/garansi/delete/{id}', 'BaranggaransiController@destroy')->name('garansiDelete');
 
-    Route::get('/admin/barang/perbaikan/index', 'BarangperbaikanController@index')->name('perbaikanIndex');
-    Route::post('/admin/barang/perbaikan/index', 'BarangperbaikanController@store')->name('perbaikanstore');
-    Route::get('/admin/barang/perbaikan/show', 'BarangperbaikanController@show')->name('perbaikanShow');
-    Route::get('/admin/barang/perbaikan/edit', 'BarangperbaikanController@edit')->name('perbaikanEdit');
-    Route::post('/admin/barang/perbaikan/edit', 'BarangperbaikanController@update')->name('perbaikanUpdate');
-    Route::delete('/admin/barang/perbaikan/delete', 'BarangperbaikanController@delete')->name('perbaikanDelete');
-
     Route::get('/admin/account/admin', 'UserController@admin')->name('userAdmin');
     Route::get('/admin/account/edit/{id}', 'UserController@adminedit')->name('adminEdit');
     Route::get('/admin/account/karyawan', 'UserController@karyawan')->name('userKaryawan');
