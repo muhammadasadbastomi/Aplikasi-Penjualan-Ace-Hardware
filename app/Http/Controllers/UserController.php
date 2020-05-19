@@ -6,6 +6,7 @@ use App\User;
 use Hash;
 use Illuminate\Http\Request;
 
+
 class UserController extends Controller
 {
     /**
@@ -59,7 +60,10 @@ class UserController extends Controller
             'min' => ':attribute minimal 5 karakter.'
         ];
         //dd($request->all());
-        $request->validate([], $messages);
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        ], $messages);
 
         $user = new User;
         $user->role = '2';
@@ -79,7 +83,36 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'email' => ':attribute harus benar.',
+            'required' => ':attribute harus diisi.',
+            'confirmed' => ':attribute salah.',
+            'min' => ':attribute minimal harus 5 karakter.'
+        ];
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:5', 'confirmed'],
+        ], $messages);
+
+        $user = new User;
+        $user->role = '1';
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->nohp = $request->nohp;
+        $user->alamat = $request->alamat;
+        $user->password = Hash::make($request->password);
+        $user->photos = $request->photos;
+        if ($request->hasfile('photos')) {
+            $request->file('photos')->move('images/user/', $request->file('photos')->getClientOriginalName());
+            $user->photos = $request->file('photos')->getClientOriginalName();
+            $user->save();
+        }
+        $user->save();
+
+        return redirect('admin/account/admin')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -179,6 +212,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::where('uuid', $id)->first();
+
+        $user->delete();
+
+        return redirect()->route('userKaryawan');
     }
 }
