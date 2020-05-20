@@ -86,7 +86,8 @@
                                                             <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer" for="photos">Ganti photo</label>
                                                             <input type="file" id="photos" name="photos" hidden value="{{$user->photos}}">
                                                         </div>
-                                                        <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or PNG</small></p>
+                                                        <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or
+                                                                PNG</small></p>
                                                     </div>
                                                     <hr>
                                                 </div>
@@ -144,9 +145,13 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
-                                                                <label for="password">New Password</label>
-                                                                <input type="password" name="password" id="password" class="form-control form-control @error ('password') is-invalid @enderror" placeholder="Masukkan Password">
-                                                                @error('password')<div class="invalid-feedback"> {{$message}}</div>@enderror
+                                                                <<<<<<< HEAD <label for="password">New Password</label>
+                                                                    <input type="password" name="password" id="password" class="form-control form-control @error ('password') is-invalid @enderror" placeholder="Masukkan Password">
+                                                                    @error('password')<div class="invalid-feedback"> {{$message}}</div>@enderror
+                                                                    =======
+                                                                    <label for="account-new-password">New Password</label>
+                                                                    <input type="password" name="password" id="account-new-password" class="form-control" placeholder="New Password" required data-validation-required-message="The password field is required" minlength="6">
+                                                                    >>>>>>> e5886516d69ec993ebd2bace40516cb66a5dd6cf
                                                             </div>
                                                         </div>
                                                     </div>

@@ -69,7 +69,8 @@
                                                     <td class="text-center">
                                                         <a class="btn btn-sm btn-info text-white"><i
                                                                 class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" href="#"><i
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$u->uuid}}" href="#"><i
                                                                 class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>

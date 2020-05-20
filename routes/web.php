@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth', 'CheckRole:1 , 2']], function () {
+Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     Route::get('/admin', 'HomeController@index')->name('adminIndex');
 
     Route::patch('/admin/thumbnail/index', 'ThumbController@update')->name('thumbUpdate');
@@ -75,19 +75,22 @@ Route::group(['middleware' => ['auth', 'CheckRole:1 , 2']], function () {
     Route::put('/admin/barang/garansi/edit/{id}', 'BaranggaransiController@update')->name('garansiUpdate');
     Route::delete('/admin/barang/garansi/delete/{id}', 'BaranggaransiController@destroy')->name('garansiDelete');
 
-
+    Route::get('/admin/account/admin', 'UserController@admin')->name('userAdmin');
+    Route::get('/admin/account/edit/{id}', 'UserController@adminedit')->name('adminEdit');
+    Route::get('/admin/account/karyawan', 'UserController@karyawan')->name('userKaryawan');
     Route::get('/admin/account/setting/{id}', 'UserController@edit')->name('userEdit');
     Route::post('/admin/account/setting/{id}', 'UserController@update')->name('userUpdate');
-
-    Route::get('/admin/account/index', 'UserController@index')->name('userIndex');
 });
 
 Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
 
     Route::get('/admin/account/admin', 'UserController@admin')->name('userAdmin');
+    Route::post('/admin/account/admin', 'UserController@Store')->name('userAdmintore');
+
     Route::get('/admin/account/edit', 'UserController@adminedit')->name('adminEdit');
     Route::get('/admin/account/karyawan', 'UserController@karyawan')->name('userKaryawan');
     Route::post('/admin/account/karyawan', 'UserController@create')->name('userKaryawanStore');
+    Route::delete('/admin/account/karyawan/delete/{id}', 'UserController@destroy')->name('userKaryawanDelete');
 });
 
 Route::get('/', 'PenjualanController@index')->name('homeIndex');
