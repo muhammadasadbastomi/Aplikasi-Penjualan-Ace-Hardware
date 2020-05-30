@@ -23,7 +23,7 @@
                         </li>
                         <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeProfile')}}"><i class="ficon fas fa fa-user"></i>Profile</a>
                             </li> -->
-                        <li class="nav-item nav-search" style="margin-top:14px; margin-left: 10px;">
+                        {{-- <li class="nav-item nav-search" style="margin-top:14px; margin-left: 10px;">
                             <div class="search-bar">
                                 <form method="post" action="#">
                                     <fieldset class="form-group position-relative has-icon-left">
@@ -35,7 +35,7 @@
                                     </fieldset>
                                 </form>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">

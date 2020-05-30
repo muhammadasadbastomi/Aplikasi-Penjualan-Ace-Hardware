@@ -65,17 +65,15 @@
                                                     <td class="text-center">{{ $bp->jumlah }}</td>
                                                     @if($bp->status == 1)
                                                     <td class="text-center"><a
-                                                            class="btn btn-warning btn-sm text-white">Belum
-                                                            dikirim</a>
+                                                            class="btn btn-warning btn-sm text-white">Packing</a>
                                                     </td>
                                                     @elseif($bp->status == 2)
                                                     <td class="text-center"><a
-                                                            class="btn btn-info btn-sm text-white">Dalam
-                                                            Pengiriman</a>
+                                                            class="btn btn-info btn-sm text-white">Dalam pengiriman</a>
                                                     </td>
                                                     @elseif($bp->status == 3)
                                                     <td class="text-center"><a
-                                                            class="btn btn-success btn-sm text-white">Dikirin</a>
+                                                            class="btn btn-success btn-sm text-white">Sampai</a>
                                                     </td>
                                                     @else
                                                     <td class="text-center"><a

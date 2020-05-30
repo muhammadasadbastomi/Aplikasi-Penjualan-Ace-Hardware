@@ -33,13 +33,16 @@
             <li class="nav-item"><a href="#"><i class="feather icon-package"></i><span
                         class="menu-title">Pengelolaan</span></a>
                 <ul class="menu-content">
-                    <!--<li><a href="{{ route('datangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Datang</span></a></li> -->
+                    <li><a href="{{ route('datangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item"
+                                data-i18n="eCommerce">Barang Datang</span></a></li>
                     <li><a href="{{ route('terjualIndex') }}"><i class="feather icon-circle"></i><span class="menu-item"
                                 data-i18n="eCommerce">Barang Terjual</span></a></li>
-                    <!--<li><a href="{{ route('garansiIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Garansi</span></a></li> -->
+                    <li><a href="{{ route('garansiIndex') }}"><i class="feather icon-circle"></i><span class="menu-item"
+                                data-i18n="eCommerce">Barang Garansi</span></a></li>
                     <li><a href="{{ route('rusakIndex') }}"><i class="feather icon-circle"></i><span class="menu-item"
                                 data-i18n="eCommerce">Barang Rusak</span></a></li>
-                    <!--<li><a href="{{ route('pengirimanIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Pengiriman Barang</span></a></li> -->
+                    <li><a href="{{ route('pengirimanIndex') }}"><i class="feather icon-circle"></i><span
+                                class="menu-item" data-i18n="eCommerce">Pengiriman Barang</span></a></li>
                 </ul>
             </li>
             <li class="nav-item"><a href="{{route('userEdit', ['id' => Auth::user()->uuid])}}"><i
