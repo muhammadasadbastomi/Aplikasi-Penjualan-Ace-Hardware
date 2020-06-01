@@ -22,9 +22,9 @@
                             </li> -->
                             <li class="nav-item nav-search" style="margin-top:14px; margin-left: 10px;">
                                 <div class="search-bar">
-                                    <form method="post" action="#">
+                                    <form action="/home/shop" method="GET">
                                         <fieldset class="form-group position-relative has-icon-left">
-                                            <input type="text" class="form-control round" id="searchbar" placeholder="Search ...">
+                                            <input type="text" class="form-control round" name="search" id="search" placeholder="Search ...">
                                             <div class="form-control-position">
                                                 <i class="feather icon-search px-1"></i>
                                             </div>

@@ -25,10 +25,12 @@
                     <div class="row mt-1">
                         <div class="col-sm-12">
                             <fieldset class="form-group position-relative">
-                                <input type="text" class="form-control search-product" id="search" placeholder="Search here">
-                                <div class="form-control-position">
-                                    <i class="feather icon-search"></i>
-                                </div>
+                                <form action="/home/shop" method="GET">
+                                    <input type="text" class="form-control search-product" name="search" id="search" placeholder="Search here">
+                                    <div class="form-control-position">
+                                        <i class="feather icon-search"></i>
+                                    </div>
+                                </form>
                             </fieldset>
                         </div>
                     </div>
@@ -37,12 +39,14 @@
 
                 <!-- Ecommerce Products Starts -->
                 <section id="ecommerce-products" class="grid-view">
-                    @foreach($barang as $d)
+                    @forelse($barang as $d)
                     <div class="card ecommerce-card">
                         <div class="card-content">
                             <div class="item-img text-center">
                                 <a href="app-ecommerce-details.html">
-                                    <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
+                                    <img src="/images/resize/{{$d
+                                    
+                                    ->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
                             </div>
                             <div class="card-body">
                                 <div class="item-wrapper">
@@ -89,9 +93,14 @@
                             </div> -->
                         </div>
                     </div>
-                    @endforeach
+                    @empty
                 </section>
-
+                <section class="text-center font-large-2" style="margin-top:30px; margin-bottom:700px;">
+                    <a href="{{route('homeShop')}}" style="color: black;">
+                        Not Found
+                    </a>
+                    @endforelse
+                </section>
                 <!-- Ecommerce Products Ends -->
 
                 <!-- Ecommerce Pagination Starts -->
@@ -100,9 +109,12 @@
                         <div class="col-sm-12">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center mt-2">
-                                    <li class="page-item prev-item"><a class="page-link" href="{{$data->previousPageUrl()}}"></a></li>
+                                    @if (count($barang) > 0) <li class="page-item "><a class="page-link" href="{{$data->url('page=1')}}">First Page</a></li>
                                     {{$data->links()}}
-                                    <li class="page-item next-item"><a class="page-link" href="{{$data->nextPageUrl()}}"></a></li>
+                                    <li class="page-item "><a class="page-link" href="/home/shop?page={{$data->lastPage()}}">Last Page</a></li>
+                                    @else
+
+                                    @endif
                                 </ul>
                             </nav>
                         </div>

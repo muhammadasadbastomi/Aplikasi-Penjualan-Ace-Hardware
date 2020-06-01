@@ -6,7 +6,7 @@
 </div>
 <div class="form-group">
     <label for="keterangan">Ketarangan</label>
-    <textarea type="text" id="keterangan" class="form-control  @error ('keterangan') is-invalid @enderror" name="keterangan" placeholder="Masukkan Keterangan" autofocus>>{{old('keterangan')}}</textarea>
+    <textarea type="text" id="keterangan" class="form-control  @error ('keterangan') is-invalid @enderror" name="keterangan" placeholder="Masukkan Keterangan" autofocus>{{old('keterangan')}}</textarea>
 </div>
 <div class="form-group">
     <label for="pict">Gambar </label>

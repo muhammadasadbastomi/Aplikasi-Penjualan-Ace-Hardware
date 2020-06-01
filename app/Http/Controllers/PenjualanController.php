@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Barang;
 use App\Thumbnail;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\ElseIf_;
+use PhpParser\Node\Stmt\Return_;
 
 class PenjualanController extends Controller
 {
@@ -58,16 +60,27 @@ class PenjualanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function shop()
+    public function shop(Request $request)
     {
+        if ($request->has('search')) {
+            $data = Barang::where('nama_barang', 'LIKE', '%' . $request->search . '%')->paginate(9);
+            $barang = $data->map(function ($item) {
+                $diskon = ($item->diskon / 100) * $item->harga_jual;
+                $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+                $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+                return $item;
+            });
+        } else {
+            $data = Barang::orderBy('id', 'desc')->paginate(9);
+            $barang = $data->map(function ($item) {
+                $diskon = ($item->diskon / 100) * $item->harga_jual;
+                $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+                $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+                return $item;
+            });
+        }
 
-        $data = Barang::orderBy('id', 'desc')->paginate(9);
-        $barang = $data->map(function ($item) {
-            $diskon = ($item->diskon / 100) * $item->harga_jual;
-            $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
-            $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
-            return $item;
-        });
+        $all = Barang::all();
 
         $terlaris = Barang::orderBy('id', 'asc')->paginate(5);
         $terlaris = $terlaris->map(function ($item) {
@@ -77,7 +90,7 @@ class PenjualanController extends Controller
             return $item;
         });
 
-        return view('home.shop', compact('barang', 'data', 'terlaris'));
+        return view('home.shop', compact('barang', 'data', 'terlaris', 'all'));
     }
 
 
