@@ -183,12 +183,12 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <button type="submit" class="btn btn-primary float-right">Update</button>
-                                        <a type="button" href="{{route('barangIndex')}}" class="btn btn-danger text-white float-left"><i class="mdi mdi-back"></i>Kembali</a>
+                                        <button type="submit" class="btn btn-primary float-left">Update</button>
+                                        <a type="button" href="{{route('barangIndex')}}" class="btn btn-danger text-white float-right"><i class="mdi mdi-back"></i>Kembali</a>
+                                        <br>
                                     </div>
                                 </form>
                             </div>
-
                             <div class="col-md-6 col-sm-6 float-right">
                                 <div class="d-flex align-items-center justify-content-center" style="margin-top:9%;">
                                     <img src="{{$barang->gambar()}}" class="img-fluid" alt="product image" style="width: 70%; height:70%; display: block; margin: auto;">
