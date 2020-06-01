@@ -74,9 +74,9 @@
                                         <label for="status">status</label>
                                         <select class="custom-select" name="status" id="status">
                                             {{ $barangpengiriman->status ? 'selected' : ''}}>
-                                            <option value="1">Belum Dikirim</option>
+                                            <option value="1">Packing</option>
                                             <option value="2">Dalam Pengiriman</option>
-                                            <option value="3">Dikirim</option>
+                                            <option value="3">Sampai</option>
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Update</button>

@@ -72,15 +72,14 @@
                                                     <td scope="col" class="text-center">{{ $d->alamat_pengiriman }}</td>
                                                     <td scope="col" class="text-center">{{ $d->jumlah }}</td>
                                                     @if($d->status == 1)
-                                                    <td scope="col" class="text-center"><a class="btn btn-warning btn-sm text-white">Belum
-                                                            dikirim</a>
+                                                    <td scope="col" class="text-center"><a class="btn btn-warning btn-sm text-white">Packing</a>
                                                     </td>
                                                     @elseif($d->status == 2)
                                                     <td scope="col" class="text-center"><a class="btn btn-info btn-sm text-white">Dalam
                                                             Pengiriman</a>
                                                     </td>
                                                     @elseif($d->status == 3)
-                                                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">Dikirin</a>
+                                                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">Sampai</a>
                                                     </td>
                                                     @else
                                                     <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">-</a>

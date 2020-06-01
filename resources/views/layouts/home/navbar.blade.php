@@ -1,40 +1,50 @@
-    <!-- BEGIN: Header-->
-    <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-fixed navbar-shadow navbar-brand-center">
-        <div class="navbar-header d-xl-block d-none">
-            <ul class="nav navbar-nav flex-row">
-                <!-- middle -->
-            </ul>
-        </div>
-        <div class="navbar-wrapper">
-            <div class="navbar-container content">
-                <div class="navbar-collapse" id="navbar-mobile">
-                    <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
-                        <ul class="nav navbar-nav">
-                            <li class="nav-item">
-                                <a class="navbar-brand" href="{{route('homeIndex')}}">
-                                    <img src="{{asset('img/logo.png') }}" style="width: 63px;  margin-top:11px; margin-left: 4px; ">
-                                </a></li>
-                            <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeIndex')}}"><i class="ficon feather icon-home"></i>Home</a>
-                            </li>
-                            <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeShop')}}"><i class="ficon feather icon-package"></i>All Products</a>
-                            </li>
-                            <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeProfile')}}"><i class="ficon fas fa fa-user"></i>Profile</a>
+<!-- BEGIN: Header-->
+<nav class="header-navbar navbar-expand-lg navbar navbar-with-menu navbar-fixed navbar-shadow navbar-brand-center">
+    <div class="navbar-header d-xl-block d-none">
+        <ul class="nav navbar-nav flex-row">
+            <!-- middle -->
+        </ul>
+    </div>
+    <div class="navbar-wrapper">
+        <div class="navbar-container content">
+            <div class="navbar-collapse" id="navbar-mobile">
+                <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item">
+                            <a class="navbar-brand" href="{{route('homeIndex')}}">
+                                <img src="{{asset('img/logo.png') }}" style="width: 63px;  margin-top:11px; margin-left: 4px; ">
+                            </a></li>
+                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeIndex')}}"><i class="ficon feather icon-home"></i>Home</a>
+                        </li>
+                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeShop')}}"><i class="ficon feather icon-package"></i>All Products</a>
+                        </li>
+                        <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeProfile')}}"><i class="ficon fas fa fa-user"></i>Profile</a>
                             </li> -->
-                            <li class="nav-item nav-search" style="margin-top:14px; margin-left: 10px;">
-                                <div class="search-bar">
-                                    <form action="/home/shop" method="GET">
-                                        <fieldset class="form-group position-relative has-icon-left">
-                                            <input type="text" class="form-control round" name="search" id="search" placeholder="Search ...">
-                                            <div class="form-control-position">
-                                                <i class="feather icon-search px-1"></i>
-                                            </div>
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <ul class="nav navbar-nav float-right">
+                        <li class="nav-item nav-search" style="margin-top:14px; margin-left: 10px;">
+                            <div class="search-bar">
+                                <form action="/home/shop" method="GET">
+                                    <fieldset class="form-group position-relative has-icon-left">
+                                        <input type="text" class="form-control round" name="search" id="search" placeholder="Search ...">
+                                        <div class="form-control-position">
+                                            <i class="feather icon-search px-1"></i>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav navbar-nav float-right">
+                    <div class="flex-center position-ref full-height">
+                        @if (Route::has('login'))
+                        <div class="top-right links">
+                            @auth
+                            <a href="{{ url('/admin') }}">Home</a>
+                            @else
+                            <a href="{{ route('login') }}">Login</a>
+                            @endauth
+                        </div>
+                        @endif
                         <!-- <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i class="ficon feather icon-maximize"></i></a></li> -->
                         <!-- chart Belanja -->
                         <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-shopping-cart"></i><span class="badge badge-pill badge-primary badge-up">2</span></a>
@@ -167,15 +177,15 @@
                                 <div class="dropdown-divider"></div><a class="dropdown-item" href="auth-login.html"><i class="feather icon-power"></i> Logout</a>
                             </div>
                         </li> -->
-                    </ul>
-                    </li>
+                </ul>
+                </li>
 
 
 
 
-                    </ul>
-                </div>
+                </ul>
             </div>
         </div>
-    </nav>
-    <!-- END: Header-->
+    </div>
+</nav>
+<!-- END: Header-->
