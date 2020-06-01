@@ -5,8 +5,6 @@
 @section('content')
 <!-- BEGIN: Content-->
 <div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-md-9 col-12 mb-2">
@@ -15,7 +13,7 @@
                         <h2 class="content-header-title float-left mb-0">Data Barang Garansi</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a>
+                                <li class="breadcrumb-item"><a href="{{route('adminIndex')}}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active">Data Barang Garansi
                                 </li>
@@ -33,8 +31,18 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
-                                            Data</span></button> </div>
+                                <div class="dt-buttons btn-group">
+                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span>
+                                    </button>
+                                    &emsp13;
+                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                            Cetak</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" target="_blank" href="{{route('garansiCetak')}}">Keseluruhan</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -62,7 +70,7 @@
                                                     <td class="text-center">{{ $bg->nama_pembeli }}</td>
                                                     <td class="text-center">{{ $bg->tgl_pembelian }}</td>
                                                     <td class="text-center">{{ $bg->tgl_akhir_garansi }}</td>
-                                                    <td class="text-center">{{ $bg->jumlah }}</td>
+                                                    <td class="text-center">{{ $bg->jumlah }} {{$bg->barang->satuan}}</td>
                                                     <td class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" href="{{route('garansiEdit', ['id' => $bg->uuid])}}"><i class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$bg->uuid}}" href="#"><i class="feather icon-trash"></i></a>

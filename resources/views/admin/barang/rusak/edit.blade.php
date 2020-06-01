@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title') Ubah Barang Rusak @endsection
+@section('title') Ubah Data Barang Rusak @endsection
 
 @section('content')
 
@@ -38,8 +38,7 @@
                                 <label for="barang_id">Nama barang</label>
                                 <select class="custom-select" name="barang_id" id="barang_id">
                                     @foreach($barang as $b)
-                                    <option value="{{$b->id}}" {{ $barangrusak->barang_id == $b->id ? 'selected' : ''}}
-                                        selected>
+                                    <option value="{{$b->id}}" {{ $barangrusak->barang_id == $b->id ? 'selected' : ''}} selected>
                                         {{$b->nama_barang}}</option>
                                     @endforeach
                                 </select>
@@ -47,18 +46,15 @@
 
                             <div class="form-group">
                                 <label>Kerusakan </label>
-                                <input type="text" id="kerusakan" name="kerusakan"
-                                    class="form-control @error ('kerusakan') is-invalid @enderror"
-                                    placeholder="Masukkan kerusakan" value="{{ $barangrusak->kerusakan }}">
+                                <input type="text" id="kerusakan" name="kerusakan" class="form-control @error ('kerusakan') is-invalid @enderror" placeholder="Masukkan kerusakan" value="{{ $barangrusak->kerusakan }}">
                             </div>
 
                             <div class="form-group">
                                 <label for="tgl_cek">Tanggal Cek</label>
-                                <input type="date" id="tgl_cek" name="tgl_cek" class="form-control"
-                                    value="{{$barangrusak->tgl_cek}}" required>
+                                <input type="date" id="tgl_cek" name="tgl_cek" class="form-control" value="{{$barangrusak->tgl_cek}}" required>
                             </div>
                             <div class="form-group">
-                                <label for="status">status</label>
+                                <label for="status">Status Barang</label>
                                 <select class="custom-select" name="status" id="status">
                                     <option selected value="">Pilih status</option>
                                     <option value="1" {{ $barangrusak->status == 1 ? 'selected' : '' }}>Belum diperbaiki
@@ -74,21 +70,17 @@
 
                             <div class="form-group">
                                 <label for="tgl_selesai">Tanggal Selesai</label>
-                                <input type="date" id="tgl_selesai" name="tgl_selesai" class="form-control"
-                                    value="{{$barangrusak->tgl_selesai}}">
+                                <input type="date" id="tgl_selesai" name="tgl_selesai" class="form-control" value="{{$barangrusak->tgl_selesai}}">
                             </div>
 
 
                             <div class="form-group">
                                 <label>Jumlah </label>
-                                <input type="number" id="jumlah_barang" name="jumlah_barang"
-                                    class="form-control @error ('jumlah_barang') is-invalid @enderror"
-                                    placeholder="Masukkan Jumlah" value="{{ $barangrusak->jumlah_barang }}">
+                                <input type="number" id="jumlah_barang" name="jumlah_barang" class="form-control @error ('jumlah_barang') is-invalid @enderror" placeholder="Masukkan Jumlah" value="{{ $barangrusak->jumlah_barang }}">
                             </div>
 
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="{{route('rusakIndex')}}" class="btn btn-danger text-white"><i
-                                    class="mdi mdi-back"></i>Batal</a>
+                            <a href="{{route('rusakIndex')}}" class="btn btn-danger text-white"><i class="mdi mdi-back"></i>Kembali</a>
 
                         </div>
                     </form>

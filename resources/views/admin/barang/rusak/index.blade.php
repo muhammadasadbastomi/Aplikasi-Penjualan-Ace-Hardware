@@ -15,7 +15,7 @@
                         <h2 class="content-header-title float-left mb-0">Data Barang Rusak</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a>
+                                <li class="breadcrumb-item"><a href="{{route('adminIndex')}}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active">Data Barang Rusak
                                 </li>
@@ -33,8 +33,20 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
-                                            Data</span></button> </div>
+                                <div class="dt-buttons btn-group">
+                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span>
+                                    </button>
+                                    &emsp13;
+                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                            Cetak</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" target="_blank" href="{{route('rusakCetak')}}">Keseluruhan</a>
+                                        <a class="dropdown-item" target="_blank" href="{{route('perbaikan1Cetak')}}">Selesai Diperbaiki</a>
+                                        <a class="dropdown-item" target="_blank" href="{{route('perbaikan2Cetak')}}">Tidak Bisa Diperbaiki</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -55,37 +67,37 @@
                                             <tbody>
                                                 @foreach ($barangrusak as $br)
                                                 <tr>
-                                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                                    <td class="text-center">{{ $br->barang->nama_barang }}</td>
-                                                    <td class="text-center">{{ $br->kerusakan }}</td>
-                                                    <td class="text-center">{{ $br->tgl_cek }}</td>
+                                                    <td scope="col" class="text-center">{{ $loop->iteration }}</td>
+                                                    <td scope="col" class="text-center">{{ $br->barang->nama_barang }}</td>
+                                                    <td scope="col" class="text-center">{{ $br->kerusakan }}</td>
+                                                    <td scope="col" class="text-center">{{ $br->tgl_cek }}</td>
                                                     @if($br->status == 1)
-                                                    <td class="text-center"><button type="button" class="btn btn-flat-warning mr-1 mb-1 waves-effect waves-light">Belum diperbaiki</button>
+                                                    <td scope="col" class="text-center"><button type="button" class="btn btn-flat-warning mr-1 mb-1 waves-effect waves-light">Belum diperbaiki</button>
                                                     </td>
                                                     @elseif($br->status == 2)
-                                                    <td class="text-center"><button type="button" class="btn btn-flat-info mr-1 mb-1 waves-effect waves-light">Dalam Perbaikan</button>
+                                                    <td scope="col" class="text-center"><button type="button" class="btn btn-flat-info mr-1 mb-1 waves-effect waves-light">Dalam Perbaikan</button>
                                                     </td>
                                                     @elseif($br->status == 3)
-                                                    <td class="text-center"><button type="button" class="btn btn-flat-success mr-1 mb-1 waves-effect waves-light">Selesai Perbaikan</button>
+                                                    <td scope="col" class="text-center"><button type="button" class="btn btn-flat-success mr-1 mb-1 waves-effect waves-light">Selesai Perbaikan</button>
                                                     </td>
                                                     @elseif($br->status == 4)
-                                                    <td class="text-center"><button type="button" class="btn btn-flat-danger mr-1 mb-1 waves-effect waves-light">Tidak Bisa Diperbaiki</button>
+                                                    <td scope="col" class="text-center"><button type="button" class="btn btn-flat-danger mr-1 mb-1 waves-effect waves-light">Tidak Bisa Diperbaiki</button>
                                                     </td>
                                                     @else
-                                                    <td class="text-center"><a class="btn btn-success btn-sm text-white">-</a>
+                                                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">-</a>
                                                     </td>
                                                     @endif
-                                                    <!-- <td class="text-center">{{ $br->tgl_selesai }}</td> -->
-                                                    <td class="text-center">
+                                                    <!-- <td scope="col" class="text-center">{{ $br->tgl_selesai }}</td> -->
+                                                    <td scope="col" class="text-center">
                                                         @if($br->tgl_selesai)
                                                         {{ $br->tgl_selesai }}
                                                         @else
                                                         -
                                                         @endif
                                                     </td>
-                                                    <td class="text-center">{{ $br->jumlah_barang }}</td>
+                                                    <td scope="col" class="text-center">{{ $br->jumlah_barang }} {{$br->barang->satuan}}</td>
 
-                                                    <td class="text-center">
+                                                    <td scope="col" class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" href="{{route('rusakEdit', ['id' => $br->uuid])}}"><i class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$br->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
@@ -136,7 +148,7 @@
 
                         <label>Tanggal Cek</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_cek" id="tgl_cek" value="{{old('tgl_cek')}}" class="form-control">
+                            <input type="date" name="tgl_cek" id="tgl_cek" value="{{old('tgl_cek')}}" class="form-control" required>
                         </div>
 
                         <label>Jumlah</label>

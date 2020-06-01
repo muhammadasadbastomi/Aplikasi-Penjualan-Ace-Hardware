@@ -71,12 +71,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="status">status</label>
+                                        <label for="status">Status Barang</label>
                                         <select class="custom-select" name="status" id="status">
                                             {{ $barangpengiriman->status ? 'selected' : ''}}>
                                             <option value="1">Packing</option>
                                             <option value="2">Dalam Pengiriman</option>
-                                            <option value="3">Sampai</option>
+                                            <option value="3">Terkirim</option>
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Update</button>

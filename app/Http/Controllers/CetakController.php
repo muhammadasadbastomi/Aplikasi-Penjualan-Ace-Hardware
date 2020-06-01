@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use PDF;
 use App\Barang;
 use App\Barang_datang;
+use App\Barang_garansi;
 use App\Barang_pengiriman;
+use App\Barang_rusak;
 use App\Barang_terjual;
 use Illuminate\Http\Request;
 
@@ -50,11 +52,51 @@ class CetakController extends Controller
         return $pdf->stream('laporan-barang-pengiriman-pdf');
     }
 
+    public function terkirim()
+    {
+        $data = Barang_pengiriman::all();
+
+        $pdf = PDF::loadview('laporan/terkirim', compact('data'));
+        return $pdf->stream('laporan-barang-terkirim-pdf');
+    }
+
     public function terjual()
     {
         $data = Barang_terjual::all();
 
         $pdf = PDF::loadview('laporan/terjual', compact('data'));
         return $pdf->stream('laporan-barang-terjual-pdf');
+    }
+
+    public function garansi()
+    {
+        $data = Barang_garansi::all();
+
+        $pdf = PDF::loadview('laporan/garansi', compact('data'));
+        return $pdf->stream('laporan-barang-garansi-pdf');
+    }
+
+    public function rusak()
+    {
+        $data = Barang_rusak::all();
+
+        $pdf = PDF::loadview('laporan/rusak', compact('data'));
+        return $pdf->stream('laporan-barang-rusak-pdf');
+    }
+
+    public function perbaikan1()
+    {
+        $data = Barang_rusak::all();
+
+        $pdf = PDF::loadview('laporan/perbaikan1', compact('data'));
+        return $pdf->stream('laporan-barang-perbaikan-pdf');
+    }
+
+    public function perbaikan2()
+    {
+        $data = Barang_rusak::all();
+
+        $pdf = PDF::loadview('laporan/perbaikan2', compact('data'));
+        return $pdf->stream('laporan-barang-perbaikan-pdf');
     }
 }

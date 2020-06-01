@@ -41,6 +41,7 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" target="_blank" href="{{route('pengirimanCetak')}}">Keseluruhan</a>
+                                        <a class="dropdown-item" target="_blank" href="{{route('terkirimCetak')}}">Status Terkirim</a>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +80,7 @@
                                                             Pengiriman</a>
                                                     </td>
                                                     @elseif($d->status == 3)
-                                                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">Sampai</a>
+                                                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">Terkirim</a>
                                                     </td>
                                                     @else
                                                     <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">-</a>
@@ -146,7 +147,7 @@
 
                         <label>Tanggal Pengiriman</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_pengiriman" id="tgl_pengiriman" value="{{old('tgl_pengiriman')}}" class="form-control">
+                            <input type="date" name="tgl_pengiriman" id="tgl_pengiriman" value="{{old('tgl_pengiriman')}}" class="form-control" required>
                         </div>
 
                         <label>Jumlah</label>
@@ -155,12 +156,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="status">status</label>
+                            <label for="status">Status Barang</label>
                             <select class="custom-select" name="status" id="status">
                                 <option selected value="">Pilih status</option>
-                                <option value="1">Belum dikirim</option>
-                                <option value="2">Dalam pengiriman</option>
-                                <option value="3">Dikirim</option>
+                                <option value="1">Packing</option>
+                                <option value="2">Dalam Pengiriman</option>
+                                <option value="3">Terkirim</option>
                             </select>
                         </div>
                     </div>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laporan Data Barang Pengiriman</title>
+    <title>Laporan Data Barang Garansi</title>
     <link rel="icon" type="image/png" href="{{url('img/logo.png')}}">
     <style>
         .logo {
@@ -103,43 +103,29 @@
     </div>
 
     <div class="container" style="margin-top:-40px;">
-        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Pengiriman</h3>
+        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Garansi</h3>
         <table class='table table-bordered nowrap'>
             <thead>
                 <tr>
                     <th scope="col" class="text-center">No</th>
-                    <th scope="col" class="text-center">Nama Pembeli</th>
-                    <th scope="col" class="text-center">Kode Pengiriman</th>
                     <th scope="col" class="text-center">Nama Barang</th>
-                    <th scope="col" class="text-center">Tanggal Pengiriman</th>
-                    <th scope="col" class="text-center">Alamat</th>
+                    <th scope="col" class="text-center">Kode Barang</th>
+                    <th scope="col" class="text-center">Nama Pembeli</th>
+                    <th scope="col" class="text-center">Tanggal Pembelian</th>
+                    <th scope="col" class="text-center">Tanggal Akhir Garansi</th>
                     <th scope="col" class="text-center">Jumlah</th>
-                    <th scope="col" class="text-center">Status</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($data as $d)
                 <tr>
-                    <td scope="col" class="text-center">{{ $loop->iteration }}</td>
-                    <td scope="col" class="text-center">{{ $d->nama_pembeli }}</td>
-                    <td scope="col" class="text-center">{{ $d->kode_pengiriman }}</td>
-                    <td scope="col" class="text-center">{{ $d->barang->nama_barang }}</td>
-                    <td scope="col" class="text-center">{{ $d->tgl_pengiriman }}</td>
-                    <td scope="col" class="text-center">{{ $d->alamat_pengiriman }}</td>
-                    <td scope="col" class="text-center">{{ $d->jumlah }}</td>
-                    @if($d->status == 1)
-                    <td scope="col" class="text-center"><a class="btn btn-warning btn-sm text-white">Packing</a>
-                    </td>
-                    @elseif($d->status == 2)
-                    <td scope="col" class="text-center"><a class="btn btn-info btn-sm text-white">Dalam Pengiriman</a>
-                    </td>
-                    @elseif($d->status == 3)
-                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">Terkirim</a>
-                    </td>
-                    @else
-                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">-</a>
-                    </td>
-                    @endif
+                    <td scope="col" class="text-center">{{$loop->iteration }}</td>
+                    <td scope="col" class="text-center">{{$d->barang->nama_barang }}</td>
+                    <td scope="col" class="text-center">{{$d->barang->kode_barang }}</td>
+                    <td scope="col" class="text-center">{{$d->nama_pembeli }}</td>
+                    <td scope="col" class="text-center">{{$d->tgl_pembelian }}</td>
+                    <td scope="col" class="text-center">{{$d->tgl_akhir_garansi }}</td>
+                    <td scope="col" class="text-center">{{$d->jumlah}} {{$d->barang->satuan}}</td>
                 </tr>
                 @endforeach
             </tbody>
