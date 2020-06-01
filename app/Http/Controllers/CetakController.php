@@ -9,10 +9,18 @@ use App\Barang_garansi;
 use App\Barang_pengiriman;
 use App\Barang_rusak;
 use App\Barang_terjual;
-use Illuminate\Http\Request;
+use App\Supplier;
 
 class CetakController extends Controller
 {
+    public function supplier()
+    {
+        $data = Supplier::all();
+
+        $pdf = PDF::loadview('laporan/supplier', compact('data'));
+        return $pdf->stream('laporan-supplier-pdf');
+    }
+
     public function barang()
     {
         $data = Barang::all();

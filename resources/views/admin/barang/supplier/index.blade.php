@@ -33,8 +33,18 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
-                                            Data</span></button> </div>
+                                <div class="dt-buttons btn-group">
+                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span>
+                                    </button>
+                                    &emsp13;
+                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                            Cetak</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" target="_blank" href="{{route('supplierCetak')}}">Keseluruhan</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">

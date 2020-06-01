@@ -81,6 +81,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     Route::get('/admin/account/setting/{id}', 'UserController@edit')->name('userEdit');
     Route::post('/admin/account/setting/{id}', 'UserController@update')->name('userUpdate');
 
+    Route::get('/admin/supplier/cetak', 'CetakController@supplier')->name('supplierCetak');
     Route::get('/admin/barang/cetak', 'CetakController@barang')->name('barangCetak');
     Route::get('/admin/datang/cetak', 'CetakController@datang')->name('datangCetak');
     Route::get('/admin/diskon/cetak', 'CetakController@diskon')->name('diskonCetak');
