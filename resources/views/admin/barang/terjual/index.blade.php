@@ -5,8 +5,6 @@
 @section('content')
 <!-- BEGIN: Content-->
 <div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-md-9 col-12 mb-2">
@@ -15,7 +13,7 @@
                         <h2 class="content-header-title float-left mb-0">Data Barang Terjual</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a>
+                                <li class="breadcrumb-item"><a href="{{route('adminIndex')}}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active">Data Barang Terjual
                                 </li>
@@ -33,10 +31,18 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
-                                        aria-controls="DataTables_Table_0" data-toggle="modal"
-                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
-                                            Data</span></button> </div>
+                                <div class="dt-buttons btn-group">
+                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span>
+                                    </button>
+                                    &emsp13;
+                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                            Cetak</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" target="_blank" href="{{route('terjualCetak')}}">Keseluruhan</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -46,25 +52,21 @@
                                                 <tr>
                                                     <th scope="col" class="text-center">No</th>
                                                     <th scope="col" class="text-center">Nama Barang</th>
-                                                    <th scope="col" class="text-center">Jumlah Terjual</th>
                                                     <th scope="col" class="text-center">Tanggal Terjual</th>
+                                                    <th scope="col" class="text-center">Jumlah Terjual</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     @foreach ($barangterjual as $bt)
-                                                    <td class="text-center">{{  $loop->iteration }}</td>
+                                                    <td class="text-center">{{ $loop->iteration }}</td>
                                                     <td class="text-center">{{ $bt->barang->nama_barang }}</td>
-                                                    <td class="text-center">{{ $bt->jumlah_terjual }}</td>
                                                     <td class="text-center">{{ $bt->tgl_terjual }}</td>
+                                                    <td class="text-center">{{ $bt->jumlah_terjual }} {{$bt->barang->satuan}}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white"
-                                                            href="{{route('terjualEdit', ['id' => $bt->uuid])}}"><i
-                                                                class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white"
-                                                            data-id="{{$bt->uuid}}" href="#"><i
-                                                                class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white" href="{{route('terjualEdit', ['id' => $bt->uuid])}}"><i class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$bt->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                     @endforeach
                                                 </tr>
@@ -84,8 +86,7 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-    aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -109,14 +110,12 @@
 
                         <label>Jumlah Terjual</label>
                         <div class="form-group">
-                            <input type="text" name="jumlah_terjual" id="jumlah_terjual" placeholder="Masukkan Jumlah"
-                                value="{{old('jumlah_terjual')}}" class="form-control">
+                            <input type="number" name="jumlah_terjual" id="jumlah_terjual" placeholder="Masukkan Jumlah" value="{{old('jumlah_terjual')}}" class="form-control">
                         </div>
 
                         <label>Tanggal Terjual</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_terjual" id="tgl_terjual" value="{{old('tgl_terjual')}}"
-                                class="form-control">
+                            <input type="date" name="tgl_terjual" id="tgl_terjual" value="{{old('tgl_terjual')}}" class="form-control">
                         </div>
                     </div>
             </div>
@@ -130,8 +129,7 @@
 </div>
 
 <!-- Modal Edit -->
-<div class="modal fade text-left" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label"
-    aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">

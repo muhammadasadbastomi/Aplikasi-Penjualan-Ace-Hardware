@@ -33,7 +33,6 @@
             </li>
             <li class="nav-item"><a href="{{route('userEdit', ['id' => Auth::user()->uuid])}}"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Account Settings">Edit Profile</span></a>
             </li>
-
             @if(auth()->user()->role == '1')
             <li class="nav-item"><a href="#"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User">User</span></a>
                 <ul class="menu-content">

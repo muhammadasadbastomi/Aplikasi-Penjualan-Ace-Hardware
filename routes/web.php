@@ -80,6 +80,15 @@ Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     Route::get('/admin/account/karyawan', 'UserController@karyawan')->name('userKaryawan');
     Route::get('/admin/account/setting/{id}', 'UserController@edit')->name('userEdit');
     Route::post('/admin/account/setting/{id}', 'UserController@update')->name('userUpdate');
+
+    Route::get('/admin/barang/cetak', 'CetakController@barang')->name('barangCetak');
+    Route::get('/admin/datang/cetak', 'CetakController@datang')->name('datangCetak');
+    Route::get('/admin/diskon/cetak', 'CetakController@diskon')->name('diskonCetak');
+    Route::get('/admin/pengiriman/cetak', 'CetakController@pengiriman')->name('pengirimanCetak');
+    Route::get('/admin/terjual/cetak', 'CetakController@terjual')->name('terjualCetak');
+    Route::get('/admin/garansi/cetak', 'CetakController@garansi')->name('garansiCetak');
+    Route::get('/admin/rusak/cetak', 'CetakController@rusak')->name('rusakCetak');
+    Route::get('/admin/perbaikan/cetak', 'CetakController@perbaikan')->name('perbaikanCetak');
 });
 
 Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {

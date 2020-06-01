@@ -36,7 +36,7 @@
             </select>
         </div>
 
-        <label>Harga Satuan</label>
+        <label>Satuan</label>
         <div class="form-group">
             <input type="text" name="satuan" id="satuan" placeholder="Masukkan Satuan" value="{{old('satuan')}}" class="form-control">
             @error('satuan')<div class="invalid-feedback"> {{$message}} </div>@enderror

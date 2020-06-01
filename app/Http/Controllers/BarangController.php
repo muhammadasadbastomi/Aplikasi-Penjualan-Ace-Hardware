@@ -18,8 +18,13 @@ class BarangController extends Controller
     {
         $supplier = Supplier::orderBy('id', 'asc')->get();
         $barang = Barang::orderBy('id', 'desc')->get();
+        $barang = $barang->map(function ($item) {
+            $diskon = ($item->diskon / 100) * $item->harga_jual;
+            $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+            return $item;
+        });
 
-        return view('admin.barang.master.index', compact('barang', 'supplier', 'data'));
+        return view('admin.barang.master.index', compact('barang', 'supplier'));
     }
 
     /**

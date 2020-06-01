@@ -150,8 +150,8 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Harga satuan </label>
-                                            <input type="number" id="satuan" name="satuan" class="form-control @error ('satuan') is-invalid @enderror" placeholder="Masukkan Harga" value="{{ $barang->satuan }}">
+                                            <label>Satuan </label>
+                                            <input type="text" id="satuan" name="satuan" class="form-control @error ('satuan') is-invalid @enderror" placeholder="Masukkan Harga" value="{{ $barang->satuan }}">
                                         </div>
                                         <div class="form-group">
                                             <label>Departement </label>

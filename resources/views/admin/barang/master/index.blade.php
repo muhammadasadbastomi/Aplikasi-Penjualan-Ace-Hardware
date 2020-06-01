@@ -74,8 +74,19 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
-                                            Data</span></button> </div>
+                                <div class="dt-buttons btn-group">
+                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span>
+                                    </button>
+                                    &emsp13;
+                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                            Cetak</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" target="_blank" href="{{route('barangCetak')}}">Keseluruhan</a>
+                                        <a class="dropdown-item" target="_blank" href="{{route('diskonCetak')}}">Barang Diskon</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
@@ -88,7 +99,7 @@
                                                     <th scope="col" class="text-center">Kode Barang</th>
                                                     <th scope="col" class="text-center">Nama Barang</th>
                                                     <th scope="col" class="text-center">Kategori</th>
-                                                    <th scope="col" class="text-center">Harga</th>
+                                                    <th scope="col" class="text-center">Harga Awal</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -272,6 +283,8 @@
         var gambar = button.data('gambar')
         var kode = button.data('kode')
         var keterangan = button.data('keterangan')
+        var supplier = button.data('supplier')
+        var harga_diskon = button.data('harga_diskon')
         var modal = $(this)
 
         modal.find('.modal-body #id').val(id)
@@ -284,6 +297,8 @@
         modal.find('.modal-body #harga').val(harga)
         modal.find('.modal-body #kode').val(kode)
         modal.find('.modal-body #keterangan').val(keterangan)
+        modal.find('.modal-body #supplier').val(supplier)
+        modal.find('.modal-body #harga_diskon').val(harga_diskon)
         modal.find('.modal-body #gambar').attr('src', '/images/barang/' + gambar);
     })
 </script>

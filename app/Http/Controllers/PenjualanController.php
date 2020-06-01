@@ -130,9 +130,6 @@ class PenjualanController extends Controller
         $barang['harga_diskon'] = number_format($barang->harga_jual - $diskon, 0, ',', '.');
         $barang['harga_jual'] = number_format($barang->harga_jual, 0, ',', '.');
 
-
-
-
         $terkait = Barang::where('kategori', $barang->kategori)->get();
         $terkait = $terkait->map(function ($item) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;

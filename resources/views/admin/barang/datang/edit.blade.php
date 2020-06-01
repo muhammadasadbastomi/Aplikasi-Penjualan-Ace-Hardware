@@ -53,7 +53,7 @@
                                         <input type="number" id="jumlah" name="jumlah" class="form-control @error ('jumlah') is-invalid @enderror" placeholder="Masukkan Jumlah" value="{{ $barangdatang->jumlah }}">
                                     </div>
                                     <button type="submit" class="btn btn-primary">Update</button>
-                                    <a href="{{route('datangIndex')}}" class="btn btn-danger text-white"><i class="mdi mdi-back"></i>Batal</a>
+                                    <a href="{{route('datangIndex')}}" class="btn btn-danger text-white"><i class="mdi mdi-back"></i>Kembali</a>
                                 </div>
                             </form>
                         </div>

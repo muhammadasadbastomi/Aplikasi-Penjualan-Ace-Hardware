@@ -1,23 +1,21 @@
 @extends('layouts.admin.admin')
 
-@section('title') Admin Data Status Pengiriman @endsection
+@section('title') Admin Data Barang Pengiriman @endsection
 
 @section('content')
 <!-- BEGIN: Content-->
 <div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-header row">
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Data Status Pengiriman</h2>
+                        <h2 class="content-header-title float-left mb-0">Data Barang Pengiriman</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a>
+                                <li class="breadcrumb-item"><a href="{{route('adminIndex')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Data Status Pengiriman
+                                <li class="breadcrumb-item active">Data Barang Pengiriman
                                 </li>
                             </ol>
                         </div>
@@ -33,62 +31,64 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
-                                        aria-controls="DataTables_Table_0" data-toggle="modal"
-                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
-                                            Data</span></button> </div>
+                                <div class="dt-buttons btn-group">
+                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span>
+                                    </button>
+                                    &emsp13;
+                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                            Cetak</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" target="_blank" href="{{route('pengirimanCetak')}}">Keseluruhan</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-content">
                                 <div class="card-body card-dashboard">
                                     <div class="table-responsive">
-                                        <table class="table zero-configuration">
+                                        <table class="table zero-configuration nowrap">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="text-center">No</th>
                                                     <th scope="col" class="text-center">Nama Pembeli</th>
                                                     <th scope="col" class="text-center">Kode Pengiriman</th>
+                                                    <th scope="col" class="text-center">Nama Barang</th>
                                                     <th scope="col" class="text-center">Tanggal Pengiriman</th>
-                                                    <th scope="col" class="text-center">alamat</th>
+                                                    <th scope="col" class="text-center">Alamat</th>
                                                     <th scope="col" class="text-center">Jumlah</th>
                                                     <th scope="col" class="text-center">Status</th>
-                                                    <th scope="col" class="text-center"></th>
+                                                    <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($barangpengiriman as $bp)
+                                                @foreach ($barangpengiriman as $d)
                                                 <tr>
-                                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                                    <td class="text-center">{{ $bp->barang->nama_barang }}</td>
-                                                    <td class="text-center">{{ $bp->kode_pengiriman }}</td>
-                                                    <td class="text-center">{{ $bp->nama_pembeli }}</td>
-                                                    <td class="text-center">{{ $bp->tgl_pengiriman }}</td>
-                                                    <td class="text-center">{{ $bp->jumlah }}</td>
-                                                    @if($bp->status == 1)
-                                                    <td class="text-center"><a
-                                                            class="btn btn-warning btn-sm text-white">Belum
+                                                    <td scope="col" class="text-center">{{ $loop->iteration }}</td>
+                                                    <td scope="col" class="text-center">{{ $d->nama_pembeli }}</td>
+                                                    <td scope="col" class="text-center">{{ $d->kode_pengiriman }}</td>
+                                                    <td scope="col" class="text-center">{{ $d->barang->nama_barang }}</td>
+                                                    <td scope="col" class="text-center">{{ $d->tgl_pengiriman }}</td>
+                                                    <td scope="col" class="text-center">{{ $d->alamat_pengiriman }}</td>
+                                                    <td scope="col" class="text-center">{{ $d->jumlah }}</td>
+                                                    @if($d->status == 1)
+                                                    <td scope="col" class="text-center"><a class="btn btn-warning btn-sm text-white">Belum
                                                             dikirim</a>
                                                     </td>
-                                                    @elseif($bp->status == 2)
-                                                    <td class="text-center"><a
-                                                            class="btn btn-info btn-sm text-white">Dalam
+                                                    @elseif($d->status == 2)
+                                                    <td scope="col" class="text-center"><a class="btn btn-info btn-sm text-white">Dalam
                                                             Pengiriman</a>
                                                     </td>
-                                                    @elseif($bp->status == 3)
-                                                    <td class="text-center"><a
-                                                            class="btn btn-success btn-sm text-white">Dikirin</a>
+                                                    @elseif($d->status == 3)
+                                                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">Dikirin</a>
                                                     </td>
                                                     @else
-                                                    <td class="text-center"><a
-                                                            class="btn btn-success btn-sm text-white">-</a>
+                                                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">-</a>
                                                     </td>
                                                     @endif
-                                                    <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white"
-                                                            href="{{route('pengirimanEdit', ['id' => $bp->uuid])}}"><i
-                                                                class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white"
-                                                            data-id="{{$bp->uuid}}" href="#"><i
-                                                                class="feather icon-trash"></i></a>
+                                                    <td scope="col" class="text-center">
+                                                        <a class="btn btn-sm btn-info text-white" href="{{route('pengirimanEdit', ['id' => $d->uuid])}}"><i class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$d->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -108,8 +108,7 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-    aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -133,34 +132,27 @@
 
                         <label>Kode pengiriman</label>
                         <div class="form-group">
-                            <input type="text" name="kode_pengiriman" id="kode_pengiriman"
-                                value="{{old('kode_pengiriman')}}" placeholder="Masukkan Kode Pengiriman"
-                                class="form-control">
+                            <input type="text" name="kode_pengiriman" id="kode_pengiriman" value="{{old('kode_pengiriman')}}" placeholder="Masukkan Kode Pengiriman" class="form-control">
                         </div>
 
                         <label>Nama Pembeli</label>
                         <div class="form-group">
-                            <input type="text" name="nama_pembeli" id="nama_pembeli" value="{{old('nama_pembeli')}}"
-                                placeholder="Masukkan Nama Pembeli" class="form-control">
+                            <input type="text" name="nama_pembeli" id="nama_pembeli" value="{{old('nama_pembeli')}}" placeholder="Masukkan Nama Pembeli" class="form-control">
                         </div>
 
                         <label>Alamat Pengiriman</label>
                         <div class="form-group">
-                            <textarea type="text" name="alamat_pengiriman" id="alamat_pengiriman"
-                                placeholder="Masukkan Alamat"
-                                class="form-control">{{ old('alamat_pengiriman') }} </textarea>
+                            <textarea type="text" name="alamat_pengiriman" id="alamat_pengiriman" placeholder="Masukkan Alamat" class="form-control">{{ old('alamat_pengiriman') }} </textarea>
                         </div>
 
                         <label>Tanggal Pengiriman</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_pengiriman" id="tgl_pengiriman"
-                                value="{{old('tgl_pengiriman')}}" class="form-control">
+                            <input type="date" name="tgl_pengiriman" id="tgl_pengiriman" value="{{old('tgl_pengiriman')}}" class="form-control">
                         </div>
 
                         <label>Jumlah</label>
                         <div class="form-group">
-                            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah"
-                                value="{{old('jumlah')}}" class="form-control">
+                            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah" value="{{old('jumlah')}}" class="form-control">
                         </div>
 
                         <div class="form-group">
@@ -184,8 +176,7 @@
 </div>
 
 <!-- Modal Edit -->
-<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable"
-    aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
