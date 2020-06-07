@@ -27,69 +27,67 @@
         </div>
 
         <div class="content-body">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row mb-5 mt-2">
-                        <div class="col-12 col-md-12">
-                            <form method="post">
-                                {{method_field('PUT')}}
-                                @csrf
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="barang_id">Nama barang</label>
-                                        <select class="custom-select" name="barang_id" id="barang_id">
-                                            @foreach($barang as $b)
-                                            <option value="{{$b->id}}" {{ $barangpengiriman->barang_id == $b->id ? 'selected' : ''}} selected>
-                                                {{$b->nama_barang}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Kode Pengiriman </label>
-                                        <input type="text" id="kode_pengiriman" name="kode_pengiriman" class="form-control @error ('kode_pengiriman') is-invalid @enderror" placeholder="Masukkan nama pembeli" value="{{ $barangpengiriman->kode_pengiriman }}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Nama Pembeli </label>
-                                        <input type="text" id="nama_pembeli" name="nama_pembeli" class="form-control @error ('nama_pembeli') is-invalid @enderror" placeholder="Masukkan nama pembeli" value="{{ $barangpengiriman->nama_pembeli }}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="tgl_pengiriman">Tanggal Pengiriman</label>
-                                        <input type="date" id="tgl_pengiriman" name="tgl_pengiriman" class="form-control" value="{{$barangpengiriman->tgl_pengiriman}}" required>
-                                    </div>
-
-                                    <label>Alamat Pengiriman</label>
-                                    <div class="form-group">
-                                        <textarea type="text" name="alamat_pengiriman" id="alamat_pengiriman" placeholder="Masukkan Alamat" class="form-control">{{ $barangpengiriman->alamat_pengiriman }} </textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Jumlah </label>
-                                        <input type="number" id="jumlah" name="jumlah" class="form-control @error ('jumlah') is-invalid @enderror" placeholder="Masukkan Jumlah" value="{{ $barangpengiriman->jumlah }}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="status">Status Barang</label>
-                                        <select class="custom-select" name="status" id="status">
-                                            {{ $barangpengiriman->status ? 'selected' : ''}}>
-                                            <option value="1">Packing</option>
-                                            <option value="2">Dalam Pengiriman</option>
-                                            <option value="3">Terkirim</option>
-                                        </select>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                    <a href="{{route('pengirimanIndex')}}" class="btn btn-danger text-white"><i class="mdi mdi-back"></i>Kembali</a>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <form method="post">
+                            {{method_field('PUT')}}
+                            @csrf
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="barang_id">Nama barang</label>
+                                    <select class="custom-select" name="barang_id" id="barang_id">
+                                        @foreach($barang as $b)
+                                        <option value="{{$b->id}}" {{ $barangpengiriman->barang_id == $b->id ? 'selected' : ''}} selected>
+                                            {{$b->nama_barang}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                            </form>
-                        </div>
+
+                                <div class="form-group">
+                                    <label>Kode Pengiriman </label>
+                                    <input type="text" id="kode_pengiriman" name="kode_pengiriman" class="form-control @error ('kode_pengiriman') is-invalid @enderror" placeholder="Masukkan nama pembeli" value="{{ $barangpengiriman->kode_pengiriman }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Nama Pembeli </label>
+                                    <input type="text" id="nama_pembeli" name="nama_pembeli" class="form-control @error ('nama_pembeli') is-invalid @enderror" placeholder="Masukkan nama pembeli" value="{{ $barangpengiriman->nama_pembeli }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tgl_pengiriman">Tanggal Pengiriman</label>
+                                    <input type="date" id="tgl_pengiriman" name="tgl_pengiriman" class="form-control" value="{{$barangpengiriman->tgl_pengiriman}}" required>
+                                </div>
+
+                                <label>Alamat Pengiriman</label>
+                                <div class="form-group">
+                                    <textarea type="text" name="alamat_pengiriman" id="alamat_pengiriman" placeholder="Masukkan Alamat" class="form-control">{{ $barangpengiriman->alamat_pengiriman }} </textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Jumlah </label>
+                                    <input type="number" id="jumlah" name="jumlah" class="form-control @error ('jumlah') is-invalid @enderror" placeholder="Masukkan Jumlah" value="{{ $barangpengiriman->jumlah }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="status">Status Barang</label>
+                                    <select class="custom-select" name="status" id="status">
+                                        {{ $barangpengiriman->status ? 'selected' : ''}}>
+                                        <option value="1">Packing</option>
+                                        <option value="2">Dalam Pengiriman</option>
+                                        <option value="3">Terkirim</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                                <a href="{{route('pengirimanIndex')}}" class="btn btn-danger text-white"><i class="mdi mdi-back"></i>Kembali</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-
             <!-- app ecommerce details end -->
-
         </div>
     </div>
 </div>

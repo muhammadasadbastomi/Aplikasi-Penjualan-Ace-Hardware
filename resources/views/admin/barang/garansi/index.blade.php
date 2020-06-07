@@ -50,13 +50,13 @@
                                         <table class="table zero-configuration nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" class="text-center">No</th>
-                                                    <th scope="col" class="text-center">Nama Barang</th>
-                                                    <th scope="col" class="text-center">Kode Barang</th>
-                                                    <th scope="col" class="text-center">Nama Pembeli</th>
-                                                    <th scope="col" class="text-center">Tanggal Pembelian</th>
-                                                    <th scope="col" class="text-center">Tanggal Akhir Garansi</th>
-                                                    <th scope="col" class="text-center">Jumlah</th>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Nama Barang</th>
+                                                    <th scope="col">Kode Barang</th>
+                                                    <th scope="col">Nama Pembeli</th>
+                                                    <th scope="col">Tanggal Pembelian</th>
+                                                    <th scope="col">Tanggal Akhir Garansi</th>
+                                                    <th scope="col">Jumlah</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -64,14 +64,14 @@
                                                 @foreach ($baranggaransi as $bg)
 
                                                 <tr>
-                                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                                    <td class="text-center">{{ $bg->barang->nama_barang }}</td>
-                                                    <td class="text-center">{{ $bg->barang->kode_barang }}</td>
-                                                    <td class="text-center">{{ $bg->nama_pembeli }}</td>
-                                                    <td class="text-center">{{ $bg->tgl_pembelian }}</td>
-                                                    <td class="text-center">{{ $bg->tgl_akhir_garansi }}</td>
-                                                    <td class="text-center">{{ $bg->jumlah }} {{$bg->barang->satuan}}</td>
-                                                    <td class="text-center">
+                                                    <td scope="col">{{ $loop->iteration }}</td>
+                                                    <td scope="col">{{ $bg->barang->nama_barang }}</td>
+                                                    <td scope="col" class="text-center">{{ $bg->barang->kode_barang }}</td>
+                                                    <td scope="col">{{ $bg->nama_pembeli }}</td>
+                                                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($bg->tgl_pembelian)->translatedFormat('d F Y')}}</td>
+                                                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($bg->tgl_akhir_garansi)->translatedFormat('d F Y')}}</td>
+                                                    <td scope="col">{{ $bg->jumlah }} {{$bg->barang->satuan}}</td>
+                                                    <td scope="col" class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" href="{{route('garansiEdit', ['id' => $bg->uuid])}}"><i class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$bg->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>

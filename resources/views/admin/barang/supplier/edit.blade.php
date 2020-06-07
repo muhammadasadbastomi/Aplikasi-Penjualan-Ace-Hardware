@@ -5,6 +5,7 @@
 @section('content')
 <div class="app-content content">
     <div class="content-wrapper">
+
         <div class="content-header row">
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
@@ -51,13 +52,14 @@
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Update</button>
-                                <a href="{{route('supplierIndex')}}" class="btn btn-danger text-white"><i class="mdi mdi-back"></i>Batal</a>
+                                <a href="{{route('supplierIndex')}}" class="btn btn-danger text-white"><i class="mdi mdi-back"></i>Kembali</a>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 @endsection

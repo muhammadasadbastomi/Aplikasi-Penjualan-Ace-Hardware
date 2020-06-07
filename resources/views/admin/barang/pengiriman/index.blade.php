@@ -51,39 +51,39 @@
                                         <table class="table zero-configuration nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" class="text-center">No</th>
-                                                    <th scope="col" class="text-center">Nama Pembeli</th>
-                                                    <th scope="col" class="text-center">Kode Pengiriman</th>
-                                                    <th scope="col" class="text-center">Nama Barang</th>
-                                                    <th scope="col" class="text-center">Tanggal Pengiriman</th>
-                                                    <th scope="col" class="text-center">Alamat</th>
-                                                    <th scope="col" class="text-center">Jumlah</th>
-                                                    <th scope="col" class="text-center">Status</th>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Nama Pembeli</th>
+                                                    <th scope="col">Kode Pengiriman</th>
+                                                    <th scope="col">Nama Barang</th>
+                                                    <th scope="col">Tanggal Pengiriman</th>
+                                                    <th scope="col">Alamat</th>
+                                                    <th scope="col">Jumlah</th>
+                                                    <th scope="col">Status</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($barangpengiriman as $d)
                                                 <tr>
-                                                    <td scope="col" class="text-center">{{ $loop->iteration }}</td>
-                                                    <td scope="col" class="text-center">{{ $d->nama_pembeli }}</td>
+                                                    <td scope="col">{{ $loop->iteration }}</td>
+                                                    <td scope="col">{{ $d->nama_pembeli }}</td>
                                                     <td scope="col" class="text-center">{{ $d->kode_pengiriman }}</td>
-                                                    <td scope="col" class="text-center">{{ $d->barang->nama_barang }}</td>
-                                                    <td scope="col" class="text-center">{{ $d->tgl_pengiriman }}</td>
-                                                    <td scope="col" class="text-center">{{ $d->alamat_pengiriman }}</td>
-                                                    <td scope="col" class="text-center">{{ $d->jumlah }}</td>
+                                                    <td scope="col">{{ $d->barang->nama_barang }}</td>
+                                                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_pengiriman)->translatedFormat('d F Y')}}</td>
+                                                    <td scope="col">{{ $d->alamat_pengiriman }}</td>
+                                                    <td scope="col">{{ $d->jumlah }} {{$d->barang->satuan}}</td>
                                                     @if($d->status == 1)
-                                                    <td scope="col" class="text-center"><a class="btn btn-warning btn-sm text-white">Packing</a>
+                                                    <td scope="col"><a class="btn btn-warning btn-sm text-white">Packing</a>
                                                     </td>
                                                     @elseif($d->status == 2)
-                                                    <td scope="col" class="text-center"><a class="btn btn-info btn-sm text-white">Dalam
+                                                    <td scope="col"><a class="btn btn-info btn-sm text-white">Dalam
                                                             Pengiriman</a>
                                                     </td>
                                                     @elseif($d->status == 3)
-                                                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">Terkirim</a>
+                                                    <td scope="col"><a class="btn btn-success btn-sm text-white">Terkirim</a>
                                                     </td>
                                                     @else
-                                                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">-</a>
+                                                    <td scope="col"><a class="btn btn-success btn-sm text-white">-</a>
                                                     </td>
                                                     @endif
                                                     <td scope="col" class="text-center">

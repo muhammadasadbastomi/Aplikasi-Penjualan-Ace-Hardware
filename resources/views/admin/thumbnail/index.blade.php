@@ -85,13 +85,13 @@
                                                     <th scope="col">Gambar</th>
                                                     <th scope="col">Judul</th>
                                                     <th scope="col">Keterangan</th>
-                                                    <th scope="col">Aksi</th>
+                                                    <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($data as $d)
                                                 <tr>
-                                                    <td class="text-center">{{$loop->iteration}}</td>
+                                                    <td>{{$loop->iteration}}</td>
                                                     <td><img src="/images/thumbnail/{{$d->gambar}}" alt="Gambar" class="avatar mr-1 avatar-xl" width="60px;" height="50px;"></td>
                                                     <td>{{$d->judul}}</td>
                                                     <td>{{$d->keterangan}}</td>

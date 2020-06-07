@@ -54,48 +54,48 @@
                                         <table class="table zero-configuration nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" class="text-center">No</th>
-                                                    <th scope="col" class="text-center">Nama Barang</th>
-                                                    <th scope="col" class="text-center">Kerusakan</th>
-                                                    <th scope="col" class="text-center">Tanggal Cek</th>
-                                                    <th scope="col" class="text-center">Status</th>
-                                                    <th scope="col" class="text-center">Tanggal Selesai</th>
-                                                    <th scope="col" class="text-center">Jumlah</th>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Nama Barang</th>
+                                                    <th scope="col">Kerusakan</th>
+                                                    <th scope="col">Tanggal Cek</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Tanggal Selesai</th>
+                                                    <th scope="col">Jumlah</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($barangrusak as $br)
                                                 <tr>
-                                                    <td scope="col" class="text-center">{{ $loop->iteration }}</td>
-                                                    <td scope="col" class="text-center">{{ $br->barang->nama_barang }}</td>
-                                                    <td scope="col" class="text-center">{{ $br->kerusakan }}</td>
-                                                    <td scope="col" class="text-center">{{ $br->tgl_cek }}</td>
+                                                    <td scope="col">{{ $loop->iteration }}</td>
+                                                    <td scope="col">{{ $br->barang->nama_barang }}</td>
+                                                    <td scope="col">{{ $br->kerusakan }}</td>
+                                                    <td scope="col">{{Carbon\Carbon::parse($br->tgl_cek)->translatedFormat('d F Y')}}</td>
                                                     @if($br->status == 1)
-                                                    <td scope="col" class="text-center"><button type="button" class="btn btn-flat-warning mr-1 mb-1 waves-effect waves-light">Belum diperbaiki</button>
+                                                    <td scope="col"> <button type="button" class="btn btn-warning btn-sm text-white">Belum diperbaiki</button>
                                                     </td>
                                                     @elseif($br->status == 2)
-                                                    <td scope="col" class="text-center"><button type="button" class="btn btn-flat-info mr-1 mb-1 waves-effect waves-light">Dalam Perbaikan</button>
+                                                    <td scope="col"><button type="button" class="btn btn-info btn-sm text-white">Dalam Perbaikan</button>
                                                     </td>
                                                     @elseif($br->status == 3)
-                                                    <td scope="col" class="text-center"><button type="button" class="btn btn-flat-success mr-1 mb-1 waves-effect waves-light">Selesai Perbaikan</button>
+                                                    <td scope="col"><button type="button" class="btn wrap btn-success btn-sm text-white">Selesai Perbaikan</button>
                                                     </td>
                                                     @elseif($br->status == 4)
-                                                    <td scope="col" class="text-center"><button type="button" class="btn btn-flat-danger mr-1 mb-1 waves-effect waves-light">Tidak Bisa Diperbaiki</button>
+                                                    <td scope="col"><button type="button" class="btn btn-danger btn-sm text-white">Tidak Bisa Diperbaiki</button>
                                                     </td>
                                                     @else
-                                                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">-</a>
+                                                    <td scope="col"><a class="btn btn-success btn-sm text-white">-</a>
                                                     </td>
                                                     @endif
-                                                    <!-- <td scope="col" class="text-center">{{ $br->tgl_selesai }}</td> -->
+                                                    <!-- <td scope="col" >{{ $br->tgl_selesai }}</td> -->
                                                     <td scope="col" class="text-center">
                                                         @if($br->tgl_selesai)
-                                                        {{ $br->tgl_selesai }}
+                                                        {{Carbon\Carbon::parse($br->tgl_selesai)->translatedFormat('d F Y')}}
                                                         @else
                                                         -
                                                         @endif
                                                     </td>
-                                                    <td scope="col" class="text-center">{{ $br->jumlah_barang }} {{$br->barang->satuan}}</td>
+                                                    <td scope="col">{{ $br->jumlah_barang }} {{$br->barang->satuan}}</td>
 
                                                     <td scope="col" class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" href="{{route('rusakEdit', ['id' => $br->uuid])}}"><i class="feather icon-edit"></i></a>

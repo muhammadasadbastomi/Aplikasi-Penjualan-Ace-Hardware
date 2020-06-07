@@ -56,17 +56,17 @@
                                                     <th scope="col">Supplier</th>
                                                     <th scope="col">Alamat</th>
                                                     <th scope="col">Kontak</th>
-                                                    <th scope="col">Aksi</th>
+                                                    <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($supplier as $s)
                                                 <tr>
-                                                    <td class="text-center">{{$loop->iteration}}</td>
-                                                    <td>{{$s->supplier}}</td>
-                                                    <td>{{$s->alamat}}</td>
-                                                    <td>{{$s->kontak}}</td>
-                                                    <td>
+                                                    <td scope="col">{{$loop->iteration}}</td>
+                                                    <td scope="col">{{$s->supplier}}</td>
+                                                    <td scope="col">{{$s->alamat}}</td>
+                                                    <td scope="col">{{$s->kontak}}</td>
+                                                    <td scope="col" class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" href="{{route('supplierEdit', ['id' => $s->uuid])}}"><i class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$s->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>

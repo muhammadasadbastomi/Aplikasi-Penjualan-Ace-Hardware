@@ -94,23 +94,23 @@
                                         <table class="table zero-configuration nowrap">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" class="text-center">No</th>
-                                                    <th scope="col" class="text-center">Gambar</th>
-                                                    <th scope="col" class="text-center">Kode Barang</th>
-                                                    <th scope="col" class="text-center">Nama Barang</th>
-                                                    <th scope="col" class="text-center">Kategori</th>
-                                                    <th scope="col" class="text-center">Harga Awal</th>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Gambar</th>
+                                                    <th scope="col">Kode Barang</th>
+                                                    <th scope="col">Nama Barang</th>
+                                                    <th scope="col">Kategori</th>
+                                                    <th scope="col">Harga Awal</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($barang as $b)
                                                 <tr>
-                                                    <td class="text-center ">{{$loop->iteration}}</td>
+                                                    <td>{{$loop->iteration}}</td>
                                                     <td><img src="/images/barang/{{$b->gambar}}" alt="Gambar" class="avatar mr-1 avatar-xl" width="50px;" height="50px;"></td>
                                                     <td class="text-center">{{$b->kode_barang}}</td>
-                                                    <td class="text-center">{{$b->nama_barang}}</td>
-                                                    <td class="text-center">
+                                                    <td>{{$b->nama_barang}}</td>
+                                                    <td>
                                                         @if($b->kategori == 1)
                                                         Alat Rumah
                                                         @elseif($b->kategori == 2)
@@ -129,8 +129,8 @@
                                                         -
                                                         @endif
                                                     </td>
-                                                    <td class="text-center">Rp. {{number_format($b->harga_jual, 0, ',', '.')}},-</td>
-                                                    <td>
+                                                    <td>Rp. {{number_format($b->harga_jual, 0, ',', '.')}},-</td>
+                                                    <td class="text-center">
                                                         @include('admin.barang.master.button')
                                                         <a class="btn btn-sm btn-warning text-white" href="{{route('barangShow', ['id' => $b->uuid])}}"><i class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$b->uuid}}" href="#"><i class="feather icon-trash"></i></a>

@@ -6,6 +6,7 @@
 <!-- BEGIN: Content-->
 <div class="app-content content">
     <div class="content-wrapper">
+
         <div class="content-header row">
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
@@ -23,6 +24,7 @@
                 </div>
             </div>
         </div>
+
         <div class="content-body">
             <!-- table -->
             <section id="basic-datatable">
@@ -50,26 +52,26 @@
                                         <table class="table zero-configuration">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" class="text-center">No</th>
-                                                    <th scope="col" class="text-center">Nama Barang</th>
-                                                    <th scope="col" class="text-center">Tanggal Terjual</th>
-                                                    <th scope="col" class="text-center">Jumlah Terjual</th>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Nama Barang</th>
+                                                    <th scope="col">Tanggal Terjual</th>
+                                                    <th scope="col">Jumlah Terjual</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                @foreach ($barangterjual as $bt)
                                                 <tr>
-                                                    @foreach ($barangterjual as $bt)
-                                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                                    <td class="text-center">{{ $bt->barang->nama_barang }}</td>
-                                                    <td class="text-center">{{ $bt->tgl_terjual }}</td>
-                                                    <td class="text-center">{{ $bt->jumlah_terjual }} {{$bt->barang->satuan}}</td>
-                                                    <td class="text-center">
+                                                    <td scope="col">{{ $loop->iteration }}</td>
+                                                    <td scope="col">{{ $bt->barang->nama_barang }}</td>
+                                                    <td scope="col">{{Carbon\Carbon::parse($bt->tgl_terjual)->translatedFormat('d F Y')}}</td>
+                                                    <td scope="col">{{ $bt->jumlah_terjual }} {{$bt->barang->satuan}}</td>
+                                                    <td scope="col" class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" href="{{route('terjualEdit', ['id' => $bt->uuid])}}"><i class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$bt->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
-                                                    @endforeach
                                                 </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

@@ -62,11 +62,11 @@
                                             <tbody>
                                                 @foreach($barangdatang as $bd)
                                                 <tr>
-                                                    <td class="text-center">{{$loop->iteration}}</td>
-                                                    <td>{{ $bd->barang->nama_barang }}</td>
-                                                    <td>{{ $bd->tgl_masuk }}</td>
-                                                    <td>{{ $bd->jumlah }} {{$bd->barang->satuan}}</td>
-                                                    <td class="text-center">
+                                                    <td scope="col">{{$loop->iteration}}</td>
+                                                    <td scope="col">{{ $bd->barang->nama_barang }}</td>
+                                                    <td scope="col">{{Carbon\Carbon::parse($bd->tgl_masuk)->translatedFormat('d F Y')}}</td>
+                                                    <td scope="col">{{ $bd->jumlah }} {{$bd->barang->satuan}}</td>
+                                                    <td scope="col" class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" href="{{route('datangEdit', ['id' => $bd->uuid])}}"><i class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$bd->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>

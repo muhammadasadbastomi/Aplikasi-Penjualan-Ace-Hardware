@@ -25,42 +25,43 @@
                 </div>
             </div>
         </div>
-        <div class="content-body">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row mb-5 mt-2">
-                        <div class="col-12 col-md-12">
 
-                            <form method="post">
-                                {{method_field('PUT')}}
-                                @csrf
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="barang_id">Nama barang</label>
-                                        <select class="custom-select" name="barang_id" id="barang_id">
-                                            @foreach($barang as $b)
-                                            <option value="{{$b->id}}" {{ $barangdatang->barang_id == $b->id ? 'selected' : ''}} selected>
-                                                {{$b->nama_barang}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tgl_masuk">Tanggal Masuk</label>
-                                        <input type="date" id="tgl_masuk" name="tgl_masuk" class="form-control" value="{{$barangdatang->tgl_masuk}}" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Jumlah </label>
-                                        <input type="number" id="jumlah" name="jumlah" class="form-control @error ('jumlah') is-invalid @enderror" placeholder="Masukkan Jumlah" value="{{ $barangdatang->jumlah }}">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                    <a href="{{route('datangIndex')}}" class="btn btn-danger text-white"><i class="mdi mdi-back"></i>Kembali</a>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <form method="post">
+                            {{method_field('PUT')}}
+                            @csrf
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="barang_id">Nama barang</label>
+                                    <select class="custom-select" name="barang_id" id="barang_id">
+                                        @foreach($barang as $b)
+                                        <option value="{{$b->id}}" {{ $barangdatang->barang_id == $b->id ? 'selected' : ''}} selected>
+                                            {{$b->nama_barang}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                            </form>
-                        </div>
+                                <div class="form-group">
+                                    <label for="tgl_masuk">Tanggal Masuk</label>
+                                    <input type="date" id="tgl_masuk" name="tgl_masuk" class="form-control" value="{{$barangdatang->tgl_masuk}}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Jumlah </label>
+                                    <input type="number" id="jumlah" name="jumlah" class="form-control @error ('jumlah') is-invalid @enderror" placeholder="Masukkan Jumlah" value="{{ $barangdatang->jumlah }}">
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                                <a href="{{route('datangIndex')}}" class="btn btn-danger text-white"><i class="mdi mdi-back"></i>Kembali</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
