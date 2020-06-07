@@ -26,7 +26,7 @@
                     @else
                     <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">
                             {{ Auth::user()->name }} </span><span class="user-status">@if(auth()->user()->role == '1')
-                            Admin
+                            <i class="fa fa-circle font-small-3 text-success mr-50"></i>Online
                             @else
 
                             Karyawan
