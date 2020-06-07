@@ -10,6 +10,51 @@
 <!-- END: Vendor CSS-->
 <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/extensions/noui-slider.min.css">
 <link rel="stylesheet" type="text/css" href="../../../app-assets/css/pages/app-ecommerce-shop.css">
+<style>
+    div.badge-diskon:before,
+    div.badge-diskon:after {
+        content: attr(diskon) "% Off";
+        width: 41px;
+        height: 44px;
+        font-size: 15px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        background-color: yellow;
+        font-weight: bold;
+        text-align: center;
+        letter-spacing: 0.1em;
+        border-radius: 10px 0px 10px 0px;
+    }
+
+    div.badge-diskon:before,
+    div.badge-diskon:after {
+        transition: all .3s;
+    }
+
+    div.badge-diskon:after {
+        background-color: #d34836;
+        color: #FFFFFF;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: translateY(33px) rotateX(-90deg);
+        transform: translateY(33px) rotateX(-90deg);
+    }
+
+    div.badge-diskon:hover:before {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: translateY(-33px) rotateX(90deg);
+        transform: translateY(-33px) rotateX(90deg);
+    }
+
+    div.badge-diskon:hover:after {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: rotateX(0);
+        transform: rotateX(0);
+    }
+</style>
 @endsection
 
 @section('content')
@@ -42,25 +87,28 @@
                     @forelse($barang as $d)
                     <div class="card ecommerce-card">
                         <div class="card-content">
-                            <div class="item-img text-center">
+                            @isset($d->diskon)
+                            <div class="badge-diskon text-center text-danger" diskon="{{$d->diskon}}">
                                 <a href="app-ecommerce-details.html">
-                                    <img src="/images/resize/{{$d
-                                    
-                                    ->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
+                                    <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
                             </div>
+                            @else
+                            <div class="text-center">
+                                <a href="app-ecommerce-details.html">
+                                    <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
+                            </div>
+                            @endisset
                             <div class="card-body">
                                 <div class="item-wrapper">
                                     <div>
                                         <h6 class="item-price">
                                             @if($d->diskon != null)
-                                            <h6><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->diskon}}%</strong></h6>
-                                            <h6>Rp. {{$d->harga_diskon}},-</h6>
-                                        </h6>
-                                        @else
-                                        <h6>Rp. {{$d->harga_jual}},-</h6>
-                                        <!-- <h6 class="text-white">-</h6> -->
-                                        <br>
-                                        @endif
+                                            <h6 class="text-secondary"><del>Rp. {{$d->harga_jual}},-</del></h6>
+                                            <h6 class="text-danger">Rp. {{$d->harga_diskon}},-</h6>
+                                            @else
+                                            <h6 class="text-danger">Rp. {{$d->harga_jual}},-</h6>
+                                            <br>
+                                            @endif
                                     </div>
                                     <div class="item-rating">
                                         <a type="button" class="btn btn-primary btn-sm" href="{{route('homeShow', ['id' => $d->uuid])}}"> <i class="fas fa fa-search"> Detail</i></a>
