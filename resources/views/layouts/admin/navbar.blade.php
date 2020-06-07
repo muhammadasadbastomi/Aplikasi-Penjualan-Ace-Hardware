@@ -7,13 +7,8 @@
                         <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ficon feather icon-menu"></i></a></li>
                     </ul>
                     <ul class="nav navbar-nav">
-                        <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon feather icon-search"></i> Search...</a>
-                            <div class="search-input">
-                                <div class="search-input-icon"><i class="feather icon-search primary"></i></div>
-                                <input class="input" type="text" placeholder="Explore Vuexy..." tabindex="-1" data-search="template-list">
-                                <div class="search-input-close"><i class="feather icon-x"></i></div>
-                                <ul class="search-list search-list-main"></ul>
-                            </div>
+                        <li class="nav-item nav-search">
+                            <a class="nav-link"><i class="ficon feather icon-calendar"></i>&emsp;<b>{{Carbon\Carbon::now()->translatedFormat('l, d F Y')}}, Selamat {{Carbon\Carbon::now()->translatedFormat(' A ')}}</b> </a>
                         </li>
                     </ul>
                 </div>
