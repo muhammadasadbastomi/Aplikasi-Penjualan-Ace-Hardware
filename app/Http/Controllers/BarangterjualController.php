@@ -58,7 +58,14 @@ class BarangterjualController extends Controller
         $barangterjual->tgl_terjual = $request->tgl_terjual;
         $barangterjual->save();
 
-        // create garansi
+        // update stok
+        $barang = Barang::findOrFail($barangterjual->barang_id);
+        $barang->stok_tersedia = $barang->stok_tersedia - $request->jumlah_terjual;
+        if ($barang->stok_tersedia < 0) {
+            $delete = Barang_terjual::findOrfail($barangterjual->id)->delete();
+            return back()->with('warning', 'Stok tidak mencukupi');
+        }
+        $barang->update();
 
         return redirect('admin/barang/terjual/index')->with('success', 'Data berhasil disimpan');
     }
@@ -126,8 +133,13 @@ class BarangterjualController extends Controller
     public function destroy($id)
     {
         $barangterjual = Barang_terjual::where('uuid', $id)->first();
-
+        $stok = $barangterjual->jumlah_terjual;
         $barangterjual->delete();
+
+        //update stok
+        $barang = Barang::findOrFail($barangterjual->barang_id);
+        $barang->stok_tersedia = $barang->stok_tersedia + $stok;
+        $barang->update();
 
         return redirect()->route('terjualIndex');
     }
