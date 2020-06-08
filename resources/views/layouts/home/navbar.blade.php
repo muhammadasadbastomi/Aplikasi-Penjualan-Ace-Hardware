@@ -42,7 +42,7 @@
                                 <i class="feather icon-calendar"></i> {{Carbon\Carbon::now()->translatedFormat('l, d F Y')}}</b>
                             @auth
                             <a type="button" href="{{ url('/admin') }}" class="btn text-dark border-secondary btn-icon btn-outline-secondary mr-1 mb-1 waves-effect waves-light" disabled="">
-                                Home <i class="text-secondary feather icon-home"></i></a>
+                                Admin <i class="text-secondary feather icon-home"></i></a>
                             @else
                             <a type="button" href="{{ route('login') }}" class="btn text-dark border-secondary btn-icon btn-outline-secondary mr-1 mb-1 waves-effect waves-light" disabled="">
                                 Login <i class="text-secondary feather icon-log-in"></i></a>

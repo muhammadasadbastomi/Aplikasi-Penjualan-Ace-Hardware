@@ -281,22 +281,22 @@
                     <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
                         <div class="item-heading">
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
-                                {{$d->nama_barang}}
+                                {{$d->barang->nama_barang}}
                             </a>
                             <p>
-                                <small> @if($d->kategori == 1)
+                                <small> @if($d->barang->kategori == 1)
                                     Peralatan Rumah
-                                    @elseif($d->kategori == 2)
+                                    @elseif($d->barang->kategori == 2)
                                     Alat Kebersihan
-                                    @elseif($d->kategori == 3)
+                                    @elseif($d->barang->kategori == 3)
                                     Alat Dapur
-                                    @elseif($d->kategori == 4)
+                                    @elseif($d->barang->kategori == 4)
                                     Otomotif
-                                    @elseif($d->kategori == 5)
+                                    @elseif($d->barang->kategori == 5)
                                     Peralatan Elektronik
-                                    @elseif($d->kategori == 6)
+                                    @elseif($d->barang->kategori == 6)
                                     Olahraga & Outdoor
-                                    @elseif($d->kategori == 7)
+                                    @elseif($d->barang->kategori == 7)
                                     Kategori Lainnya
                                     @else
                                     -
@@ -304,12 +304,12 @@
                             </p>
                         </div>
                         <div class=" img-container w-80 mx-auto my-2 py-75">
-                            <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
+                            <img src="/images/barang/{{$d->barang->gambar}}" class="img-fluid" alt="image">
                         </div>
                         <div class="item-meta">
                             <h6 class="item-price">
-                                @if($d->diskon != null)
-                                <p style="color: black;margin-bottom:0px;"><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->diskon}}%</strong></p>
+                                @if($d->barang->diskon != null)
+                                <p style="color: black;margin-bottom:0px;"><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->barang->diskon}}%</strong></p>
                                 <p style="color: black; margin-bottom:-5px;"> <b>Rp. {{$d->harga_diskon}},-</b> </p>
                             </h6>
                             @else
@@ -317,7 +317,7 @@
                             <!-- <h6 class="text-white">-</h6> -->
                             <br>
                             @endif
-                            <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
+                            <p class="text-secondary mt-1">Stok Tersedia : {{$d->barang->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
                     </div>

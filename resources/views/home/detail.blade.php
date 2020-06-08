@@ -66,9 +66,9 @@
                                 <div class="ecommerce-details-price d-flex flex-wrap">
                                     <h6 class="item-price">
                                         @if($barang->diskon != null)
-                                        <p class="font-medium-3 mr-1 mb-0" style="color: black;margin-bottom:0px;"><strong style="color: red"> Diskon {{$barang->diskon}}%</strong> / <del>Rp. {{$barang->harga_jual}},-</del></p>
+                                        <p class="font-medium-3 mr-1 mb-0" style="color: black;margin-bottom:0px;"><strong style="color: red"> Diskon {{$barang->diskon}}%</strong></p>
                                         <br>
-                                        <p class="font-medium-3 mr-1 mb-0" style="color: black; margin-bottom:-5px;"> Harga : <b>Rp. {{$barang->harga_diskon }},-</b> </p>
+                                        <p class="font-medium-3 mr-1 mb-0" style="color: black; margin-bottom:-5px;"> Harga : <del class="text-secondary">Rp. {{$barang->harga_jual}},-</del>&emsp14;<b>Rp. {{$barang->harga_diskon }},-</b> </p>
                                     </h6>
                                     @else
                                     <p class="font-medium-3 mr-1 mb-0" style="color: black; margin-bottom:-5px;"> Harga : <b>Rp. {{$barang->harga_jual}},-</b> </p>
@@ -126,7 +126,7 @@
                                                 @endif</small>
                                         </p>
                                     </div>
-                                    <div class="img-container w-50 mx-auto my-2 py-75">
+                                    <div class="img-container w-40 mx-auto my-1 py-7">
                                         <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
                                     </div>
                                     <div class="item-meta">

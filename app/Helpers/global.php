@@ -72,3 +72,37 @@ function totalselesai()
 {
     return Barang_rusak::where('status', '3')->count();
 }
+
+function getbarangrumah()
+{
+    return Barang::orderBy('id', 'DESC')->where('kategori', '1')->limit(5)->get();
+}
+
+function getbarangkebersihan()
+{
+    return Barang::orderBy('id', 'DESC')->where('kategori', '2')->limit(5)->get();
+}
+
+function getbarangdapur()
+{
+    return Barang::orderBy('id', 'DESC')->where('kategori', '3')->limit(5)->get();
+}
+
+function getbarangotomotif()
+{
+    return Barang::orderBy('id', 'DESC')->where('kategori', '4')->limit(5)->get();
+}
+
+function getbarangelektronik()
+{
+    return Barang::orderBy('id', 'DESC')->where('kategori', '5')->limit(5)->get();
+}
+
+function getbarangoutdoor()
+{
+    return Barang::orderBy('id', 'DESC')->where('kategori', '6')->limit(5)->get();
+}
+function getbaranglain()
+{
+    return Barang::orderBy('id', 'DESC')->where('kategori', '7')->limit(5)->get();
+}
