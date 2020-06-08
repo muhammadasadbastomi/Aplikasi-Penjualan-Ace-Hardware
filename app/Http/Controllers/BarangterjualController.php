@@ -56,9 +56,32 @@ class BarangterjualController extends Controller
         $barangterjual->barang_id = $request->barang_id;
         $barangterjual->jumlah_terjual = $request->jumlah_terjual;
         $barangterjual->tgl_terjual = $request->tgl_terjual;
-        $barangterjual->save();
 
-        // create garansi
+        $barang = Barang::findOrFail($barangterjual->barang_id);
+        $barangterjual->harga_terjual = $barang->harga_jual;
+
+        if($barang->diskon ){
+            $barangterjual->diskon_terjual = $barang->diskon;
+            $diskon = ($barang->diskon / 100) * $barang->harga_jual;
+            $harga = $barang->harga_jual - $diskon;
+            $barangterjual->total_terjual = $harga * $request->jumlah_terjual;
+
+            $barangterjual->save();
+
+        }else{
+            $subtotal = $barang->harga_jual * $request->jumlah_terjual;
+            $barangterjual->total_terjual = $subtotal;
+
+            $barangterjual->save();
+        }
+
+        // update stok
+        $barang->stok_tersedia = $barang->stok_tersedia - $request->jumlah_terjual;
+        if ($barang->stok_tersedia < 0) {
+            $delete = Barang_terjual::findOrfail($barangterjual->id)->delete();
+            return back()->with('warning', 'Stok tidak mencukupi');
+        }
+        $barang->update();
 
         return redirect('admin/barang/terjual/index')->with('success', 'Data berhasil disimpan');
     }
@@ -126,8 +149,13 @@ class BarangterjualController extends Controller
     public function destroy($id)
     {
         $barangterjual = Barang_terjual::where('uuid', $id)->first();
-
+        $stok = $barangterjual->jumlah_terjual;
         $barangterjual->delete();
+
+        //update stok
+        $barang = Barang::findOrFail($barangterjual->barang_id);
+        $barang->stok_tersedia = $barang->stok_tersedia + $stok;
+        $barang->update();
 
         return redirect()->route('terjualIndex');
     }

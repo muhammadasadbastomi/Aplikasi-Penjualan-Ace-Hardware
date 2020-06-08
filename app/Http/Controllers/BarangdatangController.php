@@ -109,9 +109,9 @@ class BarangdatangController extends Controller
         ];
         $request->validate([
 
-
             'tgl_masuk' => 'required',
             'jumlah' => 'required',
+            'harga' => 'required',
         ], $messages);
 
         $barangdatang = Barang_datang::where('uuid', $id)->first();
@@ -139,7 +139,6 @@ class BarangdatangController extends Controller
         $stok = $barangdatang->jumlah;
 
         $barangdatang->delete();
-
 
         //update stok
         $barang = Barang::findOrFail($barangdatang->barang_id);
