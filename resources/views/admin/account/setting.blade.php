@@ -108,8 +108,8 @@
                                                             <div class="form-group">
                                                                 <div class="controls">
                                                                     <label for="nama">Nama Lengkap</label>
-                                                                    <input type="text" class="form-control" id="nama"
-                                                                        name="nama" placeholder="Masukkan Nama"
+                                                                    <input type="text" class="form-control" id="name"
+                                                                        name="name" placeholder="Masukkan Nama"
                                                                         value="{{$user->name}}" required
                                                                         data-validation-required-message="This name field is required">
                                                                 </div>
@@ -158,13 +158,15 @@
                                         <div class="tab-pane fade " id="account-vertical-password" role="tabpanel"
                                             aria-labelledby="account-pill-password" aria-expanded="false">
                                             <form method="post">
+                                                @csrf
+
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
-                                                                <label for="account-old-password">Old Password</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="account-old-password" required
+                                                                <label for="oldpassword">Old Password</label>
+                                                                <input type="password" name="oldpassword"
+                                                                    class="form-control" id="oldpassword" required
                                                                     placeholder="Old Password"
                                                                     data-validation-required-message="This old password field is required">
                                                             </div>
@@ -185,15 +187,14 @@
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
-                                                                <label for="account-retype-new-password">Retype New
+                                                                <label for="password_confirmation">Retype New
                                                                     Password</label>
-                                                                <input type="password" name="con-password"
+                                                                <input type="password" name="password_confirmation"
                                                                     class="form-control" required
-                                                                    id="account-retype-new-password"
+                                                                    id="password_confirmation"
                                                                     data-validation-match-match="password"
                                                                     placeholder="New Password"
-                                                                    data-validation-required-message="The Confirm password field is required"
-                                                                    minlength="6">
+                                                                    data-validation-required-message="The Confirm password field is required">
                                                             </div>
                                                         </div>
                                                     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Hash;
+use Auth;
 use Illuminate\Http\Request;
 
 
@@ -132,11 +133,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        $user = User::where('uuid', $id)->first();
+        if (Auth::user()){
+            $user =  User::find(Auth::user()->id);
 
-        return view('admin.account.setting', compact('user'));
+            if ($user){
+            return view('admin.account.setting')->withUser($user);
+            } else {
+                return redirect()->back();
+            }
+        }else {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -159,49 +168,65 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        // $messages = [
-        //     'unique' => ':attribute sudah terdaftar.',
-        //     'required' => ':attribute harus diisi.',
+        $user = User::find(Auth::User()->id);
 
-        // ];
-        // $request->validate([
-
-        //     'judul' => 'required',
-        //     'keterangan' => 'required',
-
-        // ], $messages);
-
-        $data = user::where('uuid', $id)->first();
-        $data->name = $request->nama;
-        $data->alamat = $request->alamat;
-        $data->nohp = $request->nohp;
-        $data->email = $request->email;
-        if ($request->photos != '') {
-            $path = public_path() . '/images/user/';
-
-            //code for remove old photos
-            if ($data->photos != ''  && $data->photos != null) {
-                $file_old = $path . $data->photos;
-                unlink($file_old);
-            }
-            if (!$request->photos) {
-                $photos = $data->photos;
+        if ($user) {
+            if (isset($request->email)){
+            $validate = null;
+            if (Auth::User()->email === $request['email']){
+                $validate = $request->validate([
+                    'name' => 'required|min:5',
+                    'email'=> 'required|email'
+                ]);
             } else {
-                //upload new photos
-                $photos = $request->photos;
-                $filename = $photos->getClientOriginalName();
-                $photos->move($path, $filename);
+                $validate = $request->validate([
+                    'name' => 'required|min:5',
+                    'email'=> 'required|email|unique:users'
+                ]);
             }
 
-            //for update in table
-            $data->update(['photos' => $filename]);
-        }
+            if ($validate) {
+                $user->name = $request['name'];
+                $user->email = $request['email'];
+                $user->nohp = $request['nohp'];
+                $user->alamat = $request['alamat'];
+                if ($request->photos != null) {
+                    $img = $request->file('photos');
+                    $FotoExt = $img->getClientOriginalExtension();
+                    $FotoName = $request->name;
+                    $photos = $FotoName . '.' . $FotoExt;
+                    $img->move('images/user', $photos);
+                    $user->photos = $photos;
+                    $user->update();
+                }
 
-        $data->update();
-        // dd($data);
-        return back()->with('success', 'Data Berhasil Diubah');
+                $user->update();
+            }
+            return redirect()->back()->with('success', 'Profil berhasil diubah');
+
+            } elseif (isset($request->password)){
+                $messages = [
+                    'confirmed' => ':attribute tidak sama.',
+                    'same' => ':attribute tidak sama.'
+                ];
+                $validate = $request->validate([
+                    'password'=> 'same:password_confirmation', 'confirmed',
+
+                ], $messages);
+
+                if (Hash::check($request['oldpassword'], $user->password) && $validate) {
+                    $user->password = Hash::make($request['password']);
+                    $user->update();
+
+                    return back()->with('success', 'Password Berhasil Diubah');
+                } else {
+                    return back()->with('warning', 'Password Salah');
+                }
+            }
+
+        }
     }
 
     /**

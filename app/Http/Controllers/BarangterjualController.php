@@ -64,7 +64,6 @@ class BarangterjualController extends Controller
             $barangterjual->diskon_terjual = $barang->diskon;
             $diskon = ($barang->diskon / 100) * $barang->harga_jual;
             $harga = $barang->harga_jual - $diskon;
-
             $barangterjual->total_terjual = $harga * $request->jumlah_terjual;
 
             $barangterjual->save();
