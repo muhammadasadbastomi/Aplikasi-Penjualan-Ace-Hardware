@@ -62,6 +62,8 @@
                                                     <th scope="col">Nama Barang</th>
                                                     <th scope="col">Tanggal Masuk</th>
                                                     <th scope="col">Jumlah</th>
+                                                    <th scope="col">Harga</th>
+                                                    <th scope="col">Total</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -74,10 +76,12 @@
                                                         {{Carbon\Carbon::parse($bd->tgl_masuk)->translatedFormat('d F Y')}}
                                                     </td>
                                                     <td scope="col">{{ $bd->jumlah }} {{$bd->barang->satuan}}</td>
+                                                    <td scope="col">Rp. {{ $bd->harga }}</td>
+                                                    <td scope="col">Rp. {{ $bd->total }}</td>
                                                     <td scope="col" class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white"
+                                                        {{-- <a class="btn btn-sm btn-info text-white"
                                                             href="{{route('datangEdit', ['id' => $bd->uuid])}}"><i
-                                                                class="feather icon-edit"></i></a>
+                                                            class="feather icon-edit"></i></a> --}}
                                                         <a class="delete btn btn-sm btn-danger text-white"
                                                             data-id="{{$bd->uuid}}" href="#"><i
                                                                 class="feather icon-trash"></i></a>

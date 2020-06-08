@@ -34,15 +34,21 @@
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
                                 <div class="dt-buttons btn-group">
-                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                    <button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span>
                                     </button>
                                     &emsp13;
-                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                    <button type="button"
+                                        class="btn btn-outline-info dropdown-toggle waves-effect waves-light"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i
+                                                class="feather icon-printer"></i>
                                             Cetak</span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" target="_blank" href="{{route('terjualCetak')}}">Keseluruhan</a>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('terjualCetak')}}">Keseluruhan</a>
                                     </div>
                                 </div>
                             </div>
@@ -56,6 +62,9 @@
                                                     <th scope="col">Nama Barang</th>
                                                     <th scope="col">Tanggal Terjual</th>
                                                     <th scope="col">Jumlah Terjual</th>
+                                                    <th scope="col">Harga Awal</th>
+                                                    <th scope="col">Diskon</th>
+                                                    <th scope="col">Total Harga</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -64,11 +73,24 @@
                                                 <tr>
                                                     <td scope="col">{{ $loop->iteration }}</td>
                                                     <td scope="col">{{ $bt->barang->nama_barang }}</td>
-                                                    <td scope="col">{{Carbon\Carbon::parse($bt->tgl_terjual)->translatedFormat('d F Y')}}</td>
-                                                    <td scope="col">{{ $bt->jumlah_terjual }} {{$bt->barang->satuan}}</td>
+                                                    <td scope="col">
+                                                        {{Carbon\Carbon::parse($bt->tgl_terjual)->translatedFormat('d F Y')}}
+                                                    </td>
+                                                    <td scope="col">{{ $bt->jumlah_terjual }} {{$bt->barang->satuan}}
+                                                    </td>
+                                                    <td scope="col">{{$bt->harga_terjual}}
+                                                    </td>
+                                                    <td scope="col">{{$bt->diskon_terjual}}
+                                                    </td>
+                                                    <td scope="col">{{$bt->total_terjual}}
+                                                    </td>
                                                     <td scope="col" class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" href="{{route('terjualEdit', ['id' => $bt->uuid])}}"><i class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$bt->uuid}}" href="#"><i class="feather icon-trash"></i></a>
+                                                        {{-- <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('terjualEdit', ['id' => $bt->uuid])}}"><i
+                                                            class="feather icon-edit"></i></a> --}}
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$bt->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -88,7 +110,8 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -112,12 +135,14 @@
 
                         <label>Jumlah Terjual</label>
                         <div class="form-group">
-                            <input type="number" name="jumlah_terjual" id="jumlah_terjual" placeholder="Masukkan Jumlah" value="{{old('jumlah_terjual')}}" class="form-control">
+                            <input type="number" name="jumlah_terjual" id="jumlah_terjual" placeholder="Masukkan Jumlah"
+                                value="{{old('jumlah_terjual')}}" class="form-control">
                         </div>
 
                         <label>Tanggal Terjual</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_terjual" id="tgl_terjual" value="{{old('tgl_terjual')}}" class="form-control">
+                            <input type="date" name="tgl_terjual" id="tgl_terjual" value="{{old('tgl_terjual')}}"
+                                class="form-control">
                         </div>
                     </div>
             </div>
@@ -131,7 +156,8 @@
 </div>
 
 <!-- Modal Edit -->
-<div class="modal fade text-left" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">

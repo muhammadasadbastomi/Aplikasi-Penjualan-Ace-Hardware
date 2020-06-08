@@ -18,6 +18,9 @@ class CreateBarangTerjualsTable extends Migration
             $table->string('uuid')->length(36);
             $table->unsignedBigInteger('barang_id');
             $table->integer('jumlah_terjual');
+            $table->integer('diskon_terjual')->nullable();
+            $table->integer('harga_terjual');
+            $table->integer('total_terjual');
             $table->date('tgl_terjual');
             $table->timestamps();
         });
