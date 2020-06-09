@@ -27,6 +27,10 @@
         border-radius: 10px 0px 10px 0px;
     }
 
+    div.badge-diskon:before {
+        color: red;
+    }
+
     div.badge-diskon:before,
     div.badge-diskon:after {
         transition: all .3s;
@@ -55,6 +59,43 @@
         transform: rotateX(0);
     }
 </style>
+<style>
+    img.terlaris {
+        position: relative;
+        z-index: 1;
+        top: 0px;
+    }
+
+    p.terlaris {
+        position: relative;
+        top: -50px;
+        z-index: 2;
+        color: black;
+        font-weight: bold;
+    }
+
+    div.lihat-detail {
+        position: absolute;
+        top: 270px;
+        right: 20px;
+        z-index: 2;
+        font-weight: bold;
+        opacity: 0;
+        border-radius: 5px;
+        transition-duration: 0.7s;
+    }
+
+    div.lihat:hover .lihat-detail,
+    div.lihat:focus .lihat-detail,
+    div.lihat:active .lihat-detail {
+        opacity: 1;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+        -webkit-transition-timing-function: cubic-bezier(0.50, 2.10, 0.35, -0.40);
+        transition-timing-function: cubic-bezier(0.50, 2.10, 0.35, -0.40);
+    }
+</style>
+
 @endsection
 
 @section('content')
@@ -83,46 +124,40 @@
                 <!-- Ecommerce Products Starts -->
                 <section id="ecommerce-products" class="grid-view">
                     @forelse($barang as $d)
-                    <div class="card ecommerce-card">
-                        <div class="card-content">
-                            @isset($d->diskon)
-                            <div class="badge-diskon text-center text-danger" diskon="{{$d->diskon}}">
-                                <a href="app-ecommerce-details.html">
-                                    <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
-                            </div>
-                            @else
-                            <div class="text-center">
-                                <a href="app-ecommerce-details.html">
-                                    <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
-                            </div>
+                    @isset($d->diskon)
+                    <div class="card ecommerce-card badge-diskon" diskon="{{$d->diskon}}">
+                        @else
+                        <div class="card ecommerce-card">
                             @endisset
-                            <div class="card-body">
-                                <div class="item-wrapper">
+                            <div class="card-content lihat">
+                                <div class="lihat-detail">
+                                    <a type="button" class="btn btn-outline-primary btn-sm" href="{{route('homeShow', ['id' => $d->uuid])}}"> <i class="fas fa fa-search"> Detail</i></a>
+                                </div>
+                                <div class="text-center">
+                                    <a href="app-ecommerce-details.html">
+                                        <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
+                                </div>
+                                <div class="card-body">
+                                    <div class="item-wrapper">
+                                        <div>
+                                            <h6 class="item-price float-left">
+                                                @if($d->diskon != null)
+                                                <a class="text-secondary float-left"><del>Rp. {{$d->harga_jual}},-</del></a><a class="text-danger">Rp. {{$d->harga_diskon}},-</a>
+                                                @else
+                                                <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
+                                                @endif
+                                        </div>
+                                    </div>
+                                    <div class="item-name">
+                                        <a href="{{route('homeShow', ['id' => $d->uuid])}}">{{$d->nama_barang}}</a>
+                                    </div>
                                     <div>
-                                        <h6 class="item-price">
-                                            @if($d->diskon != null)
-                                            <h6 class="text-secondary"><del>Rp. {{$d->harga_jual}},-</del></h6>
-                                            <h6 class="text-danger">Rp. {{$d->harga_diskon}},-</h6>
-                                            @else
-                                            <h6 class="text-danger">Rp. {{$d->harga_jual}},-</h6>
-                                            <br>
-                                            @endif
-                                    </div>
-                                    <div class="item-rating">
-                                        <a type="button" class="btn btn-primary btn-sm" href="{{route('homeShow', ['id' => $d->uuid])}}"> <i class="fas fa fa-search"> Detail</i></a>
+                                        <p class="item-description">
+                                            {{$d->keterangan}}
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="item-name">
-                                    <a href="{{route('homeShow', ['id' => $d->uuid])}}">{{$d->nama_barang}}</a>
-                                </div>
-                                <div>
-                                    <p class="item-description">
-                                        {{$d->kategori}}
-                                        {{$d->keterangan}}
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- <div class="item-options text-center">
+                                <!-- <div class="item-options text-center">
                                 <div class="item-wrapper">
                                     <div class="item-cost">
                                         <h6 class="item-price">
@@ -138,9 +173,9 @@
                                         cart</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">View In Cart</a>
                                 </div>
                             </div> -->
+                            </div>
                         </div>
-                    </div>
-                    @empty
+                        @empty
                 </section>
                 <section class="text-center font-large-2" style="margin-top:30px; margin-bottom:700px;">
                     <a href="{{route('homeShop')}}" style="color: black;">

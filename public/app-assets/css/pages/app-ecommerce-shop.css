@@ -287,7 +287,6 @@
 
 .ecommerce-application .grid-view .ecommerce-card .card-content .item-wrapper {
     display: flex;
-    justify-content: space-between;
 }
 
 .ecommerce-application .grid-view .ecommerce-card .card-content .item-wrapper .item-price {

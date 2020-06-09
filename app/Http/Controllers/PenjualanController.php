@@ -81,24 +81,7 @@ class PenjualanController extends Controller
             });
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Filter Controller
         if ($request->harga or $request->kategori) {
 
             if ($request->harga == 0) {
@@ -135,38 +118,12 @@ class PenjualanController extends Controller
                 return $item;
             });
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // End Filter
 
 
         $all = Barang::all();
 
-        $terlaris = Barang::orderBy('id', 'asc')->paginate(5);
-        $terlaris = $terlaris->map(function ($item) {
-            $diskon = ($item->diskon / 100) * $item->harga_jual;
-            $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
-            $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
-            return $item;
-        });
+        $terlaris = Barang_terjual::orderBy('jumlah_terjual', 'desc')->limit(5)->get();
 
         return view('home.shop', compact('barang', 'data', 'terlaris', 'all'));
     }

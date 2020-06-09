@@ -1747,9 +1747,9 @@ input:focus~.bg-primary {
 }
 
 .btn-outline-primary {
-    border: 1px solid #ea5455;
+    border: 1px solid #3245ee;
     background-color: transparent;
-    color: #ea5455;
+    color: #5754ea;
 }
 
 .btn-outline-primary:hover {
