@@ -130,8 +130,8 @@
                         {{$d->diskon_terjual}}
                         @else -
                         @endif</td>
-                    <td scope="col" class="text-center">{{$d->harga_terjual}}</td>
-                    <td scope="col" class="text-center">{{$d->total_terjual}}</td>
+                    <td scope="col" class="text-center">Rp. {{number_format( $d->harga_terjual, 0, ',', '.')}},-</td>
+                    <td scope="col" class="text-center">Rp. {{number_format( $d->total_terjual, 0, ',', '.')}},-</td>
                 </tr>
                 @endforeach
             </tbody>

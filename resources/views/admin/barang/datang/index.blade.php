@@ -34,21 +34,15 @@
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
                                 <div class="dt-buttons btn-group">
-                                    <button class="btn btn-outline-primary" tabindex="0"
-                                        aria-controls="DataTables_Table_0" data-toggle="modal"
-                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span>
                                     </button>
                                     &emsp13;
-                                    <button type="button"
-                                        class="btn btn-outline-info dropdown-toggle waves-effect waves-light"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i
-                                                class="feather icon-printer"></i>
+                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
                                             Cetak</span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" target="_blank"
-                                            href="{{route('datangCetak')}}">Keseluruhan</a>
+                                        <a class="dropdown-item" target="_blank" href="{{route('datangCetak')}}">Keseluruhan</a>
                                     </div>
                                 </div>
                             </div>
@@ -76,15 +70,12 @@
                                                         {{Carbon\Carbon::parse($bd->tgl_masuk)->translatedFormat('d F Y')}}
                                                     </td>
                                                     <td scope="col">{{ $bd->jumlah }} {{$bd->barang->satuan}}</td>
-                                                    <td scope="col">Rp. {{ $bd->harga }}</td>
-                                                    <td scope="col">Rp. {{ $bd->total }}</td>
+                                                    <td scope="col">Rp. {{number_format( $bd->harga, 0, ',', '.')}},-</td>
+                                                    <td scope="col">Rp. {{number_format( $bd->total, 0, ',', '.')}},-</td>
                                                     <td scope="col" class="text-center">
                                                         {{-- <a class="btn btn-sm btn-info text-white"
-                                                            href="{{route('datangEdit', ['id' => $bd->uuid])}}"><i
-                                                            class="feather icon-edit"></i></a> --}}
-                                                        <a class="delete btn btn-sm btn-danger text-white"
-                                                            data-id="{{$bd->uuid}}" href="#"><i
-                                                                class="feather icon-trash"></i></a>
+                                                            href="{{route('datangEdit', ['id' => $bd->uuid])}}"><i class="feather icon-edit"></i></a> --}}
+                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$bd->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -104,8 +95,7 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-    aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -129,24 +119,20 @@
 
                         <label>Tanggal Masuk</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_masuk" id="tgl_masuk" value="{{old('tgl_masuk')}}"
-                                class="form-control">
+                            <input type="date" name="tgl_masuk" id="tgl_masuk" value="{{old('tgl_masuk')}}" class="form-control">
                         </div>
 
                         <label>Harga</label>
                         <div class="form-group">
-                            <input type="text" name="harga" id="input1" placeholder="Masukkan Harga"
-                                value="{{old('harga')}}" class="form-control">
+                            <input type="text" name="harga" id="input1" placeholder="Masukkan Harga" value="{{old('harga')}}" class="form-control">
                         </div>
                         <label>Jumlah</label>
                         <div class="form-group">
-                            <input type="text" name="jumlah" id="input2" placeholder="Masukkan Jumlah"
-                                value="{{old('jumlah')}}" class="form-control">
+                            <input type="text" name="jumlah" id="input2" placeholder="Masukkan Jumlah" value="{{old('jumlah')}}" class="form-control">
                         </div>
                         <label>Total</label>
                         <div class="form-group">
-                            <input type="text" name="total" id="input3" value="{{old('total')}}" class="form-control"
-                                readonly>
+                            <input type="text" name="total" id="input3" value="{{old('total')}}" class="form-control" readonly>
                         </div>
 
                     </div>

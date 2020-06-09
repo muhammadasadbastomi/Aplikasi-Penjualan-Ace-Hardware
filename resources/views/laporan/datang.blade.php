@@ -124,8 +124,8 @@
                     <td scope="col" class="text-center">
                         {{Carbon\Carbon::parse($d->tgl_masuk)->translatedFormat('d F Y')}}</td>
                     <td scope="col" class="text-center">{{$d->jumlah}} {{$d->barang->satuan}}</td>
-                    <td scope="col" class="text-center">Rp. {{$d->harga}}</td>
-                    <td scope="col" class="text-center">Rp. {{$d->total}}</td>
+                    <td scope="col" class="text-center">Rp. {{number_format( $d->harga, 0, ',', '.')}},-</td>
+                    <td scope="col" class="text-center">Rp .{{number_format( $d->total, 0, ',', '.')}},-</td>
                 </tr>
                 @endforeach
             </tbody>

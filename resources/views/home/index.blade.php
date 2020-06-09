@@ -142,7 +142,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card text-white border-0 box-shadow-0">
                         <div class="card-content">
-                            <img class="card-img img-fluid" src="{{asset('images/index/5.jpg')}}" alt="Card image">
+                            <img class="card-img img-fluid" src="#" alt="Card image">
                             <div class="card-img-overlay overflow-hidden overlay-success">
                                 <h4 class="card-title text-white">Card Image Overlay</h4>
                                 <p class="card-text text-white">Sugar plum tiramisu sweet. Cake jelly marshmallow cotton candy chupa chups.
