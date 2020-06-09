@@ -69,9 +69,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
-                                        aria-controls="DataTables_Table_0" data-toggle="modal"
-                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span></button> </div>
                             </div>
                             <div class="card-content">
@@ -103,11 +101,8 @@
                                                         @endif
                                                     </td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white"
-                                                            href="{{route('adminEdit', ['id' => $u->uuid])}}"><i
-                                                                class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" href="#"><i
-                                                                class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white" href="{{route('adminEdit', ['id' => $u->uuid])}}"><i class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$u->uuid}}"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -127,8 +122,7 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-    aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -143,37 +137,31 @@
                     <div class="modal-body">
                         <label>Nama Lengkap</label>
                         <div class="form-group">
-                            <input type="text" name="name" id="name" placeholder="Masukkan Nama Lengkap"
-                                value="{{old('name')}}" class="form-control">
+                            <input type="text" name="name" id="name" placeholder="Masukkan Nama Lengkap" value="{{old('name')}}" class="form-control">
                             @error('name')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <label>E-Mail</label>
                         <div class="form-group">
-                            <input type="email" name="email" id="email" value="{{old('email')}}" class="form-control"
-                                placeholder="Masukkan Email">
+                            <input type="email" name="email" id="email" value="{{old('email')}}" class="form-control" placeholder="Masukkan Email">
                             @error('email')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <label>No.Telepon</label>
                         <div class="form-group">
-                            <input type="text" name="nohp" id="nohp" value="{{old('nohp')}}"
-                                placeholder="Masukkan Nomor Telepon" class="form-control">
+                            <input type="text" name="nohp" id="nohp" value="{{old('nohp')}}" placeholder="Masukkan Nomor Telepon" class="form-control">
                         </div>
 
 
                         <label for="alamat">Alamat</label>
                         <div class="form-group">
-                            <textarea type="text" class="form-control" id="alamat" name="alamat"
-                                placeholder="Masukkan Alamat"></textarea>
+                            <textarea type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat"></textarea>
                         </div>
 
 
                         <label>Password</label>
                         <fieldset class="form-label-group form-group position-relative has-icon-left">
-                            <input type="password" id="inputPassword"
-                                class="form-control @error('password') is-invalid @enderror" name="password"
-                                placeholder="Password" required autocomplete="new-password">
+                            <input type="password" id="inputPassword" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
                             <div class="form-control-position">
                                 <i class="feather icon-lock"></i>
                             </div>
@@ -185,8 +173,7 @@
                         </fieldset>
                         <label>Konfirmasi Password</label>
                         <fieldset class="form-label-group form-group position-relative has-icon-left">
-                            <input type="password" id="password" class="form-control" placeholder="Confirm Password"
-                                name="password_confirmation" required>
+                            <input type="password" id="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required>
                             <div class="form-control-position">
                                 <i class="feather icon-lock"></i>
                             </div>
@@ -200,17 +187,14 @@
                         <div class="form-group">
                             <label for="photos">Photo </label>
                             <div class="custom-file">
-                                <input type="file" id="photos"
-                                    class="custom-file-input  @error ('photos') is-invalid @enderror" name="photos"
-                                    value="{{old('photos')}}">
+                                <input type="file" id="photos" class="custom-file-input  @error ('photos') is-invalid @enderror" name="photos" value="{{old('photos')}}">
                                 <label class="custom-file-label" for="photos">Choose file</label>
                                 @error('photos')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                         </div>
                         <br>
                         <div class="imgWrap">
-                            <img src="/img/nopictcreate.png" id="imgView" class="card-img-top img-fluid"
-                                style="width: 50%; height:50%; display: block; margin: auto;">
+                            <img src="/img/nopictcreate.png" id="imgView" class="card-img-top img-fluid" style="width: 50%; height:50%; display: block; margin: auto;">
                         </div>
 
 
@@ -228,8 +212,7 @@
 </div>
 
 <!-- Modal Edit -->
-<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable"
-    aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -294,7 +277,7 @@
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: "{{ url('/admin/account/admin/delete')}}" + '/' + id,
+                    url: "{{ url('/admin/account/delete')}}" + '/' + id,
                     type: "POST",
                     data: {
                         '_method': 'DELETE',

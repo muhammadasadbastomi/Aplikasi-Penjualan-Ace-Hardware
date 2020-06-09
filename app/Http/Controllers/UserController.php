@@ -29,7 +29,8 @@ class UserController extends Controller
      */
     public function admin()
     {
-        $user = User::where('role', [1])->orderBy('id', 'desc')->get();
+        $data = User::find(Auth::user()->id);
+        $user = user::orderBy('id', 'Desc')->where('email', '!=', $data->email)->get();
 
         return view('admin.account.admin', compact('user'));
     }
@@ -135,15 +136,15 @@ class UserController extends Controller
      */
     public function edit()
     {
-        if (Auth::user()){
+        if (Auth::user()) {
             $user =  User::find(Auth::user()->id);
 
-            if ($user){
-            return view('admin.account.setting')->withUser($user);
+            if ($user) {
+                return view('admin.account.setting')->withUser($user);
             } else {
                 return redirect()->back();
             }
-        }else {
+        } else {
             return redirect()->back();
         }
     }
@@ -173,46 +174,45 @@ class UserController extends Controller
         $user = User::find(Auth::User()->id);
 
         if ($user) {
-            if (isset($request->email)){
-            $validate = null;
-            if (Auth::User()->email === $request['email']){
-                $validate = $request->validate([
-                    'name' => 'required|min:5',
-                    'email'=> 'required|email'
-                ]);
-            } else {
-                $validate = $request->validate([
-                    'name' => 'required|min:5',
-                    'email'=> 'required|email|unique:users'
-                ]);
-            }
-
-            if ($validate) {
-                $user->name = $request['name'];
-                $user->email = $request['email'];
-                $user->nohp = $request['nohp'];
-                $user->alamat = $request['alamat'];
-                if ($request->photos != null) {
-                    $img = $request->file('photos');
-                    $FotoExt = $img->getClientOriginalExtension();
-                    $FotoName = $request->name;
-                    $photos = $FotoName . '.' . $FotoExt;
-                    $img->move('images/user', $photos);
-                    $user->photos = $photos;
-                    $user->update();
+            if (isset($request->email)) {
+                $validate = null;
+                if (Auth::User()->email === $request['email']) {
+                    $validate = $request->validate([
+                        'name' => 'required|min:5',
+                        'email' => 'required|email'
+                    ]);
+                } else {
+                    $validate = $request->validate([
+                        'name' => 'required|min:5',
+                        'email' => 'required|email|unique:users'
+                    ]);
                 }
 
-                $user->update();
-            }
-            return redirect()->back()->with('success', 'Profil berhasil diubah');
+                if ($validate) {
+                    $user->name = $request['name'];
+                    $user->email = $request['email'];
+                    $user->nohp = $request['nohp'];
+                    $user->alamat = $request['alamat'];
+                    if ($request->photos != null) {
+                        $img = $request->file('photos');
+                        $FotoExt = $img->getClientOriginalExtension();
+                        $FotoName = $request->name;
+                        $photos = $FotoName . '.' . $FotoExt;
+                        $img->move('images/user', $photos);
+                        $user->photos = $photos;
+                        $user->update();
+                    }
 
-            } elseif (isset($request->password)){
+                    $user->update();
+                }
+                return redirect()->back()->with('success', 'Profil berhasil diubah');
+            } elseif (isset($request->password)) {
                 $messages = [
                     'confirmed' => ':attribute tidak sama.',
                     'same' => ':attribute tidak sama.'
                 ];
                 $validate = $request->validate([
-                    'password'=> 'same:password_confirmation', 'confirmed',
+                    'password' => 'same:password_confirmation', 'confirmed',
 
                 ], $messages);
 
@@ -225,7 +225,6 @@ class UserController extends Controller
                     return back()->with('warning', 'Password Salah');
                 }
             }
-
         }
     }
 
@@ -242,5 +241,14 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('userKaryawan');
+    }
+
+    public function delete($id)
+    {
+        $user = User::where('uuid', $id)->first();
+
+        $user->delete();
+
+        return redirect()->route('userAdmin');
     }
 }
