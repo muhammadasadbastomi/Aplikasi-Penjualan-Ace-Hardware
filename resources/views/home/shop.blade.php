@@ -60,8 +60,6 @@
 @section('content')
 <!-- BEGIN: Content-->
 <div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
     <div class="content-wrapper">
         <div class="content-detached content-right">
             <div class="content-body">
@@ -119,6 +117,7 @@
                                 </div>
                                 <div>
                                     <p class="item-description">
+                                        {{$d->kategori}}
                                         {{$d->keterangan}}
                                     </p>
                                 </div>
@@ -168,6 +167,7 @@
                         </div>
                     </div>
                 </section>
+                <br>
                 <!-- Ecommerce Pagination Ends -->
             </div>
         </div>
@@ -175,178 +175,7 @@
         <div class="sidebar-detached sidebar-left">
             <div class="sidebar">
                 <!-- Ecommerce Sidebar Starts -->
-                <div class="sidebar-shop" id="ecommerce-sidebar-toggler" style="margin-top:13px;">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="multi-range-price">
-                                <div class="multi-range-title pb-75">
-                                    <h6 class="filter-title mb-0">Multi Range</h6>
-                                </div>
-                                <ul class="list-unstyled price-range" id="price-range">
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="price-range" checked value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">All</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="price-range" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Kurang dari Rp. 10.000</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="price-range" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Rp. 10.000 - Rp. 100.000</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="price-range" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Rp. 100.000 - Rp. 500.000</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="price-range" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Lebih Dari Rp. 500.000</span>
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- /Price Filter -->
-                            <hr>
-                            <!-- Categories Starts -->
-                            <div id="product-categories">
-                                <div class="product-category-title">
-                                    <h6 class="filter-title mb-1">Categories</h6>
-                                </div>
-                                <ul class="list-unstyled categories-list">
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false" checked>
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Alat Rumah</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50"> Alat Kebersihan</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Dapur</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Otomotif</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Peralatan Eletronik</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50">Olahraga & Outdoor</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="vs-radio-con vs-radio-primary py-25">
-                                            <input type="radio" name="category-filter" value="false">
-                                            <span class="vs-radio">
-                                                <span class="vs-radio--border"></span>
-                                                <span class="vs-radio--circle"></span>
-                                            </span>
-                                            <span class="ml-50"> Lain-Lain</span>
-                                        </span>
-                                </ul>
-                            </div>
-                            <!-- Categories Ends -->
-                            <hr>
-                            <!-- Clear Filters Starts -->
-                            <div id="clear-filters">
-                                <button class="btn btn-block btn-primary">Cari Filter</button>
-                                <button class="btn btn-block btn-primary">Cancel Filter</button>
-                            </div>
-                            <!-- Clear Filters Ends -->
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <!-- Rating section starts -->
-                            <div id="ratings">
-                                <div class="ratings-title mt-1 pb-75">
-                                    <h6 class="filter-title mb-0">Produk Terlaris <div class="badge badge-danger float-right">Popular</div>
-                                    </h6>
-                                </div>
-                                @foreach ($terlaris as $d)
-                                <div class="d-flex justify-content-between">
-                                    <ul class="unstyled-list list-inline ratings-list mb-0">
-                                        <li>
-                                            <a>{{$d->nama_barang}}</a>
-                                        </li>
-                                    </ul>
-                                    <div class="stars-received float-right col-sm-6"> Rp. {{$d->harga_jual}},-</div>
-                                </div>
-                                @endforeach
-                            </div>
-                            <!-- Rating section Ends -->
-                        </div>
-                    </div>
-                </div>
+                @include('home.sidebarfilter')
                 <!-- Ecommerce Sidebar Ends -->
 
             </div>
@@ -357,11 +186,10 @@
 @endsection
 
 @section('script')
+<script src="../../../app-assets/vendors/js/vendors.min.js"></script>
 <script src="../../../app-assets/vendors/js/ui/prism.min.js"></script>
 <script src="../../../app-assets/vendors/js/extensions/wNumb.js"></script>
 <script src="../../../app-assets/vendors/js/extensions/nouislider.min.js"></script>
 <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-<!-- BEGIN: Page JS-->
 <script src="../../../app-assets/js/scripts/pages/app-ecommerce-shop.js"></script>
-<!-- END: Page JS-->
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Barang;
+use App\Barang_terjual;
 use App\Thumbnail;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\ElseIf_;
@@ -44,11 +45,11 @@ class PenjualanController extends Controller
             return $item;
         });
 
-        $terlaris = Barang::orderBy('id', 'asc')->paginate(9);
+        $terlaris = Barang_terjual::orderBy('jumlah_terjual', 'DESC')->paginate(9);
         $terlaris = $terlaris->map(function ($item) {
-            $diskon = ($item->diskon / 100) * $item->harga_jual;
-            $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
-            $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+            $diskon = ($item->barang->diskon / 100) * $item->barang->harga_jual;
+            $item['harga_diskon'] = number_format($item->barang->harga_jual - $diskon, 0, ',', '.');
+            $item['harga_jual'] = number_format($item->barang->harga_jual, 0, ',', '.');
             return $item;
         });
 
@@ -63,7 +64,7 @@ class PenjualanController extends Controller
     public function shop(Request $request)
     {
         if ($request->has('search')) {
-            $data = Barang::where('nama_barang', 'LIKE', '%' . $request->search . '%')->paginate(9);
+            $data = Barang::where('nama_barang', 'LIKE', '%' . $request->search . '%')->paginate(100);
             $barang = $data->map(function ($item) {
                 $diskon = ($item->diskon / 100) * $item->harga_jual;
                 $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
@@ -79,6 +80,83 @@ class PenjualanController extends Controller
                 return $item;
             });
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if ($request->harga or $request->kategori) {
+
+            if ($request->harga == 0) {
+                $data = Barang::where('kategori', $request->kategori)->paginate(100);
+            } elseif ($request->harga == 10000 && $request->kategori == 0) {
+                $data = Barang::whereBetween('harga_jual', [0, $request->harga])->paginate(100);
+            } elseif ($request->harga == 100000 && $request->kategori == 0) {
+                $data = Barang::whereBetween('harga_jual', [10000, $request->harga])->paginate(100);
+            } elseif ($request->harga == 500000 && $request->kategori == 0) {
+                $data = Barang::whereBetween('harga_jual', [50000, $request->harga])->paginate(100);
+            } elseif ($request->harga == 499999 && $request->kategori == 0) {
+                $data = Barang::where('harga_jual', '>', 499999)->orderBy('id', 'DESC')->paginate(100);
+            } elseif ($request->harga == 10000) {
+                $data = Barang::whereBetween('harga_jual', [0, $request->harga])->where('kategori', $request->kategori)->paginate(100);
+            } elseif ($request->harga == 100000) {
+                $data = Barang::whereBetween('harga_jual', [10000, $request->harga])->where('kategori', $request->kategori)->paginate(100);
+            } elseif ($request->harga == 500000) {
+                $data = Barang::whereBetween('harga_jual', [100000, $request->harga])->where('kategori', $request->kategori)->paginate(100);
+            } elseif ($request->harga == 499999) {
+                $data = Barang::where('harga_jual', '>', 499999)->where('kategori', $request->kategori)->paginate(100);
+            }
+            $barang = $data->map(function ($item) {
+                $diskon = ($item->diskon / 100) * $item->harga_jual;
+                $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+                $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+                return $item;
+            });
+        } else {
+            $data = Barang::orderBy('id', 'desc')->paginate(9);
+            $barang = $data->map(function ($item) {
+                $diskon = ($item->diskon / 100) * $item->harga_jual;
+                $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+                $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+                return $item;
+            });
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         $all = Barang::all();
 
@@ -130,7 +208,7 @@ class PenjualanController extends Controller
         $barang['harga_diskon'] = number_format($barang->harga_jual - $diskon, 0, ',', '.');
         $barang['harga_jual'] = number_format($barang->harga_jual, 0, ',', '.');
 
-        $terkait = Barang::where('kategori', $barang->kategori)->get();
+        $terkait = Barang::where('nama_barang', 'like', $barang->nama_barang)->orWhere('kategori', $barang->kategori)->get();
         $terkait = $terkait->map(function ($item) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
