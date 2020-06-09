@@ -1,7 +1,37 @@
 @extends('layouts/home/home')
 
 @section('title') Ace Hardware @endsection
+@section('head')
+<style>
+    img.diskon {
+        position: relative;
+        z-index: 1;
+    }
 
+    div.diskon {
+        position: relative;
+        top: -300px;
+        right: 3%;
+        z-index: 2;
+        font-weight: bold;
+    }
+
+    span.diskon {
+        position: relative;
+        top: -200px;
+        left: 80px;
+        border-radius: 100%;
+        z-index: 2;
+        font-weight: bold;
+    }
+
+    div.kategori {
+        position: relative;
+        left: 10px;
+        z-index: 2;
+    }
+</style>
+@endsection
 @section('content')
 <!-- BEGIN: Content-->
 <div class="app-content content">
@@ -41,44 +71,50 @@
                     </div>
                     <div class="col-xl-3 col-md-3 col-sm-12">
                         <div style="height: 550px;">
-
-                            <div class="badge badge-danger float-right">Diskon %</div>
-                            <div class="float-left">
-                                <h5>Ace Hardware</h5>
-                            </div>
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    @foreach($thumb as $d)
-                                    <li data-target="#carousel-example-generic" data-slide-to="{{$d->id}}" class="{{ $loop->first ? 'active' : '' }}"></li>
-                                    @endforeach
-                                </ol>
                                 <div class="carousel-inner" role="listbox">
                                     @foreach($diskon as $d)
                                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                        <img src="/images/barang/{{$d->gambar}}" class="card-img img-fluid mb-1" alt="slider" style=" width:100%; height: 265px !important;">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <a href="#" style="color: black">{{$d->nama_barang}}</a>
-                                            <p style="color: black;margin-bottom:0px;"><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->diskon}}%</strong></p>
-                                            <p style="color: black; margin-bottom:-5px;"> <b>Rp. {{$d->harga_diskon}},-</b> </p>
+                                        <img src="/images/barang/{{$d->gambar}}" class="diskon card-img img-fluid mb-1" alt="slider" style="width:100%; height: 295px !important;">
+                                        <div class="diskon badge badge-danger float-right">Diskon {{$d->diskon}}%</div>
+                                        <div class="carousel-caption d-none d-md-block" style="margin-bottom: 90px;">
+                                            <a class="text-dark"><strong>{{$d->nama_barang}}</strong></a><br>
+                                            <a class="text-secondary"> <strong><del>Rp.{{$d->harga_jual}},</del></strong> </a> <a class="text-danger"> <strong>Rp.{{$d->harga_diskon}},-</strong> </a>
+                                        </div>
+                                        <div class="kategori" style="margin-top:13px">
+                                            <a>Ace Hardware Barang Diskon</a>
+                                            <hr>
+                                            <p>Kategori : @if($d->kategori == 1)
+                                                Peralatan Rumah
+                                                @elseif($d->kategori == 2)
+                                                Alat Kebersihan
+                                                @elseif($d->kategori == 3)
+                                                Alat Dapur
+                                                @elseif($d->kategori == 4)
+                                                Otomotif
+                                                @elseif($d->kategori == 5)
+                                                Peralatan Elektronik
+                                                @elseif($d->kategori == 6)
+                                                Olahraga & Outdoor
+                                                @elseif($d->kategori == 7)
+                                                Kategori Lainnya
+                                                @else
+                                                -
+                                                @endif</p>
                                         </div>
                                     </div>
                                     @endforeach
                                 </div>
-                                <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
+                                <a class="carousel-control-prev" style="margin-top:-110px" href="#carousel-example-generic" role="button" data-slide="prev">
                                     <span class="fa fa-angle-left icon-prev" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
                                 </a>
-                                <a class="carousel-control-next" href="#carousel-example-generic" role="button" data-slide="next">
+                                <a class="carousel-control-next" style="margin-top:-110px" href="#carousel-example-generic" role="button" data-slide="next">
                                     <span class="fa fa-angle-right icon-next" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
                                 </a>
                             </div>
-                            <div class="card-content">
-                                <div class="card-body" style="max-height: 106px;">
-                                    <h5>Ace Hardware Barang Diskon </h5>
-                                    <p class="card-text">Kategori : Random</p>
-                                    <hr>
-                                </div>
+                            <div class="card-content" style="margin-top:5px">
                                 <a href="{{route('homeShop')}}" type="button" style="width: 100%;" class="btn btn-relief-danger mr-1 mb-1 waves-effect waves-light"> <i class="feather icon-package"> Lihat Barang Lainnya</i> </a>
                             </div>
                         </div>
@@ -146,7 +182,7 @@
         <!----end--->
         <hr>
         <!---- Produk Terbaru ----->
-        <div class="card-body">
+        <div class="card-body" style="margin-top:-50px">
             <div class="mt-4 mb-2 text-left">
                 <h2>Produk Terbaru <div class="badge badge-danger">Latest</div>
                 </h2>
@@ -156,7 +192,7 @@
                     @foreach ($barang as $d)
                     <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
                         <div class="item-heading">
-                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
+                            <a href=" {{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
                                 {{$d->nama_barang}}
                             </a>
                             <p>
@@ -179,19 +215,20 @@
                                     @endif</small>
                             </p>
                         </div>
-                        <div class=" img-container w-80 mx-auto my-2 py-75">
+                        <div class="img-container my-1">
                             <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
-                        </div>
-                        <div class="item-meta">
-                            <h6 class="item-price">
-                                @if($d->diskon != null)
-                                <p style="color: black;margin-bottom:0px;"><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->diskon}}%</strong></p>
-                                <p style="color: black; margin-bottom:-5px;"> <b>Rp. {{$d->harga_diskon}},-</b> </p>
-                            </h6>
+                            @if($d->diskon != null)
+                            <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
                             @else
-                            <h6>Rp. {{$d->harga_jual}},-</h6>
-                            <!-- <h6 class="text-white">-</h6> -->
-                            <br>
+                            <span style="opacity:0;">0</span>
+                            @endif
+                        </div>
+                        <div class="item-meta" style="margin-top:-25px;">
+                            @if($d->diskon != null)
+                            <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
+                            <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
+                            @else
+                            <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                             @endif
                             <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
@@ -208,7 +245,7 @@
         </div>
         <!---- End Terbaru ----->
         <!---- Produk Diskon ----->
-        <div class="card-body">
+        <div class="card-body" style="margin-top:-50px">
             <div class="mt-4 mb-2 text-left">
                 <h2>Produk Diskon <div class="badge badge-danger">Diskon %</div>
                 </h2>
@@ -218,7 +255,7 @@
                     @foreach ($diskon as $d)
                     <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
                         <div class="item-heading">
-                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
+                            <a href=" {{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
                                 {{$d->nama_barang}}
                             </a>
                             <p>
@@ -241,19 +278,20 @@
                                     @endif</small>
                             </p>
                         </div>
-                        <div class=" img-container w-80 mx-auto my-2 py-75">
+                        <div class="img-container my-1">
                             <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
-                        </div>
-                        <div class="item-meta">
-                            <h6 class="item-price">
-                                @if($d->diskon != null)
-                                <p style="color: black;margin-bottom:0px;"><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->diskon}}%</strong></p>
-                                <p style="color: black; margin-bottom:-5px;"> <b>Rp. {{$d->harga_diskon}},-</b> </p>
-                            </h6>
+                            @if($d->diskon != null)
+                            <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
                             @else
-                            <h6>Rp. {{$d->harga_jual}},-</h6>
-                            <!-- <h6 class="text-white">-</h6> -->
-                            <br>
+                            <span style="opacity:0;">0</span>
+                            @endif
+                        </div>
+                        <div class="item-meta" style="margin-top:-25px;">
+                            @if($d->diskon != null)
+                            <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
+                            <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
+                            @else
+                            <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                             @endif
                             <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
@@ -270,7 +308,7 @@
         </div>
         <!---- End Diskon ----->
         <!---- Prodak Terlaris ----->
-        <div class="card-body">
+        <div class="card-body" style="margin-top:-50px">
             <div class="mt-4 mb-2 text-left">
                 <h2>Produk Terlaris <div class="badge badge-danger">Popular</div>
                 </h2>
@@ -280,7 +318,7 @@
                     @foreach ($terlaris as $d)
                     <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
                         <div class="item-heading">
-                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
+                            <a href=" {{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
                                 {{$d->barang->nama_barang}}
                             </a>
                             <p>
@@ -303,19 +341,20 @@
                                     @endif</small>
                             </p>
                         </div>
-                        <div class=" img-container w-80 mx-auto my-2 py-75">
-                            <img src="/images/barang/{{$d->barang->gambar}}" class="img-fluid" alt="image">
-                        </div>
-                        <div class="item-meta">
-                            <h6 class="item-price">
-                                @if($d->barang->diskon != null)
-                                <p style="color: black;margin-bottom:0px;"><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->barang->diskon}}%</strong></p>
-                                <p style="color: black; margin-bottom:-5px;"> <b>Rp. {{$d->harga_diskon}},-</b> </p>
-                            </h6>
+                        <div class="img-container my-1">
+                            <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
+                            @if($d->barang->diskon != null)
+                            <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
                             @else
-                            <h6>Rp. {{$d->harga_jual}},-</h6>
-                            <!-- <h6 class="text-white">-</h6> -->
-                            <br>
+                            <span style="opacity:0;">0</span>
+                            @endif
+                        </div>
+                        <div class="item-meta" style="margin-top:-25px;">
+                            @if($d->barang->diskon != null)
+                            <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
+                            <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
+                            @else
+                            <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                             @endif
                             <p class="text-secondary mt-1">Stok Tersedia : {{$d->barang->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
@@ -332,7 +371,7 @@
         </div>
         <!---- End Terlaris ----->
         <!---- Produk Termurah ----->
-        <div class="card-body">
+        <div class="card-body" style="margin-top:-50px">
             <div class="mt-4 mb-2 text-left">
                 <h2>Produk Termurah <div class="badge badge-danger">Lowest Price</div>
                 </h2>
@@ -342,7 +381,7 @@
                     @foreach ($termurah as $d)
                     <div class="swiper-slide rounded swiper-shadow" style="width: 253px; margin-right: 55px;">
                         <div class="item-heading">
-                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
+                            <a href=" {{route('homeShow', ['id' => $d->uuid])}}" class="text-truncate mb-0">
                                 {{$d->nama_barang}}
                             </a>
                             <p>
@@ -365,19 +404,20 @@
                                     @endif</small>
                             </p>
                         </div>
-                        <div class=" img-container w-80 mx-auto my-2 py-75">
+                        <div class="img-container my-1">
                             <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
-                        </div>
-                        <div class="item-meta">
-                            <h6 class="item-price">
-                                @if($d->diskon != null)
-                                <p style="color: black;margin-bottom:0px;"><del>Rp. {{$d->harga_jual}},-</del> / <strong style="color: red">{{$d->diskon}}%</strong></p>
-                                <p style="color: black; margin-bottom:-5px;"> <b>Rp. {{$d->harga_diskon}},-</b> </p>
-                            </h6>
+                            @if($d->diskon != null)
+                            <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
                             @else
-                            <h6>Rp. {{$d->harga_jual}},-</h6>
-                            <!-- <h6 class="text-white">-</h6> -->
-                            <br>
+                            <span style="opacity:0;">0</span>
+                            @endif
+                        </div>
+                        <div class="item-meta" style="margin-top:-25px;">
+                            @if($d->diskon != null)
+                            <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
+                            <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
+                            @else
+                            <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                             @endif
                             <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>

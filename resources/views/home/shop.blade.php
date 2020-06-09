@@ -142,7 +142,7 @@
                                         <div>
                                             <h6 class="item-price float-left">
                                                 @if($d->diskon != null)
-                                                <a class="text-secondary float-left"><del>Rp. {{$d->harga_jual}},-</del></a><a class="text-danger">Rp. {{$d->harga_diskon}},-</a>
+                                                <a class="text-secondary float-left"><del>Rp. {{$d->harga_jual}},</del></a><a class="text-danger">Rp. {{$d->harga_diskon}},-</a>
                                                 @else
                                                 <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                                                 @endif
