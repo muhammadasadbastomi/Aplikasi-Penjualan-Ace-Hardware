@@ -97,7 +97,8 @@
         <div class="headtext">
             <h3 style="margin:0px;">PT ACE HARDWARE</h3>
             <h1 style="margin:0px;">Q Mall Banjarbaru</h1>
-            <p style="margin:0px;">Jl. A. Yani KM 36, Komet, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan 70714</p>
+            <p style="margin:0px;">Jl. A. Yani KM 36, Komet, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan 70714
+            </p>
         </div>
         <hr>
     </div>
@@ -110,7 +111,9 @@
                     <th scope="col" class="text-center">No</th>
                     <th scope="col" class="text-center">Nama Barang</th>
                     <th scope="col" class="text-center">Tanggal Masuk</th>
-                    <th scope="col" class="text-center">Jamlah</th>
+                    <th scope="col" class="text-center">Jumlah</th>
+                    <th scope="col" class="text-center">Harga</th>
+                    <th scope="col" class="text-center">Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -118,8 +121,11 @@
                 <tr>
                     <td scope="col" class="text-center">{{$loop->iteration}}</td>
                     <td scope="col" class="text-center">{{$d->barang->nama_barang}}</td>
-                    <td scope="col" class="text-center">{{$d->tgl_masuk}}</td>
+                    <td scope="col" class="text-center">
+                        {{Carbon\Carbon::parse($d->tgl_masuk)->translatedFormat('d F Y')}}</td>
                     <td scope="col" class="text-center">{{$d->jumlah}} {{$d->barang->satuan}}</td>
+                    <td scope="col" class="text-center">Rp. {{$d->harga}}</td>
+                    <td scope="col" class="text-center">Rp. {{$d->total}}</td>
                 </tr>
                 @endforeach
             </tbody>

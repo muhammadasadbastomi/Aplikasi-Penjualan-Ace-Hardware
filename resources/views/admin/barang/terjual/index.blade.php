@@ -58,31 +58,37 @@
                                         <table class="table zero-configuration">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">No</th>
-                                                    <th scope="col">Nama Barang</th>
-                                                    <th scope="col">Tanggal Terjual</th>
-                                                    <th scope="col">Jumlah Terjual</th>
-                                                    <th scope="col">Harga Awal</th>
-                                                    <th scope="col">Diskon</th>
-                                                    <th scope="col">Total Harga</th>
+                                                    <th scope="col" class="text-center">No</th>
+                                                    <th scope="col" class="text-center">Nama Barang</th>
+                                                    <th scope="col" class="text-center">Tanggal Terjual</th>
+                                                    <th scope="col" class="text-center">Jumlah Terjual</th>
+                                                    <th scope="col" class="text-center">Harga Awal</th>
+                                                    <th scope="col" class="text-center">Diskon</th>
+                                                    <th scope="col" class="text-center">Total Harga</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($barangterjual as $bt)
                                                 <tr>
-                                                    <td scope="col">{{ $loop->iteration }}</td>
-                                                    <td scope="col">{{ $bt->barang->nama_barang }}</td>
-                                                    <td scope="col">
+                                                    <td scope="col" class="text-center">{{ $loop->iteration }}</td>
+                                                    <td scope="col" class="text-center">{{ $bt->barang->nama_barang }}
+                                                    </td>
+                                                    <td scope="col" class="text-center">
                                                         {{Carbon\Carbon::parse($bt->tgl_terjual)->translatedFormat('d F Y')}}
                                                     </td>
-                                                    <td scope="col">{{ $bt->jumlah_terjual }} {{$bt->barang->satuan}}
+                                                    <td scope="col" class="text-center">{{ $bt->jumlah_terjual }}
+                                                        {{$bt->barang->satuan}}
                                                     </td>
-                                                    <td scope="col">{{$bt->harga_terjual}}
+                                                    <td scope="col" class="text-center">Rp. {{$bt->harga_terjual}}
                                                     </td>
-                                                    <td scope="col">{{$bt->diskon_terjual}}
+                                                    <td scope="col" class="text-center">
+                                                        @if($bt->diskon_terjual)
+                                                        {{$bt->diskon_terjual}}
+                                                        @else -
+                                                        @endif
                                                     </td>
-                                                    <td scope="col">{{$bt->total_terjual}}
+                                                    <td scope="col" class="text-center">Rp. {{$bt->total_terjual}}
                                                     </td>
                                                     <td scope="col" class="text-center">
                                                         {{-- <a class="btn btn-sm btn-info text-white"
