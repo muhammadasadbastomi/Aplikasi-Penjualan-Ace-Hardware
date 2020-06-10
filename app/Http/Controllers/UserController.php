@@ -216,7 +216,7 @@ class UserController extends Controller
         } elseif (!$request->password_lama) {
             $data->password = Hash::make($data->password);
         } else {
-            return back()->with('warning', 'Password yang Anda Masukkan Salah');
+            return back()->with('warning', 'Password Baru Harus Diisi.');
         }
 
         $data->update();
