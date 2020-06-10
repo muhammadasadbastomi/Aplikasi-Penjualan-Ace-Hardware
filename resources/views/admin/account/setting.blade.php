@@ -69,33 +69,22 @@
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane active col-md-12"
-                                            id="account-vertical-general" aria-labelledby="account-pill-general"
-                                            aria-expanded="true">
+                                        <div role="tabpanel" class="tab-pane active col-md-12" id="account-vertical-general" aria-labelledby="account-pill-general" aria-expanded="true">
                                             <form method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="col-md-4 float-left">
                                                     <a href="javascript: void(0);">
-                                                        <img src="{{$user->photos()}}" class="rounded mr-75"
-                                                            alt="Belum Ada Photo"
-                                                            style="margin-left: 0px; margin-top:10px;" height="200"
-                                                            width="fa-rotate-2700">
+                                                        <img src="{{$user->photos()}}" class="rounded mr-75" alt="Belum Ada Photo" style="margin-left: 0px; margin-top:10px;" height="200" width="fa-rotate-2700">
                                                     </a>
                                                     <div class="imgWrap" style="margin-top:18px;">
-                                                        <img src="/img/nopict.png" id="imgView"
-                                                            class=" rounded mr-75 img-fluid"
-                                                            style="margin-left: 0px; margin-top:10px;">
+                                                        <img src="/img/nopict.png" id="imgView" class=" rounded mr-75 img-fluid" style="margin-left: 0px; margin-top:10px;">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-8 float-right">
                                                     <div class="media-body mt-75">
-                                                        <div
-                                                            class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
-                                                            <label
-                                                                class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
-                                                                for="photos">Ganti photo</label>
-                                                            <input type="file" id="photos" name="photos" hidden
-                                                                value="{{$user->photos}}">
+                                                        <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                            <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer" for="photos">Ganti photo</label>
+                                                            <input type="file" id="photos" name="photos" hidden value="{{$user->photos}}">
                                                         </div>
                                                         <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or
                                                                 PNG</small></p>
@@ -108,10 +97,7 @@
                                                             <div class="form-group">
                                                                 <div class="controls">
                                                                     <label for="nama">Nama Lengkap</label>
-                                                                    <input type="text" class="form-control" id="name"
-                                                                        name="name" placeholder="Masukkan Nama"
-                                                                        value="{{$user->name}}" required
-                                                                        data-validation-required-message="This name field is required">
+                                                                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama" value="{{$user->name}}" required data-validation-required-message="This name field is required">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -119,44 +105,33 @@
                                                             <div class="form-group">
                                                                 <div class="controls">
                                                                     <label for="email">E-mail</label>
-                                                                    <input type="email" class="form-control" id="email"
-                                                                        name="email" placeholder="Masukkan E-mail"
-                                                                        value="{{$user->email}}" required
-                                                                        data-validation-required-message="This email field is required">
+                                                                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan E-mail" value="{{$user->email}}" required data-validation-required-message="This email field is required">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label for="telepon">Alamat</label>
-                                                                <textarea type="text" class="form-control" id="alamat"
-                                                                    name="alamat"
-                                                                    placeholder="Masukkan Alamat">{{$user->alamat}}</textarea>
+                                                                <textarea type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat">{{$user->alamat}}</textarea>
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="form-group">
                                                                 <label for="nohp">No. Telepon</label>
-                                                                <input type="text" class="form-control" id="nohp"
-                                                                    name="nohp" placeholder="Masukkan Nomor Telepon"
-                                                                    value="{{$user->nohp}}">
+                                                                <input type="text" class="form-control" id="nohp" name="nohp" placeholder="Masukkan Nomor Telepon" value="{{$user->nohp}}">
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                            <button type="submit"
-                                                                class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
+                                                        <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
                                                                 changes</button>
-                                                            <button type="reset"
-                                                                class="btn btn-outline-warning">Cancel</button>
+                                                            <button type="reset" class="btn btn-outline-warning">Cancel</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                         <!----Batas -->
-                                        <div class="tab-pane fade " id="account-vertical-password" role="tabpanel"
-                                            aria-labelledby="account-pill-password" aria-expanded="false">
+                                        <div class="tab-pane fade " id="account-vertical-password" role="tabpanel" aria-labelledby="account-pill-password" aria-expanded="false">
                                             <form method="post">
                                                 @csrf
 
@@ -165,10 +140,7 @@
                                                         <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="oldpassword">Old Password</label>
-                                                                <input type="password" name="oldpassword"
-                                                                    class="form-control" id="oldpassword" required
-                                                                    placeholder="Old Password"
-                                                                    data-validation-required-message="This old password field is required">
+                                                                <input type="password" name="oldpassword" class="form-control" id="oldpassword" required placeholder="Old Password" data-validation-required-message="This old password field is required">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -176,9 +148,7 @@
                                                         <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="password">New Password</label>
-                                                                <input type="password" name="password" id="password"
-                                                                    class="form-control form-control @error ('password') is-invalid @enderror"
-                                                                    placeholder="Masukkan Password">
+                                                                <input type="password" name="password" id="password" class="form-control form-control @error ('password') is-invalid @enderror" placeholder="Masukkan Password">
                                                                 @error('password')<div class="invalid-feedback">
                                                                     {{$message}}</div>@enderror
                                                             </div>
@@ -189,22 +159,14 @@
                                                             <div class="controls">
                                                                 <label for="password_confirmation">Retype New
                                                                     Password</label>
-                                                                <input type="password" name="password_confirmation"
-                                                                    class="form-control" required
-                                                                    id="password_confirmation"
-                                                                    data-validation-match-match="password"
-                                                                    placeholder="New Password"
-                                                                    data-validation-required-message="The Confirm password field is required">
+                                                                <input type="password" name="password_confirmation" class="form-control" required id="password_confirmation" data-validation-match-match="password" placeholder="New Password" data-validation-required-message="The Confirm password field is required">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div
-                                                        class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                        <button type="submit"
-                                                            class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
+                                                    <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
                                                             changes</button>
-                                                        <button type="reset"
-                                                            class="btn btn-outline-warning">Cancel</button>
+                                                        <button type="reset" class="btn btn-outline-warning">Cancel</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -220,15 +182,13 @@
                     <div class="col-md-3 mb-2 mb-md-0">
                         <ul class="nav nav-pills flex-column mt-md-0 mt-1">
                             <li class="nav-item">
-                                <a class="nav-link d-flex py-75 active" id="account-pill-general" data-toggle="pill"
-                                    href="#account-vertical-general" aria-expanded="true">
+                                <a class="nav-link d-flex py-75 active" id="account-pill-general" data-toggle="pill" href="#account-vertical-general" aria-expanded="true">
                                     <i class="feather icon-globe mr-50 font-medium-3"></i>
                                     General
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex py-75" id="account-pill-password" data-toggle="pill"
-                                    href="#account-vertical-password" aria-expanded="false">
+                                <a class="nav-link d-flex py-75" id="account-pill-password" data-toggle="pill" href="#account-vertical-password" aria-expanded="false">
                                     <i class="feather icon-lock mr-50 font-medium-3"></i>
                                     Change Password
                                 </a>

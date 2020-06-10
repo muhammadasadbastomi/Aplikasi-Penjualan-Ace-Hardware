@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Hash;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -89,12 +88,11 @@ class UserController extends Controller
             'unique' => ':attribute sudah terdaftar.',
             'email' => ':attribute harus benar.',
             'required' => ':attribute harus diisi.',
-            'confirmed' => ':attribute salah.',
+            'confirmed' => ':attribute tidak sama.',
             'min' => ':attribute minimal harus 5 karakter.'
         ];
 
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:5', 'confirmed'],
         ], $messages);
@@ -155,11 +153,75 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function adminedit($id)
+    public function adminupdate(Request $request)
     {
-        $user = User::where('uuid', $id)->first();
+        $messages = [
+            'same' => 'Konfirmasi Password Salah.',
+            'mimes' => 'Photo harus berupa JPG, PNG, GIF',
+            'image' => 'Photo harus berupa Image!',
+            'file' => 'Photo harus berupa File!',
+            // 'unique' => ':attribute sudah ada'
+        ];
+        $request->validate([
+            'password_baru' => ['same:password_konfirmasi'],
+            'pict' => 'file|image|mimes:jpeg,png,gif',
+            // 'email' => 'unique:users'
+        ], $messages);
 
-        return view('admin.account.edit', compact('user'));
+        $data = User::find($request->id);
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->nohp = $request->nohp;
+        $data->alamat = $request->alamat;
+        if ($request->pict != '') {
+            $path = public_path() . '/images/user/';
+
+            //code for remove old pict
+            if ($data->photos != ''  && $data->photos != null) {
+                $file_old = $path . $data->photos;
+                unlink($file_old);
+            }
+            if (!$request->pict) {
+                $pict = $data->photos;
+            } else {
+                //upload new pict
+                $pict = $request->pict;
+                $filename = $pict->getClientOriginalName();
+                $pict->move($path, $filename);
+            }
+
+            //for update in table
+            $data->update(['photos' => $filename]);
+        } else {
+            $data->photos = $data->photos;
+        }
+
+        if ($request->password_baru) {
+            $messages = [
+                'required' => 'harus di isi.',
+                'min' => ':attribute minimal harus 5 karakter.'
+                // 'unique' => ':attribute sudah ada'
+            ];
+            $request->validate([
+                'password_lama' => ['required'],
+                'password_baru' => ['same:password_konfirmasi', 'min:5'],
+                // 'email' => 'unique:users'
+            ], $messages);
+
+            if (Hash::check($request['password_lama'], $data->password)) {
+                $data->password = Hash::make($request['password_baru']);
+            } else {
+                return back()->with('warning', 'Password yang Anda Masukkan Salah');
+            }
+        } elseif (!$request->password_lama) {
+            $data->password = Hash::make($data->password);
+        } else {
+            return back()->with('warning', 'Password yang Anda Masukkan Salah');
+        }
+
+        $data->update();
+        // dd($data);
+        return back()->with('success', 'Data Berhasil Diubah');
     }
 
     /**
