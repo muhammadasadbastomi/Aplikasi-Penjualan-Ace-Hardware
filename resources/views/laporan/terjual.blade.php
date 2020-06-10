@@ -113,7 +113,7 @@
                     <th scope="col" class="text-center">Tanggal Terjual</th>
                     <th scope="col" class="text-center">Jumlah Terjual</th>
                     <th scope="col" class="text-center">Diskon</th>
-                    <th scope="col" class="text-center">Harga</th>
+                    <th scope="col" class="text-center">Harga Satuan</th>
                     <th scope="col" class="text-center">Total</th>
                 </tr>
             </thead>
@@ -135,6 +135,12 @@
                 </tr>
                 @endforeach
             </tbody>
+            <tfoot>
+                <tr>
+                    <th scope="col" class="align-right" colspan="6">Total : </th>
+                    <th scope="col" class="align-center">Rp. {{number_format( $total, 0, ',', '.')}},-</th>
+                </tr>
+            </tfoot>
         </table>
         <br>
         <br>

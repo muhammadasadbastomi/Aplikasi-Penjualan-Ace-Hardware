@@ -32,8 +32,9 @@ class CetakController extends Controller
     public function datang()
     {
         $data = Barang_datang::all();
+        $total = Barang_datang::sum('total');
 
-        $pdf = PDF::loadview('laporan/datang', compact('data'));
+        $pdf = PDF::loadview('laporan/datang', compact('data', 'total'));
         return $pdf->stream('laporan-barang-datang-pdf');
     }
 
@@ -71,8 +72,9 @@ class CetakController extends Controller
     public function terjual()
     {
         $data = Barang_terjual::all();
+        $total = Barang_terjual::sum('total_terjual');
 
-        $pdf = PDF::loadview('laporan/terjual', compact('data'));
+        $pdf = PDF::loadview('laporan/terjual', compact('data', 'total'));
         return $pdf->stream('laporan-barang-terjual-pdf');
     }
 
