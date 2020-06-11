@@ -13,7 +13,7 @@
                             <td><input type="submit" style="background-color:Transparent; outline:none; border:none; cursor:pointer; overflow:hidden;" id="kode"></td>
                         </tr>
                         <tr>
-                            <td class="font-weight-bold">Harga&emsp14;&emsp14;&emsp14;</td>
+                            <td class="font-weight-bold">Harga Awal&emsp14;&emsp14;&emsp14;</td>
                             <td> <input type="submit" style=" background-color:Transparent; outline:none; border:none; cursor:pointer; overflow:hidden;" id="harga"></td>
                         </tr>
                         <tr>
