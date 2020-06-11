@@ -79,28 +79,29 @@
                                         <div class="diskon badge badge-danger float-right">Diskon {{$d->diskon}}%</div>
                                         <div class="carousel-caption d-none d-md-block" style="margin-bottom: 90px;">
                                             <a class="text-dark"><strong>{{$d->nama_barang}}</strong></a><br>
+                                            <a class="text-dark"><strong>Kategori : @if($d->kategori == 1)
+                                                    Peralatan Rumah
+                                                    @elseif($d->kategori == 2)
+                                                    Alat Kebersihan
+                                                    @elseif($d->kategori == 3)
+                                                    Alat Dapur
+                                                    @elseif($d->kategori == 4)
+                                                    Otomotif
+                                                    @elseif($d->kategori == 5)
+                                                    Peralatan Elektronik
+                                                    @elseif($d->kategori == 6)
+                                                    Olahraga & Outdoor
+                                                    @elseif($d->kategori == 7)
+                                                    Kategori Lainnya
+                                                    @else
+                                                    -
+                                                    @endif</strong></a><br>
                                             <a class="text-secondary"><strong><del>Rp.{{$d->harga_jual}},</del></strong></a><a class="text-danger"><strong>Rp.{{$d->harga_diskon}},-</strong></a>
                                         </div>
                                         <div class="kategori" style="margin-top:13px;">
-                                            <h6>Ace Hardware Barang Diskon</h6>
+                                            <h6>Departement : {{$d->departement}}</h6>
                                             <hr>
-                                            <p>Kategori : @if($d->kategori == 1)
-                                                Peralatan Rumah
-                                                @elseif($d->kategori == 2)
-                                                Alat Kebersihan
-                                                @elseif($d->kategori == 3)
-                                                Alat Dapur
-                                                @elseif($d->kategori == 4)
-                                                Otomotif
-                                                @elseif($d->kategori == 5)
-                                                Peralatan Elektronik
-                                                @elseif($d->kategori == 6)
-                                                Olahraga & Outdoor
-                                                @elseif($d->kategori == 7)
-                                                Kategori Lainnya
-                                                @else
-                                                -
-                                                @endif</p>
+                                            <p>Supplier : {{$d->supplier->supplier}}</p>
                                         </div>
                                     </div>
                                     @endforeach
@@ -231,8 +232,8 @@
                             <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                             @endif
                             <br>
-                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
                             <a>Departement : {{$d->departement}}</a> <br>
+                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
                             <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
@@ -297,8 +298,8 @@
                             <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                             @endif
                             <br>
-                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
                             <a>Departement : {{$d->departement}}</a> <br>
+                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
                             <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
@@ -363,8 +364,8 @@
                             <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                             @endif
                             <br>
-                            <a>Supplier : {{$d->barang->supplier->supplier}}</a> <br>
                             <a>Departement : {{$d->barang->departement}}</a> <br>
+                            <a>Supplier : {{$d->barang->supplier->supplier}}</a> <br>
                             <p>Stok Tersedia : {{$d->barang->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
@@ -429,8 +430,8 @@
                             <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                             @endif
                             <br>
-                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
                             <a>Departement : {{$d->departement}}</a> <br>
+                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
                             <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
