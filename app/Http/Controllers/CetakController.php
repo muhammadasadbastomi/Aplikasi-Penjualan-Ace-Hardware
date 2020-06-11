@@ -34,9 +34,11 @@ class CetakController extends Controller
     {
         $barangsupplier = $request->barangsupplier;
 
+        $supplier = supplier::where('id', '=', $barangsupplier)->first();
+
         $data = Barang::where('supplier_id', '=', $barangsupplier)->get();
 
-        $pdf = PDF::loadview('laporan/barangsupplier', compact('data'));
+        $pdf = PDF::loadview('laporan/barangsupplier', compact('data', 'barangsupplier', 'supplier'));
         return $pdf->stream('laporan-barang-supplier-pdf');
     }
 
@@ -77,7 +79,7 @@ class CetakController extends Controller
             return $item;
         });
 
-        $pdf = PDF::loadview('laporan/angkadiskon', compact('data'));
+        $pdf = PDF::loadview('laporan/angkadiskon', compact('data', 'diskon'));
         return $pdf->stream('laporan-barang-angka-diskon-pdf');
     }
 

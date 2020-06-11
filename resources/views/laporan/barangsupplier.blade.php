@@ -103,7 +103,7 @@
     </div>
 
     <div class="container" style="margin-top:-40px;">
-        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang</h3>
+        <h4 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Berdasarkan Supplier {{$supplier->supplier}} </h4>
         <table class='table table-bordered nowrap'>
             <thead>
                 <tr>
