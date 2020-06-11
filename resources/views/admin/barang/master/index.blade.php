@@ -75,16 +75,23 @@
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
                                 <div class="dt-buttons btn-group">
-                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                    <button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span>
                                     </button>
                                     &emsp13;
-                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                    <button type="button"
+                                        class="btn btn-outline-info dropdown-toggle waves-effect waves-light"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i
+                                                class="feather icon-printer"></i>
                                             Cetak</span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" target="_blank" href="{{route('barangCetak')}}">Keseluruhan</a>
-                                        <a class="dropdown-item" target="_blank" href="{{route('diskonCetak')}}">Barang Diskon</a>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('barangCetak')}}">Keseluruhan</a>
+                                        <a class="dropdown-item" target="_blank" href="{{route('diskonCetak')}}">Barang
+                                            Diskon</a>
                                     </div>
                                 </div>
                             </div>
@@ -98,8 +105,10 @@
                                                     <th scope="col">Gambar</th>
                                                     <th scope="col">Kode Barang</th>
                                                     <th scope="col">Nama Barang</th>
+                                                    <th scope="col">Supplier</th>
                                                     <th scope="col">Kategori</th>
                                                     <th scope="col">Harga Awal</th>
+                                                    <th scope="col">Diskon</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -107,9 +116,12 @@
                                                 @foreach ($barang as $b)
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
-                                                    <td><img src="/images/barang/{{$b->gambar}}" alt="Gambar" class="avatar mr-1 avatar-xl" width="50px;" height="50px;"></td>
+                                                    <td><img src="/images/barang/{{$b->gambar}}" alt="Gambar"
+                                                            class="avatar mr-1 avatar-xl" width="50px;" height="50px;">
+                                                    </td>
                                                     <td class="text-center">{{$b->kode_barang}}</td>
                                                     <td>{{$b->nama_barang}}</td>
+                                                    <td>{{$b->supplier->supplier}}</td>
                                                     <td>
                                                         @if($b->kategori == 1)
                                                         Alat Rumah
@@ -130,10 +142,21 @@
                                                         @endif
                                                     </td>
                                                     <td>Rp. {{number_format($b->harga_jual, 0, ',', '.')}},-</td>
+                                                    <td>
+                                                        @if($b->diskon)
+                                                        {{ $b->diskon }}%
+                                                        @else
+                                                        -
+                                                        @endif
+                                                    </td>
                                                     <td class="text-center">
                                                         @include('admin.barang.master.button')
-                                                        <a class="btn btn-sm btn-warning text-white" href="{{route('barangShow', ['id' => $b->uuid])}}"><i class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$b->uuid}}" href="#"><i class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-warning text-white"
+                                                            href="{{route('barangShow', ['id' => $b->uuid])}}"><i
+                                                                class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$b->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -153,7 +176,8 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah-->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
