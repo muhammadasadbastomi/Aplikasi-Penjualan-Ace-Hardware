@@ -85,7 +85,9 @@ Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     Route::get('/admin/supplier/cetak', 'CetakController@supplier')->name('supplierCetak');
     Route::get('/admin/barang/cetak', 'CetakController@barang')->name('barangCetak');
     Route::get('/admin/datang/cetak', 'CetakController@datang')->name('datangCetak');
+    Route::get('/admin/barangsupplier/cetak', 'CetakController@barangsupplier')->name('barangsupplierCetak');
     Route::get('/admin/diskon/cetak', 'CetakController@diskon')->name('diskonCetak');
+    Route::get('/admin/angkadiskon/cetak', 'CetakController@angkadiskon')->name('angkadiskonCetak');
     Route::get('/admin/pengiriman/cetak', 'CetakController@pengiriman')->name('pengirimanCetak');
     Route::get('/admin/terkirim/cetak', 'CetakController@terkirim')->name('terkirimCetak');
     Route::get('/admin/terjual/cetak', 'CetakController@terjual')->name('terjualCetak');

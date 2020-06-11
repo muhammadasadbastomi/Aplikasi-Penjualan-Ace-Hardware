@@ -84,7 +84,9 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" target="_blank" href="{{route('barangCetak')}}">Keseluruhan</a>
-                                        <a class="dropdown-item" target="_blank" href="{{route('diskonCetak')}}">Barang Diskon</a>
+                                        <button class="btn nohover dropdown-item" data-toggle="modal" data-target="#modalsupplier">Berdasarkan Supplier</button>
+                                        <a class="dropdown-item" target="_blank" href="{{route('diskonCetak')}}">Berdasarkan Diskon</a>
+                                        <button class="btn nohover dropdown-item" data-toggle="modal" data-target="#modaldiskon">Berdasarkan Angka Diskon</button>
                                     </div>
                                 </div>
                             </div>
@@ -151,6 +153,8 @@
     </div>
 </div>
 <!-- END: Content-->
+
+@include('admin.barang.master.cetakdiskon')
 
 <!-- Modal Tambah-->
 <div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
@@ -269,37 +273,6 @@
     }
 </script>
 
-<script>
-    $('#showModal').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var satuan = button.data('satuan')
-        var departement = button.data('departement')
-        var diskon = button.data('diskon')
-        var stok = button.data('stok')
-        var nama = button.data('nama')
-        var kategori = button.data('kategori')
-        var harga = button.data('harga')
-        var gambar = button.data('gambar')
-        var kode = button.data('kode')
-        var keterangan = button.data('keterangan')
-        var supplier = button.data('supplier')
-        var harga_diskon = button.data('harga_diskon')
-        var modal = $(this)
 
-        modal.find('.modal-body #id').val(id)
-        modal.find('.modal-body #satuan').val(satuan)
-        modal.find('.modal-body #departement').val(departement)
-        modal.find('.modal-body #diskon').val(diskon)
-        modal.find('.modal-body #stok').val(stok)
-        modal.find('.modal-body #nama').val(nama)
-        modal.find('.modal-body #kategori').val(kategori)
-        modal.find('.modal-body #harga').val(harga)
-        modal.find('.modal-body #kode').val(kode)
-        modal.find('.modal-body #keterangan').val(keterangan)
-        modal.find('.modal-body #supplier').val(supplier)
-        modal.find('.modal-body #harga_diskon').val(harga_diskon)
-        modal.find('.modal-body #gambar').attr('src', '/images/barang/' + gambar);
-    })
-</script>
+
 @endsection
