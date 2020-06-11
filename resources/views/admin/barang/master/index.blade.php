@@ -284,5 +284,40 @@
     }
 </script>
 
+<script>
 
-<<<<<<< HEAD @endsection=======modal.find('.modal-body #id').val(id) modal.find('.modal-body #satuan').val(satuan) modal.find('.modal-body #departement').val(departement) modal.find('.modal-body #diskon').val(diskon) modal.find('.modal-body #stok').val(stok) modal.find('.modal-body #nama').val(nama) modal.find('.modal-body #kategori').val(kategori) modal.find('.modal-body #harga').val(harga) modal.find('.modal-body #kode').val(kode) modal.find('.modal-body #keterangan').val(keterangan) modal.find('.modal-body #supplier').val(supplier) modal.find('.modal-body #harga_diskon').val(harga_diskon) modal.find('.modal-body #gambar').attr('src', '/images/barang/' + gambar); }) </script> @endsection>>>>>>> 5a6e1ea39640f8960ff292d8e26ec9c01920e545
+</script>
+<script>
+    $('#editModal').on('show.bs.modal', function(event) {
+        let button = $(event.relatedTarget)
+        let id = button.data('id')
+        let satuan = button.data('satuan')
+        let departement = button.data('departement')
+        let diskon = button.data('diskon')
+        let stok = button.data('stok')
+        let nama = button.data('nama')
+        let kategori = button.data('kategori')
+        let harga = button.data('harga')
+        let kode = button.data('kode')
+        let keterangan = button.data('keterangan')
+        let supplier = button.data('supplier')
+        let harga_diskon = button.data('harga_diskon')
+        let gambar = button.data('gambar')
+        let modal = $(this)
+
+        modal.find('.modal-body #id').val(id)
+        modal.find('.modal-body #satuan').val(satuan)
+        modal.find('.modal-body #departement').val(departement)
+        modal.find('.modal-body #diskon').val(diskon)
+        modal.find('.modal-body #stok').val(stok)
+        modal.find('.modal-body #nama').val(nama)
+        modal.find('.modal-body #kategori').val(kategori)
+        modal.find('.modal-body #harga').val(harga)
+        modal.find('.modal-body #kode').val(kode)
+        modal.find('.modal-body #keterangan').val(keterangan)
+        modal.find('.modal-body #supplier').val(supplier)
+        modal.find('.modal-body #harga_diskon').val(harga_diskon)
+        modal.find('.modal-body #gambar').attr('src', '/images/barang/' + gambar);
+    })
+</script>
+@endsection
