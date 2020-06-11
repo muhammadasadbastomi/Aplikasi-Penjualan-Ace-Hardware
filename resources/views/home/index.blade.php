@@ -230,7 +230,10 @@
                             @else
                             <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                             @endif
-                            <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
+                            <br>
+                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
+                            <a>Departement : {{$d->departement}}</a> <br>
+                            <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
                     </div>
@@ -293,7 +296,10 @@
                             @else
                             <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                             @endif
-                            <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
+                            <br>
+                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
+                            <a>Departement : {{$d->departement}}</a> <br>
+                            <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
                     </div>
@@ -342,7 +348,7 @@
                             </p>
                         </div>
                         <div class="img-container my-1">
-                            <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
+                            <img src="/images/barang/{{$d->barang->gambar}}" class="img-fluid" alt="image">
                             @if($d->barang->diskon != null)
                             <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
                             @else
@@ -356,7 +362,10 @@
                             @else
                             <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                             @endif
-                            <p class="text-secondary mt-1">Stok Tersedia : {{$d->barang->stok_tersedia}}</p>
+                            <br>
+                            <a>Supplier : {{$d->barang->supplier->supplier}}</a> <br>
+                            <a>Departement : {{$d->barang->departement}}</a> <br>
+                            <p>Stok Tersedia : {{$d->barang->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
                     </div>
@@ -419,7 +428,10 @@
                             @else
                             <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                             @endif
-                            <p class="text-secondary mt-1">Stok Tersedia : {{$d->stok_tersedia}}</p>
+                            <br>
+                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
+                            <a>Departement : {{$d->departement}}</a> <br>
+                            <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
                             <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
                     </div>
