@@ -112,3 +112,5 @@ Route::get('/', 'PenjualanController@index')->name('homeIndex');
 Route::get('/home/shop', 'PenjualanController@shop')->name('homeShop');
 Route::get('/home/profile/', 'PenjualanController@profile')->name('homeProfile');
 Route::get('/home/detail/{id}', 'PenjualanController@show')->name('homeShow');
+
+
