@@ -100,8 +100,10 @@
                                                     <th scope="col">Gambar</th>
                                                     <th scope="col">Kode Barang</th>
                                                     <th scope="col">Nama Barang</th>
+                                                    <th scope="col">Supplier</th>
                                                     <th scope="col">Kategori</th>
                                                     <th scope="col">Harga Awal</th>
+                                                    <th scope="col">Diskon</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -109,9 +111,11 @@
                                                 @foreach ($barang as $b)
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
-                                                    <td><img src="/images/barang/{{$b->gambar}}" alt="Gambar" class="avatar mr-1 avatar-xl" width="50px;" height="50px;"></td>
+                                                    <td><img src="/images/barang/{{$b->gambar}}" alt="Gambar" class="avatar mr-1 avatar-xl" width="50px;" height="50px;">
+                                                    </td>
                                                     <td class="text-center">{{$b->kode_barang}}</td>
                                                     <td>{{$b->nama_barang}}</td>
+                                                    <td>{{$b->supplier->supplier}}</td>
                                                     <td>
                                                         @if($b->kategori == 1)
                                                         Alat Rumah
@@ -132,6 +136,13 @@
                                                         @endif
                                                     </td>
                                                     <td>Rp. {{number_format($b->harga_jual, 0, ',', '.')}},-</td>
+                                                    <td>
+                                                        @if($b->diskon)
+                                                        {{ $b->diskon }}%
+                                                        @else
+                                                        -
+                                                        @endif
+                                                    </td>
                                                     <td class="text-center">
                                                         @include('admin.barang.master.button')
                                                         <a class="btn btn-sm btn-warning text-white" href="{{route('barangShow', ['id' => $b->uuid])}}"><i class="feather icon-edit"></i></a>
@@ -274,5 +285,4 @@
 </script>
 
 
-
-@endsection
+<<<<<<< HEAD @endsection=======modal.find('.modal-body #id').val(id) modal.find('.modal-body #satuan').val(satuan) modal.find('.modal-body #departement').val(departement) modal.find('.modal-body #diskon').val(diskon) modal.find('.modal-body #stok').val(stok) modal.find('.modal-body #nama').val(nama) modal.find('.modal-body #kategori').val(kategori) modal.find('.modal-body #harga').val(harga) modal.find('.modal-body #kode').val(kode) modal.find('.modal-body #keterangan').val(keterangan) modal.find('.modal-body #supplier').val(supplier) modal.find('.modal-body #harga_diskon').val(harga_diskon) modal.find('.modal-body #gambar').attr('src', '/images/barang/' + gambar); }) </script> @endsection>>>>>>> 5a6e1ea39640f8960ff292d8e26ec9c01920e545
