@@ -128,7 +128,7 @@
 
                     <div class="card-body" style="margin-top:-50px">
                         <div class="mt-4 mb-2 text-left">
-                            <h2>Produk Terkait <div class="badge badge-danger">Related</div>
+                            <h2>Produk Terkait <div class="badge badge-danger"><strong> Related </strong></div>
                             </h2>
                         </div>
                         <div class="swiper-responsive-breakpoints swiper-container px-4 py-2 swiper-container-initialized swiper-container-horizontal">

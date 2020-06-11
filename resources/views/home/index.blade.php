@@ -185,7 +185,7 @@
         <!---- Produk Terbaru ----->
         <div class="card-body" style="margin-top:-50px">
             <div class="mt-4 mb-2 text-left">
-                <h2>Produk Terbaru <div class="badge badge-danger">Latest</div>
+                <h2> Produk Terbaru <div class="badge badge-danger"> <strong> Latest </strong> </div>
                 </h2>
             </div>
             <div class="swiper-responsive-breakpoints swiper-container px-4 py-2 swiper-container-initialized swiper-container-horizontal">
@@ -251,7 +251,7 @@
         <!---- Produk Diskon ----->
         <div class="card-body" style="margin-top:-50px">
             <div class="mt-4 mb-2 text-left">
-                <h2>Produk Diskon <div class="badge badge-danger">Diskon %</div>
+                <h2>Produk Diskon <div class="badge badge-danger"><strong> Diskon % </strong></div>
                 </h2>
             </div>
             <div class="swiper-responsive-breakpoints swiper-container px-4 py-2 swiper-container-initialized swiper-container-horizontal">
@@ -317,7 +317,7 @@
         <!---- Prodak Terlaris ----->
         <div class="card-body" style="margin-top:-50px">
             <div class="mt-4 mb-2 text-left">
-                <h2>Produk Terlaris <div class="badge badge-danger">Popular</div>
+                <h2>Produk Terlaris <div class="badge badge-danger"><strong> Popular </strong></div>
                 </h2>
             </div>
             <div class="swiper-responsive-breakpoints swiper-container px-4 py-2 swiper-container-initialized swiper-container-horizontal">
@@ -383,7 +383,7 @@
         <!---- Produk Termurah ----->
         <div class="card-body" style="margin-top:-50px">
             <div class="mt-4 mb-2 text-left">
-                <h2>Produk Termurah <div class="badge badge-danger">Lowest Price</div>
+                <h2>Produk Termurah <div class="badge badge-danger"><strong> Lowest Price </strong></div>
                 </h2>
             </div>
             <div class="swiper-responsive-breakpoints swiper-container px-4 py-2 swiper-container-initialized swiper-container-horizontal">

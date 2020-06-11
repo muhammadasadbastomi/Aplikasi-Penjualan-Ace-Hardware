@@ -164,7 +164,7 @@
             <!-- Rating section starts -->
             <div id="ratings">
                 <div class="ratings-title mt-1 pb-75">
-                    <h6 class="filter-title mb-0">Produk Terlaris <div class="badge badge-danger float-right" style="margin-top: -4px;;">Popular</div>
+                    <h6 class="filter-title mb-0">Produk Terlaris <div class="badge badge-danger float-right" style="margin-top: -4px;;"><strong> Popular </strong></div>
                     </h6>
                 </div>
                 <div class="col-md-12 box">
