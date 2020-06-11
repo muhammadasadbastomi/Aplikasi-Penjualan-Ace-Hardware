@@ -79,10 +79,10 @@
                                         <div class="diskon badge badge-danger float-right">Diskon {{$d->diskon}}%</div>
                                         <div class="carousel-caption d-none d-md-block" style="margin-bottom: 90px;">
                                             <a class="text-dark"><strong>{{$d->nama_barang}}</strong></a><br>
-                                            <a class="text-secondary"> <strong><del>Rp.{{$d->harga_jual}},</del></strong> </a> <a class="text-danger"> <strong>Rp.{{$d->harga_diskon}},-</strong> </a>
+                                            <a class="text-secondary"><strong><del>Rp.{{$d->harga_jual}},</del></strong></a><a class="text-danger"><strong>Rp.{{$d->harga_diskon}},-</strong></a>
                                         </div>
-                                        <div class="kategori" style="margin-top:13px">
-                                            <a>Ace Hardware Barang Diskon</a>
+                                        <div class="kategori" style="margin-top:13px;">
+                                            <h6>Ace Hardware Barang Diskon</h6>
                                             <hr>
                                             <p>Kategori : @if($d->kategori == 1)
                                                 Peralatan Rumah

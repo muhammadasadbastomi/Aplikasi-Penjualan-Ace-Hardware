@@ -44,25 +44,26 @@
                                 <div class="row mb-3 mt-0 col-sm-3 float-right">
                                     <img src="/img/logo.png" class="img-fluid" alt="product image">
                                 </div>
-                                <h3>{{$barang->nama_barang}}
-                                </h3>
-                                <p class="text-muted">Kategori : @if($barang->kategori == 1)
-                                    Peralatan Rumah
-                                    @elseif($barang->kategori == 2)
-                                    Alat Kebersihan
-                                    @elseif($barang->kategori == 3)
-                                    Alat Dapur
-                                    @elseif($barang->kategori == 4)
-                                    Otomotif
-                                    @elseif($barang->kategori == 5)
-                                    Peralatan Elektronik
-                                    @elseif($barang->kategori == 6)
-                                    Olahraga & Outdoor
-                                    @elseif($barang->kategori == 7)
-                                    Kategori Lainnya
-                                    @else
-                                    -
-                                    @endif</p>
+                                <h3><strong>{{$barang->nama_barang}}</strong></h3>
+                                <p class="text-muted"><b>Kategori : @if($barang->kategori == 1)
+                                        Peralatan Rumah
+                                        @elseif($barang->kategori == 2)
+                                        Alat Kebersihan
+                                        @elseif($barang->kategori == 3)
+                                        Alat Dapur
+                                        @elseif($barang->kategori == 4)
+                                        Otomotif
+                                        @elseif($barang->kategori == 5)
+                                        Peralatan Elektronik
+                                        @elseif($barang->kategori == 6)
+                                        Olahraga & Outdoor
+                                        @elseif($barang->kategori == 7)
+                                        Kategori Lainnya
+                                        @else
+                                        -
+                                        @endif </b></p>
+                                <p> <b>Departement : {{$barang->departement}} </b></p>
+                                <p> <b>Supplier : {{$barang->supplier->supplier}} </b></p>
                                 <div class="ecommerce-details-price d-flex flex-wrap">
                                     <h6 class="item-price">
                                         @if($barang->diskon != null)
