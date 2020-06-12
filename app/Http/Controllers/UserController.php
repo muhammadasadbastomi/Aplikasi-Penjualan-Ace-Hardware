@@ -71,6 +71,14 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make('userace1');
+        $user->nohp = $request->nohp;
+        $user->alamat = $request->alamat;
+        $user->photos = $request->photos;
+        if ($request->hasfile('photos')) {
+            $request->file('photos')->move('images/user/', $request->file('photos')->getClientOriginalName());
+            $user->photos = $request->file('photos')->getClientOriginalName();
+            $user->save();
+        }
         $user->save();
 
         return redirect('admin/account/karyawan')->with('success', 'Data berhasil disimpan');
@@ -112,7 +120,7 @@ class UserController extends Controller
         }
         $user->save();
 
-        return redirect('admin/account/admin')->with('success', 'Data berhasil disimpan');
+        return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 
     /**

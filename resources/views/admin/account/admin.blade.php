@@ -84,20 +84,20 @@
                                         <table class="table zero-configuration">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col" class="text-center">No</th>
-                                                    <th scope="col" class="text-center">Nama</th>
-                                                    <th scope="col" class="text-center">email</th>
-                                                    <th scope="col" class="text-center">Role</th>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Nama</th>
+                                                    <th scope="col">email</th>
+                                                    <th scope="col">Role</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($user as $d)
                                                 <tr>
-                                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                                    <td class="text-center">{{ $d->name }}</td>
-                                                    <td class="text-center">{{ $d->email }}</td>
-                                                    <td class="text-center">
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $d->name }}</td>
+                                                    <td>{{ $d->email }}</td>
+                                                    <td>
                                                         @if($d->role == 1)
                                                         Admin
                                                         @elseif($d->role == 2)
@@ -420,5 +420,4 @@
         bacaGambar(this);
     });
 </script>
-
 @endsection
