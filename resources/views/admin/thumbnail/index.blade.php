@@ -1,6 +1,6 @@
 @extends('layouts.admin.admin')
 
-@section('title') Admin Data Thumbnail @endsection
+@section('title') Admin Data Etalase @endsection
 
 @section('head')
 <style>
@@ -52,12 +52,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Data Thumbnail</h2>
+                        <h2 class="content-header-title float-left mb-0">Data Etalase</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('adminIndex')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Data Thumbnail
+                                <li class="breadcrumb-item active">Data Etalase
                                 </li>
                             </ol>
                         </div>
@@ -84,6 +84,7 @@
                                                     <th scope="col">No</th>
                                                     <th scope="col">Gambar</th>
                                                     <th scope="col">Judul</th>
+                                                    <th scope="col">Waktu Aktif</th>
                                                     <th scope="col">Keterangan</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
@@ -93,6 +94,7 @@
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
                                                     <td><img src="/images/thumbnail/{{$d->gambar}}" alt="Gambar" class="avatar mr-1 avatar-xl" width="60px;" height="50px;"></td>
+                                                    <td>{{$d->tgl_aktif}}</td>
                                                     <td>{{$d->judul}}</td>
                                                     <td>{{$d->keterangan}}</td>
                                                     <td class="text-center">
@@ -123,7 +125,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel1" style="padding-left: 10px;">Tambah Thumbnail</h4>
+                <h4 class="modal-title" id="myModalLabel1" style="padding-left: 10px;">Tambah Etalase</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -136,6 +138,11 @@
                             <label for="judul">Judul</label>
                             <input type="text" id="judul" class="form-control  @error ('judul') is-invalid @enderror" placeholder="Masukkan Judul" name="judul" value="{{old('judul')}}">
                             @error('judul')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="tgl_aktif">Waktu Aktif</label>
+                            <input type="date" id="tgl_aktif" class="form-control  @error ('tgl_aktif') is-invalid @enderror" name="tgl_aktif">{{old('tgl_aktif')}}
+                            @error('tgl_aktif')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                         <div class="form-group">
                             <label for="keterangan">Ketarangan</label>
@@ -171,7 +178,7 @@
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="edit-modal-label" style="padding-left: 10px;">Edit Thumbnail</h4>
+                <h4 class="modal-title" id="edit-modal-label" style="padding-left: 10px;">Edit Etalase</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>

@@ -17,6 +17,7 @@ class CreateThumbnailsTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
             $table->string('judul');
+            $table->string('tgl_aktif')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('gambar');
             $table->timestamps();
