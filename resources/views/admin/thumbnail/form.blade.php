@@ -5,8 +5,13 @@
     @error('judul')<div class="invalid-feedback"> {{$message}} </div>@enderror
 </div>
 <div class="form-group">
-    <label for="keterangan">Ketarangan</label>
-    <textarea type="text" id="keterangan" class="form-control  @error ('keterangan') is-invalid @enderror" name="keterangan" placeholder="Masukkan Keterangan" autofocus>{{old('keterangan')}}</textarea>
+    <label for="tgl_aktif">Waktu Aktif</label>
+    <input type="date" id="tgl_aktif" class="form-control  @error ('tgl_aktif') is-invalid @enderror" name="tgl_aktif" value="{{old('tgl_aktif')}}">
+    <p>Note : Masukkan Masa Tanggal Aktif, Berakhir Sampai Tanggal.</p>
+</div>
+<div class="form-group">
+    <label for="keterangan">Keterangan</label>
+    <textarea id="keterangan" class="form-control  @error ('keterangan') is-invalid @enderror" name="keterangan" placeholder="Masukkan Keterangan" autofocus>{{old('keterangan')}}</textarea>
 </div>
 <div class="form-group">
     <label for="pict">Gambar </label>

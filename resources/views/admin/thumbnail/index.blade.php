@@ -73,9 +73,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
-                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0"
-                                        aria-controls="DataTables_Table_0" data-toggle="modal"
-                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                <div class="dt-buttons btn-group"><button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span></button> </div>
                             </div>
                             <div class="card-content">
@@ -97,11 +95,10 @@
                                                 @foreach ($data as $d)
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
-                                                    <td><img src="/images/thumbnail/{{$d->gambar}}" alt="Gambar"
-                                                            class="avatar mr-1 avatar-xl" width="60px;" height="50px;">
+                                                    <td><img src="/images/thumbnail/{{$d->gambar}}" alt="Gambar" class="avatar mr-1 avatar-xl" width="60px;" height="50px;">
                                                     </td>
                                                     <td>{{$d->judul}}</td>
-                                                    <td>{{$d->tgl_aktif}}</td>
+                                                    <td> {{Carbon\Carbon::parse($d->tgl_aktif)->translatedFormat('d F Y')}}</td>
                                                     <td>
                                                         @if($d->status_diskon == 1)
                                                         <span class="badge badge-success">Aktif</span>
@@ -111,15 +108,10 @@
                                                     </td>
                                                     <td>{{$d->keterangan}}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" data-id="{{$d->id}}"
-                                                            data-judul="{{$d->judul}}" data-ket="{{$d->keterangan}}"
-                                                            data-pict="{{$d->gambar}}" data-toggle="modal"
-                                                            data-target="#editModal">
+                                                        <a class="btn btn-sm btn-info text-white" data-id="{{$d->id}}" data-judul="{{$d->judul}}" data-ket="{{$d->keterangan}}" data-pict="{{$d->gambar}}" data-tgl_aktif="{{$d->tgl_aktif}}" data-toggle="modal" data-target="#editModal">
                                                             <i class=" feather icon-edit"></i>
                                                         </a>
-                                                        <a class="delete btn btn-sm btn-danger text-white"
-                                                            data-id="{{$d->uuid}}" href="#"><i
-                                                                class="feather icon-trash"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$d->uuid}}" href="#"><i class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -139,8 +131,7 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
-    aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -155,38 +146,31 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="judul">Judul</label>
-                            <input type="text" id="judul" class="form-control  @error ('judul') is-invalid @enderror"
-                                placeholder="Masukkan Judul" name="judul" value="{{old('judul')}}">
+                            <input type="text" id="judul" class="form-control  @error ('judul') is-invalid @enderror" placeholder="Masukkan Judul" name="judul" value="{{old('judul')}}">
                             @error('judul')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                         <div class="form-group">
                             <label for="tgl_aktif">Waktu Aktif</label>
-                            <input type="date" id="tgl_aktif"
-                                class="form-control  @error ('tgl_aktif') is-invalid @enderror"
-                                name="tgl_aktif">{{old('tgl_aktif')}}
+                            <input type="date" id="tgl_aktif" class="form-control  @error ('tgl_aktif') is-invalid @enderror" name="tgl_aktif" value="{{old('tgl_aktif')}}">
+                            <p>Note : Masukkan Masa Tanggal Aktif, Berakhir Sampai Tanggal.</p>
                             @error('tgl_aktif')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                         <div class="form-group">
-                            <label for="keterangan">Ketarangan</label>
-                            <textarea type="text" id="keterangan"
-                                class="form-control  @error ('keterangan') is-invalid @enderror" name="keterangan"
-                                placeholder="Masukkan Keterangan">{{old('keterangan')}}</textarea>
+                            <label for="keterangan">Keterangan</label>
+                            <textarea id="keterangan" class="form-control  @error ('keterangan') is-invalid @enderror" name="keterangan" placeholder="Masukkan Keterangan">{{old('keterangan')}}</textarea>
                             @error('keterangan')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                         <div class="form-group">
                             <label for="gambar">Gambar </label>
                             <div class="custom-file">
-                                <input type="file" id="gambar"
-                                    class="custom-file-input  @error ('gambar') is-invalid @enderror" name="gambar"
-                                    value="{{old('gambar')}}">
+                                <input type="file" id="gambar" class="custom-file-input  @error ('gambar') is-invalid @enderror" name="gambar" value="{{old('gambar')}}">
                                 <label class="custom-file-label" for="gambar">Choose file</label>
                                 @error('gambar')<div class="invalid-feedback"> {{$message}} </div>@enderror
                             </div>
                         </div>
                         <br>
                         <div class="imgWrap">
-                            <img src="/img/nopictcreate.png" id="imgView" class="card-img-top img-fluid"
-                                style="width: 30%; height:30%; display: block; margin: auto;">
+                            <img src="/img/nopictcreate.png" id="imgView" class="card-img-top img-fluid" style="width: 30%; height:30%; display: block; margin: auto;">
                         </div>
                     </div>
             </div>
@@ -201,8 +185,7 @@
 
 
 <!-- Modal Edit -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label"
-    aria-hidden="true">
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -238,11 +221,13 @@
         var judul = button.data('judul')
         var keterangan = button.data('ket')
         var pict = button.data('pict')
+        var tgl_aktif = button.data('tgl_aktif')
         var modal = $(this)
 
         modal.find('.modal-body #id').val(id)
         modal.find('.modal-body #judul').val(judul)
         modal.find('.modal-body #keterangan').val(keterangan)
+        modal.find('.modal-body #tgl_aktif').val(tgl_aktif)
         modal.find('.modal-body #pict').attr('src', '/images/thumbnail/' + pict);
     })
 </script>
