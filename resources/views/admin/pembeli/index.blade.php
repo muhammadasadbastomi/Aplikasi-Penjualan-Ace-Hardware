@@ -41,7 +41,7 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">No</th>
-                                                    <th scope="col">Nama</th>
+                                                    <th scope="col">Nama Pembeli</th>
                                                     <th scope="col">E-Mail</th>
                                                     <th scope="col">Nomor Telepon</th>
                                                     <th scope="col">Alamat</th>
@@ -52,14 +52,12 @@
                                                 @foreach ($data as $d)
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
-                                                    <td><img src="/images/thumbnail/{{$d->gambar}}" alt="Gambar" class="avatar mr-1 avatar-xl" width="60px;" height="50px;">
-                                                    </td>
                                                     <td>{{$d->nama_pembeli}}</td>
                                                     <td>{{$d->email}}</td>
                                                     <td>{{$d->telp}}</td>
                                                     <td>{{$d->alamat}}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" data-id="{{$d->id}}" data-judul="{{$d->judul}}" data-ket="{{$d->keterangan}}" data-pict="{{$d->gambar}}" data-toggle="modal" data-target="#editModal">
+                                                        <a class="btn btn-sm btn-info text-white" data-id="{{$d->id}}" data-nama="{{$d->nama_pembeli}}" data-email="{{$d->email}}" data-telp="{{$d->telp}}" data-alamat="{{$d->alamat}}" data-toggle="modal" data-target="#editModal">
                                                             <i class=" feather icon-edit"></i>
                                                         </a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$d->uuid}}" href="#"><i class="feather icon-trash"></i></a>
@@ -81,7 +79,8 @@
 </div>
 <!-- END: Content-->
 
-
+@include('admin.pembeli.create')
+@include('admin.pembeli.edit')
 @endsection
 
 @section('script')
@@ -90,15 +89,17 @@
     $('#editModal').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var id = button.data('id')
-        var judul = button.data('judul')
-        var keterangan = button.data('ket')
-        var pict = button.data('pict')
+        var nama = button.data('nama')
+        var alamat = button.data('alamat')
+        var telp = button.data('telp')
+        var email = button.data('email')
         var modal = $(this)
 
         modal.find('.modal-body #id').val(id)
-        modal.find('.modal-body #judul').val(judul)
-        modal.find('.modal-body #keterangan').val(keterangan)
-        modal.find('.modal-body #pict').attr('src', '/images/thumbnail/' + pict);
+        modal.find('.modal-body #nama').val(nama)
+        modal.find('.modal-body #alamat').val(alamat)
+        modal.find('.modal-body #telp').val(telp)
+        modal.find('.modal-body #email').val(email);
     })
 </script>
 
@@ -117,7 +118,7 @@
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: "{{ url('/admin/thumbnail/delete')}}" + '/' + id,
+                    url: "{{ url('/admin/pembeli/delete')}}" + '/' + id,
                     type: "POST",
                     data: {
                         '_method': 'DELETE',
