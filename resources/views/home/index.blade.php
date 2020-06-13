@@ -217,17 +217,15 @@
                             </p>
                         </div>
                         <div class="img-container my-1">
-                            <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
-                            @if($d->diskon != null &&
-
-                            (Carbon\Carbon::parse($d->tgl_waktu)) >= (Carbon\Carbon::now()))
+                            <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="image">
+                            @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
                             <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
                             @else
                             <span style="opacity:0;">0</span>
                             @endif
                         </div>
                         <div class="item-meta" style="margin-top:-25px;">
-                            @if($d->diskon != null)
+                            @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
                             <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
                             <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
                             @else
@@ -285,7 +283,7 @@
                             </p>
                         </div>
                         <div class="img-container my-1">
-                            <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
+                            <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="image">
                             @if($d->diskon != null)
                             <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
                             @else
@@ -351,15 +349,15 @@
                             </p>
                         </div>
                         <div class="img-container my-1">
-                            <img src="/images/barang/{{$d->barang->gambar}}" class="img-fluid" alt="image">
-                            @if($d->barang->diskon != null)
+                            <img src="/images/resize/{{$d->barang->gambar}}" class="img-fluid" alt="image">
+                            @if($d->barang->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
                             <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
                             @else
                             <span style="opacity:0;">0</span>
                             @endif
                         </div>
                         <div class="item-meta" style="margin-top:-25px;">
-                            @if($d->barang->diskon != null)
+                            @if($d->barang->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
                             <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
                             <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
                             @else
@@ -417,15 +415,15 @@
                             </p>
                         </div>
                         <div class="img-container my-1">
-                            <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
-                            @if($d->diskon != null)
+                            <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="image">
+                            @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
                             <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
                             @else
                             <span style="opacity:0;">0</span>
                             @endif
                         </div>
                         <div class="item-meta" style="margin-top:-25px;">
-                            @if($d->diskon != null)
+                            @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
                             <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
                             <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
                             @else

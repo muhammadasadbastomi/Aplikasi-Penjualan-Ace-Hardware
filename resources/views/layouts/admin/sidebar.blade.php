@@ -18,8 +18,9 @@
                         Data</span></a>
                 <ul class="menu-content">
                     <li class="{{ (\Request::route()->getName() == 'thumbIndex') ? 'active' : '' }}"><a href="{{ route('thumbIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Etalase</span></a></li>
-                    <li class="{{ (\Request::route()->getName() == 'supplierIndex') ? 'active' : '' }}"><a href="{{ route('supplierIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Supplier</span></a></li>
-                    <li class="{{ (\Request::route()->getName() == 'barangIndex') ? 'active' : '' }}"><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Master</span></a></li>
+                    <li class="{{ (\Request::route()->getName() == 'supplierIndex') ? 'active' : '' }}"><a href="{{ route('supplierIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Data Supplier</span></a></li>
+                    <li class="{{ (\Request::route()->getName() == 'pembeliIndex') ? 'active' : '' }} "><a href="{{route('pembeliIndex')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Data Pembeli</span></a></li>
+                    <li class="{{ (\Request::route()->getName() == 'barangIndex') ? 'active' : '' }}"><a href="{{ route('barangIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Data Barang</span></a></li>
                 </ul>
             </li>
             <li class="nav-item {{ (request()->is('barang')) ? 'active' : '' }}"><a href="#"><i class="feather icon-package"></i><span class="menu-title">Pengelolaan</span></a>
@@ -30,9 +31,6 @@
                     <li class="{{ (\Request::route()->getName() == 'rusakIndex') ? 'active' : '' }}"><a href="{{ route('rusakIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Barang Rusak</span></a></li>
                     <li class="{{ (\Request::route()->getName() == 'pengirimanIndex') ? 'active' : '' }}"><a href="{{ route('pengirimanIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Pengiriman Barang</span></a></li>
                 </ul>
-            </li>
-            <li class="nav-item {{ (\Request::route()->getName() == 'pembeliIndex') ? 'active' : '' }} "><a href="{{route('pembeliIndex')}}"><i class="feather icon-users"></i><span class="menu-title" data-i18n="Account Settings">Data
-                        Pembeli</span></a>
             </li>
             <li class="nav-item {{ (\Request::route()->getName() == 'userEdit') ? 'active' : '' }} "><a href="{{route('userEdit', ['id' => Auth::user()->uuid])}}"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Account Settings">Edit
                         Profile</span></a>

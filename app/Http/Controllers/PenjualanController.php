@@ -29,7 +29,7 @@ class PenjualanController extends Controller
             return $item;
         });
 
-        $barang = Barang::orderBy('id', 'desc')->paginate(9);
+        $barang = Barang::orderBy('id', 'desc')->get();
         $barang = $barang->map(function ($item) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
@@ -37,7 +37,7 @@ class PenjualanController extends Controller
             return $item;
         });
 
-        $termurah = Barang::orderBy('harga_jual', 'asc')->paginate(9);
+        $termurah = Barang::orderby('harga_jual', 'desc')->get()->sortby('harga_jual');
         $termurah = $termurah->map(function ($item) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
@@ -45,7 +45,7 @@ class PenjualanController extends Controller
             return $item;
         });
 
-        $terlaris = Barang_terjual::orderBy('jumlah_terjual', 'DESC')->paginate(9);
+        $terlaris = Barang_terjual::orderBy('jumlah_terjual', 'desc')->get()->sortbyDesc('jumlah_terjual');
         $terlaris = $terlaris->map(function ($item) {
             $diskon = ($item->barang->diskon / 100) * $item->barang->harga_jual;
             $item['harga_diskon'] = number_format($item->barang->harga_jual - $diskon, 0, ',', '.');
@@ -63,8 +63,8 @@ class PenjualanController extends Controller
      */
     public function shop(Request $request)
     {
-        if ($request->has('search')) {
-            $data = Barang::where('nama_barang', 'LIKE', '%' . $request->search . '%')->paginate(100);
+        if ($request->search) {
+            $data = Barang::where('nama_barang', 'LIKE', '%' . $request->search . '%')->get();
             $barang = $data->map(function ($item) {
                 $diskon = ($item->diskon / 100) * $item->harga_jual;
                 $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');

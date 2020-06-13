@@ -124,11 +124,11 @@
                 <!-- Ecommerce Products Starts -->
                 <section id="ecommerce-products" class="grid-view">
                     @forelse($barang as $d)
-                    @isset($d->diskon)
+                    @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
                     <div class="card ecommerce-card badge-diskon" diskon="{{$d->diskon}}">
                         @else
                         <div class="card ecommerce-card">
-                            @endisset
+                            @endif
                             <div class="card-content lihat">
                                 <div class="lihat-detail">
                                     <a type="button" class="btn btn-outline-primary btn-sm" href="{{route('homeShow', ['id' => $d->uuid])}}"> <i class="fas fa fa-search"> Detail</i></a>
@@ -141,7 +141,7 @@
                                     <div class="item-wrapper">
                                         <div>
                                             <h6 class="item-price float-left">
-                                                @if($d->diskon != null)
+                                                @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
                                                 <a class="text-secondary float-left"><del>Rp. {{$d->harga_jual}},</del></a><a class="text-danger">Rp. {{$d->harga_diskon}},-</a>
                                                 @else
                                                 <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
