@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Barang;
 use App\Barang_terjual;
 use App\Thumbnail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\ElseIf_;
-use PhpParser\Node\Stmt\Return_;
 
 class PenjualanController extends Controller
 {
@@ -18,8 +17,10 @@ class PenjualanController extends Controller
      */
     public function index()
     {
+        $now = Carbon::now()->format('Y-m-d');
 
-        $thumb = Thumbnail::orderBy('id', 'DESC')->get();
+        $thumb = Thumbnail::where('tgl_aktif', '>=', $now)->orderBy('id', 'desc')->get();
+
         $data = Barang::orderBy('id', 'desc')->Wherenotnull('diskon')->limit(6)->get();
         $diskon = $data->map(function ($item) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
@@ -35,7 +36,6 @@ class PenjualanController extends Controller
             $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
             return $item;
         });
-
 
         $termurah = Barang::orderBy('harga_jual', 'asc')->paginate(9);
         $termurah = $termurah->map(function ($item) {
@@ -120,14 +120,12 @@ class PenjualanController extends Controller
         }
         // End Filter
 
-
         $all = Barang::all();
 
         $terlaris = Barang_terjual::orderBy('jumlah_terjual', 'desc')->limit(5)->get();
 
         return view('home.shop', compact('barang', 'data', 'terlaris', 'all'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -159,7 +157,6 @@ class PenjualanController extends Controller
     public function show($id)
     {
         $barang = Barang::where('uuid', $id)->first();
-
 
         $diskon = ($barang->diskon / 100) * $barang->harga_jual;
         $barang['harga_diskon'] = number_format($barang->harga_jual - $diskon, 0, ',', '.');

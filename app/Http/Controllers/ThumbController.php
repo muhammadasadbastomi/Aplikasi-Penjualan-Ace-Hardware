@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Thumbnail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ThumbController extends Controller
@@ -14,7 +15,18 @@ class ThumbController extends Controller
      */
     public function index()
     {
-        $data = Thumbnail::orderBy('id', 'desc')->get();
+        $now = Carbon::now()->format('Y-m-d');
+
+        $thumbnail = Thumbnail::orderBy('id', 'desc')->get();
+        $data = $thumbnail->map(function ($item) use ($now) {
+            if ($item->tgl_aktif >= $now) {
+                $item['status_diskon'] = 1;
+            } else {
+                $item['status_diskon'] = 2;
+            }
+            return $item;
+        });
+
         $data1 = Thumbnail::orderBy('id', 'desc')->first();
         return view('/admin/thumbnail/index', compact('data', 'data1'));
     }
@@ -40,7 +52,7 @@ class ThumbController extends Controller
         $messages = [
             'unique' => ':attribute sudah terdaftar.',
             'required' => ':attribute harus diisi.',
-            'mimes' => 'photo harus berupa :attribute.'
+            'mimes' => 'photo harus berupa :attribute.',
         ];
         $request->validate([
 
@@ -54,6 +66,7 @@ class ThumbController extends Controller
         $data = new Thumbnail;
         $data->judul = $request->judul;
         $data->keterangan = $request->keterangan;
+        $data->tgl_aktif = $request->tgl_aktif;
         $data->gambar = $request->gambar;
         if ($request->hasfile('gambar')) {
             $request->file('gambar')->move('images/thumbnail/', $request->file('gambar')->getClientOriginalName());
@@ -113,11 +126,12 @@ class ThumbController extends Controller
         $data = Thumbnail::findOrFail($request->id);
         $data->judul = $request->judul;
         $data->keterangan = $request->keterangan;
+        $data->tgl_aktif = $request->tgl_aktif;
         if ($request->pict != '') {
             $path = public_path() . '/images/thumbnail/';
 
             //code for remove old pict
-            if ($data->gambar != ''  && $data->gambar != null) {
+            if ($data->gambar != '' && $data->gambar != null) {
                 $file_old = $path . $data->gambar;
                 unlink($file_old);
             }

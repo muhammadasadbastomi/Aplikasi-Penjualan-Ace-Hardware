@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Barang;
 use App\Supplier;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use ImageResize;
 
@@ -16,11 +17,18 @@ class BarangController extends Controller
      */
     public function index()
     {
+        $now = Carbon::now()->format('Y-m-d');
+
         $supplier = Supplier::orderBy('id', 'asc')->get();
         $barang = Barang::orderBy('id', 'desc')->get();
-        $barang = $barang->map(function ($item) {
+        $barang = $barang->map(function ($item) use ($now) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+            if ($item->tgl_aktif >= $now) {
+                $item['status_diskon'] = 1;
+            } else {
+                $item['status_diskon'] = 2;
+            }
             return $item;
         });
 
@@ -48,7 +56,7 @@ class BarangController extends Controller
         $messages = [
             'unique' => ':attribute sudah terdaftar.',
             'required' => ':attribute harus diisi.',
-            'mimes' => 'photo berupa :attribute.'
+            'mimes' => 'photo berupa :attribute.',
         ];
         $request->validate([
 
@@ -68,6 +76,7 @@ class BarangController extends Controller
         $barang->nama_barang = $request->nama_barang;
         $barang->kode_barang = $request->kode_barang;
         $barang->supplier_id = $request->supplier_id;
+        $barang->tgl_aktif = $request->tgl_aktif;
         $barang->kategori = $request->kategori;
         $barang->satuan = $request->satuan;
         $barang->departement = $request->departement;
@@ -148,6 +157,7 @@ class BarangController extends Controller
         $barang = barang::where('uuid', $id)->first();
         $barang->nama_barang = $request->nama_barang;
         $barang->kode_barang = $request->kode_barang;
+        $barang->tgl_aktif = $request->tgl_aktif;
         $barang->supplier_id = $request->supplier_id;
         $barang->kategori = $request->kategori;
         $barang->satuan = $request->satuan;
