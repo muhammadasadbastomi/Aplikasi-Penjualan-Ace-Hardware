@@ -10,4 +10,9 @@ class Pembeli extends Model
 {
     use Notifiable;
     use Uuid;
+
+    public function barang_garansi()
+    {
+        return $this->hasMany(Barang_garansi::class);
+    }
 }

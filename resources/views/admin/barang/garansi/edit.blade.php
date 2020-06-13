@@ -43,8 +43,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Nama Pembeli </label>
-                                    <input type="text" id="nama_pembeli" name="nama_pembeli" class="form-control @error ('nama_pembeli') is-invalid @enderror" placeholder="Masukkan nama pembeli" value="{{ $baranggaransi->nama_pembeli }}">
+                                    <label for="barang">Pilih Nama Pembeli</label>
+                                    <select class="custom-select" name="pembeli_id" id="pembeli_id">
+                                        @foreach($pembeli as $d)
+                                        <option value="{{$d->id}}">{{ $d->nama_pembeli}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -63,8 +67,8 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Update</button>
                                 <a href="{{route('garansiIndex')}}" class="btn btn-danger text-white"><i class="mdi mdi-back"></i>Kembali</a>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </form>
                     </div>

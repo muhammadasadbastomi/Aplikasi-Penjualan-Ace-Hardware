@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Barang_garansi;
 use App\Barang;
+use App\Pembeli;
 use Illuminate\Http\Request;
 
 class BaranggaransiController extends Controller
@@ -17,8 +18,9 @@ class BaranggaransiController extends Controller
     {
         $baranggaransi = Barang_garansi::orderBy('id', 'Desc')->get();
         $barang = Barang::orderBy('id', 'Desc')->get();
+        $pembeli = Pembeli::orderBy('id', 'Desc')->get();
 
-        return view('admin.barang.garansi.index', compact('barang', 'baranggaransi'));
+        return view('admin.barang.garansi.index', compact('barang', 'baranggaransi', 'pembeli'));
     }
 
     /**
@@ -44,7 +46,7 @@ class BaranggaransiController extends Controller
             'required' => ':attribute harus diisi.',
         ];
         $request->validate([
-            'nama_pembeli' => 'required',
+            'pembeli_id' => 'required',
             'tgl_pembelian' => 'required',
             'tgl_akhir_garansi' => 'required',
             'jumlah' => 'required',
@@ -54,7 +56,7 @@ class BaranggaransiController extends Controller
         $baranggaransi = new Barang_garansi;
         $request->request->add(['baranggaransi_id' => $baranggaransi->id]);
         $baranggaransi->barang_id = $request->barang_id;
-        $baranggaransi->nama_pembeli = $request->nama_pembeli;
+        $baranggaransi->pembeli_id = $request->pembeli_id;
         $baranggaransi->tgl_pembelian = $request->tgl_pembelian;
         $baranggaransi->tgl_akhir_garansi = $request->tgl_akhir_garansi;
         $baranggaransi->jumlah = $request->jumlah;
@@ -84,8 +86,9 @@ class BaranggaransiController extends Controller
     {
         $baranggaransi = Barang_garansi::orderBy('id', 'Desc')->first();
         $barang = Barang::orderBy('id', 'Desc')->get();
+        $pembeli = Pembeli::orderBy('id', 'Desc')->get();
 
-        return view('admin.barang.garansi.edit', compact('baranggaransi', 'barang'));
+        return view('admin.barang.garansi.edit', compact('baranggaransi', 'barang', 'pembeli'));
     }
 
     /**
@@ -102,7 +105,7 @@ class BaranggaransiController extends Controller
             'required' => ':attribute harus diisi.',
         ];
         $request->validate([
-            'nama_pembeli' => 'required',
+            'pembeli_id' => 'required',
             'tgl_pembelian' => 'required',
             'tgl_akhir_garansi' => 'required',
             'jumlah' => 'required',
@@ -111,7 +114,7 @@ class BaranggaransiController extends Controller
         // create new object
         $baranggaransi = Barang_garansi::where('uuid', $id)->first();
         $baranggaransi->barang_id = $request->barang_id;
-        $baranggaransi->nama_pembeli = $request->nama_pembeli;
+        $baranggaransi->pembeli_id = $request->pembeli_id;
         $baranggaransi->tgl_pembelian = $request->tgl_pembelian;
         $baranggaransi->tgl_akhir_garansi = $request->tgl_akhir_garansi;
         $baranggaransi->jumlah = $request->jumlah;

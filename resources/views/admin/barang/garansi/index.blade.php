@@ -67,7 +67,7 @@
                                                     <td scope="col">{{ $loop->iteration }}</td>
                                                     <td scope="col">{{ $bg->barang->nama_barang }}</td>
                                                     <td scope="col" class="text-center">{{ $bg->barang->kode_barang }}</td>
-                                                    <td scope="col">{{ $bg->nama_pembeli }}</td>
+                                                    <td scope="col">{{ $bg->pembeli->nama_pembeli }}</td>
                                                     <td scope="col" class="text-center">{{Carbon\Carbon::parse($bg->tgl_pembelian)->translatedFormat('d F Y')}}</td>
                                                     <td scope="col" class="text-center">{{Carbon\Carbon::parse($bg->tgl_akhir_garansi)->translatedFormat('d F Y')}}</td>
                                                     <td scope="col">{{ $bg->jumlah }} {{$bg->barang->satuan}}</td>
@@ -115,9 +115,13 @@
                             </select>
                         </div>
 
-                        <label>Nama Pembeli</label>
                         <div class="form-group">
-                            <input type="text" name="nama_pembeli" id="nama_pembeli" value="{{old('nama_pembeli')}}" placeholder="Masukkan Nama Pembeli" class="form-control">
+                            <label for="barang">Pilih Nama Pembeli</label>
+                            <select class="custom-select" name="pembeli_id" id="pembeli_id">
+                                @foreach($pembeli as $d)
+                                <option value="{{$d->id}}">{{ $d->nama_pembeli}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <label>Tanggal pembelian</label>
@@ -141,49 +145,6 @@
                 <button type="submit" class="btn btn-primary">Tambah</button>
             </div>
             </form>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Edit -->
-<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalScrollable" style="padding-left: 10px;">Edit Barang</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data">
-                    <div class="modal-body">
-                        <label>Nama Barang</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Nama Barang" class="form-control">
-                        </div>
-
-                        <label>Tanggal Pembelian</label>
-                        <div class="form-group">
-                            <input type="date" class="form-control">
-                        </div>
-
-                        <label>Tanggal Akhir Garansi</label>
-                        <div class="form-group">
-                            <input type="date" class="form-control">
-                        </div>
-
-                        <label>Jumlah</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Jumlah" class="form-control">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Ubah</button>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
 </div>

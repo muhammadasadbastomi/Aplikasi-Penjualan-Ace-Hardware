@@ -17,7 +17,7 @@ class CreateBarangGaransisTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
             $table->unsignedBigInteger('barang_id');
-            $table->string('nama_pembeli');
+            $table->string('pembeli_id');
             $table->date('tgl_pembelian');
             $table->date('tgl_akhir_garansi');
             $table->string('jumlah');
