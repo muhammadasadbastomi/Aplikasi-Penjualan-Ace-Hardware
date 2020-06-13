@@ -164,10 +164,12 @@
                                         <div class="form-group">
                                             <label>Diskon </label>
                                             <input type="number" id="diskon" name="diskon" class="form-control @error ('diskon') is-invalid @enderror" placeholder="Masukkan Diskon" value="{{ $barang->diskon }}">
+                                            <p>Note : Masukkan Diskon Jika Ingin Menambahkan Diskon.</p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Waktu Aktif </label>
+                                            <label>Waktu Aktif Diskon</label>
                                             <input type="date" id="tgl_aktif" name="tgl_aktif" class="form-control @error ('tgl_aktif') is-invalid @enderror" value="{{ $barang->tgl_aktif }}">
+                                            <p>Note : Masukkan Masa Tanggal Aktif Diskon/Berakhirnya Tanggal Diskon.</p>
                                         </div>
                                         <div class="form-group">
                                             <label>Stok </label>
@@ -187,8 +189,8 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <button type="submit" class="btn btn-primary float-left">Update</button>
-                                        <a type="button" href="{{route('barangIndex')}}" class="btn btn-danger text-white float-right"><i class="mdi mdi-back"></i>Kembali</a>
+                                        <button type="submit" class="btn btn-primary float-right">Update</button>
+                                        <a type="button" href="{{route('barangIndex')}}" class="btn btn-danger text-white float-left"><i class="mdi mdi-back"></i>Kembali</a>
                                         <br>
                                     </div>
                                 </form>

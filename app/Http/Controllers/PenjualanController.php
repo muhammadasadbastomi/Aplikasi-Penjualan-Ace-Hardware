@@ -21,7 +21,7 @@ class PenjualanController extends Controller
 
         $thumb = Thumbnail::where('tgl_aktif', '>=', $now)->orderBy('id', 'desc')->get();
 
-        $data = Barang::orderBy('id', 'desc')->Wherenotnull('diskon')->limit(6)->get();
+        $data = Barang::orderBy('id', 'desc')->Wherenotnull('diskon')->limit(6)->where('tgl_aktif', '>=', $now)->get();
         $diskon = $data->map(function ($item) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
@@ -120,7 +120,7 @@ class PenjualanController extends Controller
         }
         // End Filter
 
-        $all = Barang::all();
+        // $all = Barang::all();
 
         $terlaris = Barang_terjual::orderBy('jumlah_terjual', 'desc')->limit(5)->get();
 

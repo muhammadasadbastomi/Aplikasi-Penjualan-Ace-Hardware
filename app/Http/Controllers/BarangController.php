@@ -59,7 +59,6 @@ class BarangController extends Controller
             'mimes' => 'photo berupa :attribute.',
         ];
         $request->validate([
-
             'nama_barang' => 'required',
             'satuan' => 'required',
             'departement' => 'required',
@@ -67,7 +66,6 @@ class BarangController extends Controller
             'stok_tersedia' => 'required',
             'keterangan' => 'required',
             'gambar' => 'file|image|mimes:jpeg,png,gif',
-
         ], $messages);
 
         // create new object
@@ -76,7 +74,7 @@ class BarangController extends Controller
         $barang->nama_barang = $request->nama_barang;
         $barang->kode_barang = $request->kode_barang;
         $barang->supplier_id = $request->supplier_id;
-        $barang->tgl_aktif = $request->tgl_aktif;
+        // $barang->tgl_aktif = $request->tgl_aktif;
         $barang->kategori = $request->kategori;
         $barang->satuan = $request->satuan;
         $barang->departement = $request->departement;

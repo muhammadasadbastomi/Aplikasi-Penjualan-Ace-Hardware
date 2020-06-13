@@ -48,11 +48,12 @@
             @error('departement')<div class="invalid-feedback"> {{$message}} </div>@enderror
         </div>
 
-        <label>Watku Aktif</label>
+        <!-- <label>Watku Aktif</label>
         <div class="form-group">
             <input type="date" name="tgl_aktif" id="tgl_aktif" value="{{old('tgl_aktif')}}" class="form-control">
+             <p>Note : Masukkan Masa Tanggal Aktif Diskon/Berakhirnya Tanggal Diskon.</p>
             @error('tgl_aktif')<div class="invalid-feedback"> {{$message}} </div>@enderror
-        </div>
+        </div> -->
 
         <label>Harga Jual</label>
         <div class="form-group">

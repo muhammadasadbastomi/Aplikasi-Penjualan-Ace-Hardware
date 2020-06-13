@@ -7,7 +7,7 @@
 <div class="form-group">
     <label for="tgl_aktif">Waktu Aktif</label>
     <input type="date" id="tgl_aktif" class="form-control  @error ('tgl_aktif') is-invalid @enderror" name="tgl_aktif" value="{{old('tgl_aktif')}}">
-    <p>Note : Masukkan Masa Tanggal Aktif, Berakhir Sampai Tanggal.</p>
+    <p>Note : Masukkan Masa Tanggal Aktif/Berakhirnya Tanggal Etalase.</p>
 </div>
 <div class="form-group">
     <label for="keterangan">Keterangan</label>

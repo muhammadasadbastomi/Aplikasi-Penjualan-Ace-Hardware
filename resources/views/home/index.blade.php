@@ -218,7 +218,9 @@
                         </div>
                         <div class="img-container my-1">
                             <img src="/images/barang/{{$d->gambar}}" class="img-fluid" alt="image">
-                            @if($d->diskon != null)
+                            @if($d->diskon != null &&
+
+                            (Carbon\Carbon::parse($d->tgl_waktu)) >= (Carbon\Carbon::now()))
                             <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
                             @else
                             <span style="opacity:0;">0</span>

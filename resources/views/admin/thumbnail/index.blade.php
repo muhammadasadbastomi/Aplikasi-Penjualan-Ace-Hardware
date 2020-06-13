@@ -152,7 +152,7 @@
                         <div class="form-group">
                             <label for="tgl_aktif">Waktu Aktif</label>
                             <input type="date" id="tgl_aktif" class="form-control  @error ('tgl_aktif') is-invalid @enderror" name="tgl_aktif" value="{{old('tgl_aktif')}}">
-                            <p>Note : Masukkan Masa Tanggal Aktif, Berakhir Sampai Tanggal.</p>
+                            <p>Note : Masukkan Masa Tanggal Aktif/Berakhirnya Tanggal Etalase.</p>
                             @error('tgl_aktif')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                         <div class="form-group">
@@ -161,7 +161,7 @@
                             @error('keterangan')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                         <div class="form-group">
-                            <label for="gambar">Gambar </label>
+                            <label for="gambar">Gambar</label>
                             <div class="custom-file">
                                 <input type="file" id="gambar" class="custom-file-input  @error ('gambar') is-invalid @enderror" name="gambar" value="{{old('gambar')}}">
                                 <label class="custom-file-label" for="gambar">Choose file</label>
