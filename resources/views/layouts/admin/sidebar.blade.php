@@ -31,11 +31,14 @@
                     <li class="{{ (\Request::route()->getName() == 'pengirimanIndex') ? 'active' : '' }}"><a href="{{ route('pengirimanIndex') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="eCommerce">Pengiriman Barang</span></a></li>
                 </ul>
             </li>
+            <li class="nav-item {{ (\Request::route()->getName() == 'pembeliIndex') ? 'active' : '' }} "><a href="{{route('pembeliIndex')}}"><i class="feather icon-users"></i><span class="menu-title" data-i18n="Account Settings">Data
+                        Pembeli</span></a>
+            </li>
             <li class="nav-item {{ (\Request::route()->getName() == 'userEdit') ? 'active' : '' }} "><a href="{{route('userEdit', ['id' => Auth::user()->uuid])}}"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Account Settings">Edit
                         Profile</span></a>
             </li>
             @if(auth()->user()->role == '1')
-            <li class="nav-item "><a href="#"><i class="feather icon-users"></i><span class="menu-title" data-i18n="User">User</span></a>
+            <li class="nav-item "><a href="#"><i class="feather icon-user"></i><span class="menu-title" data-i18n="User">User</span></a>
                 <ul class="menu-content">
                     <li class="{{ (\Request::route()->getName() == 'userAdmin') ? 'active' : '' }}"><a href="{{route('userAdmin')}}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="List">Admin</span></a>
                     </li>
@@ -43,9 +46,9 @@
                     </li>
                 </ul>
             </li>
-            @else
-
             @endif
+
+
 
         </ul>
     </div>

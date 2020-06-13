@@ -82,6 +82,13 @@ Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     Route::get('/admin/account/setting/', 'UserController@edit')->name('userEdit');
     Route::post('/admin/account/setting/', 'UserController@update')->name('userUpdate');
 
+    Route::get('/admin/barang/pembeli/index', 'PembeliController@index')->name('pembeliIndex');
+    Route::post('/admin/barang/pembeli/index', 'PembeliController@store')->name('pembeliStore');
+    //Route::post('/admin/barang/pembeli/index', 'PembeliController@show')->name('pembeliShow');
+    Route::get('/admin/barang/pembeli/edit/{id}', 'PembeliController@edit')->name('pembeliEdit');
+    Route::put('/admin/barang/pembeli/edit/{id}', 'PembeliController@update')->name('pembeliUpdate');
+    Route::delete('/admin/barang/pembeli/delete/{id}', 'PembeliController@destroy')->name('garansiDelete');
+
     Route::get('/admin/supplier/cetak', 'CetakController@supplier')->name('supplierCetak');
     Route::get('/admin/barang/cetak', 'CetakController@barang')->name('barangCetak');
     Route::get('/admin/datang/cetak', 'CetakController@datang')->name('datangCetak');

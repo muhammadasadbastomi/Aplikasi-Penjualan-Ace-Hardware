@@ -14,7 +14,12 @@ class CreatePembelisTable extends Migration
     public function up()
     {
         Schema::create('pembelis', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('uuid')->length(36);
+            $table->string('nama_pembeli');
+            $table->string('alamat');
+            $table->string('telp');
+            $table->string('email');
             $table->timestamps();
         });
     }
