@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Barang;
 use App\Barang_rusak;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BarangrusakController extends Controller
 {
@@ -39,16 +40,26 @@ class BarangrusakController extends Controller
      */
     public function store(Request $request)
     {
-        $messages = [
-            'unique' => ':attribute sudah terdaftar.',
-            'required' => ':attribute harus diisi.',
-        ];
-        $request->validate([
-            'tgl_cek' => 'required',
-            'kerusakan' => 'required',
-            'jumlah_barang' => 'required',
-        ], $messages);
+        // $messages = [
+        //     'unique' => ':attribute sudah terdaftar.',
+        //     'required' => ':attribute harus diisi.',
+        // ];
+        // $request->validate([
+        //     'tgl_cek' => 'required',
+        //     'kerusakan' => 'required',
+        //     'jumlah_barang' => 'required',
+        //     // 'id_barang' => 'unique:barang_rusaks'
+        // ], $messages);
 
+
+        $validator = Validator::make($request->all(), [
+            'barang_id' => 'required|unique:barang_rusaks|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)
+                ->withInput();
+        }
 
         // create new object
         $barangrusak = new Barang_rusak;
@@ -58,11 +69,17 @@ class BarangrusakController extends Controller
         $barangrusak->tgl_cek = $request->tgl_cek;
         $barangrusak->status = 1;
         $barangrusak->jumlah_barang = $request->jumlah_barang;
-        $barangrusak->save();
 
         $barang = Barang::findOrFail($barangrusak->barang_id);
-        $barang->stok_tersedia = $barang->stok_tersedia - $request->jumlah_barang;
-        $barang->update();
+
+        if ($request->jumlah_barang > $barang->stok_tersedia) {
+            return redirect()->back()->with('warning', 'Jumlah Barang Melebihi Stok');
+        } else {
+            $barang->stok_tersedia = $barang->stok_tersedia - $request->jumlah_barang;
+            $barang->update();
+        }
+
+        $barangrusak->save();
 
         return redirect('admin/barang/rusak/index')->with('success', 'Data berhasil disimpan');
     }
