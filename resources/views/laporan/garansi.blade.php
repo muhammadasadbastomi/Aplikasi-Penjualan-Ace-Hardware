@@ -122,7 +122,7 @@
                     <td scope="col" class="text-center">{{$loop->iteration }}</td>
                     <td scope="col" class="text-center">{{$d->barang->nama_barang }}</td>
                     <td scope="col" class="text-center">{{$d->barang->kode_barang }}</td>
-                    <td scope="col" class="text-center">{{$d->nama_pembeli }}</td>
+                    <td scope="col" class="text-center">{{$d->pembeli->nama_pembeli }}</td>
                     <td scope="col" class="text-center">{{$d->tgl_pembelian }}</td>
                     <td scope="col" class="text-center">{{$d->tgl_akhir_garansi }}</td>
                     <td scope="col" class="text-center">{{$d->jumlah}} {{$d->barang->satuan}}</td>

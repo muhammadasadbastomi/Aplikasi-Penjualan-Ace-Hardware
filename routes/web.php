@@ -87,6 +87,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     Route::put('/admin/pembeli/index/', 'PembeliController@update')->name('pembeliUpdate');
     Route::delete('/admin/pembeli/delete/{id}', 'PembeliController@delete')->name('pembeliDelete');
 
+    Route::get('/admin/pembeli/cetak', 'CetakController@pembeli')->name('pembeliCetak');
     Route::get('/admin/supplier/cetak', 'CetakController@supplier')->name('supplierCetak');
     Route::get('/admin/barang/cetak', 'CetakController@barang')->name('barangCetak');
     Route::get('/admin/datang/cetak', 'CetakController@datang')->name('datangCetak');

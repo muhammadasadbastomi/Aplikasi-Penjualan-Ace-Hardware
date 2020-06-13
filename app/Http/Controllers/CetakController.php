@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use PDF;
 use App\Barang;
 use App\Barang_datang;
@@ -10,10 +11,19 @@ use App\Barang_pengiriman;
 use App\Barang_rusak;
 use App\Barang_terjual;
 use App\Supplier;
+use App\Pembeli;
 use Illuminate\Http\Request;
 
 class CetakController extends Controller
 {
+    public function pembeli()
+    {
+        $data = Pembeli::all();
+
+        $pdf = PDF::loadview('laporan/pembeli', compact('data'));
+        return $pdf->stream('laporan-pembeli-pdf');
+    }
+
     public function supplier()
     {
         $data = Supplier::all();
@@ -53,12 +63,19 @@ class CetakController extends Controller
 
     public function diskon()
     {
+        $now = Carbon::now()->format('Y-m-d');
+
         $data = Barang::all();
 
-        $data = $data->map(function ($item) {
+        $data = $data->map(function ($item) use ($now) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
             $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+            if ($item->tgl_aktif >= $now) {
+                $item['status_diskon'] = 1;
+            } else {
+                $item['status_diskon'] = 2;
+            }
             return $item;
         });
 
@@ -68,14 +85,21 @@ class CetakController extends Controller
 
     public function angkadiskon(Request $request)
     {
+        $now = Carbon::now()->format('Y-m-d');
+
         $diskon = $request->diskon;
 
         $data = Barang::where('diskon', '=', $diskon)->get();
 
-        $data = $data->map(function ($item) {
+        $data = $data->map(function ($item) use ($now) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
             $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+            if ($item->tgl_aktif >= $now) {
+                $item['status_diskon'] = 1;
+            } else {
+                $item['status_diskon'] = 2;
+            }
             return $item;
         });
 

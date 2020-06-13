@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laporan Data Barang Diskon</title>
+    <title>Laporan Data Pembeli</title>
     <link rel="icon" type="image/png" href="{{url('img/logo.png')}}">
     <style>
         .logo {
@@ -103,62 +103,26 @@
     </div>
 
     <div class="container" style="margin-top:-40px;">
-        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Diskon {{$diskon}}%</h3>
+        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Pembeli</h3>
         <table class='table table-bordered nowrap'>
             <thead>
                 <tr>
                     <th scope="col" class="text-center">No</th>
-                    <th scope="col" class="text-center">Nama Barang</th>
-                    <th scope="col" class="text-center">Kode Barang</th>
-                    <th scope="col" class="text-center">Kategori</th>
-                    <th scope="col" class="text-center">Satuan</th>
-                    <th scope="col" class="text-center">Harga Awal</th>
-                    <th scope="col" class="text-center">Waktu Aktif</th>
-                    <th scope="col" class="text-center">Status Diskon</th>
-                    <th scope="col" class="text-center">Diskon</th>
-                    <th scope="col" class="text-center">Harga Barang</th>
-                    <th scope="col" class="text-center">Stok</th>
+                    <th scope="col" class="text-center">Nama Pembeli</th>
+                    <th scope="col" class="text-center">E-Mail</th>
+                    <th scope="col" class="text-center">Nomor Telpeon</th>
+                    <th scope="col" class="text-center">Alamat</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($data as $d)
-                @isset($d->diskon)
                 <tr>
                     <td scope="col" class="text-center">{{$loop->iteration}}</td>
-                    <td scope="col" class="text-center">{{$d->nama_barang}}</td>
-                    <td scope="col" class="text-center">{{$d->kode_barang}}</td>
-                    <td scope="col" class="text-center">@if($d->kategori == 1)
-                        Alat Rumah
-                        @elseif($d->kategori == 2)
-                        Alat Kebersihan
-                        @elseif($d->kategori == 3)
-                        Alat Dapur
-                        @elseif($d->kategori == 4)
-                        Otomotif
-                        @elseif($d->kategori == 5)
-                        Peralatan Elektronik
-                        @elseif($d->kategori == 6)
-                        Olahraga & Outdoor
-                        @elseif($d->kategori == 7)
-                        Lain-lain
-                        @else
-                        -
-                        @endif</td>
-                    <td scope="col" class="text-center">{{$d->satuan}}</td>
-                    <td scope="col" class="text-center">Rp.{{$d->harga_jual}},-</td>
-                    <td scope="col" class="text-center"> {{Carbon\Carbon::parse($d->tgl_aktif)->translatedFormat('d F Y')}}</td>
-                    <td>
-                        @if($d->status_diskon == 1 && $d->diskon != null)
-                        <span class="badge badge-success">Aktif</span>
-                        @elseif($d->status_diskon == 2 && $d->diskon != null)
-                        <span class="badge badge-danger">Expired</span>
-                        @endif
-                    </td>
-                    <td scope="col" class="text-center">{{$d->diskon}}%</td>
-                    <td scope="col" class="text-center">Rp.{{$d->harga_diskon}}</td>
-                    <td scope="col" class="text-center">{{$d->stok_tersedia}} {{$d->satuan}}</td>
+                    <td>{{$d->nama_pembeli}}</td>
+                    <td>{{$d->email}}</td>
+                    <td>{{$d->telp}}</td>
+                    <td>{{$d->alamat}}</td>
                 </tr>
-                @endisset
                 @endforeach
             </tbody>
         </table>

@@ -39,6 +39,10 @@
                             <td><input type="submit" style=" background-color:Transparent; outline:none; border:none; cursor:pointer; overflow:hidden;" id="diskon"></td>
                         </tr>
                         <tr>
+                            <td class="font-weight-bold">Aktif Diskon&emsp14;&emsp14;&emsp14;</td>
+                            <td><input type="submit" style=" background-color:Transparent; outline:none; border:none; cursor:pointer; overflow:hidden;" id="tgl_aktif"></td>
+                        </tr>
+                        <tr>
                             <td class="font-weight-bold">Harga Diskon&emsp14;&emsp14;&emsp14;</td>
                             <td><input type="submit" style=" background-color:Transparent; outline:none; border:none; cursor:pointer; overflow:hidden;" id="harga_diskon"></td>
                         </tr>

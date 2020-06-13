@@ -113,6 +113,8 @@
                     <th scope="col" class="text-center">Kategori</th>
                     <th scope="col" class="text-center">Satuan</th>
                     <th scope="col" class="text-center">Harga Awal</th>
+                    <th scope="col" class="text-center">Waktu Aktif</th>
+                    <th scope="col" class="text-center">Status Diskon</th>
                     <th scope="col" class="text-center">Diskon</th>
                     <th scope="col" class="text-center">Harga Barang</th>
                     <th scope="col" class="text-center">Stok</th>
@@ -144,6 +146,14 @@
                         @endif</td>
                     <td scope="col" class="text-center">{{$d->satuan}}</td>
                     <td scope="col" class="text-center">Rp.{{$d->harga_jual}},-</td>
+                    <td scope="col" class="text-center"> {{Carbon\Carbon::parse($d->tgl_aktif)->translatedFormat('d F Y')}}</td>
+                    <td>
+                        @if($d->status_diskon == 1 && $d->diskon != null)
+                        <span class="badge badge-success">Aktif</span>
+                        @elseif($d->status_diskon == 2 && $d->diskon != null)
+                        <span class="badge badge-danger">Expired</span>
+                        @endif
+                    </td>
                     <td scope="col" class="text-center">{{$d->diskon}}%</td>
                     <td scope="col" class="text-center">Rp.{{$d->harga_diskon}}</td>
                     <td scope="col" class="text-center">{{$d->stok_tersedia}} {{$d->satuan}}</td>
