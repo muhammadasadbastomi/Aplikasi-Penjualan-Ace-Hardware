@@ -44,12 +44,11 @@ class BarangrusakController extends Controller
             'required' => ':attribute harus diisi.',
         ];
         $request->validate([
-
-
             'tgl_cek' => 'required',
             'kerusakan' => 'required',
             'jumlah_barang' => 'required',
         ], $messages);
+
 
         // create new object
         $barangrusak = new Barang_rusak;
@@ -60,6 +59,10 @@ class BarangrusakController extends Controller
         $barangrusak->status = 1;
         $barangrusak->jumlah_barang = $request->jumlah_barang;
         $barangrusak->save();
+
+        $barang = Barang::findOrFail($barangrusak->barang_id);
+        $barang->stok_tersedia = $barang->stok_tersedia - $request->jumlah_barang;
+        $barang->update();
 
         return redirect('admin/barang/rusak/index')->with('success', 'Data berhasil disimpan');
     }
@@ -110,13 +113,19 @@ class BarangrusakController extends Controller
 
         // create new object
         $barangrusak = Barang_rusak::where('uuid', $id)->first();
-        $barangrusak->barang_id = $request->barang_id;
+        // $barangrusak->barang_id = $request->barang_id;
         $barangrusak->kerusakan = $request->kerusakan;
         $barangrusak->tgl_cek = $request->tgl_cek;
         $barangrusak->tgl_selesai = $request->tgl_selesai;
         $barangrusak->status = $request->status;
         $barangrusak->jumlah_barang = $request->jumlah_barang;
         $barangrusak->update();
+        // dd($barangrusak->barang_id);
+        if ($request->status == 3) {
+            $barang = Barang::findOrFail($barangrusak->barang_id);
+            $barang->stok_tersedia = $request->jumlah_barang + $barang->stok_tersedia;
+            $barang->update();
+        }
 
         return redirect('admin/barang/rusak/index')->with('success', 'Data Berhasil Diubah');
     }

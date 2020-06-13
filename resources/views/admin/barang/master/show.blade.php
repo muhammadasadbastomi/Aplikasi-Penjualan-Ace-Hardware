@@ -166,6 +166,10 @@
                                             <input type="number" id="diskon" name="diskon" class="form-control @error ('diskon') is-invalid @enderror" placeholder="Masukkan Diskon" value="{{ $barang->diskon }}">
                                         </div>
                                         <div class="form-group">
+                                            <label>Waktu Aktif </label>
+                                            <input type="date" id="tgl_aktif" name="tgl_aktif" class="form-control @error ('tgl_aktif') is-invalid @enderror" value="{{ $barang->tgl_aktif }}">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Stok </label>
                                             <input type="number" id="stok_tersedia" name="stok_tersedia" class="form-control @error ('stok_tersedia') is-invalid @enderror" placeholder="Masukkan stok" value="{{ $barang->stok_tersedia }}">
                                         </div>

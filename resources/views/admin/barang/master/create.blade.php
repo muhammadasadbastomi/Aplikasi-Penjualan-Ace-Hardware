@@ -48,6 +48,12 @@
             @error('departement')<div class="invalid-feedback"> {{$message}} </div>@enderror
         </div>
 
+        <label>Watku Aktif</label>
+        <div class="form-group">
+            <input type="date" name="tgl_aktif" id="tgl_aktif" value="{{old('tgl_aktif')}}" class="form-control">
+            @error('tgl_aktif')<div class="invalid-feedback"> {{$message}} </div>@enderror
+        </div>
+
         <label>Harga Jual</label>
         <div class="form-group">
             <input type="number" name="harga_jual" id="harga_jual" placeholder="Masukkan Harga" value="{{old('harga_jual')}}" class="form-control">

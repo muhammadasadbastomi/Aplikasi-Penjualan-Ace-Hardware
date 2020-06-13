@@ -10,7 +10,7 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Edit Barang Rusak</h2>
+                        <h2 class="content-header-title float-left mb-0">Edit Barang Rusak {{$barangrusak->barang->nama_barang}}</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('adminIndex')}}">Home</a>
@@ -34,7 +34,7 @@
                             {{method_field('PUT')}}
                             @csrf
                             <div class="card-body">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="barang_id">Nama barang</label>
                                     <select class="custom-select" name="barang_id" id="barang_id">
                                         @foreach($barang as $b)
@@ -42,7 +42,7 @@
                                             {{$b->nama_barang}}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
                                     <label>Kerusakan </label>
@@ -75,7 +75,7 @@
 
                                 <div class="form-group">
                                     <label>Jumlah </label>
-                                    <input type="number" id="jumlah_barang" name="jumlah_barang" class="form-control @error ('jumlah_barang') is-invalid @enderror" placeholder="Masukkan Jumlah" value="{{ $barangrusak->jumlah_barang }}">
+                                    <input type="number" id="jumlah_barang" name="jumlah_barang" class="form-control @error ('jumlah_barang') is-invalid @enderror" placeholder="Masukkan Jumlah" value="{{ $barangrusak->jumlah_barang }}" readonly>
                                 </div>
 
                             </div>
