@@ -24,7 +24,7 @@
                             <div class="search-bar">
                                 <form action="/home/shop" method="GET">
                                     <fieldset class="form-group position-relative has-icon-left">
-                                        <input type="text" class="form-control round" name="search" id="search" placeholder="Search ...">
+                                        <input type="text" class="form-control round" name="search" id="search" placeholder="Search ..." value="{{ old('search') }}">
                                         <div class="form-control-position">
                                             <i class="feather icon-search px-1"></i>
                                         </div>
