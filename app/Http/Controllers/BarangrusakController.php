@@ -134,16 +134,20 @@ class BarangrusakController extends Controller
         $barangrusak->kerusakan = $request->kerusakan;
         $barangrusak->tgl_cek = $request->tgl_cek;
         $barangrusak->tgl_selesai = $request->tgl_selesai;
-        $barangrusak->status = $request->status;
         $barangrusak->jumlah_barang = $request->jumlah_barang;
-        $barangrusak->update();
+        if($barangrusak->status != 3){
         // dd($barangrusak->barang_id);
         if ($request->status == 3) {
+
+
             $barang = Barang::findOrFail($barangrusak->barang_id);
             $barang->stok_tersedia = $request->jumlah_barang + $barang->stok_tersedia;
             $barang->update();
         }
+    }
+        $barangrusak->status = $request->status;
 
+        $barangrusak->update();
         return redirect('admin/barang/rusak/index')->with('success', 'Data Berhasil Diubah');
     }
 
