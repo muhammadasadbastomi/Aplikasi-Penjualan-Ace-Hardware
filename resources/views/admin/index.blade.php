@@ -15,9 +15,9 @@
                         <div class="card">
                             <div class="card-header d-flex flex-column align-items-start pb-0">
                                 <div class="avatar-content" style="margin-left:3px;">
-                                    <h3> <i class="feather icon-layout text-primary font-medium-5"></i> &emsp14; <a href="{{route('thumbIndex')}}" class="mb-0" style="color:black;">Thumbnail</a></h3>
+                                    <h3> <i class="feather icon-layout text-primary font-medium-5"></i> &emsp14; <a href="{{route('thumbIndex')}}" class="mb-0" style="color:black;">Etelase</a></h3>
                                 </div>
-                                <h5 class="text-bold-700 mt-1 mb-25">@if(empty(totalThumb())) Belum Ada Data Thumbnail @else Total : {{totalThumb()}} Thumbnail <br><br> @endif</h5>
+                                <h5 class="text-bold-700 mt-1 mb-25">@if(empty(totalThumb())) Belum Ada Data Etalase @else Total : {{totalThumb()}} Etalase <br><br> @endif</h5>
                                 <hr>
                                 <a href="{{route('thumbIndex')}}" type="button" class="btn btn-flat-primary round border-primary text-primary mr-1 mb-1 waves-effect waves-light" style="width: 100%;"> <i class="feather icon-layout text-primary font-medium-2"></i> Lihat Data</a>
                             </div>
