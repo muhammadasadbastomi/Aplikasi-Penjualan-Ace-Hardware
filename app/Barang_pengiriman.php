@@ -16,4 +16,8 @@ class Barang_pengiriman extends Model
     {
         return $this->belongsTo(Barang::class);
     }
+    public function pembeli()
+    {
+        return $this->belongsTo(Pembeli::class);
+    }
 }

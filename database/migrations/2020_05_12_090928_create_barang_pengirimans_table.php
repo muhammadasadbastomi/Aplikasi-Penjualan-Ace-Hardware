@@ -17,10 +17,9 @@ class CreateBarangPengirimansTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
             $table->unsignedBigInteger('barang_id');
+            $table->unsignedBigInteger('pembeli_id');
             $table->string('kode_pengiriman');
-            $table->string('nama_pembeli');
             $table->date('tgl_pengiriman');
-            $table->text('alamat_pengiriman');
             $table->string('jumlah');
             $table->string('status');
             $table->timestamps();

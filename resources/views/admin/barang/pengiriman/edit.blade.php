@@ -49,9 +49,13 @@
                                     <input type="text" id="kode_pengiriman" name="kode_pengiriman" class="form-control @error ('kode_pengiriman') is-invalid @enderror" placeholder="Masukkan nama pembeli" value="{{ $barangpengiriman->kode_pengiriman }}">
                                 </div>
 
+                                <label>Nama Pembeli</label>
                                 <div class="form-group">
-                                    <label>Nama Pembeli </label>
-                                    <input type="text" id="nama_pembeli" name="nama_pembeli" class="form-control @error ('nama_pembeli') is-invalid @enderror" placeholder="Masukkan nama pembeli" value="{{ $barangpengiriman->nama_pembeli }}">
+                                    <select class="custom-select selectname" name="pembeli_id" id="pembeli_id">
+                                        @foreach($pembeli as $d)
+                                        <option value="{{$d->id}}">{{ $d->nama_pembeli}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -61,7 +65,7 @@
 
                                 <label>Alamat Pengiriman</label>
                                 <div class="form-group">
-                                    <textarea type="text" name="alamat_pengiriman" id="alamat_pengiriman" placeholder="Masukkan Alamat" class="form-control">{{ $barangpengiriman->alamat_pengiriman }} </textarea>
+                                    <textarea type="text" name="alamat" id="alamat" placeholder="Masukkan Alamat" class="form-control">{{ $barangpengiriman->pembeli->alamat }} </textarea>
                                 </div>
 
                                 <div class="form-group">

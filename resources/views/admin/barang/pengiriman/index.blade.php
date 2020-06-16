@@ -66,26 +66,26 @@
                                                 @foreach ($barangpengiriman as $d)
                                                 <tr>
                                                     <td scope="col">{{ $loop->iteration }}</td>
-                                                    <td scope="col">{{ $d->nama_pembeli }}</td>
+                                                    <td scope="col">{{ $d->pembeli->nama_pembeli }}</td>
                                                     <td scope="col" class="text-center">{{ $d->kode_pengiriman }}</td>
                                                     <td scope="col">{{ $d->barang->nama_barang }}</td>
                                                     <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_pengiriman)->translatedFormat('d F Y')}}</td>
-                                                    <td scope="col">{{ $d->alamat_pengiriman }}</td>
+                                                    <td scope="col">{{ $d->pembeli->alamat }}</td>
                                                     <td scope="col">{{ $d->jumlah }} {{$d->barang->satuan}}</td>
                                                     @if($d->status == 1)
-                                                    <td scope="col"><a class="btn btn-warning btn-sm text-white">Packing</a>
+                                                    <td scope="col"><button class="btn btn-warning btn-sm text-white" data-toggle="modal" data-id="{{$d->id}}" data-target="#modalstatus" data-status="{{$d->status}}">Packing</button>
                                                     </td>
                                                     @elseif($d->status == 2)
-                                                    <td scope="col"><a class="btn btn-info btn-sm text-white">Dalam
-                                                            Pengiriman</a>
+                                                    <td scope="col"><button class="btn btn-info btn-sm text-white" data-toggle="modal" data-id="{{$d->id}}" data-target="#modalstatus" data-status="{{$d->status}}">Dalam Pengiriman</button>
                                                     </td>
                                                     @elseif($d->status == 3)
-                                                    <td scope="col"><a class="btn btn-success btn-sm text-white">Terkirim</a>
+                                                    <td scope="col"><button class="btn btn-success btn-sm text-white" data-toggle="modal" data-id="{{$d->id}}" data-target="#modalstatus" data-status="{{$d->status}}">Terkirim</button>
                                                     </td>
                                                     @else
-                                                    <td scope="col"><a class="btn btn-success btn-sm text-white">-</a>
+                                                    <td scope="col"><button class="btn btn-success btn-sm text-white" data-toggle="modal" data-id="{{$d->id}}" data-target="#modalstatus" data-status="{{$d->status}}">-</button>
                                                     </td>
                                                     @endif
+                                                    @include('admin.barang.pengiriman.status')
                                                     <td scope="col" class="text-center">
                                                         <a class="btn btn-sm btn-info text-white" href="{{route('pengirimanEdit', ['id' => $d->uuid])}}"><i class="feather icon-edit"></i></a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$d->uuid}}" href="#"><i class="feather icon-trash"></i></a>
@@ -137,17 +137,21 @@
 
                         <label>Nama Pembeli</label>
                         <div class="form-group">
-                            <input type="text" name="nama_pembeli" id="nama_pembeli" value="{{old('nama_pembeli')}}" placeholder="Masukkan Nama Pembeli" class="form-control">
+                            <select class="custom-select selectname" name="pembeli_id" id="pembeli_id">
+                                @foreach($pembeli as $d)
+                                <option value="{{$d->id}}">{{ $d->nama_pembeli}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
-                        <label>Alamat Pengiriman</label>
+                        <!-- <label>Alamat Pengiriman</label>
                         <div class="form-group">
-                            <textarea type="text" name="alamat_pengiriman" id="alamat_pengiriman" placeholder="Masukkan Alamat" class="form-control">{{ old('alamat_pengiriman') }} </textarea>
-                        </div>
+                            <textarea type="text" name="alamat_pengiriman" id="alamat_pengiriman" placeholder="Masukkan Alamat" class="id form-control">{{ old('alamat_pengiriman') }} </textarea>
+                        </div> -->
 
                         <label>Tanggal Pengiriman</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_pengiriman" id="tgl_pengiriman" value="{{old('tgl_pengiriman')}}" class="form-control" required>
+                            <input type="date" name="tgl_pengiriman" class="form-control" required>
                         </div>
 
                         <label>Jumlah</label>
@@ -174,57 +178,20 @@
         </div>
     </div>
 </div>
-
-<!-- Modal Edit -->
-<div class="modal fade text-left" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalScrollable" style="padding-left: 10px;">Edit Barang</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" enctype="multipart/form-data">
-                    <div class="modal-body">
-                        <label>Nama Pembeli</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Nama Pembeli" class="form-control">
-                        </div>
-
-                        <label>Tanggal Pengiriman</label>
-                        <div class="form-group">
-                            <input type="date" class="form-control">
-                        </div>
-
-                        <label>Alamat</label>
-                        <div class="form-group">
-                            <textarea type="text" placeholder="Masukkan Alamat" class="form-control"> </textarea>
-                        </div>
-
-                        <label>Jumlah</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Jumlah" class="form-control">
-                        </div>
-
-                        <label>Status</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="Masukkan Status" class="form-control">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Ubah</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 
 @section('script')
+<script>
+    $('#modalstatus').on('show.bs.modal', function(event) {
+        let button = $(event.relatedTarget)
+        let id = button.data('id')
+        let status = button.data('status')
+        let modal = $(this)
+
+        modal.find('.modal-body #id').val(id)
+        modal.find('.modal-body #status').val(status)
+    })
+</script>
 <script>
     $(document).on('click', '.delete', function(e) {
         e.preventDefault();

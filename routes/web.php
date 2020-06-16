@@ -1,7 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     //Route::get('/admin/barang/pengiriman/show', 'BarangpengirimanController@show')->name('pengirimanShow');
     Route::get('/admin/barang/pengiriman/edit/{id}', 'BarangpengirimanController@edit')->name('pengirimanEdit');
     Route::put('/admin/barang/pengiriman/edit/{id}', 'BarangpengirimanController@update')->name('pengirimanUpdate');
+    Route::post('/admin/barang/pengiriman/update', 'BarangpengirimanController@status')->name('statusUpdate');
     Route::delete('/admin/barang/pengiriman/delete/{id}', 'BarangpengirimanController@destroy')->name('pengirimanDelete');
 
     Route::get('/admin/barang/terjual/index', 'BarangterjualController@index')->name('terjualIndex');
