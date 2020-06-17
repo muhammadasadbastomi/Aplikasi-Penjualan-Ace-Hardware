@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     Route::delete('/admin/thumbnail/delete/{id}', 'ThumbController@delete')->name('thumbDelete');
 
     Route::get('/admin/barang/master/index', 'BarangController@index')->name('barangIndex');
+    Route::post('/admin/barang/master/diskon/index', 'BarangController@email')->name('barangdiskonemail');
     Route::post('/admin/barang/master/index', 'BarangController@store')->name('barangStore');
     Route::get('/admin/barang/master/show/{id}', 'BarangController@show')->name('barangShow');
     //Route::get('/admin/barang/master/edit', 'BarangController@edit')->name('barangEdit');

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Barang;
+use App\Pembeli;
 use App\Supplier;
 use Carbon\Carbon;
+use App\Mail\NotifDiskon;
 use Illuminate\Http\Request;
 use ImageResize;
+use Illuminate\Support\Facades\Mail;
 
 class BarangController extends Controller
 {
@@ -18,6 +21,13 @@ class BarangController extends Controller
     public function index()
     {
         $now = Carbon::now()->format('Y-m-d');
+
+        $data = Barang::orderBy('tgl_aktif', 'asc')->where('tgl_aktif', '>=', $now)->get();
+        $data = $data->map(function ($item) {
+            $diskon = ($item->diskon / 100) * $item->harga_jual;
+            $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+            return $item;
+        });
 
         $supplier = Supplier::orderBy('id', 'asc')->get();
         $barang = Barang::orderBy('id', 'desc')->get();
@@ -31,8 +41,7 @@ class BarangController extends Controller
             }
             return $item;
         });
-
-        return view('admin.barang.master.index', compact('barang', 'supplier'));
+        return view('admin.barang.master.index', compact('barang', 'supplier', 'data'));
     }
 
     /**
@@ -40,9 +49,13 @@ class BarangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function email()
     {
-        //
+        $pembeli = Pembeli::all();
+        foreach ($pembeli as $d) {
+            Mail::to($d->email)->send(new NotifDiskon($d));
+        }
+        return redirect()->back()->with('success', 'Berhasil! Email Terkirim!');
     }
 
     /**

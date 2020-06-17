@@ -42,7 +42,8 @@ class BarangpengirimanController extends Controller
         $data->status = $request->status;
         $data->update();
 
-        return redirect()->back()->with('success', 'Status Berhasil diUbah');
+        Mail::to($data->pembeli->email)->send(new NotifPengirimanBarang($data));
+        return redirect()->back()->with('success', 'Data Berhasil Diubah, <br> Terkirim ke ' . $data->pembeli->nama_pembeli . '');
     }
 
     /**
@@ -76,7 +77,7 @@ class BarangpengirimanController extends Controller
         $barangpengiriman->save();
 
         Mail::to($barangpengiriman->pembeli->email)->send(new NotifPengirimanBarang($barangpengiriman));
-        return redirect('admin/barang/pengiriman/index')->with('success', 'Data berhasil disimpan');
+        return redirect('admin/barang/pengiriman/index')->with('success', 'Data Berhasil Disimpan, <br> Terkirim ke ' . $barangpengiriman->pembeli->nama_pembeli . '');
     }
 
     /**

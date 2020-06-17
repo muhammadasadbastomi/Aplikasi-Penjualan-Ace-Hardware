@@ -47,6 +47,7 @@
                                 <div class="form-group">
                                     <label>Kode Pengiriman </label>
                                     <input type="text" id="kode_pengiriman" name="kode_pengiriman" class="form-control @error ('kode_pengiriman') is-invalid @enderror" placeholder="Masukkan nama pembeli" value="{{ $barangpengiriman->kode_pengiriman }}">
+                                    @error('kode_pengiriman')<div class="invalid-feedback"> {{$message}} </div>@enderror
                                 </div>
 
                                 <label>Nama Pembeli</label>
@@ -71,6 +72,7 @@
                                 <div class="form-group">
                                     <label>Jumlah </label>
                                     <input type="number" id="jumlah" name="jumlah" class="form-control @error ('jumlah') is-invalid @enderror" placeholder="Masukkan Jumlah" value="{{ $barangpengiriman->jumlah }}">
+                                    @error('jumlah')<div class="invalid-feedback"> {{$message}} </div>@enderror
                                 </div>
 
                                 <div class="form-group">

@@ -18,7 +18,6 @@ class NotifPengirimanBarang extends Mailable
      *
      * @return void
      */
-    public $barangpengiriman;
     public function __construct($barangpengiriman)
     {
         $this->barangpengiriman = $barangpengiriman;
@@ -31,13 +30,12 @@ class NotifPengirimanBarang extends Mailable
      */
     public function build()
     {
-
         return $this->markdown('emails.sites.pengiriman')->with([
             'status' => $this->barangpengiriman->status,
             'nama_pembeli' => $this->barangpengiriman->pembeli->nama_pembeli,
             'nama_barang' => $this->barangpengiriman->barang->nama_barang,
             'kode' => $this->barangpengiriman->kode_pengiriman,
-            'tgl_pengiriman' => Carbon::parse($this->barangpengiriman->tgl_pengiriman)->translatedFormat('l, d F Y'),
+            'tgl_pengiriman' => Carbon::now()->translatedFormat('l, d F Y'),
         ]);
     }
 }

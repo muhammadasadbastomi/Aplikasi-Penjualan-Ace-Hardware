@@ -2,13 +2,13 @@
 Hai {{$nama_pembeli}},
 
 Barang anda {{$nama_barang}} dengan Kode Pengiriman {{$kode}} <br>
-Sedang di @if($status == 3) Terkirim @elseif($status == 2) Dalam Pengiriman @else Packing @endif Pada Tanggal {{$tgl_pengiriman}}
+@if($status == 3) Sudah Terkirim @elseif($status == 2) Sedang Dalam Pengiriman @else Sedang di Packing @endif Pada Tanggal {{$tgl_pengiriman}}
 
-@component('mail::button', ['url' => 'http://127.0.0.1:8000/'])
+@component('mail::button', ['url' => 'http://127.0.0.1:8000/', 'color' => 'primary'])
 Klik Disini Untuk Kunjungi Website Kami
 @endcomponent
 
 TerimaKasih,<br>
-PT Ace Hardware, Qmall Banjarbaru<br>
+<a style="text-decoration: none;" href="['url' => 'http://127.0.0.1:8000/']">PT Ace Hardware</a>, Qmall Banjarbaru<br>
 Jl. A Yani KM 36, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan.
 @endcomponent

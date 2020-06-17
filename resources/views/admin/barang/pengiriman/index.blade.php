@@ -132,7 +132,8 @@
 
                         <label>Kode pengiriman</label>
                         <div class="form-group">
-                            <input type="text" name="kode_pengiriman" id="kode_pengiriman" value="{{old('kode_pengiriman')}}" placeholder="Masukkan Kode Pengiriman" class="form-control">
+                            <input type="text" name="kode_pengiriman" id="kode_pengiriman" value="{{old('kode_pengiriman')}}" placeholder="Masukkan Kode Pengiriman" class="form-control @error ('kode_pengiriman') is-invalid @enderror">
+                            @error('kode_pengiriman')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <label>Nama Pembeli</label>
@@ -156,7 +157,8 @@
 
                         <label>Jumlah</label>
                         <div class="form-group">
-                            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah" value="{{old('jumlah')}}" class="form-control">
+                            <input type="number" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah" value="{{old('jumlah')}}" class="form-control @error ('jumlah') is-invalid @enderror">
+                            @error('jumlah')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <div class="form-group">
