@@ -61,6 +61,19 @@ class CetakController extends Controller
         return $pdf->stream('laporan-barang-datang-pdf');
     }
 
+    public function datangtgl(Request $request)
+    {
+        $start = $request->start;
+        $end = $request->end;
+        $now = Carbon::now()->format('Y-m-d');
+
+        $data = Barang_datang::whereBetween('tgl_masuk', [$start, $end])->get();
+        $total = Barang_datang::whereBetween('tgl_masuk', [$start, $end])->sum('total');
+
+        $pdf = PDF::loadview('laporan/datangtgl', compact('data', 'total', 'end', 'start', 'now'));
+        return $pdf->stream('laporan-barang-datang-tanggal-pdf');
+    }
+
     public function diskon()
     {
         $now = Carbon::now()->format('Y-m-d');
@@ -132,12 +145,37 @@ class CetakController extends Controller
         return $pdf->stream('laporan-barang-terjual-pdf');
     }
 
+    public function terjualtgl(Request $request)
+    {
+        $start = $request->start;
+        $end = $request->end;
+        $now = Carbon::now()->format('Y-m-d');
+
+        $data = Barang_terjual::whereBetween('tgl_terjual', [$start, $end])->get();
+        $total = Barang_terjual::whereBetween('tgl_terjual', [$start, $end])->sum('total_terjual');
+
+        $pdf = PDF::loadview('laporan/terjualtgl', compact('data', 'total', 'end', 'start', 'now'));
+        return $pdf->stream('laporan-barang-terjual-tanggal-pdf');
+    }
+
     public function garansi()
     {
         $data = Barang_garansi::all();
 
         $pdf = PDF::loadview('laporan/garansi', compact('data'));
         return $pdf->stream('laporan-barang-garansi-pdf');
+    }
+
+    public function garansitglakhir(Request $request)
+    {
+        $start = $request->start;
+        $end = $request->end;
+        $now = Carbon::now()->format('Y-m-d');
+
+        $data = Barang_garansi::whereBetween('tgl_akhir_garansi', [$start, $end])->get();
+
+        $pdf = PDF::loadview('laporan/garansitanggal', compact('data', 'end', 'start', 'now'));
+        return $pdf->stream('laporan-barang-garansi-tanggal-akhir-pdf');
     }
 
     public function rusak()

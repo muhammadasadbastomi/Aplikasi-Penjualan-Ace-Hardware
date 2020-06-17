@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laporan Data Barang Garansi</title>
+    <title>Laporan Data Barang Terjual</title>
     <link rel="icon" type="image/png" href="{{url('img/logo.png')}}">
     <style>
         .logo {
@@ -97,39 +97,55 @@
         <div class="headtext">
             <h3 style="margin:0px;">PT ACE HARDWARE</h3>
             <h1 style="margin:0px;">Q Mall Banjarbaru</h1>
-            <p style="margin:0px;">Jl. A. Yani KM 36, Komet, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan 70714</p>
+            <p style="margin:0px;">Jl. A. Yani KM 36, Komet, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan 70714
+            </p>
         </div>
         <hr>
     </div>
 
     <div class="container" style="margin-top:-40px;">
-        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Garansi</h3>
+        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Terjual</h3>
+        <div style="text-align:right; margin-bottom:5px;">
+            <small>Rekap : {{$start}} s/d {{$end}}</small>
+        </div>
         <table class='table table-bordered nowrap'>
             <thead>
                 <tr>
                     <th scope="col" class="text-center">No</th>
                     <th scope="col" class="text-center">Nama Barang</th>
-                    <th scope="col" class="text-center">Kode Barang</th>
-                    <th scope="col" class="text-center">Nama Pembeli</th>
-                    <th scope="col" class="text-center">Tanggal Pembelian</th>
-                    <th scope="col" class="text-center">Tanggal Akhir Garansi</th>
-                    <th scope="col" class="text-center">Jumlah</th>
+                    <th scope="col" class="text-center">Tanggal Terjual</th>
+                    <th scope="col" class="text-center">Jumlah Terjual</th>
+                    <th scope="col" class="text-center">Diskon</th>
+                    <th scope="col" class="text-center">Harga Satuan</th>
+                    <th scope="col" class="text-center">Total</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($data as $d)
                 <tr>
-                    <td scope="col" class="text-center">{{$loop->iteration }}</td>
-                    <td scope="col" class="text-center">{{$d->barang->nama_barang }}</td>
-                    <td scope="col" class="text-center">{{$d->barang->kode_barang }}</td>
-                    <td scope="col" class="text-center">{{$d->pembeli->nama_pembeli }}</td>
-                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgk_pembelian)->translatedFormat('d F Y')}}</td>
-                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_akhir_garansi)->translatedFormat('d F Y')}}</td>
-                    <td scope="col" class="text-center">{{$d->jumlah}} {{$d->barang->satuan}}</td>
+                    <td scope="col" class="text-center">{{$loop->iteration}}</td>
+                    <td scope="col" class="text-center">{{$d->barang->nama_barang}}</td>
+                    <td scope="col" class="text-center">
+                        {{Carbon\Carbon::parse($d->tgl_terjual)->translatedFormat('d F Y')}}</td>
+                    <td scope="col" class="text-center">{{$d->jumlah_terjual}} {{$d->barang->satuan}}</td>
+                    <td scope="col" class="text-center">
+                        @if($d->diskon_terjual)
+                        {{$d->diskon_terjual}}
+                        @else -
+                        @endif</td>
+                    <td scope="col" class="text-center">Rp. {{number_format( $d->harga_terjual, 0, ',', '.')}},-</td>
+                    <td scope="col" class="text-center">Rp. {{number_format( $d->total_terjual, 0, ',', '.')}},-</td>
                 </tr>
                 @endforeach
             </tbody>
+            <tfoot>
+                <tr>
+                    <th scope="col" class="align-right" colspan="6">Total : </th>
+                    <th scope="col" class="align-center">Rp. {{number_format( $total, 0, ',', '.')}},-</th>
+                </tr>
+            </tfoot>
         </table>
+        <!-- <small>Dicetak pada : {{$now}}</small> -->
         <br>
         <br>
         <!-- <div class="ttd">

@@ -43,6 +43,7 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" target="_blank" href="{{route('datangCetak')}}">Keseluruhan</a>
+                                        <button class="btn nohover dropdown-item" data-toggle="modal" data-target="#modaltgl">Berdasarkan Tanggal</button>
                                     </div>
                                 </div>
                             </div>
@@ -93,6 +94,8 @@
     </div>
 </div>
 <!-- END: Content-->
+
+@include('admin.barang.datang.cetaktanggal')
 
 <!-- Modal Tambah -->
 <div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
@@ -145,7 +148,6 @@
         </div>
     </div>
 </div>
-
 
 @endsection
 

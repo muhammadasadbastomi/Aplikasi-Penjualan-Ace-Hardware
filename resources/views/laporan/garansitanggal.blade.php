@@ -104,6 +104,9 @@
 
     <div class="container" style="margin-top:-40px;">
         <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Garansi</h3>
+        <div style="text-align:right; margin-bottom:5px;">
+            <small>Rekap : {{$start}} s/d {{$end}}</small>
+        </div>
         <table class='table table-bordered nowrap'>
             <thead>
                 <tr>
@@ -123,13 +126,14 @@
                     <td scope="col" class="text-center">{{$d->barang->nama_barang }}</td>
                     <td scope="col" class="text-center">{{$d->barang->kode_barang }}</td>
                     <td scope="col" class="text-center">{{$d->pembeli->nama_pembeli }}</td>
-                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgk_pembelian)->translatedFormat('d F Y')}}</td>
-                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_akhir_garansi)->translatedFormat('d F Y')}}</td>
+                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_pembelian)->translatedFormat('d F Y')}}</td>
+                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->akhir_garansi)->translatedFormat('d F Y')}}</td>
                     <td scope="col" class="text-center">{{$d->jumlah}} {{$d->barang->satuan}}</td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        <!-- <small>Dicetak pada : {{$now}}</small> -->
         <br>
         <br>
         <!-- <div class="ttd">
