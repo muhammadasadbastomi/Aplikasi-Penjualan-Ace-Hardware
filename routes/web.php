@@ -109,6 +109,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     Route::get('/admin/SelesaiPerbaikan/cetak', 'CetakController@perbaikan1')->name('perbaikan1Cetak');
     Route::get('/admin/BelumDiperbaiki/cetak', 'CetakController@perbaikan3')->name('perbaikan3Cetak');
     Route::get('/admin/DalamPerbaikan/cetak', 'CetakController@perbaikan4')->name('perbaikan4Cetak');
+    Route::get('/admin/TidakBisaDipebaiki/cetak', 'CetakController@perbaikan2')->name('perbaikan2Cetak');
     Route::get('/admin/Etalase/cetak', 'CetakController@etalase')->name('etalaseCetak');
     Route::get('/admin/Etalase/Bulan/cetak', 'CetakController@etalasebulan')->name('etalasebulanCetak');
 });
