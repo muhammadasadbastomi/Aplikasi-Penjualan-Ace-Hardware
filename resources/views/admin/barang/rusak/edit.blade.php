@@ -17,8 +17,6 @@
                                 </li>
                                 <li class="breadcrumb-item"><a href="{{route('rusakIndex')}}">Barang Rusak</a>
                                 </li>
-                                <li class="breadcrumb-item active">Edit</a>
-                                </li>
                             </ol>
                         </div>
                     </div>

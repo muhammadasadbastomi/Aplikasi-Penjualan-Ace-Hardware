@@ -87,6 +87,7 @@
                                         <button class="btn nohover dropdown-item" data-toggle="modal" data-target="#modalsupplier">Berdasarkan Supplier</button>
                                         <a class="dropdown-item" target="_blank" href="{{route('diskonCetak')}}">Berdasarkan Diskon</a>
                                         <button class="btn nohover dropdown-item" data-toggle="modal" data-target="#modaldiskon">Berdasarkan Angka Diskon</button>
+                                        <a class="dropdown-item" target="_blank" href="{{route('diskonbulanCetak')}}">Berdasarkan Diskon Aktif Bulan Ini</a>
                                     </div>
                                 </div>
                             </div>

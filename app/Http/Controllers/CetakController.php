@@ -12,6 +12,7 @@ use App\Barang_rusak;
 use App\Barang_terjual;
 use App\Supplier;
 use App\Pembeli;
+use App\Thumbnail;
 use Illuminate\Http\Request;
 
 class CetakController extends Controller
@@ -78,7 +79,7 @@ class CetakController extends Controller
     {
         $now = Carbon::now()->format('Y-m-d');
 
-        $data = Barang::all();
+        $data = Barang::where('diskon', '!=', null)->get();
 
         $data = $data->map(function ($item) use ($now) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
@@ -94,6 +95,29 @@ class CetakController extends Controller
 
         $pdf = PDF::loadview('laporan/diskon', compact('data'));
         return $pdf->stream('laporan-barang-diskon-pdf');
+    }
+
+    public function diskonbulan()
+    {
+        $start = Carbon::now()->startOfMonth()->toDateString();
+        $end = Carbon::now()->endOfMonth()->toDateString();
+        $now = Carbon::now()->translatedFormat('F Y');
+        $noww = Carbon::now();
+
+        $data = Barang::where('tgl_aktif', '>=', $noww)->whereBetween('tgl_aktif', [$start, $end])->get();
+
+        $data = $data->map(function ($item) {
+            $diskon = ($item->diskon / 100) * $item->harga_jual;
+            $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
+            $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
+
+            $item['status_diskon'] = 1;
+
+            return $item;
+        });
+
+        $pdf = PDF::loadview('laporan/diskonbulan', compact('data', 'now'));
+        return $pdf->stream('laporan-barang-diskon-bulan-pdf');
     }
 
     public function angkadiskon(Request $request)
@@ -128,11 +152,26 @@ class CetakController extends Controller
         return $pdf->stream('laporan-barang-pengiriman-pdf');
     }
 
+    public function pengirimantgl(Request $request)
+    {
+        $start = $request->start;
+        $end = $request->end;
+        $now = Carbon::now()->format('Y-m-d');
+
+        $data = Barang_pengiriman::whereBetween('tgl_pengiriman', [$start, $end])->get();
+
+        $pdf = PDF::loadview('laporan/pengirimantgl', compact('data', 'start', 'end', 'now'));
+        return $pdf->stream('laporan-barang-pengiriman-tanggal-pdf');
+    }
+
     public function terkirim()
     {
-        $data = Barang_pengiriman::all();
+        $start = Carbon::now()->startOfMonth()->toDateString();
+        $end = Carbon::now()->endOfMonth()->toDateString();
+        $now = Carbon::now()->translatedFormat('F Y');
+        $data = Barang_pengiriman::where('status', '=', 3)->whereBetween('tgl_pengiriman', [$start, $end])->get();
 
-        $pdf = PDF::loadview('laporan/terkirim', compact('data'));
+        $pdf = PDF::loadview('laporan/terkirim', compact('data', 'now'));
         return $pdf->stream('laporan-barang-terkirim-pdf');
     }
 
@@ -188,17 +227,91 @@ class CetakController extends Controller
 
     public function perbaikan1()
     {
-        $data = Barang_rusak::all();
+        $start = Carbon::now()->startOfMonth()->toDateString();
+        $end = Carbon::now()->endOfMonth()->toDateString();
+        $now = Carbon::now()->translatedFormat('F Y');
 
-        $pdf = PDF::loadview('laporan/perbaikan1', compact('data'));
+        $data = Barang_rusak::where('status', '=', 3)->whereBetween('tgl_selesai', [$start, $end])->get();
+
+
+        $pdf = PDF::loadview('laporan/perbaikan1', compact('data', 'now'));
         return $pdf->stream('laporan-barang-perbaikan-pdf');
     }
 
     public function perbaikan2()
     {
-        $data = Barang_rusak::all();
+        $start = Carbon::now()->startOfMonth()->toDateString();
+        $end = Carbon::now()->endOfMonth()->toDateString();
+        $now = Carbon::now()->translatedFormat('F Y');
 
-        $pdf = PDF::loadview('laporan/perbaikan2', compact('data'));
+        $data = Barang_rusak::where('status', '=', 4)->whereBetween('updated_at', [$start, $end])->get();
+
+
+        $pdf = PDF::loadview('laporan/perbaikan2', compact('data', 'now'));
         return $pdf->stream('laporan-barang-perbaikan-pdf');
+    }
+    public function perbaikan3()
+    {
+        $start = Carbon::now()->startOfMonth()->toDateString();
+        $end = Carbon::now()->endOfMonth()->toDateString();
+        $now = Carbon::now()->translatedFormat('F Y');
+
+        $data = Barang_rusak::where('status', '=', 1)->whereBetween('created_at', [$start, $end])->get();
+
+
+        $pdf = PDF::loadview('laporan/perbaikan4', compact('data', 'now'));
+        return $pdf->stream('laporan-barang-perbaikan-pdf');
+    }
+
+    public function perbaikan4()
+    {
+        $start = Carbon::now()->startOfMonth()->toDateString();
+        $end = Carbon::now()->endOfMonth()->toDateString();
+        $now = Carbon::now()->translatedFormat('F Y');
+
+        $data = Barang_rusak::where('status', '=', 2)->whereBetween('updated_at', [$start, $end])->get();
+
+
+        $pdf = PDF::loadview('laporan/perbaikan3', compact('data', 'now'));
+        return $pdf->stream('laporan-barang-perbaikan-pdf');
+    }
+
+    public function etalase()
+    {
+        $now = Carbon::now();
+
+        $data = Thumbnail::all();
+        $data = $data->map(function ($item) use ($now) {
+            if ($item->tgl_aktif >= $now) {
+                $item['status_diskon'] = 1;
+            } else {
+                $item['status_diskon'] = 2;
+            }
+            return $item;
+        });
+
+        $pdf = PDF::loadview('laporan/etalase', compact('data', 'now'));
+        return $pdf->stream('laporan-etalase-pdf');
+    }
+
+    public function etalasebulan()
+    {
+        $start = Carbon::now()->startOfMonth()->toDateString();
+        $end = Carbon::now()->endOfMonth()->toDateString();
+        $noww = Carbon::now();
+        $now = Carbon::now()->translatedFormat('F Y');
+
+        $data = Thumbnail::where('tgl_aktif', '>=', $noww)->whereBetween('updated_at', [$start, $end])->get();
+        $data = $data->map(function ($item) use ($noww) {
+            if ($item->tgl_aktif >= $noww) {
+                $item['status_diskon'] = 1;
+            } else {
+                $item['status_diskon'] = 2;
+            }
+            return $item;
+        });
+
+        $pdf = PDF::loadview('laporan/etalasebulan', compact('data', 'now'));
+        return $pdf->stream('laporan-etalase-bulan-pdf');
     }
 }

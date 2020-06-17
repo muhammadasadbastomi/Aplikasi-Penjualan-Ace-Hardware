@@ -122,7 +122,6 @@
             </thead>
             <tbody>
                 @foreach($data as $d)
-                @isset($d->diskon)
                 <tr>
                     <td scope="col" class="text-center">{{$loop->iteration}}</td>
                     <td scope="col" class="text-center">{{$d->nama_barang}}</td>
@@ -146,7 +145,7 @@
                         @endif</td>
                     <td scope="col" class="text-center">{{$d->satuan}}</td>
                     <td scope="col" class="text-center">Rp.{{$d->harga_jual}},-</td>
-                    <td scope="col" class="text-center"> {{Carbon\Carbon::parse($d->tgl_aktif)->translatedFormat('d F Y')}}</td>
+                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_aktif)->translatedFormat('d F Y')}}</td>
                     <td>
                         @if($d->status_diskon == 1 && $d->diskon != null)
                         <span class="badge badge-success">Aktif</span>
@@ -158,7 +157,6 @@
                     <td scope="col" class="text-center">Rp.{{$d->harga_diskon}}</td>
                     <td scope="col" class="text-center">{{$d->stok_tersedia}} {{$d->satuan}}</td>
                 </tr>
-                @endisset
                 @endforeach
             </tbody>
         </table>

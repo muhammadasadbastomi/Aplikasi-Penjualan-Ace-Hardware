@@ -43,8 +43,10 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" target="_blank" href="{{route('rusakCetak')}}">Keseluruhan</a>
-                                        <a class="dropdown-item" target="_blank" href="{{route('perbaikan1Cetak')}}">Selesai Diperbaiki</a>
-                                        <a class="dropdown-item" target="_blank" href="{{route('perbaikan2Cetak')}}">Tidak Bisa Diperbaiki</a>
+                                        <a class="dropdown-item" target="_blank" href="{{route('perbaikan3Cetak')}}">Belum Diperbaiki Bulan Ini</a>
+                                        <a class="dropdown-item" target="_blank" href="{{route('perbaikan4Cetak')}}">Dalam Perbaikan Bulan Ini</a>
+                                        <a class="dropdown-item" target="_blank" href="{{route('perbaikan1Cetak')}}">Selesai Diperbaiki Bulan Ini</a>
+                                        <a class="dropdown-item" target="_blank" href="{{route('perbaikan2Cetak')}}">Tidak Bisa Diperbaiki Bulan Ini</a>
                                     </div>
                                 </div>
                             </div>

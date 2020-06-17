@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laporan Data Barang Status Terkirim</title>
+    <title>Laporan Data Barang Pengiriman</title>
     <link rel="icon" type="image/png" href="{{url('img/logo.png')}}">
     <style>
         .logo {
@@ -103,7 +103,10 @@
     </div>
 
     <div class="container" style="margin-top:-40px;">
-        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Status Terkirim</h3>
+        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Pengiriman</h3>
+        <div style="text-align:right; margin-bottom:5px;">
+            <small>Rekap : {{$start}} s/d {{$end}}</small>
+        </div>
         <table class='table table-bordered nowrap'>
             <thead>
                 <tr>
@@ -131,8 +134,7 @@
                     <td scope="col" class="text-center"><a class="btn btn-warning btn-sm text-white">Packing</a>
                     </td>
                     @elseif($d->status == 2)
-                    <td scope="col" class="text-center"><a class="btn btn-info btn-sm text-white">Dalam
-                            Pengiriman</a>
+                    <td scope="col" class="text-center"><a class="btn btn-info btn-sm text-white">Dalam Pengiriman</a>
                     </td>
                     @elseif($d->status == 3)
                     <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">Terkirim</a>

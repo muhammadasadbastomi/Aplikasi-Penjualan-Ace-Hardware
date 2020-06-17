@@ -96,8 +96,10 @@ Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     Route::get('/admin/datang/cetak/tanggal', 'CetakController@datangtgl')->name('datangtglCetak');
     Route::get('/admin/barangsupplier/cetak', 'CetakController@barangsupplier')->name('barangsupplierCetak');
     Route::get('/admin/diskon/cetak', 'CetakController@diskon')->name('diskonCetak');
+    Route::get('/admin/diskon/bulan/cetak', 'CetakController@diskonbulan')->name('diskonbulanCetak');
     Route::get('/admin/angkadiskon/cetak', 'CetakController@angkadiskon')->name('angkadiskonCetak');
     Route::get('/admin/pengiriman/cetak', 'CetakController@pengiriman')->name('pengirimanCetak');
+    Route::get('/admin/pengiriman/tanggal/cetak', 'CetakController@pengirimantgl')->name('pengirimantglCetak');
     Route::get('/admin/terkirim/cetak', 'CetakController@terkirim')->name('terkirimCetak');
     Route::get('/admin/terjual/cetak', 'CetakController@terjual')->name('terjualCetak');
     Route::get('/admin/terjual/cetak/tanggal', 'CetakController@terjualtgl')->name('terjualtglCetak');
@@ -105,7 +107,10 @@ Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     Route::get('/admin/garansi/cetak/tanggal/akhir', 'CetakController@garansitglakhir')->name('garansitglakhirCetak');
     Route::get('/admin/rusak/cetak', 'CetakController@rusak')->name('rusakCetak');
     Route::get('/admin/SelesaiPerbaikan/cetak', 'CetakController@perbaikan1')->name('perbaikan1Cetak');
-    Route::get('/admin/TidakBisaPerbaikan/cetak', 'CetakController@perbaikan2')->name('perbaikan2Cetak');
+    Route::get('/admin/BelumDiperbaiki/cetak', 'CetakController@perbaikan3')->name('perbaikan3Cetak');
+    Route::get('/admin/DalamPerbaikan/cetak', 'CetakController@perbaikan4')->name('perbaikan4Cetak');
+    Route::get('/admin/Etalase/cetak', 'CetakController@etalase')->name('etalaseCetak');
+    Route::get('/admin/Etalase/Bulan/cetak', 'CetakController@etalasebulan')->name('etalasebulanCetak');
 });
 
 Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {

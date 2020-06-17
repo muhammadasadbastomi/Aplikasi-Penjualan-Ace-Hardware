@@ -121,11 +121,11 @@
                 @foreach($data as $d)
                 <tr>
                     <td scope="col" class="text-center">{{ $loop->iteration }}</td>
-                    <td scope="col" class="text-center">{{ $d->nama_pembeli }}</td>
+                    <td scope="col" class="text-center">{{ $d->pembeli->nama_pembeli }}</td>
                     <td scope="col" class="text-center">{{ $d->kode_pengiriman }}</td>
                     <td scope="col" class="text-center">{{ $d->barang->nama_barang }}</td>
                     <td scope="col" class="text-center">{{ $d->tgl_pengiriman }}</td>
-                    <td scope="col" class="text-center">{{ $d->alamat_pengiriman }}</td>
+                    <td scope="col" class="text-center">{{ $d->pembeli->alamat }}</td>
                     <td scope="col" class="text-center">{{ $d->jumlah }}</td>
                     @if($d->status == 1)
                     <td scope="col" class="text-center"><a class="btn btn-warning btn-sm text-white">Packing</a>

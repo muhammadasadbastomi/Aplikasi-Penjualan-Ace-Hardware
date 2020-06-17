@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laporan Data Barang Status Terkirim</title>
+    <title>Laporan Data Barang Belum Diperbaiki</title>
     <link rel="icon" type="image/png" href="{{url('img/logo.png')}}">
     <style>
         .logo {
@@ -103,44 +103,48 @@
     </div>
 
     <div class="container" style="margin-top:-40px;">
-        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Status Terkirim</h3>
+        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Belum Diperbaiki Pada Bulan {{$now}}</h3>
         <table class='table table-bordered nowrap'>
             <thead>
                 <tr>
                     <th scope="col" class="text-center">No</th>
-                    <th scope="col" class="text-center">Nama Pembeli</th>
-                    <th scope="col" class="text-center">Kode Pengiriman</th>
                     <th scope="col" class="text-center">Nama Barang</th>
-                    <th scope="col" class="text-center">Tanggal Pengiriman</th>
-                    <th scope="col" class="text-center">Alamat</th>
-                    <th scope="col" class="text-center">Jumlah</th>
+                    <th scope="col" class="text-center">Kerusakan</th>
+                    <th scope="col" class="text-center">Tanggal Cek</th>
                     <th scope="col" class="text-center">Status</th>
+                    <th scope="col" class="text-center">Tanggal Selesai</th>
+                    <th scope="col" class="text-center">Jumlah</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($data as $d)
                 <tr>
-                    <td scope="col" class="text-center">{{ $loop->iteration }}</td>
-                    <td scope="col" class="text-center">{{ $d->pembeli->nama_pembeli }}</td>
-                    <td scope="col" class="text-center">{{ $d->kode_pengiriman }}</td>
+                    <td scope="col" class="text-center">{{$loop->iteration}}</td>
                     <td scope="col" class="text-center">{{ $d->barang->nama_barang }}</td>
-                    <td scope="col" class="text-center">{{ $d->tgl_pengiriman }}</td>
-                    <td scope="col" class="text-center">{{ $d->pembeli->alamat }}</td>
-                    <td scope="col" class="text-center">{{ $d->jumlah }}</td>
+                    <td scope="col" class="text-center">{{ $d->kerusakan }}</td>
+                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_cek)->translatedFormat('d F Y')}}</td>
                     @if($d->status == 1)
-                    <td scope="col" class="text-center"><a class="btn btn-warning btn-sm text-white">Packing</a>
-                    </td>
+                    <td scope="col" class="text-center">Belum diperbaiki</td>
                     @elseif($d->status == 2)
-                    <td scope="col" class="text-center"><a class="btn btn-info btn-sm text-white">Dalam
-                            Pengiriman</a>
-                    </td>
+                    <td scope="col" class="text-center">Dalam Perbaikan</td>
                     @elseif($d->status == 3)
-                    <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">Terkirim</a>
-                    </td>
+                    <td scope="col" class="text-center">Selesai Perbaikan</td>
+                    @elseif($d->status == 4)
+                    <td scope="col" class="text-center">Tidak Bisa Diperbaiki</td>
                     @else
                     <td scope="col" class="text-center"><a class="btn btn-success btn-sm text-white">-</a>
                     </td>
                     @endif
+                    <!-- <td scope="col" class="text-center">{{ $d->tgl_selesai }}</td> -->
+                    <td scope="col" class="text-center">
+                        @if($d->tgl_selesai)
+                        {{Carbon\Carbon::parse($d->tgl_selesai)->translatedFormat('d F Y')}}
+                        @else
+                        -
+                        @endif
+                    </td>
+                    <td scope="col" class="text-center">{{ $d->jumlah_barang }} {{$d->barang->satuan}}</td>
+
                 </tr>
                 @endforeach
             </tbody>
