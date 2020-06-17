@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <form method="post" action="{{route('barangdiskonemail')}}">
                     @csrf
-                    <Button class="btn btn-outline-danger float-right btn-sm border-top-0 border-left-0 border-right-0" style="margin-top: 11px;">Klik Disini Untuk Broadcast Ke Semua Pembeli</Button>
+                    <Button class="btn btn-outline-danger float-right btn-sm border-top-0 border-left-0 border-right-0" style="margin-top: 11px;"><i class="feather icon-mail"> </i> Klik Disini Untuk Broadcast Ke Semua Pembeli</Button>
                 </form>
                 <table class="table zero-configuration nowrap">
                     <thead>
