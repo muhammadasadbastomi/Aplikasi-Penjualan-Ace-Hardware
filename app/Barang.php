@@ -22,6 +22,10 @@ class Barang extends Model
     {
         return $this->belongsTo(Supplier::class);
     }
+    public function satuan()
+    {
+        return $this->belongsTo(Satuan::class);
+    }
 
     public function barang_datang()
     {
