@@ -34,7 +34,7 @@ class NotifDiskon extends Mailable
     {
 
         $now = Carbon::now()->format('Y-m-d');
-        $data = Barang::orderBy('tgl_aktif', 'asc')->where('tgl_aktif', '>=', $now)->get();
+        $data = Barang::orderBy('id', 'asc')->where('tgl_mulai', '<=', $now)->where('tgl_akhir', '>=', $now)->get();
         $data = $data->map(function ($item) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');

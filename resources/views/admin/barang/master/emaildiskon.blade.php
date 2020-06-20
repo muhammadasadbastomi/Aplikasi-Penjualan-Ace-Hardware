@@ -20,7 +20,7 @@
                             <th scope="col">Kategori</th>
                             <th scope="col">Harga Awal</th>
                             <th scope="col">Diskon</th>
-                            <th scope="col">Tanggal Diskon</th>
+                            <th scope="col">Waktu Aktif Diskon</th>
                             <th scope="col">Harga Diskon</th>
                         </tr>
                     </thead>
@@ -50,7 +50,7 @@
                             </td>
                             <td>Rp. {{number_format($d->harga_jual, 0, ',', '.')}},-</td>
                             <td>{{$d->diskon}}%</td>
-                            <td>{{Carbon\Carbon::parse($d->tgl_aktif)->translatedFormat('d F Y')}}</td>
+                            <td>{{Carbon\Carbon::parse($d->tgl_mulai)->translatedFormat('d F Y')}} - {{Carbon\Carbon::parse($d->tgl_akhir)->translatedFormat('d F Y')}}</td>
                             <td>Rp. {{$d->harga_diskon}},-</td>
                         </tr>
                         @endforeach
