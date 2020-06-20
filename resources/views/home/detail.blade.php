@@ -96,10 +96,11 @@
                                 <p> <b>Supplier : {{$barang->supplier->supplier}} </b></p>
                                 <div class="ecommerce-details-price d-flex flex-wrap">
                                     <h6 class="item-price">
-                                        @if($barang->diskon != null && $barang->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
-                                        <p class="font-medium-3 mr-1 mb-0" style="color: black;margin-bottom:0px;"><strong style="color: red"> Diskon {{$barang->diskon}}%</strong></p>
-                                        <br>
-                                        <p class="font-medium-3 mr-1 mb-0" style="color: black; margin-bottom:-5px;"> Harga : <del class="text-secondary">Rp. {{$barang->harga_jual}},-</del>&emsp14;<b>Rp. {{$barang->harga_diskon }},-</b> </p>
+                                        @if($barang->diskon != null && $barang->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $barang->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
+                                            <p class="font-medium-3 mr-1 mb-0" style="color: black;margin-bottom:0px;"><strong style="color: red"> Diskon {{$barang->diskon}}%</strong> </p>
+                                            <!-- <small> Dari Tanggal {{Carbon\Carbon::parse($barang->tgl_mulai)->translatedFormat('d F Y')}} Sampai {{Carbon\Carbon::parse($barang->tgl_akhir)->translatedFormat('d F Y')}}</small> -->
+                                            <br>
+                                            <p class="font-medium-3 mr-1 mb-0" style="color: black; margin-bottom:-5px;"> Harga : <del class="text-secondary">Rp. {{$barang->harga_jual}},-</del>&emsp14;<b>Rp. {{$barang->harga_diskon }},-</b> </p>
                                     </h6>
                                     @else
                                     <p class="font-medium-3 mr-1 mb-0" style="color: black; margin-bottom:-5px;"> Harga : <b>Rp. {{$barang->harga_jual}},-</b> </p>
@@ -161,24 +162,24 @@
                                     </div>
                                     <div class="img-container my-1">
                                         <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="image">
-                                        @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
-                                        <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
-                                        @else
-                                        <span style="opacity:0;">0</span>
-                                        @endif
+                                        @if($d->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
+                                            <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
+                                            @else
+                                            <span style="opacity:0;">0</span>
+                                            @endif
                                     </div>
                                     <div class="item-meta" style="margin-top:-25px;">
-                                        @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
-                                        <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
-                                        <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
-                                        @else
-                                        <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
-                                        @endif
-                                        <br>
-                                        <a>Supplier : {{$d->supplier->supplier}}</a> <br>
-                                        <a>Departement : {{$d->departement}}</a> <br>
-                                        <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
-                                        <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
+                                        @if($d->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
+                                            <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
+                                            <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
+                                            @else
+                                            <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
+                                            @endif
+                                            <br>
+                                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
+                                            <a>Departement : {{$d->departement}}</a> <br>
+                                            <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
+                                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                                     </div>
                                 </div>
                                 @endforeach

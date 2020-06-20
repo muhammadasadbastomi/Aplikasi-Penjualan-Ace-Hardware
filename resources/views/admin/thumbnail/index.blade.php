@@ -110,17 +110,19 @@
                                                     <td><img src="/images/thumbnail/{{$d->gambar}}" alt="Gambar" class="avatar mr-1 avatar-xl" width="60px;" height="50px;">
                                                     </td>
                                                     <td>{{$d->judul}}</td>
-                                                    <td> {{Carbon\Carbon::parse($d->tgl_aktif)->translatedFormat('d F Y')}}</td>
+                                                    <td> {{Carbon\Carbon::parse($d->tgl_mulai)->translatedFormat('d F Y')}} - {{Carbon\Carbon::parse($d->tgl_akhir)->translatedFormat('d F Y')}}</td>
                                                     <td>
-                                                        @if($d->status_diskon == 1)
+                                                        @if($d->status_diskon == 3)
                                                         <span class="badge badge-success">Aktif</span>
-                                                        @else
+                                                        @elseif($d->status_diskon == 1)
+                                                        <span class="badge badge-info">Belum Aktif</span>
+                                                        @elseif($d->status_diskon == 2)
                                                         <span class="badge badge-danger">Expired</span>
                                                         @endif
                                                     </td>
                                                     <td>{{$d->keterangan}}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" data-id="{{$d->id}}" data-judul="{{$d->judul}}" data-ket="{{$d->keterangan}}" data-pict="{{$d->gambar}}" data-tgl_aktif="{{$d->tgl_aktif}}" data-toggle="modal" data-target="#editModal">
+                                                        <a class="btn btn-sm btn-info text-white" data-id="{{$d->id}}" data-judul="{{$d->judul}}" data-ket="{{$d->keterangan}}" data-pict="{{$d->gambar}}" data-tgl_mulai="{{$d->tgl_mulai}}" data-tgl_akhir="{{$d->tgl_akhir}}" data-toggle="modal" data-target="#editModal">
                                                             <i class=" feather icon-edit"></i>
                                                         </a>
                                                         <a class="delete btn btn-sm btn-danger text-white" data-id="{{$d->uuid}}" href="#"><i class="feather icon-trash"></i></a>
@@ -162,10 +164,14 @@
                             @error('judul')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                         <div class="form-group">
-                            <label for="tgl_aktif">Waktu Aktif</label>
-                            <input type="date" id="tgl_aktif" class="form-control  @error ('tgl_aktif') is-invalid @enderror" name="tgl_aktif" value="{{old('tgl_aktif')}}">
-                            <p>Note : Masukkan Masa Tanggal Aktif/Berakhirnya Tanggal Etalase.</p>
-                            @error('tgl_aktif')<div class="invalid-feedback"> {{$message}} </div>@enderror
+                            <label for="tgl_mulai">Tanggal Mulai Etalase</label>
+                            <input type="date" id="tgl_mulai" class="form-control  @error ('tgl_mulai') is-invalid @enderror" name="tgl_mulai" value="{{old('tgl_mulai')}}">
+                            <p>Note : Masukkan Waktu Aktif Etalase.</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="tgl_akhir">Tanggal Berakhir Etalase</label>
+                            <input type="date" id="tgl_akhir" class="form-control  @error ('tgl_akhir') is-invalid @enderror" name="tgl_akhir" value="{{old('tgl_akhir')}}">
+                            <p>Note : Masukkan Waktu Aktif Etalase.</p>
                         </div>
                         <div class="form-group">
                             <label for="keterangan">Keterangan</label>
@@ -233,13 +239,15 @@
         var judul = button.data('judul')
         var keterangan = button.data('ket')
         var pict = button.data('pict')
-        var tgl_aktif = button.data('tgl_aktif')
+        var tgl_mulai = button.data('tgl_mulai')
+        var tgl_akhir = button.data('tgl_akhir')
         var modal = $(this)
 
         modal.find('.modal-body #id').val(id)
         modal.find('.modal-body #judul').val(judul)
         modal.find('.modal-body #keterangan').val(keterangan)
-        modal.find('.modal-body #tgl_aktif').val(tgl_aktif)
+        modal.find('.modal-body #tgl_akhir').val(tgl_akhir)
+        modal.find('.modal-body #tgl_mulai').val(tgl_mulai)
         modal.find('.modal-body #pict').attr('src', '/images/thumbnail/' + pict);
     })
 </script>

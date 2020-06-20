@@ -124,40 +124,40 @@
                 <!-- Ecommerce Products Starts -->
                 <section id="ecommerce-products" class="grid-view">
                     @forelse($barang as $d)
-                    @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
-                    <div class="card ecommerce-card badge-diskon" diskon="{{$d->diskon}}">
-                        @else
-                        <div class="card ecommerce-card">
-                            @endif
-                            <div class="card-content lihat">
-                                <div class="lihat-detail">
-                                    <a type="button" class="btn btn-outline-primary btn-sm" href="{{route('homeShow', ['id' => $d->uuid])}}"> <i class="fas fa fa-search"> Detail</i></a>
-                                </div>
-                                <div class="text-center">
-                                    <a href="app-ecommerce-details.html">
-                                        <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
-                                </div>
-                                <div class="card-body">
-                                    <div class="item-wrapper">
+                    @if($d->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
+                        <div class="card ecommerce-card badge-diskon" diskon="{{$d->diskon}}">
+                            @else
+                            <div class="card ecommerce-card">
+                                @endif
+                                <div class="card-content lihat">
+                                    <div class="lihat-detail">
+                                        <a type="button" class="btn btn-outline-primary btn-sm" href="{{route('homeShow', ['id' => $d->uuid])}}"> <i class="fas fa fa-search"> Detail</i></a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a href="app-ecommerce-details.html">
+                                            <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="item-wrapper">
+                                            <div>
+                                                <h6 class="item-price float-left">
+                                                    @if($d->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
+                                                        <a class="text-secondary float-left"><del>Rp. {{$d->harga_jual}},</del></a><a class="text-danger">Rp. {{$d->harga_diskon}},-</a>
+                                                        @else
+                                                        <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
+                                                        @endif
+                                            </div>
+                                        </div>
+                                        <div class="item-name">
+                                            <a href="{{route('homeShow', ['id' => $d->uuid])}}">{{$d->nama_barang}}</a>
+                                        </div>
                                         <div>
-                                            <h6 class="item-price float-left">
-                                                @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
-                                                <a class="text-secondary float-left"><del>Rp. {{$d->harga_jual}},</del></a><a class="text-danger">Rp. {{$d->harga_diskon}},-</a>
-                                                @else
-                                                <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
-                                                @endif
+                                            <p class="item-description">
+                                                {{$d->keterangan}}
+                                            </p>
                                         </div>
                                     </div>
-                                    <div class="item-name">
-                                        <a href="{{route('homeShow', ['id' => $d->uuid])}}">{{$d->nama_barang}}</a>
-                                    </div>
-                                    <div>
-                                        <p class="item-description">
-                                            {{$d->keterangan}}
-                                        </p>
-                                    </div>
-                                </div>
-                                <!-- <div class="item-options text-center">
+                                    <!-- <div class="item-options text-center">
                                 <div class="item-wrapper">
                                     <div class="item-cost">
                                         <h6 class="item-price">
@@ -173,9 +173,9 @@
                                         cart</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">View In Cart</a>
                                 </div>
                             </div> -->
+                                </div>
                             </div>
-                        </div>
-                        @empty
+                            @empty
                 </section>
                 <section class="text-center font-large-2" style="margin-top:30px; margin-bottom:700px;">
                     <a href="{{route('homeShop')}}" style="color: black;">

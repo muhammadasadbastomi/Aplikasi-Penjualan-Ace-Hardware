@@ -167,9 +167,14 @@
                                             <p>Note : Masukkan Diskon Jika Ingin Menambahkan Diskon.</p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Waktu Aktif Diskon</label>
-                                            <input type="date" id="tgl_aktif" name="tgl_aktif" class="form-control @error ('tgl_aktif') is-invalid @enderror" value="{{ $barang->tgl_aktif }}">
-                                            <p>Note : Masukkan Masa Tanggal Aktif Diskon/Berakhirnya Tanggal Diskon.</p>
+                                            <label>Tanggal Mulai Diskon</label>
+                                            <input type="date" id="tgl_mulai" name="tgl_mulai" class="form-control @error ('tgl_mulai') is-invalid @enderror" value="{{ $barang->tgl_mulai }}">
+                                            <p>Note : Masukkan Tanggal Mulai Diskon jika ingin mengisi diskon.</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Tanggal Akhir Diskon</label>
+                                            <input type="date" id="tgl_akhir" name="tgl_akhir" class="form-control @error ('tgl_akhir') is-invalid @enderror" value="{{ $barang->tgl_akhir }}">
+                                            <p>Note : Masukkan Tanggal Akhir diskon Jika ingin mengisi Diskon.</p>
                                         </div>
                                         <div class="form-group">
                                             <label>Stok </label>

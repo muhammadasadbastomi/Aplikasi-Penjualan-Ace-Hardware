@@ -10,6 +10,7 @@ use App\Mail\NotifDiskon;
 use Illuminate\Http\Request;
 use ImageResize;
 use Illuminate\Support\Facades\Mail;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class BarangController extends Controller
 {
@@ -22,7 +23,7 @@ class BarangController extends Controller
     {
         $now = Carbon::now()->format('Y-m-d');
 
-        $data = Barang::orderBy('tgl_aktif', 'asc')->where('tgl_aktif', '>=', $now)->get();
+        $data = Barang::orderBy('id', 'asc')->where('tgl_mulai', '<=', $now)->where('tgl_akhir', '>=', $now)->get();
         $data = $data->map(function ($item) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
@@ -34,11 +35,16 @@ class BarangController extends Controller
         $barang = $barang->map(function ($item) use ($now) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
-            if ($item->tgl_aktif >= $now) {
+            if (!isset($item->tgl_mulai)) {
+                $item['status_diskon'] = 4;
+            } elseif ($now < $item->tgl_mulai) {
                 $item['status_diskon'] = 1;
-            } else {
+            } elseif ($now > $item->tgl_akhir) {
                 $item['status_diskon'] = 2;
+            } elseif (Barang::wherebetween($now, ['tgl_mulai', 'tgl_akhir'])) {
+                $item['status_diskon'] = 3;
             }
+
             return $item;
         });
         return view('admin.barang.master.index', compact('barang', 'supplier', 'data'));
@@ -168,15 +174,30 @@ class BarangController extends Controller
         $barang = barang::where('uuid', $id)->first();
         $barang->nama_barang = $request->nama_barang;
         $barang->kode_barang = $request->kode_barang;
-        $barang->tgl_aktif = $request->tgl_aktif;
         $barang->supplier_id = $request->supplier_id;
         $barang->kategori = $request->kategori;
         $barang->satuan = $request->satuan;
         $barang->departement = $request->departement;
         $barang->harga_jual = $request->harga_jual;
-        $barang->diskon = $request->diskon;
         $barang->keterangan = $request->keterangan;
         $barang->stok_tersedia = $request->stok_tersedia;
+
+        if (!isset($request->diskon) && !isset($request->tgl_mulai) && !isset($request->tgl_akhir)) {
+            $barang->diskon = $request->diskon;
+            $barang->tgl_mulai = $request->tgl_mulai;
+            $barang->tgl_akhir = $request->tgl_akhir;
+        } else {
+            if ($request->has('diskon') && (!isset($request->tgl_mulai)) or (!isset($request->tgl_akhir))) {
+                return redirect()->back()->with('warning', 'Tanggal Diskon harus Diisi');
+            } elseif ($request->has('tgl_mulai') && (!isset($request->diskon)) or (!isset($request->tgl_akhir))) {
+                return redirect()->back()->with('warning', 'Diskon harus Diisi');
+            } elseif ($request->has('tgl_akhir') && (!isset($request->diskon)) or (!isset($request->tgl_mulai))) {
+                return redirect()->back()->with('warning', 'Diskon harus Diisi');
+            } elseif ($request->tgl_mulai > $request->tgl_akhir) {
+                return redirect()->back()->with('warning', 'Tanggal Harus Sesuai');
+            }
+        }
+
         if ($files = $request->file('gambar')) {
 
             // for save original image

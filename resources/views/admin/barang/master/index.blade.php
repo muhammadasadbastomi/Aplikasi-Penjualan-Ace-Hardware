@@ -138,12 +138,14 @@
                                                     </td>
                                                     <td>Rp. {{number_format($b->harga_jual, 0, ',', '.')}},-</td>
                                                     <td>
-                                                        @if($b->status_diskon == 1 && $b->diskon != null)
+                                                        @if($b->status_diskon == 3)
                                                         <span class="badge badge-success">Aktif</span>
-                                                        @elseif($b->status_diskon == 2 && $b->diskon != null)
+                                                        @elseif($b->status_diskon == 1)
+                                                        <span class="badge badge-info">Belum Aktif</span>
+                                                        @elseif($b->status_diskon == 2)
                                                         <span class="badge badge-danger">Expired</span>
-                                                        @else
-                                                        <span class="badge badge-secondary">Tidak ada diskon</span>
+                                                        @elseif($b->status_diskon == 4)
+                                                        <span class="badge badge-secondary">Tidak Ada Diskon</span>
                                                         @endif
                                                     </td>
                                                     <td class="text-center">

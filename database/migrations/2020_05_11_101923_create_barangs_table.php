@@ -26,7 +26,8 @@ class CreateBarangsTable extends Migration
             $table->string('keterangan')->nullable();
             $table->integer('stok_tersedia');
             $table->integer('diskon')->nullable();
-            $table->date('tgl_aktif')->nullable();
+            $table->date('tgl_mulai')->nullable();
+            $table->date('tgl_akhir')->nullable();
             $table->string('gambar')->default('default.png');
             $table->timestamps();
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('restrict');

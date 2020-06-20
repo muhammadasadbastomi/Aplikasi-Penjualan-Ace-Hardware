@@ -1,6 +1,6 @@
-<a class="btn btn-sm btn-info text-white" data-id="{{$b->id}}" data-keterangan="{{$b->keterangan}}" data-gambar="{{$b->gambar}}" data-tgl_aktif="@if(empty($b->tgl_aktif)) -
+<a class="btn btn-sm btn-info text-white" data-id="{{$b->id}}" data-keterangan="{{$b->keterangan}}" data-gambar="{{$b->gambar}}" data-tgl_aktif="@if(empty($b->tgl_mulai && $b->tgl_akhir)) -
 @else
-{{Carbon\Carbon::parse($b->tgl_aktif)->translatedFormat('d F Y')}}
+{{Carbon\Carbon::parse($b->tgl_mulai)->translatedFormat('d F Y')}} - {{Carbon\Carbon::parse($b->tgl_akhir)->translatedFormat('d F Y')}}
 @endif" data-nama="{{$b->nama_barang}}" data-supplier="{{$b->supplier->supplier}}" data-harga="Rp. {{number_format($b->harga_jual, 0, ',', '.')}},-" data-kode="{{$b->kode_barang}}" data-satuan="{{$b->satuan}}" data-departement="{{$b->departement}}" data-diskon="@if(empty($b->diskon)) -
 @else
 {{$b->diskon}}%

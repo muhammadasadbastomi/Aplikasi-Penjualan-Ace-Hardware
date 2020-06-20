@@ -85,10 +85,14 @@ class CetakController extends Controller
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
             $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
-            if ($item->tgl_aktif >= $now) {
+            if (!isset($item->tgl_mulai)) {
+                $item['status_diskon'] = 4;
+            } elseif ($now < $item->tgl_mulai) {
                 $item['status_diskon'] = 1;
-            } else {
+            } elseif ($now > $item->tgl_akhir) {
                 $item['status_diskon'] = 2;
+            } elseif (Barang::wherebetween($now, ['tgl_mulai', 'tgl_akhir'])) {
+                $item['status_diskon'] = 3;
             }
             return $item;
         });
@@ -104,7 +108,7 @@ class CetakController extends Controller
         $now = Carbon::now()->translatedFormat('F Y');
         $noww = Carbon::now();
 
-        $data = Barang::where('tgl_aktif', '>=', $noww)->whereBetween('tgl_aktif', [$start, $end])->get();
+        $data = Barang::orderBy('id', 'asc')->where('tgl_mulai', '<=', $noww)->where('tgl_akhir', '>=', $noww)->get();
 
         $data = $data->map(function ($item) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
@@ -132,10 +136,14 @@ class CetakController extends Controller
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');
             $item['harga_jual'] = number_format($item->harga_jual, 0, ',', '.');
-            if ($item->tgl_aktif >= $now) {
+            if (!isset($item->tgl_mulai)) {
+                $item['status_diskon'] = 4;
+            } elseif ($now < $item->tgl_mulai) {
                 $item['status_diskon'] = 1;
-            } else {
+            } elseif ($now > $item->tgl_akhir) {
                 $item['status_diskon'] = 2;
+            } elseif (Barang::wherebetween($now, ['tgl_mulai', 'tgl_akhir'])) {
+                $item['status_diskon'] = 3;
             }
             return $item;
         });
@@ -282,10 +290,12 @@ class CetakController extends Controller
 
         $data = Thumbnail::all();
         $data = $data->map(function ($item) use ($now) {
-            if ($item->tgl_aktif >= $now) {
+            if ($now < $item->tgl_mulai) {
                 $item['status_diskon'] = 1;
-            } else {
+            } elseif ($now > $item->tgl_akhir) {
                 $item['status_diskon'] = 2;
+            } elseif (Thumbnail::wherebetween($now, ['tgl_mulai', 'tgl_akhir'])) {
+                $item['status_diskon'] = 3;
             }
             return $item;
         });
@@ -298,16 +308,19 @@ class CetakController extends Controller
     {
         $start = Carbon::now()->startOfMonth()->toDateString();
         $end = Carbon::now()->endOfMonth()->toDateString();
-        $noww = Carbon::now();
+        $noww = Carbon::now()->format('Y-m-d');
         $now = Carbon::now()->translatedFormat('F Y');
 
-        $data = Thumbnail::where('tgl_aktif', '>=', $noww)->whereBetween('updated_at', [$start, $end])->get();
+        $data = Thumbnail::where('tgl_mulai', '<=', $noww)->where('tgl_akhir', '>=', $noww)->get();
         $data = $data->map(function ($item) use ($noww) {
-            if ($item->tgl_aktif >= $noww) {
+            if ($noww < $item->tgl_mulai) {
                 $item['status_diskon'] = 1;
-            } else {
+            } elseif ($noww > $item->tgl_akhir) {
                 $item['status_diskon'] = 2;
+            } elseif (Thumbnail::wherebetween($noww, ['tgl_mulai', 'tgl_akhir'])) {
+                $item['status_diskon'] = 3;
             }
+
             return $item;
         });
 

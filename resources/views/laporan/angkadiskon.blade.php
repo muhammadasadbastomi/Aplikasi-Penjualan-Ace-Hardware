@@ -24,6 +24,7 @@
 
         td,
         th {
+            font-size: 11px;
             border: 1px solid;
             padding-left: 5px;
             text-align: center;
@@ -113,7 +114,7 @@
                     <th scope="col" class="text-center">Kategori</th>
                     <th scope="col" class="text-center">Satuan</th>
                     <th scope="col" class="text-center">Harga Awal</th>
-                    <th scope="col" class="text-center">Waktu Aktif</th>
+                    <th scope="col" class="text-center">Waktu Aktif Diskon</th>
                     <th scope="col" class="text-center">Status Diskon</th>
                     <th scope="col" class="text-center">Diskon</th>
                     <th scope="col" class="text-center">Harga Barang</th>
@@ -146,12 +147,16 @@
                         @endif</td>
                     <td scope="col" class="text-center">{{$d->satuan}}</td>
                     <td scope="col" class="text-center">Rp.{{$d->harga_jual}},-</td>
-                    <td scope="col" class="text-center"> {{Carbon\Carbon::parse($d->tgl_aktif)->translatedFormat('d F Y')}}</td>
+                    <td scope="col" class="text-center"> {{Carbon\Carbon::parse($d->tgl_mulai)->translatedFormat('d F Y')}} <br> sampai dgn <br> {{Carbon\Carbon::parse($d->tgl_akhir)->translatedFormat('d F Y')}}</td>
                     <td>
-                        @if($d->status_diskon == 1 && $d->diskon != null)
+                        @if($d->status_diskon == 3)
                         <span class="badge badge-success">Aktif</span>
-                        @elseif($d->status_diskon == 2 && $d->diskon != null)
+                        @elseif($d->status_diskon == 1)
+                        <span class="badge badge-info">Belum Aktif</span>
+                        @elseif($d->status_diskon == 2)
                         <span class="badge badge-danger">Expired</span>
+                        @elseif($d->status_diskon == 4)
+                        <span class="badge badge-secondary">Tidak Ada Diskon</span>
                         @endif
                     </td>
                     <td scope="col" class="text-center">{{$d->diskon}}%</td>

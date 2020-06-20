@@ -119,11 +119,13 @@
                 <tr>
                     <td scope="col" class="text-center">{{$loop->iteration}}</td>
                     <td scope="col" class="text-center">{{$d->judul}}</td>
-                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_aktif)->translatedFormat('d F Y')}}</td>
-                    <td scope="col" class="text-center">
-                        @if($d->status_diskon == 1)
+                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_mulai)->translatedFormat('d F Y')}} - {{Carbon\Carbon::parse($d->tgl_akhir)->translatedFormat('d F Y')}}</td>
+                    <td>
+                        @if($d->status_diskon == 3)
                         <span class="badge badge-success">Aktif</span>
-                        @else
+                        @elseif($d->status_diskon == 1)
+                        <span class="badge badge-info">Belum Aktif</span>
+                        @elseif($d->status_diskon == 2)
                         <span class="badge badge-danger">Expired</span>
                         @endif
                     </td>

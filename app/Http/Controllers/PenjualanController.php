@@ -19,9 +19,9 @@ class PenjualanController extends Controller
     {
         $now = Carbon::now()->format('Y-m-d');
 
-        $thumb = Thumbnail::where('tgl_aktif', '>=', $now)->orderBy('id', 'desc')->get();
+        $thumb = Thumbnail::where('tgl_mulai', '<=', $now)->where('tgl_akhir', '>=', $now)->orderBy('id', 'desc')->get();
 
-        $data = Barang::orderBy('id', 'desc')->Wherenotnull('diskon')->limit(6)->where('tgl_aktif', '>=', $now)->get();
+        $data = Barang::orderBy('id', 'desc')->Wherenotnull('diskon')->limit(6)->where('tgl_mulai', '<=', $now)->where('tgl_akhir', '>=', $now)->get();
         $diskon = $data->map(function ($item) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
             $item['harga_diskon'] = number_format($item->harga_jual - $diskon, 0, ',', '.');

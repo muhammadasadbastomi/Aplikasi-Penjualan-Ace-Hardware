@@ -51,7 +51,7 @@
                                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                                             <img src="/images/thumbnail/{{$d->gambar}}" class="img-fluid d-block w-100" alt="cf-img-1" style=" width:100%; height: 450px !important;">
                                             <div class="carousel-caption d-none d-md-block">
-                                                <h5 style="color: black"><b><strong>{{$d->judul}}</strong></b></h5>
+                                                <h5 style="color: black; "><b><strong>{{$d->judul}}</strong></b></h5>
                                                 <p style="color: black; margin-bottom:-33px;"><b><strong>{{$d->keterangan}}</strong></b></p>
                                             </div>
                                         </div>
@@ -218,24 +218,24 @@
                         </div>
                         <div class="img-container my-1">
                             <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="image">
-                            @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
-                            <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
-                            @else
-                            <span style="opacity:0;">0</span>
-                            @endif
+                            @if($d->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
+                                <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
+                                @else
+                                <span style="opacity:0;">0</span>
+                                @endif
                         </div>
                         <div class="item-meta" style="margin-top:-25px;">
-                            @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
-                            <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
-                            <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
-                            @else
-                            <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
-                            @endif
-                            <br>
-                            <a>Departement : {{$d->departement}}</a> <br>
-                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
-                            <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
-                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
+                            @if($d->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
+                                <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
+                                <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
+                                @else
+                                <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
+                                @endif
+                                <br>
+                                <a>Departement : {{$d->departement}}</a> <br>
+                                <a>Supplier : {{$d->supplier->supplier}}</a> <br>
+                                <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
+                                <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
                     </div>
                     @endforeach
@@ -350,24 +350,24 @@
                         </div>
                         <div class="img-container my-1">
                             <img src="/images/resize/{{$d->barang->gambar}}" class="img-fluid" alt="image">
-                            @if($d->barang->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
-                            <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
-                            @else
-                            <span style="opacity:0;">0</span>
-                            @endif
+                            @if($d->barang->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
+                                <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
+                                @else
+                                <span style="opacity:0;">0</span>
+                                @endif
                         </div>
                         <div class="item-meta" style="margin-top:-25px;">
-                            @if($d->barang->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
-                            <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
-                            <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
-                            @else
-                            <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
-                            @endif
-                            <br>
-                            <a>Departement : {{$d->barang->departement}}</a> <br>
-                            <a>Supplier : {{$d->barang->supplier->supplier}}</a> <br>
-                            <p>Stok Tersedia : {{$d->barang->stok_tersedia}}</p>
-                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
+                            @if($d->barang->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
+                                <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
+                                <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
+                                @else
+                                <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
+                                @endif
+                                <br>
+                                <a>Departement : {{$d->barang->departement}}</a> <br>
+                                <a>Supplier : {{$d->barang->supplier->supplier}}</a> <br>
+                                <p>Stok Tersedia : {{$d->barang->stok_tersedia}}</p>
+                                <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
                     </div>
                     @endforeach
@@ -416,24 +416,24 @@
                         </div>
                         <div class="img-container my-1">
                             <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="image">
-                            @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
-                            <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
-                            @else
-                            <span style="opacity:0;">0</span>
-                            @endif
+                            @if($d->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
+                                <span class="diskon badge badge-danger text-white">{{$d->diskon}}%</span>
+                                @else
+                                <span style="opacity:0;">0</span>
+                                @endif
                         </div>
                         <div class="item-meta" style="margin-top:-25px;">
-                            @if($d->diskon != null && $d->tgl_aktif >= Carbon\Carbon::now()->format('Y-m-d'))
-                            <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
-                            <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
-                            @else
-                            <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
-                            @endif
-                            <br>
-                            <a>Departement : {{$d->departement}}</a> <br>
-                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
-                            <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
-                            <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
+                            @if($d->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
+                                <a class="text-secondary"><del>Rp.{{$d->harga_jual}},</del></a>
+                                <a class="text-danger">Rp.{{$d->harga_diskon}},-</a>
+                                @else
+                                <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
+                                @endif
+                                <br>
+                                <a>Departement : {{$d->departement}}</a> <br>
+                                <a>Supplier : {{$d->supplier->supplier}}</a> <br>
+                                <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
+                                <a href="{{route('homeShow', ['id' => $d->uuid])}}" type="button" style="width: 100%;" class="btn btn-relief-primary mr-1 mb-1 waves-effect waves-light"> <i class="fas fa fa-search"> Lihat Detail</i> </a>
                         </div>
                     </div>
                     @endforeach

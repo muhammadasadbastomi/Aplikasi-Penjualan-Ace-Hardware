@@ -5,9 +5,14 @@
     @error('judul')<div class="invalid-feedback"> {{$message}} </div>@enderror
 </div>
 <div class="form-group">
-    <label for="tgl_aktif">Waktu Aktif</label>
-    <input type="date" id="tgl_aktif" class="form-control  @error ('tgl_aktif') is-invalid @enderror" name="tgl_aktif" value="{{old('tgl_aktif')}}">
-    <p>Note : Masukkan Masa Tanggal Aktif/Berakhirnya Tanggal Etalase.</p>
+    <label for="tgl_mulai">Tanggal Mulai Etalase</label>
+    <input type="date" id="tgl_mulai" class="form-control  @error ('tgl_mulai') is-invalid @enderror" name="tgl_mulai" value="{{old('tgl_mulai')}}">
+    <p>Note : Masukkan Waktu Aktif Etalase.</p>
+</div>
+<div class="form-group">
+    <label for="tgl_akhir">Tanggal Berakhir Etalase</label>
+    <input type="date" id="tgl_akhir" class="form-control  @error ('tgl_akhir') is-invalid @enderror" name="tgl_akhir" value="{{old('tgl_akhir')}}">
+    <p>Note : Masukkan Waktu Aktif Etalase.</p>
 </div>
 <div class="form-group">
     <label for="keterangan">Keterangan</label>

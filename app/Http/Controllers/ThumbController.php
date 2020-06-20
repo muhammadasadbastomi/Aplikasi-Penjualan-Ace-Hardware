@@ -19,10 +19,12 @@ class ThumbController extends Controller
 
         $thumbnail = Thumbnail::orderBy('id', 'desc')->get();
         $data = $thumbnail->map(function ($item) use ($now) {
-            if ($item->tgl_aktif >= $now) {
+            if ($now < $item->tgl_mulai) {
                 $item['status_diskon'] = 1;
-            } else {
+            } elseif ($now > $item->tgl_akhir) {
                 $item['status_diskon'] = 2;
+            } elseif (Thumbnail::wherebetween($now, ['tgl_mulai', 'tgl_akhir'])) {
+                $item['status_diskon'] = 3;
             }
             return $item;
         });
@@ -55,18 +57,20 @@ class ThumbController extends Controller
             'mimes' => 'photo harus berupa :attribute.',
         ];
         $request->validate([
-
             'judul' => 'required',
             'keterangan' => 'required',
             'gambar' => 'file|image|mimes:jpeg,png,gif',
-
         ], $messages);
 
+        if ($request->tgl_mulai >= $request->tgl_akhir) {
+            return redirect()->back()->with('warning', 'Tanggal harus sesuai');
+        }
         // create new object
         $data = new Thumbnail;
         $data->judul = $request->judul;
         $data->keterangan = $request->keterangan;
-        $data->tgl_aktif = $request->tgl_aktif;
+        $data->tgl_mulai = $request->tgl_mulai;
+        $data->tgl_akhir = $request->tgl_akhir;
         $data->gambar = $request->gambar;
         if ($request->hasfile('gambar')) {
             $request->file('gambar')->move('images/thumbnail/', $request->file('gambar')->getClientOriginalName());
@@ -114,19 +118,21 @@ class ThumbController extends Controller
         $messages = [
             'unique' => ':attribute sudah terdaftar.',
             'required' => ':attribute harus diisi.',
-
         ];
         $request->validate([
-
             'judul' => 'required',
             'keterangan' => 'required',
-
         ], $messages);
+
+        if ($request->tgl_mulai >= $request->tgl_akhir) {
+            return redirect()->back()->with('warning', 'Tanggal harus sesuai');
+        }
 
         $data = Thumbnail::findOrFail($request->id);
         $data->judul = $request->judul;
         $data->keterangan = $request->keterangan;
-        $data->tgl_aktif = $request->tgl_aktif;
+        $data->tgl_mulai = $request->tgl_mulai;
+        $data->tgl_akhir = $request->tgl_akhir;
         if ($request->pict != '') {
             $path = public_path() . '/images/thumbnail/';
 
