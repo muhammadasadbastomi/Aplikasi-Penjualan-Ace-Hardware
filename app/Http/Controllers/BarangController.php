@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Barang;
 use App\Pembeli;
 use App\Supplier;
+use App\Satuan;
 use Carbon\Carbon;
 use App\Mail\NotifDiskon;
 use Illuminate\Http\Request;

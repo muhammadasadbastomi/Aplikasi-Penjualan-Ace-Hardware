@@ -58,11 +58,13 @@ class BarangdatangController extends Controller
         $barangdatang->barang_id = $request->barang_id;
         $barangdatang->tgl_masuk = $request->tgl_masuk;
         $barangdatang->jumlah = $request->jumlah;
-        $barangdatang->harga = $request->harga;
-        $barangdatang->total = $request->total;
-        $barangdatang->save();
 
         $barang = Barang::findOrFail($barangdatang->barang_id);
+        $barangdatang->harga = $barang->harga_beli;
+        $harga = $barang->harga_beli;
+        $barangdatang->total = $harga * $request->jumlah;
+        $barangdatang->save();
+
         $barang->stok_tersedia = $barang->stok_tersedia + $request->jumlah;
         $barang->update();
 
