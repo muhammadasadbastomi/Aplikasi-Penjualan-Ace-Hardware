@@ -65,6 +65,7 @@
                                                     <th scope="col">Kode Pengiriman</th>
                                                     <th scope="col">Nama Barang</th>
                                                     <th scope="col">Supplier</th>
+                                                    <th scope="col">Departement</th>
                                                     <th scope="col">Tanggal Pengiriman</th>
                                                     <th scope="col">Alamat</th>
                                                     <th scope="col">Jumlah</th>
@@ -80,6 +81,7 @@
                                                     <td scope="col" class="text-center">{{ $d->kode_pengiriman }}</td>
                                                     <td scope="col">{{ $d->barang->nama_barang }}</td>
                                                     <td scope="col">{{ $d->barang->supplier->supplier }}</td>
+                                                    <td scope="col">{{ $d->barang->departement }}</td>
                                                     <td scope="col" class="text-center">
                                                         {{Carbon\Carbon::parse($d->tgl_pengiriman)->translatedFormat('d F Y')}}
                                                     </td>

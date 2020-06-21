@@ -61,6 +61,7 @@
                                                     <th scope="col">No</th>
                                                     <th scope="col">Nama Barang</th>
                                                     <th scope="col">Supplier</th>
+                                                    <th scope="col">Departement</th>
                                                     <th scope="col">Kode Barang</th>
                                                     <th scope="col">Nama Pembeli</th>
                                                     <th scope="col">Tanggal Pembelian</th>
@@ -76,6 +77,7 @@
                                                     <td scope="col">{{ $loop->iteration }}</td>
                                                     <td scope="col">{{ $bg->barang->nama_barang }}</td>
                                                     <td scope="col">{{ $bg->barang->supplier->supplier }}</td>
+                                                    <td scope="col">{{ $bg->barang->departement }}</td>
                                                     <td scope="col" class="text-center">{{ $bg->barang->kode_barang }}
                                                     </td>
                                                     <td scope="col">{{ $bg->pembeli->nama_pembeli }}</td>

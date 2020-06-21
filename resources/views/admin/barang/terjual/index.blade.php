@@ -63,6 +63,7 @@
                                                     <th scope="col" class="text-center">No</th>
                                                     <th scope="col" class="text-center">Nama Barang</th>
                                                     <th scope="col" class="text-center">Supplier</th>
+                                                    <th scope="col" class="text-center">Departement</th>
                                                     <th scope="col" class="text-center">Tanggal Terjual</th>
                                                     <th scope="col" class="text-center">Jumlah Terjual</th>
                                                     <th scope="col" class="text-center">Harga Awal</th>
@@ -79,6 +80,9 @@
                                                     </td>
                                                     <td scope="col" class="text-center">
                                                         {{ $bt->barang->supplier->supplier }}
+                                                    </td>
+                                                    <td scope="col" class="text-center">
+                                                        {{ $bt->barang->departement }}
                                                     </td>
                                                     <td scope="col" class="text-center">
                                                         {{Carbon\Carbon::parse($bt->tgl_terjual)->translatedFormat('d F Y')}}

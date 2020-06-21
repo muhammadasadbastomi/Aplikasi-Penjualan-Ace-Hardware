@@ -69,6 +69,7 @@
                                                     <th scope="col">No</th>
                                                     <th scope="col">Nama Barang</th>
                                                     <th scope="col">Supplier</th>
+                                                    <th scope="col">Departement</th>
                                                     <th scope="col">Kerusakan</th>
                                                     <th scope="col">Tanggal Cek</th>
                                                     <th scope="col">Status</th>
@@ -83,6 +84,7 @@
                                                     <td scope="col">{{ $loop->iteration }}</td>
                                                     <td scope="col">{{ $br->barang->nama_barang }}</td>
                                                     <td scope="col">{{ $br->barang->supplier->supplier }}</td>
+                                                    <td scope="col">{{ $br->barang->departement }}</td>
                                                     <td scope="col">{{ $br->kerusakan }}</td>
                                                     <td scope="col">
                                                         {{Carbon\Carbon::parse($br->tgl_cek)->translatedFormat('d F Y')}}
