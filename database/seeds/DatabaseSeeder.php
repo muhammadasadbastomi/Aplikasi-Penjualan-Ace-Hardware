@@ -11,12 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Supplier::class, 3)->create()->each(function ($supplier) {
+        // factory(App\Supplier::class, 3)->create()->each(function ($supplier) {
 
-            // Seed the relation with 10 members
-            $barangs = factory(App\Barang::class, 10)->make();
-            $supplier->barang()->saveMany($barangs);
-        });
+        //     // Seed the relation with 10 members
+        //     $barangs = factory(App\Barang::class, 10)->make();
+        //     $supplier->barang()->saveMany($barangs);
+        // });
 
         DB::table('users')->insert([
             'uuid' => Str::random(36),

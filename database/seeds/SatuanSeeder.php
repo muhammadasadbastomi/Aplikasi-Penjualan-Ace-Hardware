@@ -25,25 +25,25 @@ class SatuanSeeder extends Seeder
         //     ]);
         // }
 
-        DB::table('satuans')->insert([
-            'uuid' => Str::random(36),
-            'nama_satuan' => 'buah'
-        ]);
-        DB::table('satuans')->insert([
-            'uuid' => Str::random(36),
-            'nama_satuan' => 'box'
-        ]);
-        DB::table('satuans')->insert([
-            'uuid' => Str::random(36),
-            'nama_satuan' => 'kit'
-        ]);
-        DB::table('satuans')->insert([
-            'uuid' => Str::random(36),
-            'nama_satuan' => 'pack'
-        ]);
-        DB::table('satuans')->insert([
-            'uuid' => Str::random(36),
-            'nama_satuan' => 'pcs'
-        ]);
-    }
+    //     DB::table('satuans')->insert([
+    //         'uuid' => Str::random(36),
+    //         'nama_satuan' => 'buah'
+    //     ]);
+    //     DB::table('satuans')->insert([
+    //         'uuid' => Str::random(36),
+    //         'nama_satuan' => 'box'
+    //     ]);
+    //     DB::table('satuans')->insert([
+    //         'uuid' => Str::random(36),
+    //         'nama_satuan' => 'kit'
+    //     ]);
+    //     DB::table('satuans')->insert([
+    //         'uuid' => Str::random(36),
+    //         'nama_satuan' => 'pack'
+    //     ]);
+    //     DB::table('satuans')->insert([
+    //         'uuid' => Str::random(36),
+    //         'nama_satuan' => 'pcs'
+    //     ]);
+    // }
 }
