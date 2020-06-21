@@ -12,11 +12,14 @@
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
                             <a class="navbar-brand" href="{{route('homeIndex')}}">
-                                <img src="{{asset('img/logo.png') }}" style="width: 63px;  margin-top:11px; margin-left: 4px; ">
+                                <img src="{{asset('img/logo.png') }}"
+                                    style="width: 63px;  margin-top:11px; margin-left: 4px; ">
                             </a></li>
-                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeIndex')}}"><i class="ficon feather icon-home"></i>Home</a>
+                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label"
+                                href="{{route('homeIndex')}}"><i class="ficon feather icon-home"></i>Home</a>
                         </li>
-                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeShop')}}"><i class="ficon feather icon-package"></i>All Products</a>
+                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label"
+                                href="{{route('homeShop')}}"><i class="ficon feather icon-package"></i>All Products</a>
                         </li>
                         <!-- <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="{{route('homeProfile')}}"><i class="ficon fas fa fa-user"></i>Profile</a>
                             </li> -->
@@ -24,7 +27,8 @@
                             <div class="search-bar">
                                 <form action="/home/shop" method="GET">
                                     <fieldset class="form-group position-relative has-icon-left">
-                                        <input type="text" class="form-control round" name="search" id="search" placeholder="Search ..." value="{{ old('search') }}">
+                                        <input type="text" class="form-control round" name="search" id="search"
+                                            placeholder="Search ..." value="{{ old('search') }}">
                                         <div class="form-control-position">
                                             <i class="feather icon-search px-1"></i>
                                         </div>
@@ -38,13 +42,22 @@
                     <div class="flex-center position-ref full-height">
                         @if (Route::has('login'))
                         <div class="top-right links">
-                            <b type="button" class="btn btn-icon btn-flat text-dark mr-1 mb-1 waves-effect waves-light" disabled="">
-                                <i class="feather icon-calendar"></i> {{Carbon\Carbon::now()->translatedFormat('l, d F Y')}}</b>
+                            <b type="button" class="btn btn-icon btn-flat text-dark mr-1 mb-1 waves-effect waves-light"
+                                disabled="">
+                                <i class="feather icon-calendar"></i>
+                                {{Carbon\Carbon::now()->translatedFormat('l, d F Y')}}</b>
+                            <button onclick="window.print()"
+                                class="btn text-dark border-secondary btn-icon btn-outline-secondary mr-1 mb-1 waves-effect waves-light">
+                                Cetak Brosur <i class="text-secondary feather icon-print"></i></button>
                             @auth
-                            <a type="button" href="{{ url('/admin') }}" class="btn text-dark border-secondary btn-icon btn-outline-secondary mr-1 mb-1 waves-effect waves-light" disabled="">
+                            <a type="button" href="{{ url('/admin') }}"
+                                class="btn text-dark border-secondary btn-icon btn-outline-secondary mr-1 mb-1 waves-effect waves-light"
+                                disabled="">
                                 Admin <i class="text-secondary feather icon-home"></i></a>
                             @else
-                            <a type="button" href="{{ route('login') }}" class="btn text-dark border-secondary btn-icon btn-outline-secondary mr-1 mb-1 waves-effect waves-light" disabled="">
+                            <a type="button" href="{{ route('login') }}"
+                                class="btn text-dark border-secondary btn-icon btn-outline-secondary mr-1 mb-1 waves-effect waves-light"
+                                disabled="">
                                 Login <i class="text-secondary feather icon-log-in"></i></a>
                             @endauth
                         </div>
