@@ -115,6 +115,7 @@
                                                     <th scope="col">Kode Barang</th>
                                                     <th scope="col">Nama Barang</th>
                                                     <th scope="col">Supplier</th>
+                                                    <th scope="col">Satuan</th>
                                                     <th scope="col">Kategori</th>
                                                     <th scope="col">Harga Awal</th>
                                                     <th scope="col">Status Diskon</th>
@@ -131,6 +132,7 @@
                                                     <td class="text-center">{{$b->kode_barang}}</td>
                                                     <td>{{$b->nama_barang}}</td>
                                                     <td>{{$b->supplier->supplier}}</td>
+                                                    <td>{{$b->satuan->nama_satuan}}</td>
                                                     <td>
                                                         @if($b->kategori == 1)
                                                         Alat Rumah
@@ -316,7 +318,7 @@
     $('#showModal').on('show.bs.modal', function(event) {
         let button = $(event.relatedTarget)
         let id = button.data('id')
-        let satuan = button.data('satuan')
+        // let satuan = button.data('satuan')
         let departement = button.data('departement')
         let diskon = button.data('diskon')
         let stok = button.data('stok')
@@ -332,7 +334,7 @@
         let modal = $(this)
 
         modal.find('.modal-body #id').val(id)
-        modal.find('.modal-body #satuan').val(satuan)
+        // modal.find('.modal-body #satuan').val(satuan)
         modal.find('.modal-body #departement').val(departement)
         modal.find('.modal-body #diskon').val(diskon)
         modal.find('.modal-body #stok').val(stok)

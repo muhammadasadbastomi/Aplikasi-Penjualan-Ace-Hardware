@@ -32,6 +32,7 @@ class BarangController extends Controller
         });
 
         $supplier = Supplier::orderBy('id', 'asc')->get();
+        $satuan = Satuan::orderBy('id', 'asc')->get();
         $barang = Barang::orderBy('id', 'desc')->get();
         $barang = $barang->map(function ($item) use ($now) {
             $diskon = ($item->diskon / 100) * $item->harga_jual;
@@ -48,7 +49,7 @@ class BarangController extends Controller
 
             return $item;
         });
-        return view('admin.barang.master.index', compact('barang', 'supplier', 'data'));
+        return view('admin.barang.master.index', compact('barang', 'supplier', 'data', 'satuan'));
     }
 
     /**
@@ -80,9 +81,9 @@ class BarangController extends Controller
         ];
         $request->validate([
             'nama_barang' => 'required',
-            'satuan' => 'required',
             'departement' => 'required',
             'harga_jual' => 'required',
+            'harga_beli' => 'required',
             'stok_tersedia' => 'required',
             'keterangan' => 'required',
             'gambar' => 'file|image|mimes:jpeg,png,gif',
@@ -94,11 +95,12 @@ class BarangController extends Controller
         $barang->nama_barang = $request->nama_barang;
         $barang->kode_barang = $request->kode_barang;
         $barang->supplier_id = $request->supplier_id;
+        $barang->satuan_id = $request->satuan_id;
         // $barang->tgl_aktif = $request->tgl_aktif;
         $barang->kategori = $request->kategori;
-        $barang->satuan = $request->satuan;
         $barang->departement = $request->departement;
         $barang->harga_jual = $request->harga_jual;
+        $barang->harga_beli = $request->harga_beli;
         $barang->stok_tersedia = $request->stok_tersedia;
         $barang->keterangan = $request->keterangan;
         $barang->gambar = $request->gambar;
@@ -134,8 +136,9 @@ class BarangController extends Controller
         // get barang by id
         $barang = barang::where('uuid', $id)->first();
         $supplier = Supplier::orderBy('id', 'asc')->get();
+        $satuan = Satuan::orderBy('id', 'asc')->get();
 
-        return view('admin.barang.master.show', compact('barang', 'supplier'));
+        return view('admin.barang.master.show', compact('barang', 'supplier', 'satuan'));
     }
 
     /**
@@ -164,7 +167,6 @@ class BarangController extends Controller
         ];
         $request->validate([
             'nama_barang' => 'required',
-            'satuan' => 'required',
             'departement' => 'required',
             'harga_jual' => 'required',
             'stok_tersedia' => 'required',
@@ -177,7 +179,7 @@ class BarangController extends Controller
         $barang->kode_barang = $request->kode_barang;
         $barang->supplier_id = $request->supplier_id;
         $barang->kategori = $request->kategori;
-        $barang->satuan = $request->satuan;
+        $barang->satuan_id = $request->satuan_id;
         $barang->departement = $request->departement;
         $barang->harga_jual = $request->harga_jual;
         $barang->keterangan = $request->keterangan;

@@ -84,7 +84,7 @@
                                                         {{Carbon\Carbon::parse($bt->tgl_terjual)->translatedFormat('d F Y')}}
                                                     </td>
                                                     <td scope="col" class="text-center">{{ $bt->jumlah_terjual }}
-                                                        {{$bt->barang->satuan}}
+                                                        {{$bt->barang->satuan->nama_satuan}}
                                                     </td>
                                                     <td scope="col" class="text-center">Rp.
                                                         {{number_format( $bt->harga_terjual, 0, ',', '.')}},-

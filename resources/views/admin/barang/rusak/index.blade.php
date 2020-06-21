@@ -34,19 +34,29 @@
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
                                 <div class="dt-buttons btn-group">
-                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                    <button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span>
                                     </button>
                                     &emsp13;
-                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                    <button type="button"
+                                        class="btn btn-outline-info dropdown-toggle waves-effect waves-light"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i
+                                                class="feather icon-printer"></i>
                                             Cetak</span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" target="_blank" href="{{route('rusakCetak')}}">Keseluruhan</a>
-                                        <a class="dropdown-item" target="_blank" href="{{route('perbaikan3Cetak')}}">Belum Diperbaiki Bulan Ini</a>
-                                        <a class="dropdown-item" target="_blank" href="{{route('perbaikan4Cetak')}}">Dalam Perbaikan Bulan Ini</a>
-                                        <a class="dropdown-item" target="_blank" href="{{route('perbaikan1Cetak')}}">Selesai Diperbaiki Bulan Ini</a>
-                                        <a class="dropdown-item" target="_blank" href="{{route('perbaikan2Cetak')}}">Tidak Bisa Diperbaiki Bulan Ini</a>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('rusakCetak')}}">Keseluruhan</a>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('perbaikan3Cetak')}}">Belum Diperbaiki Bulan Ini</a>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('perbaikan4Cetak')}}">Dalam Perbaikan Bulan Ini</a>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('perbaikan1Cetak')}}">Selesai Diperbaiki Bulan Ini</a>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('perbaikan2Cetak')}}">Tidak Bisa Diperbaiki Bulan Ini</a>
                                     </div>
                                 </div>
                             </div>
@@ -58,6 +68,7 @@
                                                 <tr>
                                                     <th scope="col">No</th>
                                                     <th scope="col">Nama Barang</th>
+                                                    <th scope="col">Supplier</th>
                                                     <th scope="col">Kerusakan</th>
                                                     <th scope="col">Tanggal Cek</th>
                                                     <th scope="col">Status</th>
@@ -71,19 +82,30 @@
                                                 <tr>
                                                     <td scope="col">{{ $loop->iteration }}</td>
                                                     <td scope="col">{{ $br->barang->nama_barang }}</td>
+                                                    <td scope="col">{{ $br->barang->supplier->supplier }}</td>
                                                     <td scope="col">{{ $br->kerusakan }}</td>
-                                                    <td scope="col">{{Carbon\Carbon::parse($br->tgl_cek)->translatedFormat('d F Y')}}</td>
+                                                    <td scope="col">
+                                                        {{Carbon\Carbon::parse($br->tgl_cek)->translatedFormat('d F Y')}}
+                                                    </td>
                                                     @if($br->status == 1)
-                                                    <td scope="col"> <button type="button" class="btn btn-warning btn-sm text-white">Belum diperbaiki</button>
+                                                    <td scope="col"> <button type="button"
+                                                            class="btn btn-warning btn-sm text-white">Belum
+                                                            diperbaiki</button>
                                                     </td>
                                                     @elseif($br->status == 2)
-                                                    <td scope="col"><button type="button" class="btn btn-info btn-sm text-white">Dalam Perbaikan</button>
+                                                    <td scope="col"><button type="button"
+                                                            class="btn btn-info btn-sm text-white">Dalam
+                                                            Perbaikan</button>
                                                     </td>
                                                     @elseif($br->status == 3)
-                                                    <td scope="col"><button type="button" class="btn wrap btn-success btn-sm text-white">Selesai Perbaikan</button>
+                                                    <td scope="col"><button type="button"
+                                                            class="btn wrap btn-success btn-sm text-white">Selesai
+                                                            Perbaikan</button>
                                                     </td>
                                                     @elseif($br->status == 4)
-                                                    <td scope="col"><button type="button" class="btn btn-danger btn-sm text-white">Tidak Bisa Diperbaiki</button>
+                                                    <td scope="col"><button type="button"
+                                                            class="btn btn-danger btn-sm text-white">Tidak Bisa
+                                                            Diperbaiki</button>
                                                     </td>
                                                     @else
                                                     <td scope="col"><a class="btn btn-success btn-sm text-white">-</a>
@@ -97,11 +119,17 @@
                                                         -
                                                         @endif
                                                     </td>
-                                                    <td scope="col">{{ $br->jumlah_barang }} {{$br->barang->satuan}}</td>
+                                                    <td scope="col">{{ $br->jumlah_barang }}
+                                                        {{$br->barang->satuan->nama_satuan}}
+                                                    </td>
 
                                                     <td scope="col" class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" href="{{route('rusakEdit', ['id' => $br->uuid])}}"><i class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$br->uuid}}" href="#"><i class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('rusakEdit', ['id' => $br->uuid])}}"><i
+                                                                class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$br->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -121,7 +149,8 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -145,17 +174,20 @@
 
                         <label>Kerusakan</label>
                         <div class="form-group">
-                            <input type="text" name="kerusakan" id="kerusakan" placeholder="Masukkan Kerusakan Barang" value="{{old('kerusakan')}}" class="form-control">
+                            <input type="text" name="kerusakan" id="kerusakan" placeholder="Masukkan Kerusakan Barang"
+                                value="{{old('kerusakan')}}" class="form-control">
                         </div>
 
                         <label>Tanggal Cek</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_cek" id="tgl_cek" value="{{old('tgl_cek')}}" class="form-control" required>
+                            <input type="date" name="tgl_cek" id="tgl_cek" value="{{old('tgl_cek')}}"
+                                class="form-control" required>
                         </div>
 
                         <label>Jumlah</label>
                         <div class="form-group">
-                            <input type="text" name="jumlah_barang" id="jumlah_barang" placeholder="Masukkan Jumlah" value="{{old('jumlah_barang')}}" class="form-control">
+                            <input type="text" name="jumlah_barang" id="jumlah_barang" placeholder="Masukkan Jumlah"
+                                value="{{old('jumlah_barang')}}" class="form-control">
                         </div>
                     </div>
             </div>
