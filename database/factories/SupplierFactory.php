@@ -14,5 +14,4 @@ $factory->define(Supplier::class, function (Faker $faker) {
         'alamat' => $faker->address,
         'kontak' => $faker->e164PhoneNumber,
     ];
-
 });
