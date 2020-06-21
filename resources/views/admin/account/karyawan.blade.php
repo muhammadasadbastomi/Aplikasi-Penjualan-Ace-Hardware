@@ -163,7 +163,7 @@
                             <div class="form-control-position"><i class="feather icon-map-pin"></i></div>
                         </fieldset>
 
-                        <!-- <label>Password</label>
+                        <label>Password</label>
                         <fieldset class="form-label-group form-group position-relative has-icon-left">
                             <input type="password" id="inputPassword" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="new-password">
                             <div class="form-control-position"><i class="feather icon-lock"></i></div>
@@ -174,7 +174,7 @@
                         <fieldset class="form-label-group form-group position-relative has-icon-left">
                             <input type="password" id="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required>
                             <div class="form-control-position"><i class="feather icon-lock"></i></div>
-                        </fieldset> -->
+                        </fieldset>
 
                         <label for="photos">Photo</label>
                         <fieldset class="form-label-group form-group position-relative has-icon-left">

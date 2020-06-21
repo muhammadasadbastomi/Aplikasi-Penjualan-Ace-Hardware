@@ -64,13 +64,14 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'confirmed'],
         ], $messages);
 
         $user = new User;
         $user->role = '2';
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make('userace1');
+        $user->password = Hash::make($request->password);
         $user->nohp = $request->nohp;
         $user->alamat = $request->alamat;
         $user->photos = $request->photos;
@@ -204,24 +205,24 @@ class UserController extends Controller
             $data->photos = $data->photos;
         }
 
-        if ($request->password_baru) {
+        if ($request->password_lama && $request->password_baru) {
             $messages = [
                 'required' => 'harus di isi.',
-                'min' => ':attribute minimal harus 5 karakter.'
+                'min' => ':attribute minimal harus 3 karakter.'
                 // 'unique' => ':attribute sudah ada'
             ];
             $request->validate([
                 'password_lama' => ['required'],
-                'password_baru' => ['same:password_konfirmasi', 'min:5'],
+                'password_baru' => ['same:password_konfirmasi', 'min:3'],
                 // 'email' => 'unique:users'
             ], $messages);
 
-            if (Hash::check($request['password_lama'], $data->password)) {
-                $data->password = Hash::make($request['password_baru']);
+            if (Hash::check($request->password_lama, $data->password)) {
+                $data->password = Hash::make($request->password_baru);
             } else {
                 return back()->with('warning', 'Password yang Anda Masukkan Salah');
             }
-        } elseif (!$request->password_lama) {
+        } elseif (!$request->password_lama && !$request->password_baru) {
             $data->password = Hash::make($data->password);
         } else {
             return back()->with('warning', 'Password Baru Harus Diisi.');

@@ -184,6 +184,9 @@ class BarangController extends Controller
         $barang->harga_jual = $request->harga_jual;
         $barang->keterangan = $request->keterangan;
         $barang->stok_tersedia = $request->stok_tersedia;
+        $barang->diskon = $request->diskon;
+        $barang->tgl_mulai = $request->tgl_mulai;
+        $barang->tgl_akhir = $request->tgl_akhir;
 
         if (!isset($request->diskon) && !isset($request->tgl_mulai) && !isset($request->tgl_akhir)) {
             $barang->diskon = $request->diskon;
