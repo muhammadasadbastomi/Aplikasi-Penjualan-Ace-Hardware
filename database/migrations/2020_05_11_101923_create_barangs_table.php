@@ -17,11 +17,12 @@ class CreateBarangsTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
             $table->unsignedBigInteger('supplier_id');
+            $table->unsignedBigInteger('satuan_id')->nullable();
             $table->string('nama_barang');
             $table->string('kode_barang');
-            $table->string('satuan');
             $table->string('departement');
             $table->string('harga_jual');
+            $table->string('harga_beli');
             $table->tinyInteger('kategori');
             $table->string('keterangan')->nullable();
             $table->integer('stok_tersedia');
@@ -31,6 +32,7 @@ class CreateBarangsTable extends Migration
             $table->string('gambar')->default('default.png');
             $table->timestamps();
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('restrict');
+            $table->foreign('satuan_id')->references('id')->on('satuans')->onDelete('restrict');
         });
     }
 

@@ -32,16 +32,23 @@
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
                                 <div class="dt-buttons btn-group">
-                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                    <button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span>
                                     </button>
                                     &emsp13;
-                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                    <button type="button"
+                                        class="btn btn-outline-info dropdown-toggle waves-effect waves-light"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i
+                                                class="feather icon-printer"></i>
                                             Cetak</span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" target="_blank" href="{{route('garansiCetak')}}">Keseluruhan</a>
-                                        <button class="btn nohover dropdown-item" data-toggle="modal" data-target="#modaltgl">Berdasarkan Tanggal</button>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('garansiCetak')}}">Keseluruhan</a>
+                                        <button class="btn nohover dropdown-item" data-toggle="modal"
+                                            data-target="#modaltgl">Berdasarkan Tanggal</button>
                                     </div>
                                 </div>
                             </div>
@@ -53,6 +60,8 @@
                                                 <tr>
                                                     <th scope="col">No</th>
                                                     <th scope="col">Nama Barang</th>
+                                                    <th scope="col">Supplier</th>
+                                                    <th scope="col">Departement</th>
                                                     <th scope="col">Kode Barang</th>
                                                     <th scope="col">Nama Pembeli</th>
                                                     <th scope="col">Tanggal Pembelian</th>
@@ -67,14 +76,26 @@
                                                 <tr>
                                                     <td scope="col">{{ $loop->iteration }}</td>
                                                     <td scope="col">{{ $bg->barang->nama_barang }}</td>
-                                                    <td scope="col" class="text-center">{{ $bg->barang->kode_barang }}</td>
+                                                    <td scope="col">{{ $bg->barang->supplier->supplier }}</td>
+                                                    <td scope="col">{{ $bg->barang->departement }}</td>
+                                                    <td scope="col" class="text-center">{{ $bg->barang->kode_barang }}
+                                                    </td>
                                                     <td scope="col">{{ $bg->pembeli->nama_pembeli }}</td>
-                                                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($bg->tgl_pembelian)->translatedFormat('d F Y')}}</td>
-                                                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($bg->tgl_akhir_garansi)->translatedFormat('d F Y')}}</td>
-                                                    <td scope="col">{{ $bg->jumlah }} {{$bg->barang->satuan}}</td>
                                                     <td scope="col" class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" href="{{route('garansiEdit', ['id' => $bg->uuid])}}"><i class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$bg->uuid}}" href="#"><i class="feather icon-trash"></i></a>
+                                                        {{Carbon\Carbon::parse($bg->tgl_pembelian)->translatedFormat('d F Y')}}
+                                                    </td>
+                                                    <td scope="col" class="text-center">
+                                                        {{Carbon\Carbon::parse($bg->tgl_akhir_garansi)->translatedFormat('d F Y')}}
+                                                    </td>
+                                                    <td scope="col">{{ $bg->jumlah }}
+                                                        {{$bg->barang->satuan->nama_satuan}}</td>
+                                                    <td scope="col" class="text-center">
+                                                        <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('garansiEdit', ['id' => $bg->uuid])}}"><i
+                                                                class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$bg->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -96,7 +117,8 @@
 @include('admin.barang.garansi.cetaktanggal')
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -129,17 +151,20 @@
 
                         <label>Tanggal pembelian</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_pembelian" id="tgl_pembelian" value="{{old('tgl_pembelian')}}" class="form-control">
+                            <input type="date" name="tgl_pembelian" id="tgl_pembelian" value="{{old('tgl_pembelian')}}"
+                                class="form-control">
                         </div>
 
                         <label>Tanggal Akhir Garansi</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_akhir_garansi" id="tgl_akhir_garansi" value="{{old('tgl_akhir_garansi')}}" class="form-control">
+                            <input type="date" name="tgl_akhir_garansi" id="tgl_akhir_garansi"
+                                value="{{old('tgl_akhir_garansi')}}" class="form-control">
                         </div>
 
                         <label>Jumlah</label>
                         <div class="form-group">
-                            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah" value="{{old('jumlah')}}" class="form-control">
+                            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah"
+                                value="{{old('jumlah')}}" class="form-control">
                         </div>
                     </div>
             </div>

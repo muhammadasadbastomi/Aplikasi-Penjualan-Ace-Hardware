@@ -32,17 +32,25 @@
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
                                 <div class="dt-buttons btn-group">
-                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                    <button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span>
                                     </button>
                                     &emsp13;
-                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                    <button type="button"
+                                        class="btn btn-outline-info dropdown-toggle waves-effect waves-light"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i
+                                                class="feather icon-printer"></i>
                                             Cetak</span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" target="_blank" href="{{route('pengirimanCetak')}}">Keseluruhan</a>
-                                        <a class="dropdown-item" target="_blank" href="{{route('terkirimCetak')}}">Status Terkirim Bulan Ini</a>
-                                        <button class="btn nohover dropdown-item" data-toggle="modal" data-target="#modaltgl">Berdasarkan Tanggal</button>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('pengirimanCetak')}}">Keseluruhan</a>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('terkirimCetak')}}">Status Terkirim Bulan Ini</a>
+                                        <button class="btn nohover dropdown-item" data-toggle="modal"
+                                            data-target="#modaltgl">Berdasarkan Tanggal</button>
                                     </div>
                                 </div>
                             </div>
@@ -56,6 +64,8 @@
                                                     <th scope="col">Nama Pembeli</th>
                                                     <th scope="col">Kode Pengiriman</th>
                                                     <th scope="col">Nama Barang</th>
+                                                    <th scope="col">Supplier</th>
+                                                    <th scope="col">Departement</th>
                                                     <th scope="col">Tanggal Pengiriman</th>
                                                     <th scope="col">Alamat</th>
                                                     <th scope="col">Jumlah</th>
@@ -70,26 +80,47 @@
                                                     <td scope="col">{{ $d->pembeli->nama_pembeli }}</td>
                                                     <td scope="col" class="text-center">{{ $d->kode_pengiriman }}</td>
                                                     <td scope="col">{{ $d->barang->nama_barang }}</td>
-                                                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_pengiriman)->translatedFormat('d F Y')}}</td>
+                                                    <td scope="col">{{ $d->barang->supplier->supplier }}</td>
+                                                    <td scope="col">{{ $d->barang->departement }}</td>
+                                                    <td scope="col" class="text-center">
+                                                        {{Carbon\Carbon::parse($d->tgl_pengiriman)->translatedFormat('d F Y')}}
+                                                    </td>
                                                     <td scope="col">{{ $d->pembeli->alamat }}</td>
-                                                    <td scope="col">{{ $d->jumlah }} {{$d->barang->satuan}}</td>
+                                                    <td scope="col">{{ $d->jumlah }} {{$d->barang->satuan->nama_satuan}}
+                                                    </td>
                                                     @if($d->status == 1)
-                                                    <td scope="col"><button class="btn btn-warning btn-sm text-white" data-toggle="modal" data-id="{{$d->id}}" data-target="#modalstatus" data-status="{{$d->status}}">Packing</button>
+                                                    <td scope="col"><button class="btn btn-warning btn-sm text-white"
+                                                            data-toggle="modal" data-id="{{$d->id}}"
+                                                            data-target="#modalstatus"
+                                                            data-status="{{$d->status}}">Packing</button>
                                                     </td>
                                                     @elseif($d->status == 2)
-                                                    <td scope="col"><button class="btn btn-info btn-sm text-white" data-toggle="modal" data-id="{{$d->id}}" data-target="#modalstatus" data-status="{{$d->status}}">Dalam Pengiriman</button>
+                                                    <td scope="col"><button class="btn btn-info btn-sm text-white"
+                                                            data-toggle="modal" data-id="{{$d->id}}"
+                                                            data-target="#modalstatus"
+                                                            data-status="{{$d->status}}">Dalam Pengiriman</button>
                                                     </td>
                                                     @elseif($d->status == 3)
-                                                    <td scope="col"><button class="btn btn-success btn-sm text-white" data-toggle="modal" data-id="{{$d->id}}" data-target="#modalstatus" data-status="{{$d->status}}">Terkirim</button>
+                                                    <td scope="col"><button class="btn btn-success btn-sm text-white"
+                                                            data-toggle="modal" data-id="{{$d->id}}"
+                                                            data-target="#modalstatus"
+                                                            data-status="{{$d->status}}">Terkirim</button>
                                                     </td>
                                                     @else
-                                                    <td scope="col"><button class="btn btn-success btn-sm text-white" data-toggle="modal" data-id="{{$d->id}}" data-target="#modalstatus" data-status="{{$d->status}}">-</button>
+                                                    <td scope="col"><button class="btn btn-success btn-sm text-white"
+                                                            data-toggle="modal" data-id="{{$d->id}}"
+                                                            data-target="#modalstatus"
+                                                            data-status="{{$d->status}}">-</button>
                                                     </td>
                                                     @endif
                                                     @include('admin.barang.pengiriman.status')
                                                     <td scope="col" class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" href="{{route('pengirimanEdit', ['id' => $d->uuid])}}"><i class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$d->uuid}}" href="#"><i class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('pengirimanEdit', ['id' => $d->uuid])}}"><i
+                                                                class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$d->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -111,7 +142,8 @@
 @include('admin.barang.pengiriman.cetaktanggal')
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -135,7 +167,9 @@
 
                         <label>Kode pengiriman</label>
                         <div class="form-group">
-                            <input type="text" name="kode_pengiriman" id="kode_pengiriman" value="{{old('kode_pengiriman')}}" placeholder="Masukkan Kode Pengiriman" class="form-control @error ('kode_pengiriman') is-invalid @enderror">
+                            <input type="text" name="kode_pengiriman" id="kode_pengiriman"
+                                value="{{old('kode_pengiriman')}}" placeholder="Masukkan Kode Pengiriman"
+                                class="form-control @error ('kode_pengiriman') is-invalid @enderror">
                             @error('kode_pengiriman')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
@@ -160,7 +194,8 @@
 
                         <label>Jumlah</label>
                         <div class="form-group">
-                            <input type="number" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah" value="{{old('jumlah')}}" class="form-control @error ('jumlah') is-invalid @enderror">
+                            <input type="number" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah"
+                                value="{{old('jumlah')}}" class="form-control @error ('jumlah') is-invalid @enderror">
                             @error('jumlah')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
