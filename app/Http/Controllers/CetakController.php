@@ -25,6 +25,23 @@ class CetakController extends Controller
         return $pdf->stream('laporan-pembeli-pdf');
     }
 
+    public function cetakBrosur()
+    {
+        $now = Carbon::now()->format('Y-m-d');
+        $data = Barang::orderBy('id','desc')->take(4)->get();
+        $diskon = Barang::whereNotNull('diskon')->take(4)->get();
+
+        $diskon = $diskon->map(function ($item) {
+            $diskone = ($item->diskon / 100) * $item->harga_jual;
+            $item['baru'] = $item->harga_jual - $diskone;
+            return $item;
+        });
+
+        $pdf = PDF::loadview('home.brosur',compact('data','diskon'));
+        return $pdf->stream('laporan-barang-pdf');
+        // return view('home.brosur',compact('data','diskon'));
+    }
+
     public function supplier()
     {
         $data = Supplier::all();

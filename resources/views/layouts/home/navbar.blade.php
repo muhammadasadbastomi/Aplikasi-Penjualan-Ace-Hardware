@@ -46,9 +46,9 @@
                                 disabled="">
                                 <i class="feather icon-calendar"></i>
                                 {{Carbon\Carbon::now()->translatedFormat('l, d F Y')}}</b>
-                            <button onclick="window.print()"
+                            <a href="{{ Route('cetakBrosur') }}"
                                 class="btn text-dark border-secondary btn-icon btn-outline-secondary mr-1 mb-1 waves-effect waves-light">
-                                Cetak Brosur <i class="text-secondary feather icon-print"></i></button>
+                                Cetak Brosur <i class="text-secondary feather icon-print"></i></a>
                             @auth
                             <a type="button" href="{{ url('/admin') }}"
                                 class="btn text-dark border-secondary btn-icon btn-outline-secondary mr-1 mb-1 waves-effect waves-light"

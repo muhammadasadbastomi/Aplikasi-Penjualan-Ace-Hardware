@@ -45,5 +45,5 @@ class SatuanSeeder extends Seeder
     //         'uuid' => Str::random(36),
     //         'nama_satuan' => 'pcs'
     //     ]);
-    // }
+    }
 }
