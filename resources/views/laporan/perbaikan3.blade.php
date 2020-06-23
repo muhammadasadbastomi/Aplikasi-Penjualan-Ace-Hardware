@@ -97,13 +97,15 @@
         <div class="headtext">
             <h3 style="margin:0px;">PT ACE HARDWARE</h3>
             <h1 style="margin:0px;">Q Mall Banjarbaru</h1>
-            <p style="margin:0px;">Jl. A. Yani KM 36, Komet, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan 70714</p>
+            <p style="margin:0px;">Jl. A. Yani KM 36, Komet, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan 70714
+            </p>
         </div>
         <hr>
     </div>
 
     <div class="container" style="margin-top:-40px;">
-        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Dalam Perbaikan Pada Bulan {{$now}}</h3>
+        <h3 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Dalam Perbaikan Pada Bulan {{$now}}
+        </h3>
         <table class='table table-bordered nowrap'>
             <thead>
                 <tr>
@@ -122,7 +124,8 @@
                     <td scope="col" class="text-center">{{$loop->iteration}}</td>
                     <td scope="col" class="text-center">{{ $d->barang->nama_barang }}</td>
                     <td scope="col" class="text-center">{{ $d->kerusakan }}</td>
-                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_cek)->translatedFormat('d F Y')}}</td>
+                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_cek)->translatedFormat('d F Y')}}
+                    </td>
                     @if($d->status == 1)
                     <td scope="col" class="text-center">Belum diperbaiki</td>
                     @elseif($d->status == 2)
@@ -143,7 +146,8 @@
                         -
                         @endif
                     </td>
-                    <td scope="col" class="text-center">{{ $d->jumlah_barang }} {{$d->barang->satuan}}</td>
+                    <td scope="col" class="text-center">{{ $d->jumlah_barang }} {{ $d->barang->satuan->nama_satuan }}
+                    </td>
 
                 </tr>
                 @endforeach

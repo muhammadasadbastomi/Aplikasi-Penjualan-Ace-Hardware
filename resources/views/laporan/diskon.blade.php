@@ -98,7 +98,8 @@
         <div class="headtext">
             <h3 style="margin:0px;">PT ACE HARDWARE</h3>
             <h1 style="margin:0px;">Q Mall Banjarbaru</h1>
-            <p style="margin:0px;">Jl. A. Yani KM 36, Komet, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan 70714</p>
+            <p style="margin:0px;">Jl. A. Yani KM 36, Komet, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan 70714
+            </p>
         </div>
         <hr>
     </div>
@@ -144,9 +145,11 @@
                         @else
                         -
                         @endif</td>
-                    <td scope="col" class="text-center">{{$d->satuan}}</td>
+                    <td scope="col" class="text-center">{{ $d->satuan->nama_satuan }}</td>
                     <td scope="col" class="text-center">Rp.{{$d->harga_jual}},-</td>
-                    <td scope="col" class="text-center">{{Carbon\Carbon::parse($d->tgl_mulai)->translatedFormat('d F Y')}} <br> sampai dgn <br> {{Carbon\Carbon::parse($d->tgl_akhir)->translatedFormat('d F Y')}}</td>
+                    <td scope="col" class="text-center">
+                        {{Carbon\Carbon::parse($d->tgl_mulai)->translatedFormat('d F Y')}} <br> sampai dgn <br>
+                        {{Carbon\Carbon::parse($d->tgl_akhir)->translatedFormat('d F Y')}}</td>
                     <td>
                         @if($d->status_diskon == 3)
                         <span class="badge badge-success">Aktif</span>
@@ -160,7 +163,7 @@
                     </td>
                     <td scope="col" class="text-center">{{$d->diskon}}%</td>
                     <td scope="col" class="text-center">Rp.{{$d->harga_diskon}}</td>
-                    <td scope="col" class="text-center">{{$d->stok_tersedia}} {{$d->satuan}}</td>
+                    <td scope="col" class="text-center">{{$d->stok_tersedia}} {{ $d->satuan->nama_satuan }}</td>
                 </tr>
                 @endforeach
             </tbody>

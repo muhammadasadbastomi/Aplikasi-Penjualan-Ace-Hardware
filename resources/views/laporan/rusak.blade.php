@@ -97,7 +97,8 @@
         <div class="headtext">
             <h3 style="margin:0px;">PT ACE HARDWARE</h3>
             <h1 style="margin:0px;">Q Mall Banjarbaru</h1>
-            <p style="margin:0px;">Jl. A. Yani KM 36, Komet, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan 70714</p>
+            <p style="margin:0px;">Jl. A. Yani KM 36, Komet, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan 70714
+            </p>
         </div>
         <hr>
     </div>
@@ -143,7 +144,8 @@
                         -
                         @endif
                     </td>
-                    <td scope="col" class="text-center">{{ $d->jumlah_barang }} {{$d->barang->satuan}}</td>
+                    <td scope="col" class="text-center">{{ $d->jumlah_barang }} {{ $d->barang->satuan->nama_satuan }}
+                    </td>
 
                 </tr>
                 @endforeach

@@ -98,13 +98,15 @@
         <div class="headtext">
             <h3 style="margin:0px;">PT ACE HARDWARE</h3>
             <h1 style="margin:0px;">Q Mall Banjarbaru</h1>
-            <p style="margin:0px;">Jl. A. Yani KM 36, Komet, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan 70714</p>
+            <p style="margin:0px;">Jl. A. Yani KM 36, Komet, Banjarbaru Utara, Kota Banjarbaru, Kalimantan Selatan 70714
+            </p>
         </div>
         <hr>
     </div>
 
     <div class="container" style="margin-top:-40px;">
-        <h4 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Berdasarkan Supplier {{$supplier->supplier}} </h4>
+        <h4 style="text-align:center;text-transform: uppercase;">Laporan Data Barang Berdasarkan Supplier
+            {{$supplier->supplier}} </h4>
         <table class='table table-bordered nowrap'>
             <thead>
                 <tr>
@@ -143,7 +145,7 @@
                         @else
                         -
                         @endif</td>
-                    <td scope="col" class="text-center">{{$d->satuan}}</td>
+                    <td scope="col" class="text-center">{{ $d->satuan->nama_satuan }}</td>
                     <td scope="col" class="text-center">{{$d->departement}}</td>
                     <td scope="col" class="text-center">Rp.{{number_format( $d->harga_jual, 0, ',', '.')}},-</td>
                     <td scope="col" class="text-center">{{$d->stok_tersedia}}</td>

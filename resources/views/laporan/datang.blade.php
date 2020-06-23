@@ -123,7 +123,7 @@
                     <td scope="col" class="text-center">{{$d->barang->nama_barang}}</td>
                     <td scope="col" class="text-center">
                         {{Carbon\Carbon::parse($d->tgl_masuk)->translatedFormat('d F Y')}}</td>
-                    <td scope="col" class="text-center">{{$d->jumlah}} {{$d->barang->satuan}}</td>
+                    <td scope="col" class="text-center">{{$d->jumlah}} {{ $d->barang->satuan->nama_satuan }}</td>
                     <td scope="col" class="text-center">Rp. {{number_format( $d->harga, 0, ',', '.')}},-</td>
                     <td scope="col" class="text-center">Rp .{{number_format( $d->total, 0, ',', '.')}},-</td>
                 </tr>

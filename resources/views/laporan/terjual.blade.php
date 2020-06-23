@@ -124,7 +124,8 @@
                     <td scope="col" class="text-center">{{$d->barang->nama_barang}}</td>
                     <td scope="col" class="text-center">
                         {{Carbon\Carbon::parse($d->tgl_terjual)->translatedFormat('d F Y')}}</td>
-                    <td scope="col" class="text-center">{{$d->jumlah_terjual}} {{$d->barang->satuan}}</td>
+                    <td scope="col" class="text-center">{{$d->jumlah_terjual}} {{ $d->barang->satuan->nama_satuan }}
+                    </td>
                     <td scope="col" class="text-center">
                         @if($d->diskon_terjual)
                         {{$d->diskon_terjual}}
