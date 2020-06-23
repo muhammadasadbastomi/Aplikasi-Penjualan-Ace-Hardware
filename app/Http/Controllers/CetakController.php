@@ -32,10 +32,12 @@ class CetakController extends Controller
         $diskon = Barang::whereNotNull('diskon')->take(4)->get();
 
         $diskon = $diskon->map(function ($item) {
-            $diskone = ($item->diskon / 100) * $item->harga_jual;
-            $item['baru'] = $item->harga_jual - $diskone;
+            $diskon = ($item->diskon / 100) * $item->harga_jual;
+            $item['harga_diskon'] = $item->harga_jual - $diskon;
             return $item;
         });
+        // dd($diskon);
+
 
         // $pdf = PDF::loadview('laporan/barang', compact('data'));
         // return $pdf->stream('laporan-barang-pdf');

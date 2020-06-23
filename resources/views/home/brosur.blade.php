@@ -25,8 +25,8 @@
         td,
         th {
             font-size: 11px;
-            border: 1px solid;
-            padding-left: 5px;
+            border: none;
+            padding: 20px;
             text-align: center;
         }
 
@@ -146,8 +146,7 @@
                     <h2> Produk Diskon <div class="badge badge-danger"> </div>
                     </h2>
                     <table>
-                        @foreach($data as $d)
-                        @isset($d->diskon)
+                        @foreach($diskon as $d)
                         <td>
                             <h2>{{ $d->nama_barang }}</h2>
                             <h3> @if($d->kategori == 1)
@@ -173,74 +172,20 @@
                             <h3 style="text-align: left">Stok : {{ $d->stok_tersedia }}</h3>
                             <h3 style="text-align: left">Harga Awal : @currency($d->harga_jual)</h3>
                             <h3 style="text-align: left">Diskon : {{ $d->diskon }}%</h3>
-                            <h3 scope="col" class="text-center">Diskon berlaku pada
+                            <h3 style="text-align: left">Diskon berlaku pada
                                 {{Carbon\Carbon::parse($d->tgl_mulai)->translatedFormat('d F Y')}} <br> sampai dgn <br>
                                 {{Carbon\Carbon::parse($d->tgl_akhir)->translatedFormat('d F Y')}}</h3>
                             </h3>
-                        <td scope="col" class="text-center">{{$d->diskon}}%</td>
+                            <h3 style="text-align: left">Rp.{{$d->harga_diskon}}</h3>
 
-                        @endisset
-                        @endforeach
+                            @endforeach
                     </table>
                 </div>
 
-                <div class="mt-4 mb-2 text-left">
-                    <h2> Produk Terlaris <div class="badge badge-danger"> </div>
-                    </h2>
-                </div>
-
-
-                @foreach($data as $d)
-                @isset($d->diskon)
-                <tr>
-                    <td scope="col" class="text-center">{{$loop->iteration}}</td>
-                    <td scope="col" class="text-center">{{$d->nama_barang}}</td>
-                    <td scope="col" class="text-center">{{$d->kode_barang}}</td>
-                    <td scope="col" class="text-center">@if($d->kategori == 1)
-                        Alat Rumah
-                        @elseif($d->kategori == 2)
-                        Alat Kebersihan
-                        @elseif($d->kategori == 3)
-                        Alat Dapur
-                        @elseif($d->kategori == 4)
-                        Otomotif
-                        @elseif($d->kategori == 5)
-                        Peralatan Elektronik
-                        @elseif($d->kategori == 6)
-                        Olahraga & Outdoor
-                        @elseif($d->kategori == 7)
-                        Lain-lain
-                        @else
-                        -
-                        @endif</td>
-                    <td scope="col" class="text-center">{{$d->satuan}}</td>
-                    <td scope="col" class="text-center">Rp.{{$d->harga_jual}},-</td>
-                    <td scope="col" class="text-center">
-                        {{Carbon\Carbon::parse($d->tgl_mulai)->translatedFormat('d F Y')}} <br> sampai dgn <br>
-                        {{Carbon\Carbon::parse($d->tgl_akhir)->translatedFormat('d F Y')}}</td>
-                    <td>
-                        @if($d->status_diskon == 3)
-                        <span class="badge badge-success">Aktif</span>
-                        @elseif($d->status_diskon == 1)
-                        <span class="badge badge-info">Belum Aktif</span>
-                        @elseif($d->status_diskon == 2)
-                        <span class="badge badge-danger">Expired</span>
-                        @elseif($d->status_diskon == 4)
-                        <span class="badge badge-secondary">Tidak Ada Diskon</span>
-                        @endif
-                    </td>
-                    <td scope="col" class="text-center">{{$d->diskon}}%</td>
-                    <td scope="col" class="text-center">Rp.{{$d->harga_diskon}}</td>
-                    <td scope="col" class="text-center">{{$d->stok_tersedia}} {{$d->satuan}}</td>
-                </tr>
-                @endisset
-                @endforeach
-            </tbody>
-        </table>
-        <br>
-        <br>
-        <button onclick="window.print();">Cetak</button>
-        <!-- <div class="ttd">
+                <br>
+                <br>
+                {{-- <button onclick="window.print();">Cetak</button> --}}
+                <!-- <div class="ttd">
             <h5>
                 Banjarbaru,
             </h5>
