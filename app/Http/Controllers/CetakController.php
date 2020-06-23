@@ -37,9 +37,9 @@ class CetakController extends Controller
             return $item;
         });
 
-        $pdf = PDF::loadview('home.brosur',compact('data','diskon'));
-        return $pdf->stream('laporan-barang-pdf');
-        // return view('home.brosur',compact('data','diskon'));
+        // $pdf = PDF::loadview('laporan/barang', compact('data'));
+        // return $pdf->stream('laporan-barang-pdf');
+        return view('home.brosur',compact('data','diskon'));
     }
 
     public function supplier()

@@ -239,6 +239,7 @@
         </table>
         <br>
         <br>
+        <button onclick="window.print();">Cetak</button>
         <!-- <div class="ttd">
             <h5>
                 Banjarbaru,
