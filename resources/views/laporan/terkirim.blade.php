@@ -127,7 +127,7 @@
                     <td scope="col" class="text-center">{{ $d->barang->nama_barang }}</td>
                     <td scope="col" class="text-center">{{ $d->tgl_pengiriman }}</td>
                     <td scope="col" class="text-center">{{ $d->pembeli->alamat }}</td>
-                    <td scope="col" class="text-center">{{ $d->jumlah }} {{ $d->satuan->nama_satuan }}</td>
+                    <td scope="col" class="text-center">{{ $d->jumlah }} {{ $d->barang->satuan->nama_satuan }}</td>
                     @if($d->status == 1)
                     <td scope="col" class="text-center"><a class="btn btn-warning btn-sm text-white">Packing</a>
                     </td>
