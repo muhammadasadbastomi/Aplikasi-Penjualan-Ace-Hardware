@@ -23,6 +23,8 @@ class CreateBarangPengirimansTable extends Migration
             $table->string('jumlah');
             $table->string('status');
             $table->timestamps();
+            $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('restrict');
+            $table->foreign('pembeli_id')->references('id')->on('pembelis')->onDelete('restrict');
         });
     }
 

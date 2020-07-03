@@ -23,6 +23,7 @@ class CreateBarangPerbaikansTable extends Migration
             $table->string('kerusakan');
             $table->string('jumlah');
             $table->timestamps();
+            $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('restrict');
         });
     }
 

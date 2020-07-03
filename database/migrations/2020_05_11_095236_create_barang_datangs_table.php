@@ -22,6 +22,7 @@ class CreateBarangDatangsTable extends Migration
             $table->integer('jumlah');
             $table->integer('total');
             $table->timestamps();
+            $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('restrict');
         });
     }
 

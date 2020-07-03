@@ -23,6 +23,7 @@ class CreateBarangRusaksTable extends Migration
             $table->date('tgl_selesai')->nullable();
             $table->integer('jumlah_barang');
             $table->timestamps();
+            $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('restrict');
         });
     }
 

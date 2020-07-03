@@ -17,11 +17,13 @@ class CreateBarangGaransisTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
             $table->unsignedBigInteger('barang_id');
-            $table->string('pembeli_id');
+            $table->unsignedBigInteger('pembeli_id');
             $table->date('tgl_pembelian');
             $table->date('tgl_akhir_garansi');
             $table->string('jumlah');
             $table->timestamps();
+            $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('restrict');
+            $table->foreign('pembeli_id')->references('id')->on('pembelis')->onDelete('restrict');
         });
     }
 
