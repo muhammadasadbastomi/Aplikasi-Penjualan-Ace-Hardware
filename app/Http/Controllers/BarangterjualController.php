@@ -60,15 +60,14 @@ class BarangterjualController extends Controller
         $barang = Barang::findOrFail($barangterjual->barang_id);
         $barangterjual->harga_terjual = $barang->harga_jual;
 
-        if($barang->diskon ){
+        if ($barang->diskon) {
             $barangterjual->diskon_terjual = $barang->diskon;
             $diskon = ($barang->diskon / 100) * $barang->harga_jual;
             $harga = $barang->harga_jual - $diskon;
             $barangterjual->total_terjual = $harga * $request->jumlah_terjual;
 
             $barangterjual->save();
-
-        }else{
+        } else {
             $subtotal = $barang->harga_jual * $request->jumlah_terjual;
             $barangterjual->total_terjual = $subtotal;
 

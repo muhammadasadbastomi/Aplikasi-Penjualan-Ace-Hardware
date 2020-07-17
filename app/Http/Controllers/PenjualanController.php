@@ -116,7 +116,7 @@ class PenjualanController extends Controller
 
         $terlaris = Barang_terjual::orderBy('jumlah_terjual', 'desc')->limit(5)->get();
 
-        return view('home.shop', compact('barang', 'data', 'terlaris', 'all'));
+        return view('home.shop', compact('barang', 'data', 'terlaris'));
     }
 
     /**

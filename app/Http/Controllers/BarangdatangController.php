@@ -45,8 +45,6 @@ class BarangdatangController extends Controller
             'required' => ':attribute harus diisi.',
         ];
         $request->validate([
-
-
             'tgl_masuk' => 'required',
             'jumlah' => 'required',
         ], $messages);
@@ -68,7 +66,7 @@ class BarangdatangController extends Controller
         $barang->stok_tersedia = $barang->stok_tersedia + $request->jumlah;
         $barang->update();
 
-        return redirect('admin/barang/datang/index')->with('success', 'Data berhasil disimpan');
+        return back()->with('success', 'Data berhasil disimpan');
     }
 
     /**

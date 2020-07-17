@@ -40,16 +40,13 @@ class BarangrusakController extends Controller
      */
     public function store(Request $request)
     {
-        // $messages = [
-        //     'unique' => ':attribute sudah terdaftar.',
-        //     'required' => ':attribute harus diisi.',
-        // ];
-        // $request->validate([
-        //     'tgl_cek' => 'required',
-        //     'kerusakan' => 'required',
-        //     'jumlah_barang' => 'required',
-        //     // 'id_barang' => 'unique:barang_rusaks'
-        // ], $messages);
+        $messages = [
+            'required' => ':attribute harus diisi.',
+        ];
+        $request->validate([
+            'kerusakan' => 'required',
+            'jumlah_barang' => 'required',
+        ], $messages);
 
 
         $validator = Validator::make($request->all(), [
@@ -135,16 +132,16 @@ class BarangrusakController extends Controller
         $barangrusak->tgl_cek = $request->tgl_cek;
         $barangrusak->tgl_selesai = $request->tgl_selesai;
         $barangrusak->jumlah_barang = $request->jumlah_barang;
-        if($barangrusak->status != 3){
-        // dd($barangrusak->barang_id);
-        if ($request->status == 3) {
+        if ($barangrusak->status != 3) {
+            // dd($barangrusak->barang_id);
+            if ($request->status == 3) {
 
 
-            $barang = Barang::findOrFail($barangrusak->barang_id);
-            $barang->stok_tersedia = $request->jumlah_barang + $barang->stok_tersedia;
-            $barang->update();
+                $barang = Barang::findOrFail($barangrusak->barang_id);
+                $barang->stok_tersedia = $request->jumlah_barang + $barang->stok_tersedia;
+                $barang->update();
+            }
         }
-    }
         $barangrusak->status = $request->status;
 
         $barangrusak->update();
