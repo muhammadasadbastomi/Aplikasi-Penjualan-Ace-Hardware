@@ -33,7 +33,7 @@ class NotifPengirimanBarang extends Mailable
         return $this->markdown('emails.sites.pengiriman')->with([
             'status' => $this->barangpengiriman->status,
             'nama_pembeli' => $this->barangpengiriman->pembeli->nama_pembeli,
-            'nama_barang' => $this->barangpengiriman->barang->nama_barang,
+            'nama_barang' => $this->barangpengiriman->barang_terjual->barang->nama_barang,
             'kode' => $this->barangpengiriman->kode_pengiriman,
             'tgl_pengiriman' => Carbon::now()->translatedFormat('l, d F Y'),
         ]);

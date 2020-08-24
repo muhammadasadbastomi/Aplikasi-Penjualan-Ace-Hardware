@@ -21,6 +21,7 @@ class CreateBarangTerjualsTable extends Migration
             $table->integer('diskon_terjual')->nullable();
             $table->integer('harga_terjual');
             $table->integer('total_terjual');
+            $table->integer('metode');
             $table->date('tgl_terjual');
             $table->timestamps();
             $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('restrict');

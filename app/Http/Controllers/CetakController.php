@@ -75,7 +75,7 @@ class CetakController extends Controller
     public function datang()
     {
         $data = Barang_datang::all();
-        $total = Barang_datang::sum('total');
+        $total = Barang_datang::sum('jumlah');
 
         $pdf = PDF::loadview('laporan/datang', compact('data', 'total'));
         return $pdf->stream('laporan-barang-datang-pdf');
@@ -88,7 +88,7 @@ class CetakController extends Controller
         $now = Carbon::now()->format('Y-m-d');
 
         $data = Barang_datang::whereBetween('tgl_masuk', [$start, $end])->get();
-        $total = Barang_datang::whereBetween('tgl_masuk', [$start, $end])->sum('total');
+        $total = Barang_datang::whereBetween('tgl_masuk', [$start, $end])->sum('jumlah');
 
         $pdf = PDF::loadview('laporan/datangtgl', compact('data', 'total', 'end', 'start', 'now'));
         return $pdf->stream('laporan-barang-datang-tanggal-pdf');

@@ -10,11 +10,12 @@ class Barang_pengiriman extends Model
 {
     use Notifiable;
     use Uuid;
-    public $table = 'barang_pengirimans';
+    protected $table = 'barang_pengirimans';
 
-    public function barang()
+
+    public function barang_terjual()
     {
-        return $this->belongsTo(Barang::class);
+        return $this->belongsTo('App\Barang_terjual','terjual_id');
     }
     public function pembeli()
     {

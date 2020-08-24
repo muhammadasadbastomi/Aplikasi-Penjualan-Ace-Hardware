@@ -34,16 +34,23 @@
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
                                 <div class="dt-buttons btn-group">
-                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                    <button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span>
                                     </button>
                                     &emsp13;
-                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                    <button type="button"
+                                        class="btn btn-outline-info dropdown-toggle waves-effect waves-light"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i
+                                                class="feather icon-printer"></i>
                                             Cetak</span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" target="_blank" href="{{route('datangCetak')}}">Keseluruhan</a>
-                                        <button class="btn nohover dropdown-item" data-toggle="modal" data-target="#modaltgl">Berdasarkan Tanggal</button>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('datangCetak')}}">Keseluruhan</a>
+                                        <button class="btn nohover dropdown-item" data-toggle="modal"
+                                            data-target="#modaltgl">Berdasarkan Tanggal</button>
                                     </div>
                                 </div>
                             </div>
@@ -59,8 +66,6 @@
                                                     <th scope="col">Departement</th>
                                                     <th scope="col">Tanggal Masuk</th>
                                                     <th scope="col">Jumlah</th>
-                                                    <th scope="col">Harga</th>
-                                                    <th scope="col">Total</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -76,14 +81,13 @@
                                                     </td>
                                                     <td scope="col">{{ $bd->jumlah }}
                                                         {{$bd->barang->satuan->nama_satuan}}</td>
-                                                    <td scope="col">Rp. {{number_format( $bd->harga, 0, ',', '.')}},-
-                                                    </td>
-                                                    <td scope="col">Rp. {{number_format( $bd->total, 0, ',', '.')}},-
-                                                    </td>
                                                     <td scope="col" class="text-center">
                                                         {{-- <a class="btn btn-sm btn-info text-white"
-                                                            href="{{route('datangEdit', ['id' => $bd->uuid])}}"><i class="feather icon-edit"></i></a> --}}
-                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$bd->uuid}}" href="#"><i class="feather icon-trash"></i></a>
+                                                            href="{{route('datangEdit', ['id' => $bd->uuid])}}"><i
+                                                            class="feather icon-edit"></i></a> --}}
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$bd->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -105,7 +109,8 @@
 @include('admin.barang.datang.cetaktanggal')
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -129,13 +134,15 @@
 
                         <label>Tanggal Masuk</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_masuk" id="tgl_masuk" value="{{old('tgl_masuk')}}" class="form-control  @error ('tgl_masuk') is-invalid @enderror">
+                            <input type="date" name="tgl_masuk" id="tgl_masuk" value="{{old('tgl_masuk')}}"
+                                class="form-control  @error ('tgl_masuk') is-invalid @enderror">
                             @error('tgl_masuk')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <label>Jumlah</label>
                         <div class="form-group">
-                            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah" value="{{old('jumlah')}}" class="form-control  @error ('jumlah') is-invalid @enderror">
+                            <input type="text" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah"
+                                value="{{old('jumlah')}}" class="form-control  @error ('jumlah') is-invalid @enderror">
                             @error('jumlah')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 

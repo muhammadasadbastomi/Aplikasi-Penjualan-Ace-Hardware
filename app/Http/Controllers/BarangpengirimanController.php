@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Barang_pengiriman;
+use App\Barang_terjual;
 use App\Barang;
 use App\Mail\NotifPengirimanBarang;
 use App\Pembeli;
@@ -20,7 +21,7 @@ class BarangpengirimanController extends Controller
     public function index()
     {
         $barangpengiriman = Barang_pengiriman::orderBy('id', 'DESC')->get();
-        $barang = Barang::orderBy('id', 'DESC')->get();
+        $barang = Barang_terjual::where('metode', '1')->get();
         $pembeli = Pembeli::orderBy('id', 'DESC')->get();
 
         return view('admin.barang.pengiriman.index', compact('barangpengiriman', 'barang', 'pembeli'));
@@ -60,7 +61,6 @@ class BarangpengirimanController extends Controller
         ];
         $request->validate([
             'kode_pengiriman' => 'required',
-            'jumlah' => 'required',
             'tgl_pengiriman' => 'required',
             'status' => 'required',
         ], $messages);
@@ -68,13 +68,18 @@ class BarangpengirimanController extends Controller
         // create new object
         $barangpengiriman = new Barang_pengiriman;
         $request->request->add(['barangpengiriman_id' => $barangpengiriman->id]);
-        $barangpengiriman->barang_id = $request->barang_id;
+        $barangpengiriman->terjual_id = $request->terjual_id;
         $barangpengiriman->kode_pengiriman = $request->kode_pengiriman;
         $barangpengiriman->pembeli_id = $request->pembeli_id;
         $barangpengiriman->tgl_pengiriman = $request->tgl_pengiriman;
         $barangpengiriman->status = $request->status;
-        $barangpengiriman->jumlah = $request->jumlah;
+
+        $terjual = Barang_terjual::findOrFail($barangpengiriman->terjual_id);
+        $barangpengiriman->jumlah = $terjual->jumlah_terjual;
         $barangpengiriman->save();
+
+        $terjual->metode = 2;
+        $terjual->update();
 
         Mail::to($barangpengiriman->pembeli->email)->send(new NotifPengirimanBarang($barangpengiriman));
         return redirect('admin/barang/pengiriman/index')->with('success', 'Data Berhasil Disimpan, <br> Terkirim ke ' . $barangpengiriman->pembeli->nama_pembeli . '');
@@ -100,7 +105,7 @@ class BarangpengirimanController extends Controller
     public function edit($id)
     {
         $barangpengiriman = Barang_pengiriman::orderBy('id', 'Desc')->first();
-        $barang = Barang::orderBy('id', 'Desc')->get();
+        $barang = Barang_pengiriman::orderBy('id', 'Desc')->get();
         $pembeli = Pembeli::orderBy('id', 'DESC')->get();
 
         return view('admin.barang.pengiriman.edit', compact('barangpengiriman', 'barang', 'pembeli'));
@@ -127,7 +132,6 @@ class BarangpengirimanController extends Controller
         $barangpengiriman->kode_pengiriman = $request->kode_pengiriman;
         $barangpengiriman->pembeli_id = $request->pembeli_id;
         $barangpengiriman->tgl_pengiriman = $request->tgl_pengiriman;
-        $barangpengiriman->jumlah = $request->jumlah;
         $barangpengiriman->update();
 
         $pembeli = Pembeli::findOrfail($barangpengiriman->pembeli_id);
@@ -148,8 +152,11 @@ class BarangpengirimanController extends Controller
     public function destroy($id)
     {
         $barangpengiriman = Barang_pengiriman::where('uuid', $id)->first();
-
         $barangpengiriman->delete();
+
+        $terjual = Barang_terjual::findOrFail($barangpengiriman->terjual_id);
+        $terjual->metode = 1;
+        $terjual->update();
 
         return redirect()->route('pengirimanIndex');
     }

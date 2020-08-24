@@ -110,7 +110,8 @@
                         <div class="col-sm-12">
                             <fieldset class="form-group position-relative">
                                 <form action="/home/shop" method="GET">
-                                    <input type="text" class="form-control search-product" name="search" id="search" placeholder="Search here">
+                                    <input type="text" class="form-control search-product" name="search" id="search"
+                                        placeholder="Search here">
                                     <div class="form-control-position">
                                         <i class="feather icon-search"></i>
                                     </div>
@@ -124,25 +125,33 @@
                 <!-- Ecommerce Products Starts -->
                 <section id="ecommerce-products" class="grid-view">
                     @forelse($barang as $d)
-                    @if($d->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
+                    @if($d->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >=
+                        Carbon\Carbon::now()->format('Y-m-d'))
                         <div class="card ecommerce-card badge-diskon" diskon="{{$d->diskon}}">
                             @else
                             <div class="card ecommerce-card">
                                 @endif
                                 <div class="card-content lihat">
                                     <div class="lihat-detail">
-                                        <a type="button" class="btn btn-outline-primary btn-sm" href="{{route('homeShow', ['id' => $d->uuid])}}"> <i class="fas fa fa-search"> Detail</i></a>
+                                        <a type="button" class="btn btn-outline-primary btn-sm"
+                                            href="{{route('homeShow', ['id' => $d->uuid])}}"> <i
+                                                class="fas fa fa-search"> Detail</i></a>
                                     </div>
                                     <div class="text-center">
                                         <a href="app-ecommerce-details.html">
-                                            <img src="/images/resize/{{$d->gambar}}" class="img-fluid" alt="product image" style="width: 100%; height:100%;">
+                                            <img src="/images/resize/{{$d->gambar}}" class="img-fluid"
+                                                alt="product image" style="width: 100%; height:100%;">
                                     </div>
                                     <div class="card-body">
                                         <div class="item-wrapper">
                                             <div>
                                                 <h6 class="item-price float-left">
-                                                    @if($d->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->format('Y-m-d') && $d->tgl_akhir >= Carbon\Carbon::now()->format('Y-m-d'))
-                                                        <a class="text-secondary float-left"><del>Rp. {{$d->harga_jual}},</del></a><a class="text-danger">Rp. {{$d->harga_diskon}},-</a>
+                                                    @if($d->diskon != null && $d->tgl_mulai <= Carbon\Carbon::now()->
+                                                        format('Y-m-d') && $d->tgl_akhir >=
+                                                        Carbon\Carbon::now()->format('Y-m-d'))
+                                                        <a class="text-secondary float-left"><del>Rp.
+                                                                {{$d->harga_jual}},</del></a><a class="text-danger">Rp.
+                                                            {{$d->harga_diskon}},-</a>
                                                         @else
                                                         <a class="text-danger">Rp. {{$d->harga_jual}},-</a>
                                                         @endif
@@ -152,6 +161,9 @@
                                             <a href="{{route('homeShow', ['id' => $d->uuid])}}">{{$d->nama_barang}}</a>
                                         </div>
                                         <div>
+                                            <a>Departement : {{$d->departement}}</a> <br>
+                                            <a>Supplier : {{$d->supplier->supplier}}</a> <br>
+                                            <p>Stok Tersedia : {{$d->stok_tersedia}}</p>
                                             <p class="item-description">
                                                 {{$d->keterangan}}
                                             </p>
@@ -191,9 +203,11 @@
                         <div class="col-sm-12">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-center mt-2">
-                                    @if (count($barang) > 0) <li class="page-item "><a class="page-link" href="{{$data->url('page=1')}}">First Page</a></li>
+                                    @if (count($barang) > 0) <li class="page-item "><a class="page-link"
+                                            href="{{$data->url('page=1')}}">First Page</a></li>
                                     {{$data->links()}}
-                                    <li class="page-item "><a class="page-link" href="/home/shop?page={{$data->lastPage()}}">Last Page</a></li>
+                                    <li class="page-item "><a class="page-link"
+                                            href="/home/shop?page={{$data->lastPage()}}">Last Page</a></li>
                                     @else
 
                                     @endif

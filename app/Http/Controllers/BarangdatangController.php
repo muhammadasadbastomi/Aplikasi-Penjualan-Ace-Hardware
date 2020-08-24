@@ -56,13 +56,9 @@ class BarangdatangController extends Controller
         $barangdatang->barang_id = $request->barang_id;
         $barangdatang->tgl_masuk = $request->tgl_masuk;
         $barangdatang->jumlah = $request->jumlah;
-
-        $barang = Barang::findOrFail($barangdatang->barang_id);
-        $barangdatang->harga = $barang->harga_beli;
-        $harga = $barang->harga_beli;
-        $barangdatang->total = $harga * $request->jumlah;
         $barangdatang->save();
 
+        $barang = Barang::findOrFail($barangdatang->barang_id);
         $barang->stok_tersedia = $barang->stok_tersedia + $request->jumlah;
         $barang->update();
 
@@ -111,15 +107,12 @@ class BarangdatangController extends Controller
 
             'tgl_masuk' => 'required',
             'jumlah' => 'required',
-            'harga' => 'required',
         ], $messages);
 
         $barangdatang = Barang_datang::where('uuid', $id)->first();
         $barangdatang->barang_id = $request->barang_id;
         $barangdatang->tgl_masuk = $request->tgl_masuk;
         $barangdatang->jumlah = $request->jumlah;
-        $barangdatang->harga = $request->harga;
-        $barangdatang->total = $request->total;
         //dd($barangdatang);
         $barangdatang->update();
 
@@ -137,7 +130,6 @@ class BarangdatangController extends Controller
 
         $barangdatang = Barang_datang::where('uuid', $id)->first();
         $stok = $barangdatang->jumlah;
-
         $barangdatang->delete();
 
         //update stok

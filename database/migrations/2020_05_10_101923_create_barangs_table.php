@@ -22,7 +22,6 @@ class CreateBarangsTable extends Migration
             $table->string('kode_barang');
             $table->string('departement');
             $table->string('harga_jual');
-            $table->string('harga_beli');
             $table->tinyInteger('kategori');
             $table->string('keterangan')->nullable();
             $table->integer('stok_tersedia');

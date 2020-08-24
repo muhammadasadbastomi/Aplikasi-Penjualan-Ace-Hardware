@@ -83,7 +83,6 @@ class BarangController extends Controller
             'nama_barang' => 'required',
             'departement' => 'required',
             'harga_jual' => 'required',
-            'harga_beli' => 'required',
             'stok_tersedia' => 'required',
             'keterangan' => 'required',
             'gambar' => 'file|image|mimes:jpeg,png,gif',
@@ -100,7 +99,6 @@ class BarangController extends Controller
         $barang->kategori = $request->kategori;
         $barang->departement = $request->departement;
         $barang->harga_jual = $request->harga_jual;
-        $barang->harga_beli = $request->harga_beli;
         $barang->stok_tersedia = $request->stok_tersedia;
         $barang->keterangan = $request->keterangan;
         $barang->gambar = $request->gambar;

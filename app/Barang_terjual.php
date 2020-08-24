@@ -15,4 +15,8 @@ class Barang_terjual extends Model
     {
         return $this->belongsTo(Barang::class);
     }
+    public function barang_pengiriman()
+    {
+        return $this->hasOne(Barang_pengiriman::class);
+    }
 }

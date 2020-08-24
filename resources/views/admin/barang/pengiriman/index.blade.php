@@ -79,14 +79,16 @@
                                                     <td scope="col">{{ $loop->iteration }}</td>
                                                     <td scope="col">{{ $d->pembeli->nama_pembeli }}</td>
                                                     <td scope="col" class="text-center">{{ $d->kode_pengiriman }}</td>
-                                                    <td scope="col">{{ $d->barang->nama_barang }}</td>
-                                                    <td scope="col">{{ $d->barang->supplier->supplier }}</td>
-                                                    <td scope="col">{{ $d->barang->departement }}</td>
+                                                    <td scope="col">{{ $d->barang_terjual->barang->nama_barang }}</td>
+                                                    <td scope="col">{{ $d->barang_terjual->barang->supplier->supplier }}
+                                                    </td>
+                                                    <td scope="col">{{ $d->barang_terjual->barang->departement }}</td>
                                                     <td scope="col" class="text-center">
                                                         {{Carbon\Carbon::parse($d->tgl_pengiriman)->translatedFormat('d F Y')}}
                                                     </td>
                                                     <td scope="col">{{ $d->pembeli->alamat }}</td>
-                                                    <td scope="col">{{ $d->jumlah }} {{$d->barang->satuan->nama_satuan}}
+                                                    <td scope="col">{{ $d->jumlah }}
+                                                        {{$d->barang_terjual->barang->satuan->nama_satuan}}
                                                     </td>
                                                     @if($d->status == 1)
                                                     <td scope="col"><button class="btn btn-warning btn-sm text-white"
@@ -157,10 +159,13 @@
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="barang">Pilih Barang</label>
-                            <select class="custom-select" name="barang_id" id="barang_id">
+                            <label for="barang">Pilih Penjualan</label>
+                            <select class="custom-select" name="terjual_id" id="terjual_id">
                                 @foreach($barang as $b)
-                                <option value="{{$b->id}}">{{ $b->nama_barang}}</option>
+                                <option value="{{$b->id}}">{{ $b->barang->nama_barang}},
+                                    {{Carbon\Carbon::parse($b->tgl_terjual)->translatedFormat('d F Y')}}, jumlah:
+                                    {{ $b->jumlah_terjual }}
+                                </option>
                                 @endforeach
                             </select>
                         </div>
@@ -190,13 +195,6 @@
                         <label>Tanggal Pengiriman</label>
                         <div class="form-group">
                             <input type="date" name="tgl_pengiriman" class="form-control" required>
-                        </div>
-
-                        <label>Jumlah</label>
-                        <div class="form-group">
-                            <input type="number" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah"
-                                value="{{old('jumlah')}}" class="form-control @error ('jumlah') is-invalid @enderror">
-                            @error('jumlah')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <div class="form-group">

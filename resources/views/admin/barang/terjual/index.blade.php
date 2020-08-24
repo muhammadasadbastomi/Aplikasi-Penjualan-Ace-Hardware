@@ -34,16 +34,23 @@
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
                                 <div class="dt-buttons btn-group">
-                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                    <button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span>
                                     </button>
                                     &emsp13;
-                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                    <button type="button"
+                                        class="btn btn-outline-info dropdown-toggle waves-effect waves-light"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i
+                                                class="feather icon-printer"></i>
                                             Cetak</span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" target="_blank" href="{{route('terjualCetak')}}">Keseluruhan</a>
-                                        <button class="btn nohover dropdown-item" data-toggle="modal" data-target="#modaltgl">Berdasarkan Tanggal</button>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('terjualCetak')}}">Keseluruhan</a>
+                                        <button class="btn nohover dropdown-item" data-toggle="modal"
+                                            data-target="#modaltgl">Berdasarkan Tanggal</button>
                                     </div>
                                 </div>
                             </div>
@@ -62,6 +69,7 @@
                                                     <th scope="col" class="text-center">Harga Awal</th>
                                                     <th scope="col" class="text-center">Diskon</th>
                                                     <th scope="col" class="text-center">Total Harga</th>
+                                                    <th scope="col" class="text-center">Metode</th>
                                                     <th scope="col" class="text-center">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -96,9 +104,19 @@
                                                         {{number_format( $bt->total_terjual, 0, ',', '.')}},-
                                                     </td>
                                                     <td scope="col" class="text-center">
+                                                        @if ($bt->metode == 0)
+                                                        Terima ditempat
+                                                        @else
+                                                        Kirim
+                                                        @endif
+                                                    </td>
+                                                    <td scope="col" class="text-center">
                                                         {{-- <a class="btn btn-sm btn-info text-white"
-                                                            href="{{route('terjualEdit', ['id' => $bt->uuid])}}"><i class="feather icon-edit"></i></a> --}}
-                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$bt->uuid}}" href="#"><i class="feather icon-trash"></i></a>
+                                                            href="{{route('terjualEdit', ['id' => $bt->uuid])}}"><i
+                                                            class="feather icon-edit"></i></a> --}}
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$bt->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -120,7 +138,8 @@
 @include('admin.barang.terjual.cetaktanggal')
 
 <!-- Modal Tambah -->
-<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -142,15 +161,26 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label for="metode">Pilih Metode</label>
+                            <select class="custom-select" name="metode" id="metode">
+                                <option value="0">Terima ditempat</option>
+                                <option value="1">Kirim</option>
+                            </select>
+                        </div>
+
                         <label>Jumlah Terjual</label>
                         <div class="form-group">
-                            <input type="number" name="jumlah_terjual" id="jumlah_terjual" placeholder="Masukkan Jumlah" value="{{old('jumlah_terjual')}}" class="form-control  @error ('jumlah_terjual') is-invalid @enderror">
+                            <input type="number" name="jumlah_terjual" id="jumlah_terjual" placeholder="Masukkan Jumlah"
+                                value="{{old('jumlah_terjual')}}"
+                                class="form-control  @error ('jumlah_terjual') is-invalid @enderror">
                             @error('jumlah_terjual')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
 
                         <label>Tanggal Terjual</label>
                         <div class="form-group">
-                            <input type="date" name="tgl_terjual" id="tgl_terjual" value="{{old('tgl_terjual')}}" class="form-control  @error ('tgl_terjual') is-invalid @enderror">
+                            <input type="date" name="tgl_terjual" id="tgl_terjual" value="{{old('tgl_terjual')}}"
+                                class="form-control  @error ('tgl_terjual') is-invalid @enderror">
                             @error('tgl_terjual')<div class="invalid-feedback"> {{$message}} </div>@enderror
                         </div>
                     </div>
@@ -165,7 +195,8 @@
 </div>
 
 <!-- Modal Edit -->
-<div class="modal fade text-left" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label" aria-hidden="true" style="display: none;">
+<div class="modal fade text-left" id="editModal" tabindex="-1" role="dialog" aria-labelledby="edit-modal-label"
+    aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">

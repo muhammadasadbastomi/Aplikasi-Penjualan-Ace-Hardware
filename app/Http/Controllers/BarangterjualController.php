@@ -45,9 +45,9 @@ class BarangterjualController extends Controller
             'required' => ':attribute harus diisi.',
         ];
         $request->validate([
-            'tgl_terjual' => 'required',
             'jumlah_terjual' => 'required',
             'tgl_terjual' => 'required',
+            'metode' => 'required',
         ], $messages);
 
         // create new object
@@ -56,6 +56,7 @@ class BarangterjualController extends Controller
         $barangterjual->barang_id = $request->barang_id;
         $barangterjual->jumlah_terjual = $request->jumlah_terjual;
         $barangterjual->tgl_terjual = $request->tgl_terjual;
+        $barangterjual->metode = $request->metode;
 
         $barang = Barang::findOrFail($barangterjual->barang_id);
         $barangterjual->harga_terjual = $barang->harga_jual;

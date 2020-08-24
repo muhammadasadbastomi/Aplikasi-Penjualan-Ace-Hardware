@@ -61,19 +61,13 @@
             @error('tgl_aktif')<div class="invalid-feedback"> {{$message}} </div>@enderror
         </div> -->
 
-        <label>Harga Jual</label>
+        <label>Harga</label>
         <div class="form-group">
             <input type="number" name="harga_jual" id="harga_jual" placeholder="Masukkan Harga"
                 value="{{old('harga_jual')}}" class="form-control">
             @error('harga_jual')<div class="invalid-feedback"> {{$message}} </div>@enderror
         </div>
 
-        <label>Harga Beli</label>
-        <div class="form-group">
-            <input type="number" name="harga_beli" id="harga_beli" placeholder="Masukkan Harga"
-                value="{{old('harga_beli')}}" class="form-control">
-            @error('harga_beli')<div class="invalid-feedback"> {{$message}} </div>@enderror
-        </div>
 
         <label>Stok</label>
         <div class="form-group">

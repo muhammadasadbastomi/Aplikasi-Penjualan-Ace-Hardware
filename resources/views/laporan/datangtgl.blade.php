@@ -115,8 +115,6 @@
                     <th scope="col" class="text-center">Nama Barang</th>
                     <th scope="col" class="text-center">Tanggal Masuk</th>
                     <th scope="col" class="text-center">Jumlah</th>
-                    <th scope="col" class="text-center">Harga Satuan</th>
-                    <th scope="col" class="text-center">Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -127,15 +125,13 @@
                     <td scope="col" class="text-center">
                         {{Carbon\Carbon::parse($d->tgl_masuk)->translatedFormat('d F Y')}}</td>
                     <td scope="col" class="text-center">{{$d->jumlah}} {{ $d->barang->satuan->nama_satuan }}</td>
-                    <td scope="col" class="text-center">Rp. {{number_format( $d->harga, 0, ',', '.')}},-</td>
-                    <td scope="col" class="text-center">Rp .{{number_format( $d->total, 0, ',', '.')}},-</td>
                 </tr>
                 @endforeach
             </tbody>
             <tfoot>
                 <tr>
-                    <th scope="col" class="align-right" colspan="5">Total : </th>
-                    <th scope="col" class="align-center">Rp. {{number_format( $total, 0, ',', '.')}},-</th>
+                    <th scope="col" class="align-right" colspan="3">Total Jumlah : </th>
+                    <th scope="col" class="align-center">{{ $total }} Item</th>
                 </tr>
             </tfoot>
         </table>
