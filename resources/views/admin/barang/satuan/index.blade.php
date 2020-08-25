@@ -146,6 +146,17 @@
                             document.location.reload(true);
                         }, 1000);
                     },
+                    error: function(response){
+                         Swal.fire({
+                            icon: 'error',
+                            title: 'Data Gagal Dihapus',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setTimeout(function() {
+                            document.location.reload(true);
+                        }, 1000);
+                    }
                 })
             } else if (result.dismiss === swal.DismissReason.cancel) {
                 Swal.fire(

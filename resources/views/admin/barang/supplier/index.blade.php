@@ -34,15 +34,21 @@
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
                                 <div class="dt-buttons btn-group">
-                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                    <button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
                                             Data</span>
                                     </button>
                                     &emsp13;
-                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                    <button type="button"
+                                        class="btn btn-outline-info dropdown-toggle waves-effect waves-light"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i
+                                                class="feather icon-printer"></i>
                                             Cetak</span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" target="_blank" href="{{route('supplierCetak')}}">Keseluruhan</a>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('supplierCetak')}}">Keseluruhan</a>
                                     </div>
                                 </div>
                             </div>
@@ -67,8 +73,12 @@
                                                     <td scope="col">{{$s->alamat}}</td>
                                                     <td scope="col">{{$s->kontak}}</td>
                                                     <td scope="col" class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" href="{{route('supplierEdit', ['id' => $s->uuid])}}"><i class="feather icon-edit"></i></a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$s->uuid}}" href="#"><i class="feather icon-trash"></i></a>
+                                                        <a class="btn btn-sm btn-info text-white"
+                                                            href="{{route('supplierEdit', ['id' => $s->uuid])}}"><i
+                                                                class="feather icon-edit"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$s->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -88,7 +98,8 @@
 <!-- END: Content-->
 
 <!-- Modal Tambah -->
-<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable" aria-hidden="true">
+<div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollable"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -102,19 +113,22 @@
                     @csrf
                     <label>Supplier </label>
                     <div class=" form-group">
-                        <input type="text" name="supplier" id="supplier" placeholder="Masukkan Nama Supplier" value="{{old('supplier')}}" class="form-control  @error ('supplier') is-invalid @enderror">
+                        <input type="text" name="supplier" id="supplier" placeholder="Masukkan Nama Supplier"
+                            value="{{old('supplier')}}" class="form-control  @error ('supplier') is-invalid @enderror">
                         @error('supplier')<div class="invalid-feedback"> {{$message}} </div>@enderror
                     </div>
 
                     <label>Alamat </label>
                     <div class="form-group">
-                        <input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat" value="{{old('alamat')}}" class="form-control">
+                        <input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat"
+                            value="{{old('alamat')}}" class="form-control">
                         @error('alamat')<div class="invalid-feedback"> {{$message}} </div>@enderror
                     </div>
 
                     <label>Kontak </label>
                     <div class="form-group">
-                        <input type="number" name="kontak" id="kontak" placeholder="Masukkan kontak" value="{{old('kontak')}}" class="form-control">
+                        <input type="number" name="kontak" id="kontak" placeholder="Masukkan kontak"
+                            value="{{old('kontak')}}" class="form-control">
                         @error('kontak')<div class="invalid-feedback"> {{$message}} </div>@enderror
                     </div>
 
@@ -162,6 +176,17 @@
                             document.location.reload(true);
                         }, 1000);
                     },
+                    error: function(response){
+                         Swal.fire({
+                            icon: 'error',
+                            title: 'Data Gagal Dihapus',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setTimeout(function() {
+                            document.location.reload(true);
+                        }, 1000);
+                    }
                 })
             } else if (result.dismiss === swal.DismissReason.cancel) {
                 Swal.fire(

@@ -33,13 +33,20 @@
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
                                 <div class="dt-buttons btn-group">
-                                    <button class="btn btn-outline-primary" tabindex="0" aria-controls="DataTables_Table_0" data-toggle="modal" data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah Data</span></button>
+                                    <button class="btn btn-outline-primary" tabindex="0"
+                                        aria-controls="DataTables_Table_0" data-toggle="modal"
+                                        data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
+                                            Data</span></button>
                                     &emsp13;
-                                    <button type="button" class="btn btn-outline-info dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i class="feather icon-printer"></i>
+                                    <button type="button"
+                                        class="btn btn-outline-info dropdown-toggle waves-effect waves-light"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span><i
+                                                class="feather icon-printer"></i>
                                             Cetak</span>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" target="_blank" href="{{route('pembeliCetak')}}">Keseluruhan</a>
+                                        <a class="dropdown-item" target="_blank"
+                                            href="{{route('pembeliCetak')}}">Keseluruhan</a>
                                     </div>
                                 </div>
                             </div>
@@ -66,10 +73,15 @@
                                                     <td>{{$d->telp}}</td>
                                                     <td>{{$d->alamat}}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-sm btn-info text-white" data-id="{{$d->id}}" data-nama="{{$d->nama_pembeli}}" data-email="{{$d->email}}" data-telp="{{$d->telp}}" data-alamat="{{$d->alamat}}" data-toggle="modal" data-target="#editModal">
+                                                        <a class="btn btn-sm btn-info text-white" data-id="{{$d->id}}"
+                                                            data-nama="{{$d->nama_pembeli}}" data-email="{{$d->email}}"
+                                                            data-telp="{{$d->telp}}" data-alamat="{{$d->alamat}}"
+                                                            data-toggle="modal" data-target="#editModal">
                                                             <i class=" feather icon-edit"></i>
                                                         </a>
-                                                        <a class="delete btn btn-sm btn-danger text-white" data-id="{{$d->uuid}}" href="#"><i class="feather icon-trash"></i></a>
+                                                        <a class="delete btn btn-sm btn-danger text-white"
+                                                            data-id="{{$d->uuid}}" href="#"><i
+                                                                class="feather icon-trash"></i></a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -144,6 +156,17 @@
                             document.location.reload(true);
                         }, 1000);
                     },
+                    error: function(response){
+                         Swal.fire({
+                            icon: 'error',
+                            title: 'Data Gagal Dihapus',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setTimeout(function() {
+                            document.location.reload(true);
+                        }, 1000);
+                    }
                 })
             } else if (result.dismiss === swal.DismissReason.cancel) {
                 Swal.fire(

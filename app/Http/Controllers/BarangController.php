@@ -230,10 +230,17 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
+        // dd($id)
         $barang = barang::where('uuid', $id)->first();
+        // if($barang->barang_datang->count() > 0)
+        // {
+        //     return back()->with('warning','Data gagal dihapus');
+        // }else{
 
-        $barang->delete();
 
-        return redirect()->route('barangIndex');
+            $barang->delete();
+
+            // return back()->with('success','Data berhasil dihapus');
+        // }
     }
 }
