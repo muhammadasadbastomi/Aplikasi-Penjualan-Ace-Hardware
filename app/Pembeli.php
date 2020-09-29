@@ -20,4 +20,8 @@ class Pembeli extends Model
     {
         return $this->hasMany(Barang_pengiriman::class);
     }
+    public function barang_terjual()
+    {
+        return $this->hasOne(Barang_terjual::class);
+    }
 }

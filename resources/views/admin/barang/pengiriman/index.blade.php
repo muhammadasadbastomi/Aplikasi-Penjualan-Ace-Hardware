@@ -77,7 +77,7 @@
                                                 @foreach ($barangpengiriman as $d)
                                                 <tr>
                                                     <td scope="col">{{ $loop->iteration }}</td>
-                                                    <td scope="col">{{ $d->pembeli->nama_pembeli }}</td>
+                                                    <td scope="col">{{ $d->barang_terjual->pembeli->nama_pembeli }}</td>
                                                     <td scope="col" class="text-center">{{ $d->kode_pengiriman }}</td>
                                                     <td scope="col">{{ $d->barang_terjual->barang->nama_barang }}</td>
                                                     <td scope="col">{{ $d->barang_terjual->barang->supplier->supplier }}
@@ -86,7 +86,7 @@
                                                     <td scope="col" class="text-center">
                                                         {{Carbon\Carbon::parse($d->tgl_pengiriman)->translatedFormat('d F Y')}}
                                                     </td>
-                                                    <td scope="col">{{ $d->pembeli->alamat }}</td>
+                                                    <td scope="col">{{ $d->barang_terjual->pembeli->alamat }}</td>
                                                     <td scope="col">{{ $d->jumlah }}
                                                         {{$d->barang_terjual->barang->satuan->nama_satuan}}
                                                     </td>
@@ -176,15 +176,6 @@
                                 value="{{old('kode_pengiriman')}}" placeholder="Masukkan Kode Pengiriman"
                                 class="form-control @error ('kode_pengiriman') is-invalid @enderror">
                             @error('kode_pengiriman')<div class="invalid-feedback"> {{$message}} </div>@enderror
-                        </div>
-
-                        <label>Nama Pembeli</label>
-                        <div class="form-group">
-                            <select class="custom-select selectname" name="pembeli_id" id="pembeli_id">
-                                @foreach($pembeli as $d)
-                                <option value="{{$d->id}}">{{ $d->nama_pembeli}}</option>
-                                @endforeach
-                            </select>
                         </div>
 
                         <!-- <label>Alamat Pengiriman</label>

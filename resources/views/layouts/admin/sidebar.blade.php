@@ -58,6 +58,9 @@
                     <li class="{{ (\Request::route()->getName() == 'pengirimanIndex') ? 'active' : '' }}"><a
                             href="{{ route('pengirimanIndex') }}"><i class="feather icon-circle"></i><span
                                 class="menu-item" data-i18n="eCommerce">Pengiriman Barang</span></a></li>
+                    <li class="{{ (\Request::route()->getName() == 'orderIndex') ? 'active' : '' }}"><a
+                            href="{{ route('orderIndex') }}"><i class="feather icon-circle"></i><span class="menu-item"
+                                data-i18n="eCommerce">Order</span></a></li>
                 </ul>
             </li>
             <li class="nav-item {{ (\Request::route()->getName() == 'userEdit') ? 'active' : '' }} "><a

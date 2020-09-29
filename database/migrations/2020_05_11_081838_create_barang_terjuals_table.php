@@ -17,6 +17,7 @@ class CreateBarangTerjualsTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
             $table->unsignedBigInteger('barang_id');
+            $table->unsignedBigInteger('pembeli_id')->nullable();
             $table->integer('jumlah_terjual');
             $table->integer('diskon_terjual')->nullable();
             $table->integer('harga_terjual');
@@ -25,6 +26,7 @@ class CreateBarangTerjualsTable extends Migration
             $table->date('tgl_terjual');
             $table->timestamps();
             $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('restrict');
+            $table->foreign('pembeli_id')->references('id')->on('pembelis')->onDelete('restrict');
         });
     }
 

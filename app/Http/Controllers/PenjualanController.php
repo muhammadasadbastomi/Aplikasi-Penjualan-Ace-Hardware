@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Barang;
 use App\Barang_terjual;
 use App\Thumbnail;
+use App\Order;
+use App\Mail\NotifOrder;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
@@ -137,7 +140,47 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'unique' => ':attribute sudah terdaftar.',
+            'required' => ':attribute harus diisi.',
+        ];
+        $request->validate([
+            // 'jumlah_terjual' => 'required',
+            // 'tgl_terjual' => 'required',
+            // 'metode' => 'required',
+        ], $messages);
+
+        // create new object
+        $data = new Order;
+        // $request->request->add(['barangterjual_id' => $barangterjual->id]);
+        $data->barang_id = $request->barang_id;
+        $data->jumlah_order = $request->jumlah_order;
+        $data->nama_order = $request->nama_order;
+        $data->alamat_order = $request->alamat_order;
+        $data->telp_order = $request->telp_order;
+        $data->email_order = $request->email_order;
+        $data->tgl_order = Carbon::now()->addDays(3);
+        $data->tgl_awal = Carbon::now();
+
+        $barang = Barang::findOrFail($data->barang_id);
+        $diskon = ($barang->diskon /100) * $barang->harga_jual;
+        $data->harga_order = $barang->harga_jual - $diskon;
+
+        if ($barang->diskon) {
+            $data->diskon_order = $barang->diskon;
+            $diskon = ($barang->diskon / 100) * $barang->harga_jual;
+            $harga = $barang->harga_jual - $diskon;
+            $data->total_order = $harga * $request->jumlah_order;
+
+            $data->save();
+        } else {
+            $subtotal = $barang->harga_jual * $request->jumlah_order;
+            $data->total_order = $subtotal;
+
+            $data->save();
+        }
+        Mail::to($data->email_order)->send(new NotifOrder($data));
+        return back()->with('success', 'Order Berhasil Dilakukan');
     }
 
     /**

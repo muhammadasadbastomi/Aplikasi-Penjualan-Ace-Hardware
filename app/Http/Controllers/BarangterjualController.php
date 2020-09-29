@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Barang_Terjual;
+use App\Pembeli;
 use App\Barang;
 use Illuminate\Http\Request;
 
@@ -50,9 +51,18 @@ class BarangterjualController extends Controller
             'metode' => 'required',
         ], $messages);
 
+        $pembeli = New Pembeli;
+        $pembeli->nama_pembeli =  $request->nama_pembeli;
+        $pembeli->alamat =  $request->alamat;
+        $pembeli->telp =  $request->telp;
+        $pembeli->email =  $request->email;
+        $pembeli->save();
+
         // create new object
         $barangterjual = new Barang_terjual;
         $request->request->add(['barangterjual_id' => $barangterjual->id]);
+
+        $barangterjual->pembeli_id = $pembeli->id;
         $barangterjual->barang_id = $request->barang_id;
         $barangterjual->jumlah_terjual = $request->jumlah_terjual;
         $barangterjual->tgl_terjual = $request->tgl_terjual;

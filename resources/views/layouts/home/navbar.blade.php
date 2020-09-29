@@ -49,6 +49,9 @@
                             <a href="{{ Route('cetakBrosur') }}"
                                 class="btn text-dark border-secondary btn-icon btn-outline-secondary mr-1 mb-1 waves-effect waves-light">
                                 Cetak Brosur <i class="text-secondary feather icon-print"></i></a>
+                            <button data-toggle="modal" data-target="#mediumModal"
+                                class="btn text-dark border-secondary btn-icon btn-outline-secondary mr-1 mb-1 waves-effect waves-light">
+                                Order <i class="text-secondary feather icon-print"></i></button>
                             @auth
                             <a type="button" href="{{ url('/admin') }}"
                                 class="btn text-dark border-secondary btn-icon btn-outline-secondary mr-1 mb-1 waves-effect waves-light"

@@ -44,5 +44,9 @@ class Barang extends Model
     {
         return $this->hasMany(Barang_garansi::class);
     }
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 
 }

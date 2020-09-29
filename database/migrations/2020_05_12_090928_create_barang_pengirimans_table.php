@@ -17,14 +17,12 @@ class CreateBarangPengirimansTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid')->length(36);
             $table->unsignedBigInteger('terjual_id');
-            $table->unsignedBigInteger('pembeli_id');
             $table->string('kode_pengiriman');
             $table->date('tgl_pengiriman');
             $table->string('jumlah');
             $table->string('status');
             $table->timestamps();
             $table->foreign('terjual_id')->references('id')->on('barang_terjuals')->onDelete('restrict');
-            $table->foreign('pembeli_id')->references('id')->on('pembelis')->onDelete('restrict');
         });
     }
 

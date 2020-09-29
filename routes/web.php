@@ -97,6 +97,8 @@ Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     Route::put('/admin/pembeli/index/', 'PembeliController@update')->name('pembeliUpdate');
     Route::delete('/admin/pembeli/delete/{id}', 'PembeliController@delete')->name('pembeliDelete');
 
+    Route::get('/admin/order/index', 'OrderController@index')->name('orderIndex');
+
     Route::get('/admin/pembeli/cetak', 'CetakController@pembeli')->name('pembeliCetak');
 
     Route::get('/admin/supplier/cetak', 'CetakController@supplier')->name('supplierCetak');
@@ -139,4 +141,5 @@ Route::get('/brosur/cetak', 'CetakController@cetakBrosur')->name('cetakBrosur');
 Route::get('/', 'PenjualanController@index')->name('homeIndex');
 Route::get('/home/shop', 'PenjualanController@shop')->name('homeShop');
 Route::get('/home/profile/', 'PenjualanController@profile')->name('homeProfile');
+Route::post('/home/store/', 'PenjualanController@store')->name('homeStore');
 Route::get('/home/detail/{id}', 'PenjualanController@show')->name('homeShow');

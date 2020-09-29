@@ -43,8 +43,8 @@ class BarangpengirimanController extends Controller
         $data->status = $request->status;
         $data->update();
 
-        Mail::to($data->pembeli->email)->send(new NotifPengirimanBarang($data));
-        return redirect()->back()->with('success', 'Data Berhasil Diubah, <br> Terkirim ke ' . $data->pembeli->nama_pembeli . '');
+        Mail::to($data->barang_terjual->pembeli->email)->send(new NotifPengirimanBarang($data));
+        return redirect()->back()->with('success', 'Data Berhasil Diubah, <br> Terkirim ke ' . $data->barang_terjual->pembeli->nama_pembeli . '');
     }
 
     /**
@@ -70,7 +70,6 @@ class BarangpengirimanController extends Controller
         $request->request->add(['barangpengiriman_id' => $barangpengiriman->id]);
         $barangpengiriman->terjual_id = $request->terjual_id;
         $barangpengiriman->kode_pengiriman = $request->kode_pengiriman;
-        $barangpengiriman->pembeli_id = $request->pembeli_id;
         $barangpengiriman->tgl_pengiriman = $request->tgl_pengiriman;
         $barangpengiriman->status = $request->status;
 
@@ -81,8 +80,8 @@ class BarangpengirimanController extends Controller
         $terjual->metode = 2;
         $terjual->update();
 
-        Mail::to($barangpengiriman->pembeli->email)->send(new NotifPengirimanBarang($barangpengiriman));
-        return redirect('admin/barang/pengiriman/index')->with('success', 'Data Berhasil Disimpan, <br> Terkirim ke ' . $barangpengiriman->pembeli->nama_pembeli . '');
+        Mail::to($barangpengiriman->barang_terjual->pembeli->email)->send(new NotifPengirimanBarang($barangpengiriman));
+        return redirect('admin/barang/pengiriman/index')->with('success', 'Data Berhasil Disimpan, <br> Terkirim ke ' . $barangpengiriman->barang_terjual->pembeli->nama_pembeli . '');
     }
 
     /**
@@ -105,10 +104,8 @@ class BarangpengirimanController extends Controller
     public function edit($id)
     {
         $barangpengiriman = Barang_pengiriman::orderBy('id', 'Desc')->first();
-        $barang = Barang_pengiriman::orderBy('id', 'Desc')->get();
-        $pembeli = Pembeli::orderBy('id', 'DESC')->get();
 
-        return view('admin.barang.pengiriman.edit', compact('barangpengiriman', 'barang', 'pembeli'));
+        return view('admin.barang.pengiriman.edit', compact('barangpengiriman'));
     }
 
     /**
@@ -128,18 +125,10 @@ class BarangpengirimanController extends Controller
 
         // update
         $barangpengiriman = Barang_pengiriman::where('uuid', $id)->first();
-        $barangpengiriman->barang_id = $request->barang_id;
         $barangpengiriman->kode_pengiriman = $request->kode_pengiriman;
-        $barangpengiriman->pembeli_id = $request->pembeli_id;
         $barangpengiriman->tgl_pengiriman = $request->tgl_pengiriman;
         $barangpengiriman->update();
 
-        $pembeli = Pembeli::findOrfail($barangpengiriman->pembeli_id);
-        $pembeli->alamat = $request->alamat;
-        $pembeli->update();
-
-
-        Mail::to($barangpengiriman->pembeli->email)->send(new NotifPengirimanBarang($barangpengiriman));
         return redirect('admin/barang/pengiriman/index')->with('success', 'Data Berhasil Diubah');
     }
 

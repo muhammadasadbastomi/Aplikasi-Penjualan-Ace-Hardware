@@ -33,10 +33,10 @@
                             <div class="card-header">
                                 <h4 class="card-title"></h4>
                                 <div class="dt-buttons btn-group">
-                                    <button class="btn btn-outline-primary" tabindex="0"
+                                    {{-- <button class="btn btn-outline-primary" tabindex="0"
                                         aria-controls="DataTables_Table_0" data-toggle="modal"
                                         data-target="#mediumModal"><span><i class="feather icon-plus"></i> Tambah
-                                            Data</span></button>
+                                            Data</span></button> --}}
                                     &emsp13;
                                     <button type="button"
                                         class="btn btn-outline-info dropdown-toggle waves-effect waves-light"

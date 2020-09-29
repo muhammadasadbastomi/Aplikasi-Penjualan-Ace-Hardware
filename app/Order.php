@@ -6,7 +6,7 @@ use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Barang_terjual extends Model
+class Order extends Model
 {
     use Notifiable;
     use Uuid;
@@ -14,13 +14,5 @@ class Barang_terjual extends Model
     public function barang()
     {
         return $this->belongsTo(Barang::class);
-    }
-    public function barang_pengiriman()
-    {
-        return $this->hasOne(Barang_pengiriman::class);
-    }
-    public function pembeli()
-    {
-        return $this->belongsTo(Pembeli::class);
     }
 }
