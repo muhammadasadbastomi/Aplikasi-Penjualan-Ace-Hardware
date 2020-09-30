@@ -56,7 +56,9 @@ class PenjualanController extends Controller
             return $item;
         });
 
-        return view('home.index', compact('barang', 'diskon', 'thumb', 'termurah', 'terlaris'));
+        $baranglist = Barang::orderBy('id', 'desc')->get();
+
+        return view('home.index', compact('barang', 'diskon', 'thumb', 'termurah', 'terlaris','baranglist'));
     }
 
     /**

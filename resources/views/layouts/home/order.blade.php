@@ -15,8 +15,8 @@
                         <div class="form-group">
                             <label for="barang">Pilih Barang</label>
                             <select class="custom-select" name="barang_id" id="barang_id">
-                                @foreach($barang as $b)
-                                <option value="{{$b->id}}">{{ $b->nama_barang}}</option>
+                                @foreach($baranglist as $l)
+                                <option value="{{$l->id}}">{{ $l->nama_barang}}</option>
                                 @endforeach
                             </select>
                         </div>

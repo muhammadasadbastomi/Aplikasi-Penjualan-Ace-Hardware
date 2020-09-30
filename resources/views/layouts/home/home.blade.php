@@ -55,7 +55,7 @@
     <!-- End: Sidebar -->
 
     <!-- Begin: order -->
-    @include('layouts/home/order')
+    {{-- @include('layouts/home/order') --}}
     <!-- End: order -->
 
     <!-- BEGIN: Content-->

@@ -29,6 +29,7 @@ class CreateOrdersTable extends Migration
             $table->date('tgl_order');
             $table->tinyInteger('status')->default('1');
             $table->timestamps();
+            $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('restrict');
         });
     }
 
